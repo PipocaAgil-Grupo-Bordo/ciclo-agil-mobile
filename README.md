@@ -33,4 +33,4 @@ Certifique-se de ter um emulador configurado ou o aplicativo Expo Go instalado e
     npx expo start
     ```
 
-    Isso abrirá a interface do Expo no terminal. Você pode escanear o código QR exibido com o aplicativo Expo Go para iniciar o aplicativo em seu dispositivo ou pressione w para abrir no navegador.
+    Isso abrirá a interface do Expo no terminal. Você pode escanear o código QR exibido com o aplicativo Expo Go para iniciar o aplicativo em seu dispositivo.
