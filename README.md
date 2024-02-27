@@ -14,7 +14,7 @@ Ciclo Ágil é um app que permite...
 2. **Navegue até o diretório do projeto:**
 
     ```bash
-    cd hubusca
+    cd ciclo-agil-mobile
     ```
 
 3. **Instale as dependências do projeto:**
