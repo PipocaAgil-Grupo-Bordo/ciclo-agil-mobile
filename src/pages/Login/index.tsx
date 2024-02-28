@@ -1,13 +1,14 @@
 import React from "react";
 import { View } from "react-native";
 import SigninForm from "./SigninForm";
-// import { Container } from './styles';
+import { LoginBox } from "./style";
+
 
 const Login: React.FC = () => {
   return (
-    <View>
+    <LoginBox>
       <SigninForm />
-    </View>
+    </LoginBox>
   );
 };
 
