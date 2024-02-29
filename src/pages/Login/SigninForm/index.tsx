@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { FormBox, FormButton, LoginInput } from "./style";
+import { ForgotPasswordText, FormBox, FormButton, LoginInput } from "./style";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../../schemas/loginSchema";
@@ -38,7 +38,7 @@ const SigninForm: React.FC = () => {
         textAlign="center"
         {...register("password")}
       />
-      <Text style={{ fontFamily: "Montserrat" }}>Esqueci a senha</Text>
+      <ForgotPasswordText style={{ fontFamily: "Montserrat"}}>Esqueci a senha</ForgotPasswordText>
       <FormButton onPress={handleSubmit(onSubmit)}>
         <Text style={{ fontFamily: "Montserrat", color: "white" }}>Login</Text>
       </FormButton>
