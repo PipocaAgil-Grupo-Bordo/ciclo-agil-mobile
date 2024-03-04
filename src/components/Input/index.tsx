@@ -18,7 +18,7 @@ const Input: React.FC<{
       placeholderTextColor="#FF0000"
       textAlign="center"
       name={name}
-      secureTextEntry={true}
+      secureTextEntry={name === "password" && true}
     />
   );
 };
