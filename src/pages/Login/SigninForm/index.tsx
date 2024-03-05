@@ -1,15 +1,16 @@
 import React from 'react';
-import { Alert, Text } from 'react-native';
+import { Text } from 'react-native';
 import { ForgotPasswordText, FormBox, FormButton, LetsBegin, RegisterLink, RegisterText } from './style';
-import { SubmitErrorHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../../../schemas/loginSchema';
 import { loginObject } from '../../../types/loginType';
 import Input from '../../../components/Input';
-import authApi from '../../../services/authApi';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../../routes';
 import { StackNavigationProp } from '@react-navigation/stack';
+import axios, { AxiosError, AxiosResponse } from 'axios';
+import authApi from '../../../services/authApi';
 
 type HomeScreenProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -29,23 +30,23 @@ const SigninForm: React.FC = () => {
   const onSubmit = async (data: loginObject) => {
     try {
       const response = await authApi.signInUser(data);
-      console.log(response.status);
 
       if (response.status === 201) {
         return navigation.navigate('Home');
       }
     } catch (error: unknown) {
-      console.error('Error signing in:', error);
-    }
-  };
+      if (axios.isAxiosError(error)) {
+        const invalidCredentials = error.response?.status === 401;
 
-  const onDeniedSubmit: SubmitErrorHandler<loginObject> = ({
-    email,
-    password,
-  }) => {
-    reset({ email: "", password: "" }, { keepErrors: true });
-    setError("root", { type: "submit error" });
-    Alert.alert("deu erro");
+        if (invalidCredentials) {
+          reset({ email: '', password: '' }, { keepErrors: true });
+          setError('password', { type: 'manual', message: 'Credenciais incorretas' });
+          setError('email', { type: 'manual', message: 'Credenciais incorretas' });
+        } else {
+          throw new Error('Unkown error')
+        }
+      }
+    }
   };
 
   return (
@@ -58,7 +59,7 @@ const SigninForm: React.FC = () => {
       <ForgotPasswordText style={{ fontFamily: "Montserrat" }}>
         Esqueci a senha
       </ForgotPasswordText>
-      <FormButton onPress={handleSubmit(onSubmit, onDeniedSubmit)}>
+      <FormButton onPress={handleSubmit(onSubmit)}>
         <Text style={{ fontFamily: "Montserrat", color: "white" }}>Login</Text>
       </FormButton>
       <RegisterText >Não tem conta?<RegisterLink > Registre-se</RegisterLink></RegisterText>

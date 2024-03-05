@@ -3,12 +3,15 @@ import { LoginInput } from "./style";
 import { Control, FieldErrors, useController } from "react-hook-form";
 import { loginObject } from "../../types/loginType";
 
-const Input: React.FC<{
-  name: "email" | "password";
+interface InputProps {
+  name: 'email' | 'password';
   control: Control<loginObject>;
   errors: FieldErrors<loginObject>;
-}> = ({ name, control, errors }) => {
-  const { field } = useController({ control, defaultValue: "", name });
+}
+
+const Input: React.FC<InputProps> = ({ name, control, errors }) => {
+  const { field } = useController({ control, defaultValue: '', name });
+
   return (
     <LoginInput
       value={field.value}
