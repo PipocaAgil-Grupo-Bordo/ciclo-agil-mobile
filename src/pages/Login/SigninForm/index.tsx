@@ -1,13 +1,21 @@
-import React, { useEffect } from "react";
-import { Alert, Text } from "react-native";
-import { ForgotPasswordText, FormBox, FormButton, LetsBegin, RegisterLink, RegisterText } from "./style";
-import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "../../../schemas/loginSchema";
-import { loginObject } from "../../../types/loginType";
-import Input from "../../../components/Input";
+import React from 'react';
+import { Alert, Text } from 'react-native';
+import { ForgotPasswordText, FormBox, FormButton, LetsBegin, RegisterLink, RegisterText } from './style';
+import { SubmitErrorHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { loginSchema } from '../../../schemas/loginSchema';
+import { loginObject } from '../../../types/loginType';
+import Input from '../../../components/Input';
+import authApi from '../../../services/authApi';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../../routes';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+type HomeScreenProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
 const SigninForm: React.FC = () => {
+  const navigation = useNavigation<HomeScreenProp>();
+
   const {
     handleSubmit,
     control,
@@ -17,9 +25,20 @@ const SigninForm: React.FC = () => {
   } = useForm<loginObject>({
     resolver: yupResolver(loginSchema),
   });
-  const onSubmit: SubmitHandler<loginObject> = ({ email, password }) => {
-    Alert.alert(email, password);
+
+  const onSubmit = async (data: loginObject) => {
+    try {
+      const response = await authApi.signInUser(data);
+      console.log(response.status);
+
+      if (response.status === 201) {
+        return navigation.navigate('Home');
+      }
+    } catch (error: unknown) {
+      console.error('Error signing in:', error);
+    }
   };
+
   const onDeniedSubmit: SubmitErrorHandler<loginObject> = ({
     email,
     password,
