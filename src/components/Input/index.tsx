@@ -14,7 +14,7 @@ const Input: React.FC<{
       value={field.value}
       onChangeText={field.onChange}
       errors={errors}
-      placeholder={errors[`${name}`] && errors[`${name}`]?.message}
+      placeholder={errors[`${name}`] ? errors[`${name}`]?.message : ""}
       placeholderTextColor="#FF0000"
       textAlign="center"
       name={name}
