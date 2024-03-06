@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Alert, Text } from 'react-native';
 import { ForgotPasswordText, FormBox, FormButton, LetsBegin, RegisterLink, RegisterText } from './style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -29,21 +29,19 @@ const SigninForm: React.FC = () => {
 
   const onSubmit = async (data: loginObject) => {
     try {
-      const response = await authApi.signInUser(data);
+      await authApi.signInUser(data);
 
-      if (response.status === 201) {
-        return navigation.navigate('Home');
-      }
+      return navigation.navigate('Home');
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         const invalidCredentials = error.response?.status === 401;
 
         if (invalidCredentials) {
           reset({ email: '', password: '' }, { keepErrors: true });
-          setError('password', { type: 'manual', message: 'Credenciais incorretas' });
-          setError('email', { type: 'manual', message: 'Credenciais incorretas' });
+          setError('password', { type: 'manual', message: 'E-mail ou Senha Incorretos. Tente Novamente.' });
+          setError('email', { type: 'manual', message: 'E-mail ou Senha Incorretos. Tente Novamente.' });
         } else {
-          throw new Error('Unkown error')
+          Alert.alert('Algo deu errado, tente novamente!')
         }
       }
     }
