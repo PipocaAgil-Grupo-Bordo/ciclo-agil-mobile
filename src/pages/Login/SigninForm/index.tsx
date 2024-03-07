@@ -58,7 +58,7 @@ const SigninForm: React.FC = () => {
       </ForgotPasswordText>
       <FormButton onPress={handleSubmit(onSubmit)}>
         {isSubmitting ? (
-          <ActivityIndicator />
+          <ActivityIndicator color={'#fff'} />
         ) : (
           <Text style={{ fontFamily: "Montserrat", color: "white" }}>Login</Text>
         )}
