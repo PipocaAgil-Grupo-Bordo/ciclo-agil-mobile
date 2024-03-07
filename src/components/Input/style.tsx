@@ -11,5 +11,5 @@ export const LoginInput = styled.TextInput<{ errors?: FieldErrors; name: String 
 
 export const ErrorMessage = styled.Text`
   color: #FF0000;
-  font-size: 12px;
+  font-size: 14px;
 `
