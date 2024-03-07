@@ -49,18 +49,18 @@ const SigninForm: React.FC = () => {
   return (
     <FormBox>
       <LetsBegin>Vamos começar?</LetsBegin>
-      <Text style={{ fontFamily: "Montserrat" }}>Email:</Text>
+      <Text>Email:</Text>
       <Input name="email" control={control} errors={errors} />
-      <Text style={{ fontFamily: "Montserrat" }}>Senha:</Text>
+      <Text>Senha:</Text>
       <Input name="password" control={control} errors={errors} />
-      <ForgotPasswordText style={{ fontFamily: "Montserrat" }}>
+      <ForgotPasswordText>
         Esqueci a senha
       </ForgotPasswordText>
       <FormButton onPress={handleSubmit(onSubmit)}>
         {isSubmitting ? (
           <ActivityIndicator color={'#fff'} />
         ) : (
-          <Text style={{ fontFamily: "Montserrat", color: "white" }}>Login</Text>
+          <Text style={{ color: "white" }}>Login</Text>
         )}
       </FormButton>
       <RegisterText >Não tem conta?<RegisterLink > Registre-se</RegisterLink></RegisterText>
