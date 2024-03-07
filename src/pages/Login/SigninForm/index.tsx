@@ -37,9 +37,8 @@ const SigninForm: React.FC = () => {
         const invalidCredentials = error.response?.status === 401;
 
         if (invalidCredentials) {
-          reset({ email: '', password: '' }, { keepErrors: true });
+          reset({ email: 'mary@jane.com', password: 'Mary@jane1234' }, { keepErrors: true });
           setError('password', { type: 'manual', message: 'E-mail ou Senha Incorretos. Tente Novamente.' });
-          setError('email', { type: 'manual', message: 'E-mail ou Senha Incorretos. Tente Novamente.' });
         } else {
           Alert.alert('Algo deu errado, tente novamente!')
         }
