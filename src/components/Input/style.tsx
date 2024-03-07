@@ -6,7 +6,7 @@ export const LoginInput = styled.TextInput<{ errors?: FieldErrors; name: String 
   border-radius: 5px;
   height: 56px;
   margin: 12px 0px;
-  border: ${(props) => (props.errors?.root ? '#FF0000' : '')};
+  border: ${(props) => (props.errors ? '#FF0000' : '')};
 `;
 
 export const ErrorMessage = styled.Text`
