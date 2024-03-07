@@ -8,5 +8,5 @@ export const loginSchema = yup.object().shape({
   password: yup
     .string()
     .required("A senha não pode ser vazia")
-    .min(6, "A senha deve conter pelo menos 6 dígitos"),
+    .min(8),
 });

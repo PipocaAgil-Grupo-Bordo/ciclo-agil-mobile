@@ -27,3 +27,6 @@ export const LetsBegin=styled.Text`
   font-weight: 400px;
   margin: 81px 0px 24px;
 `
+export const IncompatibilityErrorMessage=styled.Text`
+  color: #FF0000;
+`
