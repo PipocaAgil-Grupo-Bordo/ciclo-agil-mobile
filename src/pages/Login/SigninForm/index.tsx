@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Text } from 'react-native';
+import { ActivityIndicator, Alert, Text } from 'react-native';
 import { ForgotPasswordText, FormBox, FormButton, LetsBegin, RegisterLink, RegisterText } from './style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -20,7 +20,7 @@ const SigninForm: React.FC = () => {
   const {
     handleSubmit,
     control,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     reset,
     setError,
   } = useForm<loginObject>({
@@ -30,7 +30,7 @@ const SigninForm: React.FC = () => {
   const onSubmit = async (data: loginObject) => {
     try {
       await authApi.signInUser(data);
-
+      
       return navigation.navigate('Home');
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
@@ -57,7 +57,11 @@ const SigninForm: React.FC = () => {
         Esqueci a senha
       </ForgotPasswordText>
       <FormButton onPress={handleSubmit(onSubmit)}>
-        <Text style={{ fontFamily: "Montserrat", color: "white" }}>Login</Text>
+        {isSubmitting ? (
+          <ActivityIndicator />
+        ) : (
+          <Text style={{ fontFamily: "Montserrat", color: "white" }}>Login</Text>
+        )}
       </FormButton>
       <RegisterText >Não tem conta?<RegisterLink > Registre-se</RegisterLink></RegisterText>
     </FormBox>
