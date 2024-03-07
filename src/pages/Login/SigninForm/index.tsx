@@ -57,7 +57,6 @@ const SigninForm: React.FC = () => {
       <RegisterText>
         Não tem conta?<RegisterLink> Registre-se</RegisterLink>
       </RegisterText>
-      <Text>{JSON.stringify(errors)}</Text>
     </FormBox>
   );
 };
