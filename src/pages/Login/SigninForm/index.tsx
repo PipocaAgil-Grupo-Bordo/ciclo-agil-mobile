@@ -38,7 +38,7 @@ const SigninForm: React.FC = () => {
 
         if (invalidCredentials) {
           setError('email', { type: 'manual', message: '' });
-          setError('password', { type: 'manual', message: 'E-mail ou Senha Incorretos.' });
+          setError('password', { type: 'manual', message: 'E-mail ou Senha Incorretos. Tente Novamente.' });
         } else {
           Alert.alert('Algo deu errado, tente novamente!')
         }
