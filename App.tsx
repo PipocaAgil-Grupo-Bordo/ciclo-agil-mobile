@@ -1,25 +1,16 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import Login from "./src/pages/Login";
 import { useFonts } from "expo-font";
+import Router from "./src/routes";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
     Montserrat: require("./assets/fonts/Montserrat.ttf"),
   });
+
   return (
-    <View style={styles.container}>
-      <Login />
+    <>
+      <Router />
       <StatusBar style="auto" />
-    </View>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#FAFCFF",
-    justifyContent: "center",
-    padding:48,
-  },
-});

@@ -1,4 +1,3 @@
-import { FieldError } from "react-hook-form";
 import styled from "styled-components/native";
 
 export const FormBox = styled.View``;
@@ -24,6 +23,6 @@ export const RegisterLink = styled.Text`
 `
 export const LetsBegin=styled.Text`
   font-size: 24px;
-  font-weight: 400px;
+  font-weight: 400;
   margin: 81px 0px 24px;
 `
