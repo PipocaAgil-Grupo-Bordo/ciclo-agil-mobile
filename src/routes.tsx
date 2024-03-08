@@ -2,11 +2,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './pages/Home';
 import Login from './pages/Login';
-
-export type RootStackParamList = {
-  Login: undefined;
-  Home: undefined;
-};
+import SignUp from './pages/SignUp';
+import PasswordReset from './pages/PasswordReset';
+import { RootStackParamList } from './types/routeType';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -26,6 +24,14 @@ const Router = () => {
         <Stack.Screen
           name='Home'
           component={Home}
+        />
+        <Stack.Screen
+          name='SignUp'
+          component={SignUp}
+        />
+        <Stack.Screen
+          name='PasswordReset'
+          component={PasswordReset}
         />
       </Stack.Navigator>
     </NavigationContainer>
