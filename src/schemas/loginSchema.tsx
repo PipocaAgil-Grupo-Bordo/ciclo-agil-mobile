@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 const isValidEmail = (email: string) => {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 };
 
 export const loginSchema = yup.object().shape({
