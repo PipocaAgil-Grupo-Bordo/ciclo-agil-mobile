@@ -15,7 +15,7 @@ interface TextBoxProps {
  * export const CustomText = styled(TextMontserrat)` -- rest of the code `
  */
 const TextBox: React.FC<TextBoxProps> = ({ children }) => {
-  return <TextMontserrat>{children}</TextMontserrat>; // Pass align prop to TextMontserrat
+  return <TextMontserrat>{children}</TextMontserrat>; 
 };
 
 export default TextBox;
