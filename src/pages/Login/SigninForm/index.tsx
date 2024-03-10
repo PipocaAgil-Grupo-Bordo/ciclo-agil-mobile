@@ -30,6 +30,8 @@ const SigninForm: React.FC = () => {
   const onSubmit = async (data: loginObject) => {
     try {
       await authApi.signInUser(data);
+
+      reset({email: '', password: ''}, {keepErrors: false});
       
       return navigation.navigate('Home');
     } catch (error: unknown) {
