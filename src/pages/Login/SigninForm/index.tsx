@@ -7,10 +7,11 @@ import { loginSchema } from '../../../schemas/loginSchema';
 import { loginObject } from '../../../types/loginType';
 import Input from '../../../components/Input';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../../../routes';
 import { StackNavigationProp } from '@react-navigation/stack';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import authApi from '../../../services/authApi';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { RootStackParamList } from '../../../types/routeType';
 
 type HomeScreenProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -30,6 +31,8 @@ const SigninForm: React.FC = () => {
   const onSubmit = async (data: loginObject) => {
     try {
       await authApi.signInUser(data);
+
+      reset({email: '', password: ''}, {keepErrors: false});
       
       return navigation.navigate('Home');
     } catch (error: unknown) {
@@ -53,9 +56,11 @@ const SigninForm: React.FC = () => {
       <Input name="email" control={control} errors={errors} />
       <Text>Senha:</Text>
       <Input name="password" control={control} errors={errors} />
-      <ForgotPasswordText>
-        Esqueci a senha
-      </ForgotPasswordText>
+      <TouchableOpacity onPress={() => navigation.navigate('PasswordReset')}>
+        <ForgotPasswordText style={{ fontFamily: "Montserrat" }}>
+          Esqueci a senha
+        </ForgotPasswordText>
+      </TouchableOpacity>
       <FormButton onPress={handleSubmit(onSubmit)}>
         {isSubmitting ? (
           <ActivityIndicator color={'#fff'} />
@@ -63,7 +68,9 @@ const SigninForm: React.FC = () => {
           <Text style={{ color: "white" }}>Login</Text>
         )}
       </FormButton>
-      <RegisterText >Não tem conta?<RegisterLink > Registre-se</RegisterLink></RegisterText>
+      <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+        <RegisterText >Não tem conta?<RegisterLink > Registre-se</RegisterLink></RegisterText>
+      </TouchableOpacity>
     </FormBox>
   );
 };
