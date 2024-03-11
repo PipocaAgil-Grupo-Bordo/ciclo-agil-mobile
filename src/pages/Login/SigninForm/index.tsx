@@ -1,6 +1,14 @@
 import React from 'react';
-import { ActivityIndicator, Alert, Text } from 'react-native';
-import { ForgotPasswordText, FormBox, FormButton, LetsBegin, RegisterLink, RegisterText } from './style';
+import { ActivityIndicator, Alert, Text, TouchableOpacityBase } from 'react-native';
+import {
+  ForgotPasswordText,
+  FormBox,
+  FormButton,
+  FormButtonText,
+  LetsBegin,
+  RegisterLink,
+  RegisterText,
+} from './style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../../../schemas/loginSchema';
@@ -12,6 +20,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 import authApi from '../../../services/authApi';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { RootStackParamList } from '../../../types/routeType';
+import TextBox from '../../../components/TextBox';
 
 type HomeScreenProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -41,9 +50,12 @@ const SigninForm: React.FC = () => {
 
         if (invalidCredentials) {
           setError('email', { type: 'manual', message: '' });
-          setError('password', { type: 'manual', message: 'E-mail ou Senha Incorretos. Tente Novamente.' });
+          setError('password', {
+            type: 'manual',
+            message: 'E-mail ou Senha Incorretos. Tente Novamente.',
+          });
         } else {
-          Alert.alert('Algo deu errado, tente novamente!')
+          Alert.alert('Algo deu errado, tente novamente!');
         }
       }
     }
@@ -52,12 +64,12 @@ const SigninForm: React.FC = () => {
   return (
     <FormBox>
       <LetsBegin>Vamos começar?</LetsBegin>
-      <Text>Email:</Text>
+      <TextBox>Email:</TextBox>
       <Input name="email" control={control} errors={errors} />
-      <Text>Senha:</Text>
+      <TextBox>Senha:</TextBox>
       <Input name="password" control={control} errors={errors} />
       <TouchableOpacity onPress={() => navigation.navigate('PasswordReset')}>
-        <ForgotPasswordText style={{ fontFamily: "Montserrat" }}>
+        <ForgotPasswordText>
           Esqueci a senha
         </ForgotPasswordText>
       </TouchableOpacity>
@@ -65,7 +77,9 @@ const SigninForm: React.FC = () => {
         {isSubmitting ? (
           <ActivityIndicator color={'#fff'} />
         ) : (
-          <Text style={{ color: "white" }}>Login</Text>
+          <FormButtonText>
+            Login
+          </FormButtonText>
         )}
       </FormButton>
       <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
