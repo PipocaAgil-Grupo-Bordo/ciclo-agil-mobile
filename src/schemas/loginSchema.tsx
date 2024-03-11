@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 
+// Ensure email always follow the same pattern
 const isValidEmail = (email: string) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 };
