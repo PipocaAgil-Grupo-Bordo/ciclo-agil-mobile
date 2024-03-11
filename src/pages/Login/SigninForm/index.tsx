@@ -1,16 +1,26 @@
 import React from 'react';
-import { ActivityIndicator, Alert, Text } from 'react-native';
-import { ForgotPasswordText, FormBox, FormButton, LetsBegin, RegisterLink, RegisterText } from './style';
+import { ActivityIndicator, Alert, Text, TouchableOpacityBase } from 'react-native';
+import {
+  ForgotPasswordText,
+  FormBox,
+  FormButton,
+  FormButtonText,
+  LetsBegin,
+  RegisterLink,
+  RegisterText,
+} from './style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../../../schemas/loginSchema';
 import { loginObject } from '../../../types/loginType';
 import Input from '../../../components/Input';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../../../routes';
 import { StackNavigationProp } from '@react-navigation/stack';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import authApi from '../../../services/authApi';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { RootStackParamList } from '../../../types/routeType';
+import TextBox from '../../../components/TextBox';
 
 type HomeScreenProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -30,6 +40,8 @@ const SigninForm: React.FC = () => {
   const onSubmit = async (data: loginObject) => {
     try {
       await authApi.signInUser(data);
+
+      reset({email: '', password: ''}, {keepErrors: false});
       
       return navigation.navigate('Home');
     } catch (error: unknown) {
@@ -38,9 +50,12 @@ const SigninForm: React.FC = () => {
 
         if (invalidCredentials) {
           setError('email', { type: 'manual', message: '' });
-          setError('password', { type: 'manual', message: 'E-mail ou Senha Incorretos. Tente Novamente.' });
+          setError('password', {
+            type: 'manual',
+            message: 'E-mail ou Senha Incorretos. Tente Novamente.',
+          });
         } else {
-          Alert.alert('Algo deu errado, tente novamente!')
+          Alert.alert('Algo deu errado, tente novamente!');
         }
       }
     }
@@ -49,21 +64,27 @@ const SigninForm: React.FC = () => {
   return (
     <FormBox>
       <LetsBegin>Vamos começar?</LetsBegin>
-      <Text style={{ fontFamily: "Montserrat" }}>Email:</Text>
-      <Input name="email" control={control} errors={errors} />
-      <Text style={{ fontFamily: "Montserrat" }}>Senha:</Text>
+      <TextBox>Email:</TextBox>
+      <Input name="email" keyboardType='email-address' control={control} errors={errors} />
+      <TextBox>Senha:</TextBox>
       <Input name="password" control={control} errors={errors} />
-      <ForgotPasswordText style={{ fontFamily: "Montserrat" }}>
-        Esqueci a senha
-      </ForgotPasswordText>
+      <TouchableOpacity onPress={() => navigation.navigate('PasswordReset')}>
+        <ForgotPasswordText>
+          Esqueci a senha
+        </ForgotPasswordText>
+      </TouchableOpacity>
       <FormButton onPress={handleSubmit(onSubmit)}>
         {isSubmitting ? (
           <ActivityIndicator color={'#fff'} />
         ) : (
-          <Text style={{ fontFamily: "Montserrat", color: "white" }}>Login</Text>
+          <FormButtonText>
+            Login
+          </FormButtonText>
         )}
       </FormButton>
-      <RegisterText >Não tem conta?<RegisterLink > Registre-se</RegisterLink></RegisterText>
+      <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+        <RegisterText >Não tem conta?<RegisterLink > Registre-se</RegisterLink></RegisterText>
+      </TouchableOpacity>
     </FormBox>
   );
 };
