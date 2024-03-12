@@ -1,11 +1,10 @@
 import React from 'react';
-import { ActivityIndicator, Alert, Text, TouchableOpacityBase } from 'react-native';
+import { ActivityIndicator, Alert } from 'react-native';
 import {
   ForgotPasswordText,
   FormBox,
-  FormButton,
-  FormButtonText,
   LetsBegin,
+  LoginWrapper,
   RegisterLink,
   RegisterText,
 } from './style';
@@ -21,6 +20,7 @@ import authApi from '../../../services/authApi';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { RootStackParamList } from '../../../types/routeType';
 import TextBox from '../../../components/TextBox';
+import Button from '../../../components/Button';
 
 type HomeScreenProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -73,15 +73,15 @@ const SigninForm: React.FC = () => {
           Esqueci a senha
         </ForgotPasswordText>
       </TouchableOpacity>
-      <FormButton onPress={handleSubmit(onSubmit)}>
-        {isSubmitting ? (
-          <ActivityIndicator color={'#fff'} />
-        ) : (
-          <FormButtonText>
-            Login
-          </FormButtonText>
-        )}
-      </FormButton>
+      <LoginWrapper>
+        <Button state='accent' onPress={handleSubmit(onSubmit)}>
+          {isSubmitting ? (
+            <ActivityIndicator color={'#fff'} />
+          ) : (
+              'Login'
+          )}
+        </Button>
+      </LoginWrapper>
       <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
         <RegisterText >Não tem conta?<RegisterLink > Registre-se</RegisterLink></RegisterText>
       </TouchableOpacity>
