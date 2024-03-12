@@ -26,7 +26,7 @@ interface ButtonProps extends ButtonStyleProps, TouchableOpacityProps{
 const Button: React.FC<ButtonProps> = ({ icon, state, children, ...rest }) => {
   return (
     <StyledButton state={state} {...rest}>
-      {icon && <ButtonIcon source={icon} />}
+      {icon && <ButtonIcon aria-hidden={true} source={icon} />}
       <ButtonText state={state}>{children}</ButtonText>
     </StyledButton>
   );
