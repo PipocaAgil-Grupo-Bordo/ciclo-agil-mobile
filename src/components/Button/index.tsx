@@ -18,10 +18,9 @@ interface ButtonProps extends ButtonStyleProps, TouchableOpacityProps{
  * 
  * It adds the style of all current button designs that take up the whole screen's width.
  * 
- * If you need to add spacing between this button and another element, you can wrap it around with
- * a View component and style that instead.
+ * If you need to add spacing between this button and another element, you can wrap it around with a View component and style that instead.
  * 
- * If you need to add an image, do so what the icon prop:
+ * If you need to add an image, do so with the icon prop:
  * icon={require('@/assets/image.format')}
  */
 const Button: React.FC<ButtonProps> = ({ icon, state, children, ...rest }) => {
