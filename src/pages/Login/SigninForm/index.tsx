@@ -5,9 +5,9 @@ import {
   FormBox,
   FormButton,
   FormButtonText,
-  LetsBegin,
+  RegisterContainer,
   RegisterLink,
-  RegisterText,
+  TitleText,
 } from './style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -63,16 +63,20 @@ const SigninForm: React.FC = () => {
 
   return (
     <FormBox>
-      <LetsBegin>Vamos começar?</LetsBegin>
+      <TitleText>Vamos começar?</TitleText>
+
       <TextBox>Email:</TextBox>
       <Input name="email" keyboardType='email-address' control={control} errors={errors} />
+
       <TextBox>Senha:</TextBox>
       <Input name="password" control={control} errors={errors} />
+
       <TouchableOpacity onPress={() => navigation.navigate('PasswordReset')}>
         <ForgotPasswordText>
           Esqueci a senha
         </ForgotPasswordText>
       </TouchableOpacity>
+      
       <FormButton onPress={handleSubmit(onSubmit)}>
         {isSubmitting ? (
           <ActivityIndicator color={'#fff'} />
@@ -82,9 +86,14 @@ const SigninForm: React.FC = () => {
           </FormButtonText>
         )}
       </FormButton>
-      <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-        <RegisterText >Não tem conta?<RegisterLink > Registre-se</RegisterLink></RegisterText>
-      </TouchableOpacity>
+
+      <RegisterContainer>
+        <TextBox>Não tem conta?</TextBox>
+
+        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+          <RegisterLink > Registre-se</RegisterLink>
+        </TouchableOpacity>
+      </RegisterContainer>
     </FormBox>
   );
 };

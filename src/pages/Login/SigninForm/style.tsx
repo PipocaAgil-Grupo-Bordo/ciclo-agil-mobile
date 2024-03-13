@@ -1,7 +1,13 @@
-import styled from "styled-components/native";
-import { TextMontserrat } from "../../../components/TextBox/style";
+import styled from 'styled-components/native';
+import { TextMontserrat } from '../../../components/TextBox/style';
 
 export const FormBox = styled.View``;
+
+export const TitleText = styled(TextMontserrat)`
+  font-size: 24px;
+  font-weight: 400;
+  margin: 81px 0px 24px;
+`;
 
 export const FormButton = styled.TouchableOpacity`
   display: flex;
@@ -14,7 +20,7 @@ export const FormButton = styled.TouchableOpacity`
 
 export const FormButtonText = styled(TextMontserrat)`
   color: white;
-`
+`;
 
 export const ForgotPasswordText = styled(TextMontserrat)`
   color: #af65e2;
@@ -22,16 +28,12 @@ export const ForgotPasswordText = styled(TextMontserrat)`
   margin: 0px 12px;
 `;
 
-export const RegisterText = styled(TextMontserrat)`
-  text-align: center;
-`
+export const RegisterContainer = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
 
-export const RegisterLink = styled.Text`
+export const RegisterLink = styled(TextMontserrat)`
   color: #af65e2;
-`
-
-export const LetsBegin=styled(TextMontserrat)`
-  font-size: 24px;
-  font-weight: 400;
-  margin: 81px 0px 24px;
-`
+`;
