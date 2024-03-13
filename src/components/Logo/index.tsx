@@ -1,6 +1,5 @@
 import React from "react";
 import { LogoBox, LogoImg } from "./style";
-import { Image, View } from "react-native";
 
 const Logo: React.FC = () => {
   return (

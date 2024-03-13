@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled from "styled-components/native";
 
 // Name subject to change. Just a placeholder for now
 export const Container = styled.View`

@@ -1,5 +1,5 @@
-import { Text } from 'react-native';
-import { Container } from './style';
+import { Text } from "react-native";
+import { Container } from "./style";
 
 const PasswordReset: React.FC = () => {
   return (

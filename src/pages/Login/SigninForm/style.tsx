@@ -1,5 +1,5 @@
-import styled from 'styled-components/native';
-import { TextMontserrat } from '../../../components/TextBox/style';
+import styled from "styled-components/native";
+import { TextMontserrat } from "../../../components/TextBox/style";
 
 export const FormBox = styled.View``;
 

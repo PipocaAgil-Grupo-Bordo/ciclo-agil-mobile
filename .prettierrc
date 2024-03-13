@@ -3,8 +3,8 @@
   "tabWidth": 2,
   "bracketSameLine": false,
   "bracketSpacing": true,
-  "jsxSingleQuote": true,
-  "singleQuote": true,
+  "jsxSingleQuote": false,
+  "singleQuote": false,
   "printWidth": 80,
   "arrowParens": "always"
 }

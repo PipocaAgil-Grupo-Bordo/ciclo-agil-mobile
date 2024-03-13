@@ -1,5 +1,5 @@
-import styled from 'styled-components/native';
+import styled from "styled-components/native";
 
 export const TextMontserrat = styled.Text`
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 `;
