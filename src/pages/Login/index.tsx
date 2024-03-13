@@ -1,8 +1,8 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import SigninForm from './SigninForm';
-import { LoginBox } from './style';
-import Logo from '../../components/Logo';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import SigninForm from "./SigninForm";
+import { LoginBox } from "./style";
+import Logo from "../../components/Logo";
 
 const Login: React.FC = () => {
   return (
@@ -22,8 +22,8 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAFCFF',
-    justifyContent: 'center',
-    padding: 30,
-  },
+    backgroundColor: "#FAFCFF",
+    justifyContent: "center",
+    padding: 30
+  }
 });

@@ -1,28 +1,28 @@
-import React from 'react';
-import { ActivityIndicator, Alert, Text, TouchableOpacityBase } from 'react-native';
+import React from "react";
+import { ActivityIndicator, Alert } from "react-native";
 import {
   ForgotPasswordText,
   FormBox,
-  FormButton,
-  FormButtonText,
+  LoginWrapper,
   RegisterContainer,
   RegisterLink,
-  TitleText,
-} from './style';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { loginSchema } from '../../../schemas/loginSchema';
-import { loginObject } from '../../../types/loginType';
-import Input from '../../../components/Input';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import axios, { AxiosError, AxiosResponse } from 'axios';
-import authApi from '../../../services/authApi';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { RootStackParamList } from '../../../types/routeType';
-import TextBox from '../../../components/TextBox';
+  TitleText
+} from "./style";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginSchema } from "../../../schemas/loginSchema";
+import { loginObject } from "../../../types/loginType";
+import Input from "../../../components/Input";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import axios from "axios";
+import authApi from "../../../services/authApi";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { RootStackParamList } from "../../../types/routeType";
+import TextBox from "../../../components/TextBox";
+import GenericButton from "../../../components/GenericButton";
 
-type HomeScreenProp = StackNavigationProp<RootStackParamList, 'Home'>;
+type HomeScreenProp = StackNavigationProp<RootStackParamList, "Home">;
 
 const SigninForm: React.FC = () => {
   const navigation = useNavigation<HomeScreenProp>();
@@ -32,30 +32,33 @@ const SigninForm: React.FC = () => {
     control,
     formState: { errors, isSubmitting },
     reset,
-    setError,
+    setError
   } = useForm<loginObject>({
-    resolver: yupResolver(loginSchema),
+    resolver: yupResolver(loginSchema)
   });
 
   const onSubmit = async (data: loginObject) => {
     try {
       await authApi.signInUser(data);
 
-      reset({email: '', password: ''}, {keepErrors: false});
-      
-      return navigation.navigate('Home');
+      reset({ email: "", password: "" }, { keepErrors: false });
+
+      return navigation.navigate("Home");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         const invalidCredentials = error.response?.status === 401;
 
         if (invalidCredentials) {
-          setError('email', { type: 'manual', message: '' });
-          setError('password', {
-            type: 'manual',
-            message: 'E-mail ou Senha Incorretos. Tente Novamente.',
+          setError("email", {
+            type: "manual",
+            message: ""
+          });
+          setError("password", {
+            type: "manual",
+            message: "E-mail ou Senha Incorretos. Tente Novamente."
           });
         } else {
-          Alert.alert('Algo deu errado, tente novamente!');
+          Alert.alert("Algo deu errado, tente novamente!");
         }
       }
     }
@@ -66,32 +69,26 @@ const SigninForm: React.FC = () => {
       <TitleText>Vamos começar?</TitleText>
 
       <TextBox>Email:</TextBox>
-      <Input name="email" keyboardType='email-address' control={control} errors={errors} />
+      <Input name="email" keyboardType="email-address" control={control} errors={errors} />
 
       <TextBox>Senha:</TextBox>
       <Input name="password" control={control} errors={errors} />
 
-      <TouchableOpacity onPress={() => navigation.navigate('PasswordReset')}>
-        <ForgotPasswordText>
-          Esqueci a senha
-        </ForgotPasswordText>
+      <TouchableOpacity onPress={() => navigation.navigate("PasswordReset")}>
+        <ForgotPasswordText>Esqueci a senha</ForgotPasswordText>
       </TouchableOpacity>
-      
-      <FormButton onPress={handleSubmit(onSubmit)}>
-        {isSubmitting ? (
-          <ActivityIndicator color={'#fff'} />
-        ) : (
-          <FormButtonText>
-            Login
-          </FormButtonText>
-        )}
-      </FormButton>
+
+      <LoginWrapper>
+        <GenericButton state="accent" onPress={handleSubmit(onSubmit)}>
+          {isSubmitting ? <ActivityIndicator color={"#fff"} /> : "Login"}
+        </GenericButton>
+      </LoginWrapper>
 
       <RegisterContainer>
         <TextBox>Não tem conta?</TextBox>
 
-        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-          <RegisterLink > Registre-se</RegisterLink>
+        <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+          <RegisterLink> Registre-se</RegisterLink>
         </TouchableOpacity>
       </RegisterContainer>
     </FormBox>

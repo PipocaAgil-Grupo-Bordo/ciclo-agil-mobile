@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { TextMontserrat } from './style';
+import { ReactNode } from "react";
+import { TextMontserrat } from "./style";
 
 interface TextBoxProps {
   children: ReactNode;
@@ -15,7 +15,7 @@ interface TextBoxProps {
  * export const CustomText = styled(TextMontserrat)` -- rest of the code `
  */
 const TextBox: React.FC<TextBoxProps> = ({ children }) => {
-  return <TextMontserrat>{children}</TextMontserrat>; 
+  return <TextMontserrat>{children}</TextMontserrat>;
 };
 
 export default TextBox;
