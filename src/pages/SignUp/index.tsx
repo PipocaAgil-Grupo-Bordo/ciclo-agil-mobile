@@ -1,5 +1,5 @@
-import { Text } from "react-native";
-import { Container } from "./style";
+import { Text } from 'react-native';
+import { Container } from './style';
 
 const SignUp: React.FC = () => {
   return (
@@ -9,4 +9,4 @@ const SignUp: React.FC = () => {
   );
 };
 
-export default SignUp
+export default SignUp;
