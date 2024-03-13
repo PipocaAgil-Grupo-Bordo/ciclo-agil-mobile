@@ -9,8 +9,7 @@ export const LoginInput = styled.TextInput<{
   border-radius: 5px;
   height: 56px;
   margin-bottom: 6px;
-  border: ${(props) =>
-    props.errors && props.errors[props.name] ? "#FF0000" : "none"};
+  border: ${(props) => (props.errors && props.errors[props.name] ? "#FF0000" : "none")};
 `;
 
 export const ErrorMessage = styled.Text`

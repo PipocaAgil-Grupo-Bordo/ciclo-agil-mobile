@@ -22,6 +22,10 @@ export const ForgotPasswordText = styled(TextMontserrat)`
   margin: 0px 12px;
 `;
 
+export const LoginWrapper = styled.View`
+  margin: 34px 0px 24px;
+`;
+
 export const RegisterText = styled(TextMontserrat)`
   text-align: center;
 `;

@@ -3,9 +3,8 @@ import { ActivityIndicator, Alert } from "react-native";
 import {
   ForgotPasswordText,
   FormBox,
-  FormButton,
-  FormButtonText,
   LetsBegin,
+  LoginWrapper,
   RegisterLink,
   RegisterText
 } from "./style";
@@ -21,6 +20,7 @@ import authApi from "../../../services/authApi";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { RootStackParamList } from "../../../types/routeType";
 import TextBox from "../../../components/TextBox";
+import GenericButton from "../../../components/GenericButton";
 
 type HomeScreenProp = StackNavigationProp<RootStackParamList, "Home">;
 
@@ -67,29 +67,26 @@ const SigninForm: React.FC = () => {
   return (
     <FormBox>
       <LetsBegin>Vamos começar?</LetsBegin>
+
       <TextBox>Email:</TextBox>
-      <Input
-        name="email"
-        keyboardType="email-address"
-        control={control}
-        errors={errors}
-      />
+      <Input name="email" keyboardType="email-address" control={control} errors={errors} />
+
       <TextBox>Senha:</TextBox>
       <Input name="password" control={control} errors={errors} />
+
       <TouchableOpacity onPress={() => navigation.navigate("PasswordReset")}>
         <ForgotPasswordText>Esqueci a senha</ForgotPasswordText>
       </TouchableOpacity>
-      <FormButton onPress={handleSubmit(onSubmit)}>
-        {isSubmitting ? (
-          <ActivityIndicator color={"#fff"} />
-        ) : (
-          <FormButtonText>Login</FormButtonText>
-        )}
-      </FormButton>
+
+      <LoginWrapper>
+        <GenericButton state="accent" onPress={handleSubmit(onSubmit)}>
+          {isSubmitting ? <ActivityIndicator color={"#fff"} /> : "Login"}
+        </GenericButton>
+      </LoginWrapper>
+
       <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
         <RegisterText>
-          Não tem conta?
-          <RegisterLink> Registre-se</RegisterLink>
+          Não tem conta?<RegisterLink> Registre-se</RegisterLink>
         </RegisterText>
       </TouchableOpacity>
     </FormBox>
