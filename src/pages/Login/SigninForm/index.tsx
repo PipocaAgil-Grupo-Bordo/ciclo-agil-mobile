@@ -69,10 +69,16 @@ const SigninForm: React.FC = () => {
       <TitleText>Vamos começar?</TitleText>
 
       <TextBox>Email:</TextBox>
-      <InputForm name="email" keyboardType="email-address" control={control} errors={errors} />
+      <InputForm
+        name="email"
+        keyboardType="email-address"
+        textContentType="emailAddress"
+        control={control}
+        errors={errors}
+      />
 
       <TextBox>Senha:</TextBox>
-      <InputForm name="password" control={control} errors={errors} />
+      <InputForm textContentType="password" name="password" control={control} errors={errors} />
 
       <TouchableOpacity onPress={() => navigation.navigate("PasswordReset")}>
         <ForgotPasswordText>Esqueci a senha</ForgotPasswordText>
