@@ -1,12 +1,7 @@
-import { ImageSourcePropType } from 'react-native';
-import {
-  ButtonIcon,
-  ButtonStyleProps,
-  ButtonText,
-  StyledButton,
-} from './style';
-import { TouchableOpacityProps } from 'react-native-gesture-handler';
-import { ReactNode } from 'react';
+import { ImageSourcePropType } from "react-native";
+import { ButtonIcon, ButtonStyleProps, ButtonText, StyledButton } from "./style";
+import { TouchableOpacityProps } from "react-native-gesture-handler";
+import { ReactNode } from "react";
 
 interface GenericButtonProps extends ButtonStyleProps, TouchableOpacityProps {
   children: ReactNode;
@@ -25,13 +20,10 @@ interface GenericButtonProps extends ButtonStyleProps, TouchableOpacityProps {
  */
 const GenericButton: React.FC<GenericButtonProps> = ({ icon, state, children, ...rest }) => {
   return (
-    <StyledButton
-      state={state}
-      {...rest}
-    >
+    <StyledButton state={state} {...rest}>
       {icon && (
         <ButtonIcon
-          importantForAccessibility='no'
+          importantForAccessibility="no"
           accessibilityElementsHidden={true}
           source={icon}
         />

@@ -9,4 +9,4 @@ const PasswordReset: React.FC = () => {
   );
 };
 
-export default PasswordReset
+export default PasswordReset;
