@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, Alert, Text, TouchableOpacityBase } from 'react-native';
+import { ActivityIndicator, Alert } from 'react-native';
 import {
   ForgotPasswordText,
   FormBox,
@@ -7,7 +7,7 @@ import {
   FormButtonText,
   LetsBegin,
   RegisterLink,
-  RegisterText,
+  RegisterText
 } from './style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -32,27 +32,30 @@ const SigninForm: React.FC = () => {
     control,
     formState: { errors, isSubmitting },
     reset,
-    setError,
+    setError
   } = useForm<loginObject>({
-    resolver: yupResolver(loginSchema),
+    resolver: yupResolver(loginSchema)
   });
 
   const onSubmit = async (data: loginObject) => {
     try {
       await authApi.signInUser(data);
 
-      reset({email: '', password: ''}, {keepErrors: false});
-      
+      reset({ email: '', password: '' }, { keepErrors: false });
+
       return navigation.navigate('Home');
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         const invalidCredentials = error.response?.status === 401;
 
         if (invalidCredentials) {
-          setError('email', { type: 'manual', message: '' });
+          setError('email', {
+            type: 'manual',
+            message: ''
+          });
           setError('password', {
             type: 'manual',
-            message: 'E-mail ou Senha Incorretos. Tente Novamente.',
+            message: 'E-mail ou Senha Incorretos. Tente Novamente.'
           });
         } else {
           Alert.alert('Algo deu errado, tente novamente!');
@@ -65,25 +68,29 @@ const SigninForm: React.FC = () => {
     <FormBox>
       <LetsBegin>Vamos começar?</LetsBegin>
       <TextBox>Email:</TextBox>
-      <Input name="email" keyboardType='email-address' control={control} errors={errors} />
+      <Input
+        name='email'
+        keyboardType='email-address'
+        control={control}
+        errors={errors}
+      />
       <TextBox>Senha:</TextBox>
-      <Input name="password" control={control} errors={errors} />
+      <Input name='password' control={control} errors={errors} />
       <TouchableOpacity onPress={() => navigation.navigate('PasswordReset')}>
-        <ForgotPasswordText>
-          Esqueci a senha
-        </ForgotPasswordText>
+        <ForgotPasswordText>Esqueci a senha</ForgotPasswordText>
       </TouchableOpacity>
       <FormButton onPress={handleSubmit(onSubmit)}>
         {isSubmitting ? (
           <ActivityIndicator color={'#fff'} />
         ) : (
-          <FormButtonText>
-            Login
-          </FormButtonText>
+          <FormButtonText>Login</FormButtonText>
         )}
       </FormButton>
       <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-        <RegisterText >Não tem conta?<RegisterLink > Registre-se</RegisterLink></RegisterText>
+        <RegisterText>
+          Não tem conta?
+          <RegisterLink> Registre-se</RegisterLink>
+        </RegisterText>
       </TouchableOpacity>
     </FormBox>
   );

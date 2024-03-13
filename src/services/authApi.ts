@@ -7,7 +7,7 @@ function signInUser(body: loginObject) {
 }
 
 const authApi = {
-  signInUser,
+  signInUser
 };
 
 export default authApi;
