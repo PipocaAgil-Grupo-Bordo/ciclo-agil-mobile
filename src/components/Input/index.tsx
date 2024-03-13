@@ -8,7 +8,7 @@ interface InputProps {
   name: "email" | "password";
   control: Control<loginObject>;
   errors: FieldErrors<loginObject>;
-  keyboardType?: KeyboardType
+  keyboardType?: KeyboardType;
 }
 
 const Input: React.FC<InputProps> = ({ name, control, errors, keyboardType }) => {
@@ -25,9 +25,7 @@ const Input: React.FC<InputProps> = ({ name, control, errors, keyboardType }) =>
         name={name}
         secureTextEntry={name === "password" && true}
       />
-      <ErrorMessage>
-        {errors && errors[`${name}`] && errors[`${name}`]?.message}
-      </ErrorMessage>
+      <ErrorMessage>{errors && errors[`${name}`] && errors[`${name}`]?.message}</ErrorMessage>
     </InputContainer>
   );
 };

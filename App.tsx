@@ -4,12 +4,13 @@ import Router from "./src/routes";
 
 export default function App() {
   const [loaded] = useFonts({
-    Montserrat: require("./assets/fonts/Montserrat-Regular.ttf"),
-    Lora:require("./assets/fonts/Lora.ttf")
-  })
+    Montserrat: require("./assets/fonts/Montserrat-Regular.ttf"), // Font-weight: 400 and 500
+    Lora: require("./assets/fonts/Lora.ttf"),
+    MontserratBold: require("./assets/fonts/Montserrat-SemiBold.ttf") // Font-weight: 600
+  });
 
-  if(!loaded) {
-    return null
+  if (!loaded) {
+    return null;
   }
 
   return (

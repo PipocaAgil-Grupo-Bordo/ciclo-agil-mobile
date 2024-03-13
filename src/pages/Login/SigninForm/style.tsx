@@ -4,6 +4,12 @@ import { TextLora } from "../../../components/TopicText/style";
 
 export const FormBox = styled.View``;
 
+export const TitleText = styled(TextMontserrat)`
+  font-size: 24px;
+  font-weight: 400;
+  margin: 81px 0px 24px;
+`;
+
 export const FormButton = styled.TouchableOpacity`
   display: flex;
   align-items: center;
@@ -15,7 +21,7 @@ export const FormButton = styled.TouchableOpacity`
 
 export const FormButtonText = styled(TextMontserrat)`
   color: white;
-`
+`;
 
 export const ForgotPasswordText = styled(TextMontserrat)`
   color: #af65e2;
@@ -23,16 +29,16 @@ export const ForgotPasswordText = styled(TextMontserrat)`
   margin: 0px 12px;
 `;
 
-export const RegisterText = styled(TextMontserrat)`
-  text-align: center;
-`
+export const LoginWrapper = styled.View`
+  margin: 34px 0px 24px;
+`;
 
-export const RegisterLink = styled.Text`
+export const RegisterContainer = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
+export const RegisterLink = styled(TextMontserrat)`
   color: #af65e2;
-`
-
-export const LetsBegin=styled(TextLora)`
-  font-size: 24px;
-  font-weight: 400;
-  margin: 81px 0px 24px;
-`
+`;
