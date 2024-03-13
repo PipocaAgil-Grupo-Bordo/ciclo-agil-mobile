@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import { TextMontserrat } from "../../../components/TextBox/style";
+import { TextLora } from "../../../components/TopicText/style";
 
 export const FormBox = styled.View``;
 
@@ -30,7 +31,7 @@ export const RegisterLink = styled.Text`
   color: #af65e2;
 `
 
-export const LetsBegin=styled(TextMontserrat)`
+export const LetsBegin=styled(TextLora)`
   font-size: 24px;
   font-weight: 400;
   margin: 81px 0px 24px;
