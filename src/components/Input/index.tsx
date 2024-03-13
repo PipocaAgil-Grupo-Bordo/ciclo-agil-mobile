@@ -8,10 +8,15 @@ interface InputProps {
   name: "email" | "password";
   control: Control<loginObject>;
   errors: FieldErrors<loginObject>;
-  keyboardType?: KeyboardType
+  keyboardType?: KeyboardType;
 }
 
-const Input: React.FC<InputProps> = ({ name, control, errors, keyboardType }) => {
+const Input: React.FC<InputProps> = ({
+  name,
+  control,
+  errors,
+  keyboardType
+}) => {
   const { field } = useController({ control, defaultValue: "", name });
 
   return (
