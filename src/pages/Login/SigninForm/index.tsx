@@ -3,10 +3,10 @@ import { ActivityIndicator, Alert } from "react-native";
 import {
   ForgotPasswordText,
   FormBox,
-  LetsBegin,
   LoginWrapper,
+  RegisterContainer,
   RegisterLink,
-  RegisterText
+  TitleText
 } from "./style";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -15,7 +15,7 @@ import { loginObject } from "../../../types/loginType";
 import Input from "../../../components/Input";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios from "axios";
 import authApi from "../../../services/authApi";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { RootStackParamList } from "../../../types/routeType";
@@ -66,7 +66,7 @@ const SigninForm: React.FC = () => {
 
   return (
     <FormBox>
-      <LetsBegin>Vamos começar?</LetsBegin>
+      <TitleText>Vamos começar?</TitleText>
 
       <TextBox>Email:</TextBox>
       <Input name="email" keyboardType="email-address" control={control} errors={errors} />
@@ -84,11 +84,13 @@ const SigninForm: React.FC = () => {
         </GenericButton>
       </LoginWrapper>
 
-      <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-        <RegisterText>
-          Não tem conta?<RegisterLink> Registre-se</RegisterLink>
-        </RegisterText>
-      </TouchableOpacity>
+      <RegisterContainer>
+        <TextBox>Não tem conta?</TextBox>
+
+        <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+          <RegisterLink> Registre-se</RegisterLink>
+        </TouchableOpacity>
+      </RegisterContainer>
     </FormBox>
   );
 };
