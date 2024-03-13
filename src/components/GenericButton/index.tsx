@@ -8,7 +8,7 @@ import {
 import { TouchableOpacityProps } from 'react-native-gesture-handler';
 import { ReactNode } from 'react';
 
-interface ButtonProps extends ButtonStyleProps, TouchableOpacityProps {
+interface GenericButtonProps extends ButtonStyleProps, TouchableOpacityProps {
   children: ReactNode;
   icon?: ImageSourcePropType;
 }
@@ -23,7 +23,7 @@ interface ButtonProps extends ButtonStyleProps, TouchableOpacityProps {
  * If you need to add an image, do so with the icon prop:
  * icon={require('@/assets/image.format')}
  */
-const Button: React.FC<ButtonProps> = ({ icon, state, children, ...rest }) => {
+const GenericButton: React.FC<GenericButtonProps> = ({ icon, state, children, ...rest }) => {
   return (
     <StyledButton
       state={state}
@@ -41,4 +41,4 @@ const Button: React.FC<ButtonProps> = ({ icon, state, children, ...rest }) => {
   );
 };
 
-export default Button;
+export default GenericButton;

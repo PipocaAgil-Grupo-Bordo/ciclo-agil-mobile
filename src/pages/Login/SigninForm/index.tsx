@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, Alert } from 'react-native';
+import { ActivityIndicator, Alert, TouchableHighlight } from 'react-native';
 import {
   ForgotPasswordText,
   FormBox,
@@ -15,12 +15,12 @@ import { loginObject } from '../../../types/loginType';
 import Input from '../../../components/Input';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import axios from 'axios';
 import authApi from '../../../services/authApi';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { RootStackParamList } from '../../../types/routeType';
 import TextBox from '../../../components/TextBox';
-import Button from '../../../components/Button';
+import GenericButton from '../../../components/GenericButton';
 
 type HomeScreenProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -74,13 +74,13 @@ const SigninForm: React.FC = () => {
         </ForgotPasswordText>
       </TouchableOpacity>
       <LoginWrapper>
-        <Button state='accent' onPress={handleSubmit(onSubmit)}>
+        <GenericButton state='accent' onPress={handleSubmit(onSubmit)}>
           {isSubmitting ? (
             <ActivityIndicator color={'#fff'} />
           ) : (
               'Login'
           )}
-        </Button>
+        </GenericButton>
       </LoginWrapper>
       <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
         <RegisterText >Não tem conta?<RegisterLink > Registre-se</RegisterLink></RegisterText>
