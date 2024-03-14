@@ -21,6 +21,7 @@ import { RootStackParamList } from "../../../types/routeType";
 import TextBox from "../../../components/TextBox";
 import GenericButton from "../../../components/GenericButton";
 import InputForm from "../InputForm";
+import GenericInput from "../../../components/GenericInput";
 
 type HomeScreenProp = StackNavigationProp<RootStackParamList, "Home">;
 
@@ -68,8 +69,8 @@ const SigninForm: React.FC = () => {
     <FormBox>
       <TitleText>Vamos começar?</TitleText>
 
-      <TextBox>Email:</TextBox>
-      <InputForm
+      <GenericInput
+        label="Email:"
         name="email"
         keyboardType="email-address"
         textContentType="emailAddress"
@@ -77,8 +78,13 @@ const SigninForm: React.FC = () => {
         errors={errors}
       />
 
-      <TextBox>Senha:</TextBox>
-      <InputForm textContentType="password" name="password" control={control} errors={errors} />
+      <GenericInput
+        label="Senha:"
+        textContentType="password"
+        name="password"
+        control={control}
+        errors={errors}
+      />
 
       <TouchableOpacity onPress={() => navigation.navigate("PasswordReset")}>
         <ForgotPasswordText>Esqueci a senha</ForgotPasswordText>
