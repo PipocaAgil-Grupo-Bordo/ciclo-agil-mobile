@@ -21,6 +21,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { RootStackParamList } from "../../../types/routeType";
 import TextBox from "../../../components/TextBox";
 import GenericButton from "../../../components/GenericButton";
+import TestButton from "../../../components/ButtonT";
 
 type HomeScreenProp = StackNavigationProp<RootStackParamList, "Home">;
 
@@ -77,6 +78,12 @@ const SigninForm: React.FC = () => {
       <TouchableOpacity onPress={() => navigation.navigate("PasswordReset")}>
         <ForgotPasswordText>Esqueci a senha</ForgotPasswordText>
       </TouchableOpacity>
+
+      <LoginWrapper>
+        <TestButton state="accent" onPress={handleSubmit(onSubmit)}>
+          {isSubmitting ? <ActivityIndicator color={"#fff"} /> : "Login"}
+        </TestButton>
+      </LoginWrapper>
 
       <LoginWrapper>
         <GenericButton state="accent" onPress={handleSubmit(onSubmit)}>
