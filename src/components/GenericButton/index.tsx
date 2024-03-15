@@ -1,5 +1,6 @@
-import { StyledButtonText, StyledButtonIcon, StyledButton } from "./style";
-import { GenericButtonProps } from "./type";
+import ButtonChildren from "./ButtonChildren";
+import { StyledButton } from "./style";
+import { GenericButtonProps, StatesType } from "./type";
 
 /**
  * Generic button to ensure style consistency across components
@@ -12,16 +13,28 @@ import { GenericButtonProps } from "./type";
  * icon={require('@/assets/image.format')}
  */
 const GenericButton: React.FC<GenericButtonProps> = ({ icon, state, children, ...rest }) => {
+  const HandleUnderlayColor = (state: StatesType | undefined) => {
+    switch (state) {
+      case "accent":
+        return "#722CA1";
+      case "mild":
+        return "#DCC1EE";
+      case "default":
+      default:
+        return "#F4EBFA";
+    }
+  };
+
   return (
-    <StyledButton state={state} {...rest}>
-      {icon && (
-        <StyledButtonIcon
-          importantForAccessibility="no"
-          accessibilityElementsHidden={true}
-          source={icon}
-        />
-      )}
-      <StyledButtonText state={state}>{children}</StyledButtonText>
+    <StyledButton
+      state={state}
+      activeOpacity={1}
+      underlayColor={HandleUnderlayColor(state)}
+      {...rest}
+    >
+      <ButtonChildren icon={icon} state={state}>
+        {children}
+      </ButtonChildren>
     </StyledButton>
   );
 };

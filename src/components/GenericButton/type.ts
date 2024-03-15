@@ -1,12 +1,17 @@
 import { ReactNode } from "react";
-import { TouchableOpacityProps } from "react-native-gesture-handler";
-import { ImageSourcePropType } from "react-native";
+import { ImageSourcePropType, TouchableHighlightProps } from "react-native";
+
+export type StatesType = "accent" | "mild" | "default";
 
 export interface ButtonStyleProps {
-  state?: "accent" | "mild" | "default";
+  state?: StatesType;
 }
 
-export interface GenericButtonProps extends ButtonStyleProps, TouchableOpacityProps {
+export interface ButtonChildrenProps extends ButtonStyleProps {
   children: ReactNode;
   icon?: ImageSourcePropType;
+}
+
+export interface GenericButtonProps extends ButtonChildrenProps, TouchableHighlightProps {
+  children: ReactNode;
 }
