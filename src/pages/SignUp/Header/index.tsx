@@ -1,15 +1,15 @@
 import React from "react";
-import { InstructionText, TopicName } from "./style";
+import { StyledInstructionText, StyledTopicName } from "./style";
 
 import { Container } from "./style";
 
 const Header: React.FC = () => {
   return (
     <Container>
-      <TopicName>Registre-se</TopicName>
-      <InstructionText>
+      <StyledTopicName>Registre-se</StyledTopicName>
+      <StyledInstructionText>
         Para continuar digite seu nome, data de nascimento, email e senha.
-      </InstructionText>
+      </StyledInstructionText>
     </Container>
   );
 };

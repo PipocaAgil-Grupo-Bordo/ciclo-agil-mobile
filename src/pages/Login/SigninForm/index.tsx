@@ -19,7 +19,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import TextBox from "../../../components/TextBox";
 import GenericButton from "../../../components/GenericButton";
 import GenericInput from "../../../components/GenericInput";
-import { FormInputsType, NavigationType } from "../type";
+import {  NavigationType } from "../type";
 
 const SigninForm: React.FC = () => {
   const navigation = useNavigation<NavigationType>();

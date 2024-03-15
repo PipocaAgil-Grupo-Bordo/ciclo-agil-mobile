@@ -1,13 +1,14 @@
 import styled from "styled-components/native"
 import { TextLora } from "../../../components/TopicText/style"
-import { TextMontserrat } from "../../../components/TextBox/style"
+import { StyledText } from "../../../components/TextBox/style";
 
-export const TopicName = styled(TextLora)`
+
+export const StyledTopicName = styled(TextLora)`
   font-size: 24px;
   padding: 16px 0px;
 `
 
-export const InstructionText = styled(TextMontserrat)`
+export const StyledInstructionText = styled(StyledText)`
   font-size: 16px;
   padding: 16px 0px;
 `
