@@ -9,5 +9,5 @@ export interface FormInputsType {
   label: string;
   name: string;
   keyboard: KeyboardTypeOptions;
-  autoComplete: "email" | "password";
+  autoComplete?: "email" | "password"|"birthdate-full"|"given-name"
 }
