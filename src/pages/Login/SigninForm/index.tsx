@@ -23,10 +23,8 @@ import GenericButton from "../../../components/GenericButton";
 import GenericInput from "../../../components/GenericInput";
 import { FormInputsType } from "../type";
 
-type HomeScreenProp = StackNavigationProp<RootStackParamList, "Home">;
-
 const SigninForm: React.FC = () => {
-  const navigation = useNavigation<HomeScreenProp>();
+  const navigation = useNavigation<NavigationType>();
 
   const {
     handleSubmit,
