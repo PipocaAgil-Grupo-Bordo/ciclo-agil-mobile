@@ -1,8 +1,11 @@
 import styled from "styled-components/native";
 
-export const StyledPasswordResetContainer = styled.View`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100%;
+export const StyledPasswordResetContainer = styled.ScrollView`
+  padding: 75px 30px 30px;
 `;
+
+export const StyledEmailRequestWrapper = styled.View`
+  flex: 1;
+  justify-content: space-between;
+`;
+
