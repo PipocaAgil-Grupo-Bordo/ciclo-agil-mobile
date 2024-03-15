@@ -1,4 +1,4 @@
-import { TextMontserrat } from "./style";
+import { StyledText } from "./style";
 import { TextBoxProps } from "./type";
 
 /**
@@ -11,7 +11,7 @@ import { TextBoxProps } from "./type";
  * export const CustomText = styled(TextMontserrat)` -- rest of the code `
  */
 const TextBox: React.FC<TextBoxProps> = ({ children }) => {
-  return <TextMontserrat>{children}</TextMontserrat>;
+  return <StyledText>{children}</StyledText>;
 };
 
 export default TextBox;

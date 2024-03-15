@@ -1,4 +1,4 @@
-import { ButtonIcon, ButtonText, StyledButton } from "./style";
+import { StyledButtonText, StyledButtonIcon, StyledButton } from "./style";
 import { GenericButtonProps } from "./type";
 
 /**
@@ -15,13 +15,13 @@ const GenericButton: React.FC<GenericButtonProps> = ({ icon, state, children, ..
   return (
     <StyledButton state={state} {...rest}>
       {icon && (
-        <ButtonIcon
+        <StyledButtonIcon
           importantForAccessibility="no"
           accessibilityElementsHidden={true}
           source={icon}
         />
       )}
-      <ButtonText state={state}>{children}</ButtonText>
+      <StyledButtonText state={state}>{children}</StyledButtonText>
     </StyledButton>
   );
 };
