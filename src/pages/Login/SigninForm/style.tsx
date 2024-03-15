@@ -1,43 +1,30 @@
 import styled from "styled-components/native";
-import { TextMontserrat } from "../../../components/TextBox/style";
+import { StyledText } from "../../../components/TextBox/style";
 
-export const FormBox = styled.View``;
+export const StyledFormContainer = styled.View``;
 
-export const TitleText = styled(TextMontserrat)`
+export const StyledTitle = styled(StyledText)`
   font-size: 24px;
   font-weight: 400;
   margin: 81px 0px 24px;
 `;
 
-export const FormButton = styled.TouchableOpacity`
-  display: flex;
-  align-items: center;
-  background-color: #8e37c9;
-  border-radius: 10px;
-  padding: 16px;
-  margin: 34px 0px 24px;
-`;
-
-export const FormButtonText = styled(TextMontserrat)`
-  color: white;
-`;
-
-export const ForgotPasswordText = styled(TextMontserrat)`
+export const StyledForgottenPassword = styled(StyledText)`
   color: #af65e2;
   text-align: right;
   margin: 0px 12px;
 `;
 
-export const LoginWrapper = styled.View`
+export const StyledLoginWrapper = styled.View`
   margin: 34px 0px 24px;
 `;
 
-export const RegisterContainer = styled.View`
+export const StyledRegisterWrapper = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: center;
 `;
 
-export const RegisterLink = styled(TextMontserrat)`
+export const StyledRegisterLink = styled(StyledText)`
   color: #af65e2;
 `;

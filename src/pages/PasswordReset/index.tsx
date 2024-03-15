@@ -1,11 +1,11 @@
-import { Text } from "react-native";
-import { Container } from "./style";
+import { StyledPasswordResetContainer } from "./style";
+import TextBox from "../../components/TextBox";
 
 const PasswordReset: React.FC = () => {
   return (
-    <Container>
-      <Text>Tela de recuperação de senha</Text>
-    </Container>
+    <StyledPasswordResetContainer>
+      <TextBox>Tela de recuperação de senha</TextBox>
+    </StyledPasswordResetContainer>
   );
 };
 

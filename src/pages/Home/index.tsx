@@ -1,21 +1,13 @@
 import React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { StyledHomeContainer } from "./style";
+import TextBox from "../../components/TextBox";
 
 const Home: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <Text>Tela de ínicio</Text>
-    </View>
+    <StyledHomeContainer>
+      <TextBox>Tela de ínicio</TextBox>
+    </StyledHomeContainer>
   );
 };
 
 export default Home;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#FAFCFF",
-    justifyContent: "center",
-    alignItems: "center"
-  }
-});

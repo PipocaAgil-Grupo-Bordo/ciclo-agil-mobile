@@ -1,32 +1,29 @@
 import React from "react";
-import { ActivityIndicator, Alert } from "react-native";
+import { ActivityIndicator, Alert, FlatList } from "react-native";
 import {
-  ForgotPasswordText,
-  FormBox,
-  LoginWrapper,
-  RegisterContainer,
-  RegisterLink,
-  TitleText
+  StyledForgottenPassword,
+  StyledFormContainer,
+  StyledLoginWrapper,
+  StyledRegisterWrapper,
+  StyledRegisterLink,
+  StyledTitle
 } from "./style";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../../schemas/loginSchema";
 import { loginObject } from "../../../types/loginType";
-import Input from "../../../components/Input";
 import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
 import axios from "axios";
 import authApi from "../../../services/authApi";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { RootStackParamList } from "../../../types/routeType";
 import TextBox from "../../../components/TextBox";
 import GenericButton from "../../../components/GenericButton";
 import TestButton from "../../../components/ButtonT";
-
-type HomeScreenProp = StackNavigationProp<RootStackParamList, "Home">;
+import GenericInput from "../../../components/GenericInput";
+import { FormInputsType, NavigationType } from "../type";
 
 const SigninForm: React.FC = () => {
-  const navigation = useNavigation<HomeScreenProp>();
+  const navigation = useNavigation<NavigationType>();
 
   const {
     handleSubmit,
@@ -65,40 +62,57 @@ const SigninForm: React.FC = () => {
     }
   };
 
+  const formInputs: FormInputsType[] = [
+    {
+      label: "Email:",
+      name: "email",
+      keyboard: "email-address",
+      autoComplete: "email"
+    },
+    {
+      label: "Senha:",
+      name: "password",
+      keyboard: "default",
+      autoComplete: "password"
+    }
+  ];
+
   return (
-    <FormBox>
-      <TitleText>Vamos começar?</TitleText>
+    <StyledFormContainer>
+      <StyledTitle>Vamos começar?</StyledTitle>
 
-      <TextBox>Email:</TextBox>
-      <Input name="email" keyboardType="email-address" control={control} errors={errors} />
-
-      <TextBox>Senha:</TextBox>
-      <Input name="password" control={control} errors={errors} />
+      <FlatList<FormInputsType>
+        data={formInputs}
+        renderItem={({ item }) => (
+          <GenericInput
+            label={item.label}
+            name={item.name}
+            control={control}
+            errors={errors}
+            keyboardType={item.keyboard}
+            autoComplete={item.autoComplete}
+          />
+        )}
+      />
 
       <TouchableOpacity onPress={() => navigation.navigate("PasswordReset")}>
-        <ForgotPasswordText>Esqueci a senha</ForgotPasswordText>
+        <StyledForgottenPassword>Esqueci a senha</StyledForgottenPassword>
       </TouchableOpacity>
 
-      <LoginWrapper>
-        <TestButton state="accent" onPress={handleSubmit(onSubmit)}>
-          {isSubmitting ? <ActivityIndicator color={"#fff"} /> : "Login"}
-        </TestButton>
-      </LoginWrapper>
-
-      <LoginWrapper>
+      <StyledLoginWrapper>
         <GenericButton state="accent" onPress={handleSubmit(onSubmit)}>
           {isSubmitting ? <ActivityIndicator color={"#fff"} /> : "Login"}
         </GenericButton>
-      </LoginWrapper>
+      </StyledLoginWrapper>
 
-      <RegisterContainer>
+      <StyledRegisterWrapper>
         <TextBox>Não tem conta?</TextBox>
 
         <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-          <RegisterLink> Registre-se</RegisterLink>
+          <StyledRegisterLink> Registre-se</StyledRegisterLink>
         </TouchableOpacity>
-      </RegisterContainer>
-    </FormBox>
+      </StyledRegisterWrapper>
+    </StyledFormContainer>
   );
 };
 
