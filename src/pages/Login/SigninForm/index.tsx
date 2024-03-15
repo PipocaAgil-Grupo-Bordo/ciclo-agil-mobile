@@ -18,7 +18,6 @@ import authApi from "../../../services/authApi";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import TextBox from "../../../components/TextBox";
 import GenericButton from "../../../components/GenericButton";
-import TestButton from "../../../components/ButtonT";
 import GenericInput from "../../../components/GenericInput";
 import { FormInputsType, NavigationType } from "../type";
 
