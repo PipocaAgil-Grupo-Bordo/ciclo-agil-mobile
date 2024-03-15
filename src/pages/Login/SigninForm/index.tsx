@@ -1,5 +1,5 @@
 import React from "react";
-import { ActivityIndicator, Alert } from "react-native";
+import { ActivityIndicator, Alert, FlatList, KeyboardTypeOptions } from "react-native";
 import {
   ForgotPasswordText,
   FormBox,
@@ -12,7 +12,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../../schemas/loginSchema";
 import { loginObject } from "../../../types/loginType";
-import Input from "../../../components/Input";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import axios from "axios";
@@ -21,8 +20,17 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { RootStackParamList } from "../../../types/routeType";
 import TextBox from "../../../components/TextBox";
 import GenericButton from "../../../components/GenericButton";
+import GenericInput from "../../../components/GenericInput";
 
 type HomeScreenProp = StackNavigationProp<RootStackParamList, "Home">;
+
+// Will be extracted in a later refactor with the others
+interface FormInputsType {
+  label: string;
+  name: string;
+  keyboard: KeyboardTypeOptions;
+  autoComplete: "email" | "password";
+}
 
 const SigninForm: React.FC = () => {
   const navigation = useNavigation<HomeScreenProp>();
@@ -64,15 +72,38 @@ const SigninForm: React.FC = () => {
     }
   };
 
+  const formInputs: FormInputsType[] = [
+    {
+      label: "Email:",
+      name: "email",
+      keyboard: "email-address",
+      autoComplete: "email"
+    },
+    {
+      label: "Senha:",
+      name: "password",
+      keyboard: "default",
+      autoComplete: "password"
+    }
+  ];
+
   return (
     <FormBox>
       <TitleText>Vamos começar?</TitleText>
 
-      <TextBox>Email:</TextBox>
-      <Input name="email" keyboardType="email-address" control={control} errors={errors} />
-
-      <TextBox>Senha:</TextBox>
-      <Input name="password" control={control} errors={errors} />
+      <FlatList<FormInputsType>
+        data={formInputs}
+        renderItem={({ item }) => (
+          <GenericInput
+            label={item.label}
+            name={item.name}
+            control={control}
+            errors={errors}
+            keyboardType={item.keyboard}
+            autoComplete={item.autoComplete}
+          />
+        )}
+      />
 
       <TouchableOpacity onPress={() => navigation.navigate("PasswordReset")}>
         <ForgotPasswordText>Esqueci a senha</ForgotPasswordText>
