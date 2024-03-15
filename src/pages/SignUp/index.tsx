@@ -1,12 +1,11 @@
 import Header from "./Header";
-import { Container } from "./style";
+import { StyledSignUpContainer } from "./style";
 
 const SignUp: React.FC = () => {
   return (
-    <Container>
-      
+    <StyledSignUpContainer>
       <Header />
-    </Container>
+    </StyledSignUpContainer>
   );
 };
 
