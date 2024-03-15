@@ -11,7 +11,7 @@ import {
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../../schemas/loginSchema";
-import { loginObject } from "../../../types/loginType";
+import { FormInputsType, loginObject } from "../../../types/auth";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import axios from "axios";
@@ -25,12 +25,6 @@ import GenericInput from "../../../components/GenericInput";
 type HomeScreenProp = StackNavigationProp<RootStackParamList, "Home">;
 
 // Will be extracted in a later refactor with the others
-interface FormInputsType {
-  label: string;
-  name: string;
-  keyboard: KeyboardTypeOptions;
-  autoComplete: "email" | "password";
-}
 
 const SigninForm: React.FC = () => {
   const navigation = useNavigation<HomeScreenProp>();

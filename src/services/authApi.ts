@@ -1,4 +1,4 @@
-import { loginObject } from "../types/loginType";
+import { loginObject } from "../types/auth";
 import api from "./api";
 
 function signInUser(body: loginObject) {
