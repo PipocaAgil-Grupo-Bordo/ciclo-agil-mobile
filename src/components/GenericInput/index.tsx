@@ -4,11 +4,7 @@ import { GenericInputProps } from "./type";
 import { useController } from "react-hook-form";
 
 /**
- * Generic text input to ensure style consistency across components
- *
- * If you need to style it further, you can import just the styleSheet like so:
- * import StyledInput from "./path";
- * export const AnotherInput = styled(StyledInput)` // rest of the styles `
+ * Generic text input with label and error message to ensure style consistency across components
  */
 const GenericInput: React.FC<GenericInputProps> = ({ label, control, name, errors, ...props }) => {
   const { field } = useController({ control, defaultValue: "", name });

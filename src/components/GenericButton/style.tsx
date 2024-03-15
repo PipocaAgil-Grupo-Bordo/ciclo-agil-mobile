@@ -1,9 +1,6 @@
 import styled from "styled-components/native";
-import { TextMontserrat } from "../TextBox/style";
-
-export interface ButtonStyleProps {
-  state?: "accent" | "mild" | "default";
-}
+import { StyledText } from "../TextBox/style";
+import { ButtonStyleProps } from "./type";
 
 export const StyledButton = styled.TouchableOpacity<ButtonStyleProps>`
   display: flex;
@@ -27,12 +24,12 @@ export const StyledButton = styled.TouchableOpacity<ButtonStyleProps>`
   }};
 `;
 
-export const ButtonIcon = styled.Image`
+export const StyledButtonIcon = styled.Image`
   width: 30px;
   height: 30px;
 `;
 
-export const ButtonText = styled(TextMontserrat)<ButtonStyleProps>`
+export const StyledButtonText = styled(StyledText)<ButtonStyleProps>`
   color: ${({ state }) => {
     switch (state) {
       case "accent":

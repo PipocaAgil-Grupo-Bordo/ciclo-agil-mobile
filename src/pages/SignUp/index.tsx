@@ -1,11 +1,11 @@
-import { Text } from "react-native";
-import { Container } from "./style";
+import { StyledSignUpContainer } from "./style";
+import TextBox from "../../components/TextBox";
 
 const SignUp: React.FC = () => {
   return (
-    <Container>
-      <Text>Tela de cadastro</Text>
-    </Container>
+    <StyledSignUpContainer>
+      <TextBox>Tela de cadastro</TextBox>
+    </StyledSignUpContainer>
   );
 };
 
