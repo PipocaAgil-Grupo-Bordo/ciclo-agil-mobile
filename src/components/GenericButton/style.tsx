@@ -1,9 +1,6 @@
 import styled from "styled-components/native";
 import { TextMontserrat } from "../TextBox/style";
-
-export interface ButtonStyleProps {
-  state?: "accent" | "mild" | "default";
-}
+import { ButtonStyleProps } from "./type";
 
 export const StyledButton = styled.TouchableOpacity<ButtonStyleProps>`
   display: flex;

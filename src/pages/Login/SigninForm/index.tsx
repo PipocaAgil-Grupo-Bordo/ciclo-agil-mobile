@@ -1,5 +1,5 @@
 import React from "react";
-import { ActivityIndicator, Alert, FlatList, KeyboardTypeOptions } from "react-native";
+import { ActivityIndicator, Alert, FlatList } from "react-native";
 import {
   ForgotPasswordText,
   FormBox,
@@ -21,16 +21,9 @@ import { RootStackParamList } from "../../../types/routeType";
 import TextBox from "../../../components/TextBox";
 import GenericButton from "../../../components/GenericButton";
 import GenericInput from "../../../components/GenericInput";
+import { FormInputsType } from "../type";
 
 type HomeScreenProp = StackNavigationProp<RootStackParamList, "Home">;
-
-// Will be extracted in a later refactor with the others
-interface FormInputsType {
-  label: string;
-  name: string;
-  keyboard: KeyboardTypeOptions;
-  autoComplete: "email" | "password";
-}
 
 const SigninForm: React.FC = () => {
   const navigation = useNavigation<HomeScreenProp>();

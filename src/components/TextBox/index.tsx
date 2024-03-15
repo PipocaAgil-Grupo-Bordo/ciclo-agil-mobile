@@ -1,9 +1,5 @@
-import { ReactNode } from "react";
 import { TextMontserrat } from "./style";
-
-interface TextBoxProps {
-  children: ReactNode;
-}
+import { TextBoxProps } from "./type";
 
 /**
  * This ensures font family can be consistent across all components

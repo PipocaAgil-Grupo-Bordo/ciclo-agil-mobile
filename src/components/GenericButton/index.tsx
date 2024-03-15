@@ -1,12 +1,5 @@
-import { ImageSourcePropType } from "react-native";
-import { ButtonIcon, ButtonStyleProps, ButtonText, StyledButton } from "./style";
-import { TouchableOpacityProps } from "react-native-gesture-handler";
-import { ReactNode } from "react";
-
-interface GenericButtonProps extends ButtonStyleProps, TouchableOpacityProps {
-  children: ReactNode;
-  icon?: ImageSourcePropType;
-}
+import { ButtonIcon, ButtonText, StyledButton } from "./style";
+import { GenericButtonProps } from "./type";
 
 /**
  * Generic button to ensure style consistency across components
