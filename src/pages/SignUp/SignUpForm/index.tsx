@@ -1,48 +1,10 @@
 import React from "react";
-import { StyledContainer } from "./style";
+import { InstructionText, StyledContainer } from "./style";
 import { FormInputsType } from "../../../types/auth";
 import { useForm } from "react-hook-form";
 import Form from "../../../components/Form";
 import TextBox from "../../../components/TextBox";
-
-const formInputs: FormInputsType[] = [
-  {
-    label: "Como eu gostaria de ser chamada:",
-    name: "social-name",
-    keyboard: "default",
-    autoComplete: "given-name"
-  },
-  {
-    label: "Data de nascimento:",
-    name: "birthday",
-    keyboard: "default",
-    autoComplete: "birthdate-full"
-  },
-  {
-    label: "Email:",
-    name: "email",
-    keyboard: "email-address",
-    autoComplete: "email"
-  },
-  {
-    label: "Repita o email:",
-    name: "confirm-email",
-    keyboard: "email-address",
-    autoComplete: "email"
-  },
-  {
-    label: "Senha:",
-    name: "password",
-    keyboard: "default",
-    autoComplete: "password"
-  },
-  {
-    label: "Repita a senha:",
-    name: "confirm-password",
-    keyboard: "default",
-    autoComplete: "password"
-  }
-];
+import GenericInput from "../../../components/GenericInput";
 
 const SignUpForm: React.FC = () => {
   const {
@@ -56,11 +18,33 @@ const SignUpForm: React.FC = () => {
   });
   return (
     <StyledContainer>
-      <Form formInputs={formInputs} control={control} errors={errors}></Form>
-      <TextBox>
+      <GenericInput
+        label="Como eu gostaria de ser chamada:"
+        control={control}
+        errors={errors}
+        name="social-name"
+      />
+      <GenericInput label="Data de Nascimento:" control={control} errors={errors} name="birthday" />
+      <GenericInput label="Email:" control={control} errors={errors} name="email" />
+      <GenericInput
+        label="Repita o email:"
+        control={control}
+        errors={errors}
+        name="confirm-email"
+      />
+      <GenericInput label="Senha:" control={control} errors={errors} name="password" />
+      <GenericInput
+        label="Repita a Senha:"
+        control={control}
+        errors={errors}
+        name="confirm-password"
+      />
+      
+      <InstructionText>
         A senha deve conter no mínimo 8 caracteres, entre: caracteres especiais, letras e números,
         conter pelo menos: 1 caractere especial, 1 letra, 1 letra maiúscula, e 1 número.
-      </TextBox>
+      </InstructionText>
+      
     </StyledContainer>
   );
   
