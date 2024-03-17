@@ -13,5 +13,6 @@ export interface ButtonChildrenProps extends ButtonStyleProps {
 }
 
 export interface GenericButtonProps extends ButtonChildrenProps, TouchableHighlightProps {
+  isLoading?: boolean;
   children: ReactNode;
 }
