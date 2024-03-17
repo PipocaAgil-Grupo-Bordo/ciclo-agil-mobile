@@ -1,15 +1,20 @@
 import * as yup from "yup";
 
 // Ensure email always follow the same pattern
-const isValidEmail = (email: string) => {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+const isValidEmail = (value: string | undefined) => {
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Ensure valeu is not empty and matches the email regex
+  return !!value && emailRegex.test(value.toLowerCase());
 };
 
 export const loginSchema = yup.object().shape({
   email: yup
     .string()
     .required("O email não pode ser vazio")
-    .test("is-email", "Digite um email válido", (value) => isValidEmail(value)),
+    .test("is-email", "Digite um email válido", (value) => isValidEmail(value))
+    .transform((value) => (value ? value.toLowerCase() : value)),
   password: yup
     .string()
     .required("A senha não pode ser vazia")
