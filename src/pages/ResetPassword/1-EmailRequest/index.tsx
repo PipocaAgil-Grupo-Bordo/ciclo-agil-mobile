@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import EmailRequestSection from "./EmailRequestSection";
 import { StyledPasswordResetContainer, StyledEmailRequestWrapper } from "./style";
-import { emailSchemaType } from "../../types/loginType";
-import { emailSchema } from "../../schemas/emailSchema";
+import { emailSchemaType } from "../../../types/loginType";
+import { emailSchema } from "../../../schemas/emailSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ButtonList from "./ButtonsList";
 
@@ -16,7 +16,7 @@ const PasswordReset: React.FC = () => {
   });
 
   const handlePasswordRequest = () => {
-    alert("Done did it yo");
+    alert("Correto");
   };
 
   return (

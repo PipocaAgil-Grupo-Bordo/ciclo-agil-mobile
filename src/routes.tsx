@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import PasswordReset from "./pages/PasswordReset";
+import PasswordReset from "./pages/ResetPassword/1-EmailRequest";
 import { RootStackParamList } from "./types/routeType";
 
 const Stack = createStackNavigator<RootStackParamList>();

@@ -1,9 +1,9 @@
 import React from "react";
-import GenericButton from "../../../components/GenericButton";
+import GenericButton from "../../../../components/GenericButton";
 import { StyledBottomSection } from "./style";
 import { ButtonListProps } from "../type";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "../../Login/type";
+import { NavigationType } from "../../../Login/type";
 
 const ButtonList: React.FC<ButtonListProps> = ({ onPress }) => {
   const navigation = useNavigation<NavigationType>();

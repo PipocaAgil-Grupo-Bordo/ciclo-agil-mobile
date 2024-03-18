@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { StyledText } from "../../../components/TextBox/style";
+import { StyledText } from "../../../../components/TextBox/style";
 
 export const StyledTopSectionContainer = styled.View``;
 

@@ -1,4 +1,4 @@
-import GenericInput from "../../../components/GenericInput";
+import GenericInput from "../../../../components/GenericInput";
 import { StyledLockeIcon, StyledResetInfo, StyledTitle, StyledTopSectionContainer } from "./style";
 import React from "react";
 import { EmailRequestSectionProps } from "../type";
@@ -7,7 +7,7 @@ const EmailRequestSection: React.FC<EmailRequestSectionProps> = ({ control, erro
   return (
     <StyledTopSectionContainer>
       <StyledLockeIcon
-        source={require("../../../../assets/images/padlock.png")}
+        source={require("../../../../../assets/images/padlock.png")}
         alt="A locked black padlock"
       />
 

@@ -1,5 +1,5 @@
 import { Control, FieldErrors } from "react-hook-form";
-import { emailSchemaType } from "../../types/loginType";
+import { emailSchemaType } from "../../../types/loginType";
 
 export interface EmailRequestSectionProps {
   control: Control<emailSchemaType>;
