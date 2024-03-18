@@ -1,13 +1,5 @@
 import * as yup from "yup";
-
-// Ensure email always follow the same pattern
-const isValidEmail = (value: string | undefined) => {
-  // Email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  // Ensure valeu is not empty and matches the email regex
-  return !!value && emailRegex.test(value.toLowerCase());
-};
+import { isValidEmail } from "./emailSchema";
 
 export const loginSchema = yup.object().shape({
   email: yup
