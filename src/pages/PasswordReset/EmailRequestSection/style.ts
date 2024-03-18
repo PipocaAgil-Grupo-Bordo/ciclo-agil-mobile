@@ -12,6 +12,7 @@ export const StyledLockeIcon = styled.Image`
 
 export const StyledTitle = styled(StyledText)`
   font-size: 24px;
+  text-align: center;
   margin-bottom: 24px;
 `;
 

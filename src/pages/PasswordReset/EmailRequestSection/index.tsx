@@ -7,7 +7,7 @@ const EmailRequestSection: React.FC<EmailRequestSectionProps> = ({ control, erro
   return (
     <StyledTopSectionContainer>
       <StyledLockeIcon
-        source={require("../../../../assets/images/locker.png")}
+        source={require("../../../../assets/images/padlock.png")}
         alt="A locked black padlock"
       />
 
