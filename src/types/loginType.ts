@@ -1,7 +1,12 @@
-export interface loginObject extends emailSchemaType {
-  password: string;
-};
+export interface emailObject {
+  email: string;
+}
 
-export interface emailSchemaType {
-  email: string
+export interface loginObject extends emailObject {
+  password: string;
+}
+
+export interface registerObject extends loginObject {
+  userName: string;
+  birthDate: string;
 }

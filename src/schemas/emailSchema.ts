@@ -1,7 +1,11 @@
 import * as yup from "yup";
 
-const isValidEmail = (email: string) => {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+export const isValidEmail = (value: string | undefined) => {
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Ensure value is not empty and matches the email regex
+  return !!value && emailRegex.test(value);
 };
 
 export const emailSchema = yup.object().shape({
@@ -9,4 +13,5 @@ export const emailSchema = yup.object().shape({
     .string()
     .required("O email não pode ser vazio")
     .test("is-email", "Digite um email válido", (value) => isValidEmail(value))
+    .transform((value) => (value ? value.toLowerCase() : value))
 });
