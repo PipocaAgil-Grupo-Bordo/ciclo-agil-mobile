@@ -1,3 +1,4 @@
+import { ActivityIndicator } from "react-native";
 import ButtonChildren from "./ButtonChildren";
 import { StyledButton } from "./style";
 import { GenericButtonProps, StatesType } from "./type";
@@ -12,7 +13,13 @@ import { GenericButtonProps, StatesType } from "./type";
  * If you need to add an image, do so with the icon prop:
  * icon={require('@/assets/image.format')}
  */
-const GenericButton: React.FC<GenericButtonProps> = ({ icon, state, children, ...rest }) => {
+const GenericButton: React.FC<GenericButtonProps> = ({
+  icon,
+  state,
+  isLoading,
+  children,
+  ...rest
+}) => {
   const HandleUnderlayColor = (state: StatesType | undefined) => {
     switch (state) {
       case "accent":
@@ -33,7 +40,7 @@ const GenericButton: React.FC<GenericButtonProps> = ({ icon, state, children, ..
       {...rest}
     >
       <ButtonChildren icon={icon} state={state}>
-        {children}
+        {isLoading ? <ActivityIndicator color={"#fff"} /> : children}
       </ButtonChildren>
     </StyledButton>
   );

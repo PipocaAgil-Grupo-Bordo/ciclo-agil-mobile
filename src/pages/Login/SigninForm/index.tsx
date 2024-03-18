@@ -99,8 +99,8 @@ const SigninForm: React.FC = () => {
       </TouchableOpacity>
 
       <StyledLoginWrapper>
-        <GenericButton state="accent" onPress={handleSubmit(onSubmit)}>
-          {isSubmitting ? <ActivityIndicator color={"#fff"} /> : "Login"}
+        <GenericButton isLoading={isSubmitting} state="accent" onPress={handleSubmit(onSubmit)}>
+          Login
         </GenericButton>
       </StyledLoginWrapper>
 
