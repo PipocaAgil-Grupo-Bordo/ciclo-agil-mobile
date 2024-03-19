@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
-import { ColorType, StyledTextProps } from "./type";
+import { StyledTextProps } from "./type";
+import { ColorType, SizeType } from "../../types/globalStyle";
 
 export const StyledText = styled.Text<StyledTextProps>`
   font-family: "Montserrat";
@@ -7,7 +8,7 @@ export const StyledText = styled.Text<StyledTextProps>`
   color: ${({ color }) => handleColor(color)};
 `;
 
-const handleFontSizes = (size: string) => {
+const handleFontSizes = (size: SizeType) => {
   switch (size) {
     case "xs":
       return "12px";
