@@ -1,13 +1,12 @@
-import { KeyboardTypeOptions } from "react-native";
-
-export type loginObject = {
+export interface emailObject {
   email: string;
-  password: string;
-};
+}
 
-export interface FormInputsType {
-  label: string;
-  name: string;
-  keyboard: KeyboardTypeOptions;
-  autoComplete?: "email" | "password"|"birthdate-full"|"given-name"
+export interface loginObject extends emailObject {
+  password: string;
+}
+
+export interface registerObject extends loginObject {
+  userName: string;
+  birthDate: string;
 }
