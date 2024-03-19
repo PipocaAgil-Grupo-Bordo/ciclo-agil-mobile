@@ -1,7 +1,8 @@
 import React from "react";
-import { StyledContainer, StyledInput, StyledInputError, StyledLabel } from "./style";
+import { StyledContainer, StyledInput, StyledLabelWrapper } from "./style";
 import { GenericInputProps } from "./type";
 import { useController } from "react-hook-form";
+import TextBox from "../TextBox";
 
 /**
  * Generic text input with label and error message to ensure style consistency across components
@@ -11,7 +12,13 @@ const GenericInput: React.FC<GenericInputProps> = ({ label, control, name, error
 
   return (
     <StyledContainer>
-      {label && <StyledLabel>{label}</StyledLabel>}
+      {label && (
+        <StyledLabelWrapper>
+          <TextBox size="sm" color="neutral-blue--900">
+            {label}
+          </TextBox>
+        </StyledLabelWrapper>
+      )}
 
       <StyledInput
         textAlign="center"
@@ -23,9 +30,9 @@ const GenericInput: React.FC<GenericInputProps> = ({ label, control, name, error
         {...props}
       />
 
-      <StyledInputError>
+      <TextBox size="sm" color="danger--500">
         {(errors && errors[name] && errors[name]?.message) as string}
-      </StyledInputError>
+      </TextBox>
     </StyledContainer>
   );
 };

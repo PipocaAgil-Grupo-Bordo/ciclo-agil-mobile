@@ -1,11 +1,9 @@
 import React from "react";
 import { Alert, FlatList } from "react-native";
 import {
-  StyledForgottenPassword,
   StyledFormContainer,
   StyledLoginWrapper,
   StyledRegisterWrapper,
-  StyledRegisterLink,
   StyledTitleWrapper
 } from "./style";
 import { useForm } from "react-hook-form";
@@ -79,7 +77,9 @@ const SigninForm: React.FC = () => {
   return (
     <StyledFormContainer>
       <StyledTitleWrapper>
-        <TextBox size="xl">Vamos começar?</TextBox>
+        <TextBox size="xl">
+          Vamos começar?
+        </TextBox>
       </StyledTitleWrapper>
 
       <FlatList<FormInputsType>
@@ -97,7 +97,9 @@ const SigninForm: React.FC = () => {
       />
 
       <TouchableOpacity onPress={() => navigation.navigate("PasswordReset")}>
-        <StyledForgottenPassword>Esqueci a senha</StyledForgottenPassword>
+        <TextBox size="sm" color="primary--500" align="right">
+          Esqueci a senha
+        </TextBox>
       </TouchableOpacity>
 
       <StyledLoginWrapper>
@@ -107,10 +109,15 @@ const SigninForm: React.FC = () => {
       </StyledLoginWrapper>
 
       <StyledRegisterWrapper>
-        <TextBox>Não tem conta?</TextBox>
+        <TextBox size="sm">
+          Não tem conta?
+        </TextBox>
 
         <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-          <StyledRegisterLink> Registre-se</StyledRegisterLink>
+          <TextBox size="sm" color="primary--500">
+            {" "}
+            Registre-se
+          </TextBox>
         </TouchableOpacity>
       </StyledRegisterWrapper>
     </StyledFormContainer>

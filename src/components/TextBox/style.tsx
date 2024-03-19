@@ -1,11 +1,12 @@
 import styled from "styled-components/native";
-import { StyledTextProps } from "./type";
+import { StyledTextProps, TextAlign } from "./type";
 import { ColorType, SizeType } from "../../types/globalStyle";
 
 export const StyledText = styled.Text<StyledTextProps>`
   font-family: "Montserrat";
-  font-size: ${({ size }) => handleFontSizes(size)};
-  color: ${({ color }) => handleColor(color)};
+  font-size: ${({ size }) => handleFontSizes(size!)};
+  color: ${({ color }) => handleColor(color!)};
+  text-align: ${({ align }) => handleTextAlign(align!)};
 `;
 
 const handleFontSizes = (size: SizeType) => {
@@ -178,5 +179,17 @@ const handleColor = (color: ColorType) => {
     case "neutral-blue--900":
     default:
       return "#1F2024";
+  }
+};
+
+const handleTextAlign = (align: TextAlign) => {
+  switch (align) {
+    case "center":
+      return "center";
+    case "right":
+      return "right";
+    case "left":
+    default:
+      return "left";
   }
 };
