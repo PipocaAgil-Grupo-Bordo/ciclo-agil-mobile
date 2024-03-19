@@ -8,16 +8,5 @@ export const StyledButtonIcon = styled.Image`
 `;
 
 export const StyledButtonText = styled(StyledText)<ButtonStyleProps>`
-  color: ${({ state }) => {
-    switch (state) {
-      case "accent":
-        return "#FFFFFF";
-      case "mild":
-        return "#000000";
-      case "default":
-      default:
-        return "#1F2024";
-    }
-  }};
   font-family: ${({ state }) => (state === "accent" ? "MontserratBold" : "Montserrat")};
 `;
