@@ -1,10 +1,6 @@
 import React from "react";
 import { StyledInstructionText, StyledContainer } from "./style";
-import { FormInputsType } from "../../../types/auth";
 import { useForm } from "react-hook-form";
-import Form from "../../../components/Form";
-import TextBox from "../../../components/TextBox";
-import GenericInput from "../../../components/GenericInput";
 import Inputs from "../Inputs";
 import GenericButton from "../../../components/GenericButton";
 

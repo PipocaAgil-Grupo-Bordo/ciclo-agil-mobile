@@ -2,11 +2,10 @@ import React from "react";
 import { StyledContainer } from "./style";
 import { FlatList } from "react-native";
 import GenericInput from "../GenericInput";
-import { FormInputsType } from "../../types/auth";
+import { FormInputsType } from "./type";
 import { FormInterface } from "./type";
 
-
-const Form: React.FC<FormInterface> = ({formInputs,control,errors}) => {
+const Form: React.FC<FormInterface> = ({ formInputs, control, errors }) => {
   return (
     <StyledContainer>
       <FlatList<FormInputsType>
