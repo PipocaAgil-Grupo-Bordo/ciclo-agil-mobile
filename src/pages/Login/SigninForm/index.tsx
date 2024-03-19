@@ -11,7 +11,7 @@ import {
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../../schemas/loginSchema";
-import { loginObject } from "../../../types/loginType";
+import { FormInputsType, loginObject } from "../../../types/auth";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import authApi from "../../../services/authApi";
@@ -19,7 +19,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import TextBox from "../../../components/TextBox";
 import GenericButton from "../../../components/GenericButton";
 import GenericInput from "../../../components/GenericInput";
-import { FormInputsType, NavigationType } from "../type";
+import {  NavigationType } from "../type";
 
 const SigninForm: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
