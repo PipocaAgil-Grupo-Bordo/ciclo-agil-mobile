@@ -1,4 +1,4 @@
-import { loginObject, registerObject, } from "../types/auth";
+import { loginObject } from "../types/auth";
 import api from "./api";
 
 function signInUser(body: loginObject) {
@@ -6,9 +6,8 @@ function signInUser(body: loginObject) {
   return promise;
 }
 
-function signUpUser(body:registerObject){}
 const authApi = {
-  signInUser
+  signInUser,
 };
 
 export default authApi;

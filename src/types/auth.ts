@@ -7,6 +7,6 @@ export interface loginObject extends emailObject {
 }
 
 export interface registerObject extends loginObject {
-  userName: string;
+  name: string; // <==
   birthDate: string;
 }
