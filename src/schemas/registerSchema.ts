@@ -1,6 +1,9 @@
 import * as yup from "yup";
 import { emailSchema, isValidEmail } from "./emailSchema";
 
+// Name format: Accept only letters, ignore numbers, symbols, emojis
+const nameRegex = /^[a-zA-Z]+$/;
+
 // Date format: Accept only numbers, not letters nor symbols
 const dateRegex = /^(0[1-9]|[1-2][0-9]|3[0-1])(0[1-9]|1[0-2])(19\d{2}|20(?:[0-1][0-9]|20|24))$/;
 
@@ -11,6 +14,7 @@ export const registerSchema = yup.object().shape({
   name: yup
     .string()
     .required("O nome não pode ser vazio")
+    .matches(nameRegex, "Nome deve conter apenas letras")
     .min(2, "O nome deve conter pelo menos 2 caracteres"),
   birthDate: yup
     .string()
