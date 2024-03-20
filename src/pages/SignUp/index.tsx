@@ -1,10 +1,13 @@
-import { StyledSignUpContainer } from "./style";
 import TextBox from "../../components/TextBox";
+import Header from "./Header";
+import SignUpForm from "./SignUpForm";
+import { StyledSignUpContainer } from "./style";
 
 const SignUp: React.FC = () => {
   return (
-    <StyledSignUpContainer>
-      <TextBox>Tela de cadastro</TextBox>
+    <StyledSignUpContainer >
+      <Header />
+      <SignUpForm />
     </StyledSignUpContainer>
   );
 };
