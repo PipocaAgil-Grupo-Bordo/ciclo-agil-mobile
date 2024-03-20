@@ -1,7 +1,24 @@
-export function submitRegister(){}
+import { FieldValues, UseFormReset } from "react-hook-form";
+import { userApi } from "../services/userApi";
+import { registerObject } from "../types/auth";
 
-const submitHelper= {
-    submitRegister
+export async function submitRegister(
+  data: registerObject,
+  reset: UseFormReset<FieldValues>,
+  navigation: any,
+  isSubmitting:boolean
+) {
+  try {
+    await userApi.signUpUser(data);
+
+    reset({ email: "", password: "" }, { keepErrors: false });
+
+    return navigation.navigate("Home");
+  } catch (error) {}
 }
 
-export default submitHelper
+const submitHelper = {
+  submitRegister
+};
+
+export default submitHelper;

@@ -4,8 +4,12 @@ import { useForm } from "react-hook-form";
 import Inputs from "../Inputs";
 import GenericButton from "../../../components/GenericButton";
 import { submitRegister } from "../../../utils/submitHelper";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationType } from "../../Login/type";
+import { registerObject } from "../../../types/auth";
 
 const SignUpForm: React.FC = () => {
+  const navigation = useNavigation<NavigationType>;
   const {
     handleSubmit,
     control,
@@ -24,7 +28,10 @@ const SignUpForm: React.FC = () => {
         conter pelo menos: 1 caractere especial, 1 letra, 1 letra maiúscula, e 1 número.
       </StyledInstructionText>
 
-      <GenericButton onPress={handleSubmit(submitRegister)} state="accent">
+      <GenericButton
+        onPress={handleSubmit((data) => submitRegister(data as registerObject, reset, navigation,isSubmitting))}
+        state="accent"
+      >
         Cadastrar
       </GenericButton>
     </StyledContainer>
