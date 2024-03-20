@@ -5,11 +5,11 @@ const Inputs: React.FC<any> = ({ control, errors }) => {
   const inputsData = [
     {
       label: "Como eu gostaria de ser chamada:",
-      name: "socialName"
+      name: "name"
     },
     {
       label: "Data de Nascimento:",
-      name: "birthday"
+      name: "birthDate"
     },
     {
       label: "Email:",
