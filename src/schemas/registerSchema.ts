@@ -24,7 +24,7 @@ export const registerSchema = yup.object().shape({
   confirmEmail: yup
     .string()
     .required("O email não pode ser vazio")
-    .oneOf([yup.ref("email")], "Os emails não coincidem")
+    .oneOf([yup.ref("email")], "Os campos de email não coincidem")
     .transform((value) => (value ? value.toLowerCase() : value)),
   password: yup
     .string()
@@ -39,7 +39,7 @@ export const registerSchema = yup.object().shape({
   confirmPassword: yup
     .string()
     .required("A senha não pode ser vazia")
-    .oneOf([yup.ref("password")], "Os campos não coincidem")
+    .oneOf([yup.ref("password")], "Os campos de senha não coincidem")
     .test("confirm-password-regex", "Senha não apresenta os requisitos", function (value) {
       // Retrive the password value from the actual password to compare
       const password = this.parent.password;
@@ -48,9 +48,5 @@ export const registerSchema = yup.object().shape({
         return false;
       }
       return true;
-    })
-    .test("confirm-password-match", "As senhas não coincidem", function (value) {
-      // Check if password and confirmPassword match
-      return value === this.parent.password;
     })
 });
