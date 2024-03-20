@@ -29,7 +29,8 @@ const SignUpForm: React.FC = () => {
       </StyledInstructionText>
 
       <GenericButton
-        onPress={handleSubmit((data) => submitRegister(data as registerObject, reset, navigation,isSubmitting))}
+        isLoading={isSubmitting}
+        onPress={handleSubmit((data) => submitRegister(data as registerObject, reset, navigation))}
         state="accent"
       >
         Cadastrar

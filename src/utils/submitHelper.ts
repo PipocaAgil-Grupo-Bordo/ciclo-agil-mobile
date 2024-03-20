@@ -6,7 +6,6 @@ export async function submitRegister(
   data: registerObject,
   reset: UseFormReset<FieldValues>,
   navigation: any,
-  isSubmitting:boolean
 ) {
   try {
     await userApi.signUpUser(data);
