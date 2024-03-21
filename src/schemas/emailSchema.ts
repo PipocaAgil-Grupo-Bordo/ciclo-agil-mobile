@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 export const isValidEmail = (value: string | undefined) => {
   // Email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^\S+@\S+\.[^\s@]{2,}$/;
 
   // Ensure value is not empty and matches the email regex
   return !!value && emailRegex.test(value);
