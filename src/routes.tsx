@@ -7,6 +7,7 @@ import EmailRequest from "./pages/ResetPassword/1-EmailRequest";
 import { RootStackParamList } from "./types/routeType";
 import CodeRequest from "./pages/ResetPassword/2-CodeRequest";
 import NewPassword from "./pages/ResetPassword/3-NewPassword";
+import BackArrow from "./components/BackArrow";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -15,7 +16,11 @@ const Router = () => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          headerShown: false
+          headerBackImage: () => <BackArrow />,
+          headerShown: false,
+          headerTitleAlign: "center",
+          headerTitleStyle: { fontFamily: "Lora", fontSize: 24 },
+          headerStyle: { backgroundColor: "#fafcff", shadowColor: "transparent" }
         }}
         initialRouteName="Login"
       >
@@ -23,8 +28,16 @@ const Router = () => {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="EmailRequest" component={EmailRequest} />
-        <Stack.Screen name="CodeRequest" component={CodeRequest} />
-        <Stack.Screen name="NewPassword" component={NewPassword} />
+        <Stack.Screen
+          options={{ headerShown: true, title: "Redefinir Senha" }}
+          name="CodeRequest"
+          component={CodeRequest}
+        />
+        <Stack.Screen
+          options={{ headerShown: true, title: "Redefinir Senha" }}
+          name="NewPassword"
+          component={NewPassword}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
