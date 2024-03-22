@@ -18,8 +18,8 @@ import authApi from "../../../services/authApi";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import TextBox from "../../../components/TextBox";
 import GenericButton from "../../../components/GenericButton";
-import GenericInput from "../../../components/GenericInput";
-import {  FormInputsType, NavigationType } from "../type";
+import { NavigationType } from "../type";
+import Inputs from "../Inputs";
 
 const SigninForm: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
@@ -61,38 +61,11 @@ const SigninForm: React.FC = () => {
     }
   };
 
-  const formInputs: FormInputsType[] = [
-    {
-      label: "Email:",
-      name: "email",
-      keyboard: "email-address",
-      autoComplete: "email"
-    },
-    {
-      label: "Senha:",
-      name: "password",
-      keyboard: "default",
-      autoComplete: "password"
-    }
-  ];
-
   return (
     <StyledFormContainer>
       <StyledTitle>Vamos começar?</StyledTitle>
 
-      <FlatList<FormInputsType>
-        data={formInputs}
-        renderItem={({ item }) => (
-          <GenericInput
-            label={item.label}
-            name={item.name}
-            control={control}
-            errors={errors}
-            keyboardType={item.keyboard}
-            autoComplete={item.autoComplete}
-          />
-        )}
-      />
+      <Inputs control={control} errors={errors} />
 
       <TouchableOpacity onPress={() => navigation.navigate("PasswordReset")}>
         <StyledForgottenPassword>Esqueci a senha</StyledForgottenPassword>
