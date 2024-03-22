@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const StyledPasswordResetContainer = styled.ScrollView`
-  
+  background-color: #fafcff;
 `;
 
 export const StyledEmailRequestWrapper = styled.View`
