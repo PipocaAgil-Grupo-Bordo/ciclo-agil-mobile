@@ -5,8 +5,12 @@ import { emailSchema } from "../../../schemas/emailSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ButtonList from "./ButtonsList";
 import { emailObject } from "../../../types/auth";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationType } from "../../Login/type";
 
 const PasswordReset: React.FC = () => {
+  const navigation = useNavigation<NavigationType>();
+
   const {
     handleSubmit,
     control,
@@ -16,7 +20,7 @@ const PasswordReset: React.FC = () => {
   });
 
   const handlePasswordRequest = () => {
-    alert("Correto");
+    navigation.navigate("CodeRequest");
   };
 
   return (

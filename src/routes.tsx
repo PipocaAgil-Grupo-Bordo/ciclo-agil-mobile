@@ -3,8 +3,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import PasswordReset from "./pages/ResetPassword/1-EmailRequest";
+import EmailRequest from "./pages/ResetPassword/1-EmailRequest";
 import { RootStackParamList } from "./types/routeType";
+import CodeRequest from "./pages/ResetPassword/2-CodeRequest";
+import NewPassword from "./pages/ResetPassword/3-NewPassword";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -20,7 +22,9 @@ const Router = () => {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="PasswordReset" component={PasswordReset} />
+        <Stack.Screen name="EmailRequest" component={EmailRequest} />
+        <Stack.Screen name="CodeRequest" component={CodeRequest} />
+        <Stack.Screen name="NewPassword" component={NewPassword} />
       </Stack.Navigator>
     </NavigationContainer>
   );

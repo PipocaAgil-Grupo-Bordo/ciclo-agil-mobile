@@ -67,7 +67,7 @@ const SigninForm: React.FC = () => {
 
       <Inputs control={control} errors={errors} />
 
-      <TouchableOpacity onPress={() => navigation.navigate("PasswordReset")}>
+      <TouchableOpacity onPress={() => navigation.navigate("EmailRequest")}>
         <StyledForgottenPassword>Esqueci a senha</StyledForgottenPassword>
       </TouchableOpacity>
 

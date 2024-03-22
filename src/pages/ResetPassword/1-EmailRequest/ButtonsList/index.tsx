@@ -10,7 +10,6 @@ const ButtonList: React.FC<ButtonListProps> = ({ onPress }) => {
 
   return (
     <StyledBottomSection>
-      {/* TODO: REPLACE IT WITH THE FLATLIST COMPONENT PEDRO IS MAKING */}
       <GenericButton onPress={onPress} state="accent">
         Enviar
       </GenericButton>
