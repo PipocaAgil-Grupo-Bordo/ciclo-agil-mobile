@@ -19,7 +19,7 @@ const GenericInput: React.FC<GenericInputProps> = ({ label, control, name, error
         onChangeText={field.onChange}
         name={name}
         errors={errors}
-        secureTextEntry={name === "password" && true}
+        secureTextEntry={name === "password" && true || name === "confirmPassword" && true}
         {...props}
       />
 
