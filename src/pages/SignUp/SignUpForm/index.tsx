@@ -11,8 +11,9 @@ import { registerSchema } from "../../../schemas/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 
+
 const SignUpForm: React.FC = () => {
-  const navigation = useNavigation<NavigationType>;
+  const navigation = useNavigation<NavigationType>();
   const {
     handleSubmit,
     control,
