@@ -1,7 +1,12 @@
 import styled from "styled-components/native";
 
-export const StyledCodeRequestContainer = styled.ScrollView`
+export const StyledCodeRequestContainer = styled.ScrollView``;
+
+export const StyledCodeRequestWrapper = styled.View`
   flex: 1;
+  background-color: aliceblue;
+  padding: 0px 24px 24px;
+  height: 100%;
+  justify-content: space-between;
   background-color: #fafcff;
-  padding: 0px 24px;
 `;

@@ -1,5 +1,10 @@
 import TextBox from "../../../../components/TextBox";
-import { StyledCheckMark, StyledConfirmationText, StyledConfirmationWrapper, StyledInstructionText } from "./style";
+import {
+  StyledCheckMark,
+  StyledConfirmationText,
+  StyledConfirmationWrapper,
+  StyledInstructionText
+} from "./style";
 
 const Header = () => {
   return (
