@@ -19,7 +19,7 @@ const SignUpForm: React.FC = () => {
     formState: { errors, isSubmitting },
     reset,
     setError
-  } = useForm({
+  } = useForm<registerObject>({
     resolver: yupResolver(registerSchema)
   });
 
@@ -35,7 +35,7 @@ const SignUpForm: React.FC = () => {
 
       <GenericButton
         isLoading={isSubmitting}
-        onPress={handleSubmit((data) => submitRegister(data as registerObject, reset, navigation))}
+        onPress={handleSubmit((data) => submitRegister(data, reset, navigation))}
         state="accent"
       >
         Cadastrar

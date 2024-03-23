@@ -4,7 +4,7 @@ import { registerObject } from "../types/auth";
 
 export async function submitRegister(
   data: registerObject,
-  reset: UseFormReset<FieldValues>,
+  reset: UseFormReset<registerObject>,
   navigation: any,
 ) {
   try {
