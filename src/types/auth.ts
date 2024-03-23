@@ -8,7 +8,7 @@ export interface loginObject extends emailObject {
 
 export interface registerObject extends loginObject {
   name: string;
-  birthDate: string;
+  birthdate: string;
   confirmEmail: string;
   confirmPassword: string;
 }
