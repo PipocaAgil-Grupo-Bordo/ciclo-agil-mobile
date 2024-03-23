@@ -10,8 +10,6 @@ import { registerObject } from "../../../types/auth";
 import { registerSchema } from "../../../schemas/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-
-
 const SignUpForm: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
   const {
@@ -31,7 +29,8 @@ const SignUpForm: React.FC = () => {
       <StyledInstructionText
         error={(errors && errors.password)! || (errors && errors.confirmPassword)!}
       >
-        A senha deve conter no mínimo 8 caracteres entre: 1 letra minúscula, 1 letra maiúscula, 1 número e 1 caractere especial.
+        A senha deve conter no mínimo 8 caracteres entre: 1 letra minúscula, 1 letra maiúscula, 1
+        número e 1 caractere especial.
       </StyledInstructionText>
 
       <GenericButton
