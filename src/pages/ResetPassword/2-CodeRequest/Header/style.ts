@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 export const StyledCheckMark = styled.Image`
   align-self: center;
   width: 80px;
-  margin-top: 50px;
+  margin-top: 16px;
   margin-bottom: 16px;
 `;
 
