@@ -1,4 +1,4 @@
-import { UseFormReset } from "react-hook-form";
+import { UseFormReset, UseFormSetError } from "react-hook-form";
 import { userApi } from "../services/userApi";
 import { registerObject } from "../types/auth";
 import dateHelper from "./dateHelpers";
@@ -6,23 +6,25 @@ import dateHelper from "./dateHelpers";
 export async function submitRegister(
   data: registerObject,
   reset: UseFormReset<registerObject>,
-  navigation: any
+  navigation: any,
+  setError: UseFormSetError<registerObject>
 ) {
   const birthdateISOFormat = dateHelper.formatBirthdateToISODate(data.birthdate);
-  const registerWithOutConfirmationProperties = {
+  const registerFinalFormat = {
     name: data.name,
     email: data.email,
     password: data.password,
     birthdate: birthdateISOFormat
   };
   try {
-    const resp = await userApi.signUpUser(registerWithOutConfirmationProperties);
+    const resp = await userApi.signUpUser(registerFinalFormat);
 
     reset({ email: "", password: "" }, { keepErrors: false });
 
     return navigation.navigate("Home");
-  } catch (error) {
-    alert(error);
+  } catch (error: any) {
+    if (error.response.status === 409) {
+    }
   }
 }
 

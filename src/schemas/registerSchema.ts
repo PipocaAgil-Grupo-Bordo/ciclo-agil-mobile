@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { emailSchema, isValidEmail } from "./emailSchema";
+import { isValidEmail } from "./emailSchema";
 
 // Name format: Accept only letters, ignore numbers, symbols, emojis
 const nameRegex = /^[a-zA-Z]+$/;
