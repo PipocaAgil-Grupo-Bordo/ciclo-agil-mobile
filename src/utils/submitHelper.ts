@@ -24,8 +24,8 @@ export async function submitRegister(
     return navigation.navigate("Home");
   } catch (error: any) {
     if (error.response.status === 409) {
-      setError("confirmEmail",{message:"E-mail já cadastrado."})
-      setError("email",{})
+      setError("confirmEmail", { message: "E-mail já cadastrado." });
+      setError("email", {});
     }
   }
 }
