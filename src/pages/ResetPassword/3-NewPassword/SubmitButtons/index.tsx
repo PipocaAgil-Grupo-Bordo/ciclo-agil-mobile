@@ -2,8 +2,8 @@ import { useNavigation } from "@react-navigation/native";
 import GenericButton from "../../../../components/GenericButton";
 import { SubmitButtonsArray, SubmitButtonsProps } from "../type";
 import { StyledSubmitWrapper } from "./style";
-import { NavigationType } from "../../../Login/type";
 import React from "react";
+import { NavigationType } from "../../../../types/routeType";
 
 const SubmitButtons: React.FC<SubmitButtonsProps> = ({ SubmitPassword }) => {
   const navigation = useNavigation<NavigationType>();

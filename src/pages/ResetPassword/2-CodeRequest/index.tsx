@@ -4,9 +4,9 @@ import { StyledCodeRequestContainer, StyledCodeRequestWrapper } from "./style";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigation } from "@react-navigation/core";
-import { NavigationType } from "../../Login/type";
 import Buttons from "./Buttons";
 import { View } from "react-native";
+import { NavigationType } from "../../../types/routeType";
 
 const CodeRequest: React.FC = () => {
   const [otpValue, setOtpValue] = useState<string>();

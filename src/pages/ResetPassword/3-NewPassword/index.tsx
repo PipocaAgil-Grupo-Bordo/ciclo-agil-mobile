@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { resetPasswordSchema } from "../../../schemas/resetPasswordSchema";
 import SubmitButtons from "./SubmitButtons";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "../../Login/type";
+import { NavigationType } from "../../../types/routeType";
 
 const NewPassword: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
