@@ -1,9 +1,11 @@
 import React from "react";
 import GenericInput from "../../../../components/GenericInput";
-import { StyledInputContainer } from "./style";
 import { InputsProps } from "../type";
+import TextBox from "../../../../components/TextBox";
+import { Text, View } from "react-native";
+import { StyledResetInstruction, StyledResetInstructionWrapper } from "./style";
 
-const Inputs: React.FC<InputsProps> = ({ control, errors }) => {
+const Inputs: React.FC<InputsProps> = ({ control, errors, errorInstruction }) => {
   const passwordInputs = [
     {
       label: "Nova senha:",
@@ -16,7 +18,7 @@ const Inputs: React.FC<InputsProps> = ({ control, errors }) => {
   ];
 
   return (
-    <StyledInputContainer>
+    <View>
       {passwordInputs.map((input, i) => (
         <GenericInput
           key={i}
@@ -26,7 +28,22 @@ const Inputs: React.FC<InputsProps> = ({ control, errors }) => {
           errors={errors}
         />
       ))}
-    </StyledInputContainer>
+
+      {errorInstruction && (
+        <StyledResetInstructionWrapper>
+          <TextBox>
+            <StyledResetInstruction>Por favor, tente novamente</StyledResetInstruction>
+          </TextBox>
+
+          <TextBox>
+            <StyledResetInstruction>
+              A senha deve conter no mínimo 8 caracteres entre: 1 letra minúscula, 1 letra
+              maiúscula, 1 número e 1 caractere especial.
+            </StyledResetInstruction>
+          </TextBox>
+        </StyledResetInstructionWrapper>
+      )}
+    </View>
   );
 };
 

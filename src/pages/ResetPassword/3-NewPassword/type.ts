@@ -9,6 +9,7 @@ export interface SubmitButtonsProps {
 export interface InputsProps {
   control: Control<resetPasswordObject>;
   errors: FieldErrors;
+  errorInstruction: boolean
 }
 
 export interface SubmitButtonsArray {

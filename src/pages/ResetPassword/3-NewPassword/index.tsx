@@ -7,6 +7,7 @@ import { resetPasswordSchema } from "../../../schemas/resetPasswordSchema";
 import SubmitButtons from "./SubmitButtons";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "../../../types/routeType";
+import { Text } from "react-native";
 
 const NewPassword: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
@@ -31,7 +32,11 @@ const NewPassword: React.FC = () => {
   return (
     <StyledNewPasswordContainer nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <StyledNewPasswordWrapper>
-        <Inputs control={control} errors={errors} />
+        <Inputs
+          control={control}
+          errors={errors}
+          errorInstruction={errors.password ? true : false}
+        />
 
         <SubmitButtons SubmitPassword={handleSubmit(onSubmit)} />
       </StyledNewPasswordWrapper>
