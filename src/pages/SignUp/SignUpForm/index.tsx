@@ -3,28 +3,25 @@ import { StyledInstructionText, StyledContainer } from "./style";
 import { useForm } from "react-hook-form";
 import Inputs from "../Inputs";
 import GenericButton from "../../../components/GenericButton";
+import { submitRegister } from "../../../utils/submitHelper";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationType } from "../../../types/routeType";
+import { registerObject } from "../../../types/auth";
 import { registerSchema } from "../../../schemas/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Text } from "react-native";
+
 
 const SignUpForm: React.FC = () => {
+  const navigation = useNavigation<NavigationType>();
   const {
     handleSubmit,
     control,
     formState: { errors, isSubmitting },
     reset,
     setError
-  } = useForm({
+  } = useForm<registerObject>({
     resolver: yupResolver(registerSchema)
   });
-
-  const onSubmit = () => {
-    try {
-      alert("Passaria pra próxima tela");
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <StyledContainer>
@@ -33,10 +30,15 @@ const SignUpForm: React.FC = () => {
       <StyledInstructionText
         error={(errors && errors.password)! || (errors && errors.confirmPassword)!}
       >
-        A senha deve conter no mínimo 8 caracteres entre: 1 letra minúscula, 1 letra maiúscula, 1 número e 1 caractere especial.
+        A senha deve conter no mínimo 8 caracteres entre: 1 letra minúscula, 1 letra maiúscula, 1
+        número e 1 caractere especial.
       </StyledInstructionText>
 
-      <GenericButton state="accent" onPress={handleSubmit(onSubmit)}>
+      <GenericButton
+        isLoading={isSubmitting}
+        onPress={handleSubmit((data) => submitRegister(data, reset, navigation, setError))}
+        state="accent"
+      >
         Cadastrar
       </GenericButton>
     </StyledContainer>

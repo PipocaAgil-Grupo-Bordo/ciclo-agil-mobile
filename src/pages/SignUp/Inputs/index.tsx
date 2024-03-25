@@ -9,7 +9,7 @@ const Inputs: React.FC<any> = ({ control, errors }) => {
     },
     {
       label: "Data de Nascimento:",
-      name: "birthDate"
+      name: "birthdate"
     },
     {
       label: "Email:",
