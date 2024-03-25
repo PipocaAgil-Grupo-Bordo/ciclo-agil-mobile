@@ -7,6 +7,8 @@ export interface loginObject extends emailObject {
 }
 
 export interface registerObject extends loginObject {
-  userName: string;
-  birthDate: string;
+  name: string;
+  birthdate: string;
+  confirmEmail: string;
+  confirmPassword: string;
 }
