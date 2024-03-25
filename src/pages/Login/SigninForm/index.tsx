@@ -18,8 +18,9 @@ import authApi from "../../../services/authApi";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import TextBox from "../../../components/TextBox";
 import GenericButton from "../../../components/GenericButton";
-import { NavigationType } from "../type";
+import { NavigationType } from "../../../types/routeType";
 import Inputs from "../Inputs";
+
 
 const SigninForm: React.FC = () => {
   const navigation = useNavigation<NavigationType>();

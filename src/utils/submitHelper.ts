@@ -2,11 +2,12 @@ import { UseFormReset, UseFormSetError } from "react-hook-form";
 import { userApi } from "../services/userApi";
 import { registerObject } from "../types/auth";
 import dateHelper from "./dateHelpers";
+import { NavigationType } from "../types/routeType";
 
 export async function submitRegister(
   data: registerObject,
   reset: UseFormReset<registerObject>,
-  navigation: any,
+  navigation: NavigationType,
   setError: UseFormSetError<registerObject>
 ) {
   const birthdateISOFormat = dateHelper.formatBirthdateToISODate(data.birthdate);

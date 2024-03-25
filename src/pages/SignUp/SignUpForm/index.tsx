@@ -5,10 +5,11 @@ import Inputs from "../Inputs";
 import GenericButton from "../../../components/GenericButton";
 import { submitRegister } from "../../../utils/submitHelper";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "../../Login/type";
+import { NavigationType } from "../../../types/routeType";
 import { registerObject } from "../../../types/auth";
 import { registerSchema } from "../../../schemas/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
+
 
 const SignUpForm: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
