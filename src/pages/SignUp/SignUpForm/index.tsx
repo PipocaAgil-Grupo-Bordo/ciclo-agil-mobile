@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledInstructionText, StyledContainer } from "./style";
+import { StyledInstructionText, StyledContainer, StyledInstructionWrapper } from "./style";
 import { useForm } from "react-hook-form";
 import Inputs from "../Inputs";
 import GenericButton from "../../../components/GenericButton";
@@ -9,7 +9,7 @@ import { NavigationType } from "../../../types/routeType";
 import { registerObject } from "../../../types/auth";
 import { registerSchema } from "../../../schemas/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-
+import { View } from "react-native";
 
 const SignUpForm: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
@@ -27,12 +27,20 @@ const SignUpForm: React.FC = () => {
     <StyledContainer>
       <Inputs control={control} errors={errors} />
 
-      <StyledInstructionText
-        error={(errors && errors.password)! || (errors && errors.confirmPassword)!}
-      >
-        A senha deve conter no mínimo 8 caracteres entre: 1 letra minúscula, 1 letra maiúscula, 1
-        número e 1 caractere especial.
-      </StyledInstructionText>
+      {/* TODO: Move to a different file after sprint 2 is over */}
+      <StyledInstructionWrapper>
+        <StyledInstructionText
+          error={(errors && errors.password)! || (errors && errors.confirmPassword)!}
+        >
+          Sua senha deve conter no mínimo 8 caracteres
+        </StyledInstructionText>
+
+        <StyledInstructionText
+          error={(errors && errors.password)! || (errors && errors.confirmPassword)!}
+        >
+          Pelo menos 1 letra maiúscula, 1 caractere especial e 1 número.
+        </StyledInstructionText>
+      </StyledInstructionWrapper>
 
       <GenericButton
         isLoading={isSubmitting}

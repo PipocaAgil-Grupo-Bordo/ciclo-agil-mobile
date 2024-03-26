@@ -29,18 +29,25 @@ const Inputs: React.FC<InputsProps> = ({ control, errors, errorInstruction }) =>
         />
       ))}
 
+      {/* TODO: Move to a different file after sprint 2 is over */}
       {errorInstruction && (
         <StyledResetInstructionWrapper>
           <TextBox>
             <StyledResetInstruction>Por favor, tente novamente</StyledResetInstruction>
           </TextBox>
 
-          <TextBox>
-            <StyledResetInstruction>
-              A senha deve conter no mínimo 8 caracteres entre: 1 letra minúscula, 1 letra
-              maiúscula, 1 número e 1 caractere especial.
-            </StyledResetInstruction>
-          </TextBox>
+          <View>
+            <TextBox>
+              <StyledResetInstruction>
+                Senha deve conter: no mínimo 8 caracteres
+              </StyledResetInstruction>
+            </TextBox>
+            <TextBox>
+              <StyledResetInstruction>
+                Pelo menos 1 caractere especial, 1 número, 1 letra minúscula e 1 letra maiúscula.
+              </StyledResetInstruction>
+            </TextBox>
+          </View>
         </StyledResetInstructionWrapper>
       )}
     </View>
