@@ -12,3 +12,8 @@ export interface registerObject extends loginObject {
   confirmEmail: string;
   confirmPassword: string;
 }
+
+export interface resetPasswordObject {
+  password: string;
+  confirmPassword: string;
+}

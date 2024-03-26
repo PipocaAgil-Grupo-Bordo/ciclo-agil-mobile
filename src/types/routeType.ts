@@ -4,7 +4,9 @@ export type RootStackParamList = {
   Login: undefined;
   Home: undefined;
   SignUp: undefined;
-  PasswordReset: undefined;
+  EmailRequest: undefined;
+  CodeRequest: undefined;
+  NewPassword: undefined;
 };
 
 export type NavigationType = StackNavigationProp<RootStackParamList>;
