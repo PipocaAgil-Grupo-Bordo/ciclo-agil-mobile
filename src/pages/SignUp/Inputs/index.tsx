@@ -5,31 +5,37 @@ const Inputs: React.FC<any> = ({ control, errors }) => {
   const inputsData = [
     {
       label: "Como eu gostaria de ser chamada:",
-      name: "name"
+      name: "name",
+      placeholder:""
     },
     {
       label: "Data de Nascimento:",
-      name: "birthdate"
+      name: "birthdate",
+      placeholder:"DD/MM/AAAA"
     },
     {
       label: "Email:",
-      name: "email"
+      name: "email",
+      placeholder:""
     },
     {
       label: "Repita o email:",
-      name: "confirmEmail"
+      name: "confirmEmail",
+      placeholder:""
     },
     {
       label: "Senha:",
-      name: "password"
+      name: "password",
+      placeholder:""
     },
     {
       label: "Repita a senha:",
-      name: "confirmPassword"
+      name: "confirmPassword",
+      placeholder:""
     }
   ];
   return inputsData.map((input, i) => (
-    <GenericInput key={i} label={input.label} name={input.name} control={control} errors={errors} />
+    <GenericInput key={i} label={input.label} name={input.name} textAlign="left" placeholder={input.placeholder} control={control} errors={errors} />
   ));
 };
 
