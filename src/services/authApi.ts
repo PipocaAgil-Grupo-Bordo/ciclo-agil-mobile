@@ -1,4 +1,4 @@
-import { loginObject } from "../types/auth";
+import { emailObject, loginObject } from "../types/auth";
 import api from "./api";
 
 function signInUser(body: loginObject) {
@@ -6,8 +6,12 @@ function signInUser(body: loginObject) {
   return promise;
 }
 
+function resetPassword(body: emailObject) {
+  const promise = api.post("auth/reset-password/request", body);
+}
+
 const authApi = {
-  signInUser,
+  signInUser
 };
 
 export default authApi;

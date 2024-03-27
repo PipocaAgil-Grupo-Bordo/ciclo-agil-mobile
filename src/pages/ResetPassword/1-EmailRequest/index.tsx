@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import ButtonList from "./ButtonsList";
 import { emailObject } from "../../../types/auth";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "../../Login/type";
+import { NavigationType } from "../../../types/routeType";
 
 const PasswordReset: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
