@@ -39,7 +39,7 @@ const Inputs: React.FC<InputsProps> = ({ control, errors, errorInstruction }) =>
           <View>
             <TextBox>
               <StyledResetInstruction>
-                Senha deve conter: no mínimo 8 caracteres
+                Senha deve conter no mínimo 8 caracteres
               </StyledResetInstruction>
             </TextBox>
             <TextBox>
