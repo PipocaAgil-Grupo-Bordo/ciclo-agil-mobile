@@ -32,7 +32,7 @@ const SignUpForm: React.FC = () => {
         <StyledInstructionText
           error={(errors && errors.password)! || (errors && errors.confirmPassword)!}
         >
-          Senha deve conter no mínimo 8 caracteres
+          Senha deve conter no mínimo 8 caracteres.
         </StyledInstructionText>
 
         <StyledInstructionText
