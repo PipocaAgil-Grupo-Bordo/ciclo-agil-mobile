@@ -8,10 +8,12 @@ function signInUser(body: loginObject) {
 
 function resetPassword(body: emailObject) {
   const promise = api.post("auth/reset-password/request", body);
+  return promise
 }
 
 const authApi = {
-  signInUser
+  signInUser,
+  resetPassword
 };
 
 export default authApi;

@@ -8,4 +8,5 @@ export interface EmailRequestSectionProps {
 
 export interface ButtonListProps {
   onPress: () => void;
+  isLoading:boolean
 }
