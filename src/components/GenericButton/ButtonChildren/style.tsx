@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
-import { StyledText } from "../../TextBox/style";
 import { ButtonStyleProps } from "../type";
+import { StyledText } from "@components/TextBox/style";
 
 export const StyledButtonIcon = styled.Image`
   width: 30px;

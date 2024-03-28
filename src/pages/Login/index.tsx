@@ -1,6 +1,6 @@
 import React from "react";
 import SigninForm from "./SigninForm";
-import Logo from "../../components/Logo";
+import Logo from "@components/Logo";
 import { StyledLoginContainer, StyledLoginWrapper } from "./style";
 
 const Login: React.FC = () => {

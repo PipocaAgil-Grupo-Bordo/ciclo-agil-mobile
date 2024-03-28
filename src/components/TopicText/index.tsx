@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { TextLora } from './style';
+import { ReactNode } from "react";
+import { TextLora } from "./style";
 
 interface TopicTextProps {
   children: ReactNode;
@@ -15,7 +15,7 @@ interface TopicTextProps {
  * export const CustomText = styled(TextMontserrat)` -- rest of the code `
  */
 const TopicText: React.FC<TopicTextProps> = ({ children }) => {
-  return <TextLora>{children}</TextLora>; 
+  return <TextLora>{children}</TextLora>;
 };
 
 export default TopicText;

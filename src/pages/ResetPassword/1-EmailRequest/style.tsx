@@ -9,4 +9,3 @@ export const StyledEmailRequestWrapper = styled.View`
   padding: 75px 30px 30px;
   justify-content: space-between;
 `;
-

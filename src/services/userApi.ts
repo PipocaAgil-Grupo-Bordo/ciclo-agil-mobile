@@ -1,4 +1,4 @@
-import { registerObject } from "../types/auth";
+import { registerObject } from "@type/auth";
 import api from "./api";
 
 function signUpUser(body: Omit<registerObject, "confirmEmail" | "confirmPassword">) {

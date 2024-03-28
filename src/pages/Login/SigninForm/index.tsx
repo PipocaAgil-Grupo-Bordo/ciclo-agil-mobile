@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, FlatList } from "react-native";
+import { Alert } from "react-native";
 import {
   StyledForgottenPassword,
   StyledFormContainer,
@@ -10,17 +10,16 @@ import {
 } from "./style";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "../../../schemas/loginSchema";
-import { loginObject } from "../../../types/auth";
+import { loginSchema } from "@schemas/loginSchema";
+import { loginObject } from "@type/auth";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
-import authApi from "../../../services/authApi";
+import authApi from "@services/authApi";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import TextBox from "../../../components/TextBox";
-import GenericButton from "../../../components/GenericButton";
-import { NavigationType } from "../../../types/routeType";
+import TextBox from "@components/TextBox";
+import GenericButton from "@components/GenericButton";
+import { NavigationType } from "@type/routeType";
 import Inputs from "../Inputs";
-
 
 const SigninForm: React.FC = () => {
   const navigation = useNavigation<NavigationType>();

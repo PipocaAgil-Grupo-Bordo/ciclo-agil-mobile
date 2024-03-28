@@ -1,4 +1,4 @@
-import TextBox from "../../../../components/TextBox";
+import TextBox from "@components/TextBox";
 import {
   StyledCheckMark,
   StyledConfirmationText,
@@ -9,7 +9,7 @@ import {
 const Header = () => {
   return (
     <>
-      <StyledCheckMark source={require("../../../../../assets/images/checkmark.png")} />
+      <StyledCheckMark source={require("@images/checkmark.png")} />
 
       <StyledConfirmationWrapper>
         <StyledConfirmationText>Enviamos um código para o email cadastrado!</StyledConfirmationText>

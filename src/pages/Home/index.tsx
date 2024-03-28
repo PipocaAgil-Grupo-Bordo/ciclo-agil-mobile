@@ -1,6 +1,6 @@
 import React from "react";
 import { StyledHomeContainer } from "./style";
-import TextBox from "../../components/TextBox";
+import TextBox from "@components/TextBox";
 
 const Home: React.FC = () => {
   return (

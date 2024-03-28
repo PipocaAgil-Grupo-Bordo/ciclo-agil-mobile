@@ -1,5 +1,5 @@
 import { OtpInput } from "react-native-otp-entry";
-import TextBox from "../../../../components/TextBox";
+import TextBox from "@components/TextBox";
 import { StyledResendCodeButton, StyledResendCodeText } from "./style";
 import { OTPInputProps } from "../type";
 

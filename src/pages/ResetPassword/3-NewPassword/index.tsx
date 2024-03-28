@@ -1,13 +1,12 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import Inputs from "./Inputs";
 import { StyledNewPasswordContainer, StyledNewPasswordWrapper } from "./style";
-import { resetPasswordObject } from "../../../types/auth";
+import { resetPasswordObject } from "@type/auth";
 import { useForm } from "react-hook-form";
-import { resetPasswordSchema } from "../../../schemas/resetPasswordSchema";
+import { resetPasswordSchema } from "@schemas/resetPasswordSchema";
 import SubmitButtons from "./SubmitButtons";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "../../../types/routeType";
-import { Text } from "react-native";
+import { NavigationType } from "@type/routeType";
 
 const NewPassword: React.FC = () => {
   const navigation = useNavigation<NavigationType>();

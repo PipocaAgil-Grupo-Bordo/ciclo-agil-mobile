@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
-import { StyledText } from "../TextBox/style";
 import { StyledInputProps } from "./type";
+import { StyledText } from "@components/TextBox/style";
 
 export const StyledContainer = styled.View``;
 

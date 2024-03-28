@@ -1,11 +1,9 @@
-import { View } from "react-native";
-import GenericButton from "../../../../components/GenericButton";
-import TextBox from "../../../../components/TextBox";
-import { StatesType } from "../../../../components/GenericButton/type";
+import { NavigationType } from "@type/routeType";
+import GenericButton from "@components/GenericButton";
+import TextBox from "@components/TextBox";
 import { ButtonsInfo, ButtonsProps } from "../type";
 import { StyledButtonsContainer, StyledInstructionText } from "./style";
 import { useNavigation } from "@react-navigation/core";
-import { NavigationType } from "../../../Login/type";
 
 const Buttons: React.FC<ButtonsProps> = ({ onPress }) => {
   const navigation = useNavigation<NavigationType>();

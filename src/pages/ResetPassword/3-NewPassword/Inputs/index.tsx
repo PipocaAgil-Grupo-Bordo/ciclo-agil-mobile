@@ -1,7 +1,7 @@
 import React from "react";
-import GenericInput from "../../../../components/GenericInput";
+import GenericInput from "@components/GenericInput";
 import { InputsProps } from "../type";
-import TextBox from "../../../../components/TextBox";
+import TextBox from "@components/TextBox";
 import { Text, View } from "react-native";
 import { StyledResetInstruction, StyledResetInstructionWrapper } from "./style";
 
@@ -39,7 +39,7 @@ const Inputs: React.FC<InputsProps> = ({ control, errors, errorInstruction }) =>
           <View>
             <TextBox>
               <StyledResetInstruction>
-                Senha deve conter no mínimo 8 caracteres
+                Senha deve conter no mínimo 8 caracteres.
               </StyledResetInstruction>
             </TextBox>
             <TextBox>
