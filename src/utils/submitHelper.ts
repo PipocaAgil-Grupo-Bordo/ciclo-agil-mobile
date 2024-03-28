@@ -1,8 +1,9 @@
 import { UseFormReset, UseFormSetError } from "react-hook-form";
 import { userApi } from "../services/userApi";
-import { registerObject } from "../types/auth";
+import { emailObject, registerObject } from "../types/auth";
 import dateHelper from "./dateHelpers";
 import { NavigationType } from "../types/routeType";
+import authApi from "../services/authApi";
 
 export async function submitRegister(
   data: registerObject,
@@ -31,8 +32,17 @@ export async function submitRegister(
   }
 }
 
-const submitHelper = {
-  submitRegister
-};
-
-export default submitHelper;
+export async function handlePasswordRequest(
+  data: emailObject,
+  navigation: NavigationType,
+  setError: UseFormSetError<emailObject>
+) {
+  try {
+    const resp = await authApi.resetPassword(data);
+    navigation.navigate("CodeRequest");
+  } catch (error:any) {
+    if (error.response.status === 404) {
+      setError("email", {message:"Email incorreto"});
+    }
+  }
+}

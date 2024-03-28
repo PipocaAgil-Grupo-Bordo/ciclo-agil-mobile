@@ -3,14 +3,14 @@ import GenericButton from "../../../../components/GenericButton";
 import { StyledBottomSection } from "./style";
 import { ButtonListProps } from "../type";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "../../../Login/type";
+import { NavigationType } from "../../../../types/routeType";
 
-const ButtonList: React.FC<ButtonListProps> = ({ onPress }) => {
+const ButtonList: React.FC<ButtonListProps> = ({ onPress ,isLoading}) => {
   const navigation = useNavigation<NavigationType>();
 
   return (
     <StyledBottomSection>
-      <GenericButton onPress={onPress} state="accent">
+      <GenericButton onPress={onPress} isLoading={isLoading} state="accent">
         Enviar
       </GenericButton>
 
