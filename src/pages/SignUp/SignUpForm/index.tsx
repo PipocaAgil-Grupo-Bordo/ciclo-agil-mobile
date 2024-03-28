@@ -2,12 +2,12 @@ import React from "react";
 import { StyledInstructionText, StyledContainer, StyledInstructionWrapper } from "./style";
 import { useForm } from "react-hook-form";
 import Inputs from "../Inputs";
-import GenericButton from "../../../components/GenericButton";
-import { submitRegister } from "../../../utils/submitHelper";
+import GenericButton from "@components/GenericButton";
+import { submitRegister } from "@utils/submitHelper";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "../../../types/routeType";
-import { registerObject } from "../../../types/auth";
-import { registerSchema } from "../../../schemas/registerSchema";
+import { NavigationType } from "@type/routeType";
+import { registerObject } from "@type/auth";
+import { registerSchema } from "@schemas/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { View } from "react-native";
 

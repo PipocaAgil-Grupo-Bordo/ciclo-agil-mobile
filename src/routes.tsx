@@ -4,10 +4,10 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import EmailRequest from "./pages/ResetPassword/1-EmailRequest";
-import { RootStackParamList } from "./types/routeType";
+import { RootStackParamList } from "@type/routeType";
 import CodeRequest from "./pages/ResetPassword/2-CodeRequest";
 import NewPassword from "./pages/ResetPassword/3-NewPassword";
-import BackArrow from "./components/BackArrow";
+import BackArrow from "@components/BackArrow";
 
 const Stack = createStackNavigator<RootStackParamList>();
 

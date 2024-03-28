@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
 import EmailRequestSection from "./EmailRequestSection";
 import { StyledPasswordResetContainer, StyledEmailRequestWrapper } from "./style";
-import { emailSchema } from "../../../schemas/emailSchema";
+import { emailSchema } from "@schemas/emailSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ButtonList from "./ButtonsList";
-import { emailObject } from "../../../types/auth";
+import { emailObject } from "@type/auth";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "../../../types/routeType";
-import { handlePasswordRequest } from "../../../utils/submitHelper";
+import { NavigationType } from "@type/routeType";
+import { handlePasswordRequest } from "@utils/submitHelper";
 
 const PasswordReset: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
@@ -16,7 +16,7 @@ const PasswordReset: React.FC = () => {
     handleSubmit,
     control,
     setError,
-    formState: { errors,isSubmitting }
+    formState: { errors, isSubmitting }
   } = useForm<emailObject>({
     resolver: yupResolver(emailSchema)
   });

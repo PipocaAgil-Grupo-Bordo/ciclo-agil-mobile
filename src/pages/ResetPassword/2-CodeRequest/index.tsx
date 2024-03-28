@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useNavigation } from "@react-navigation/core";
 import Buttons from "./Buttons";
 import { View } from "react-native";
-import { NavigationType } from "../../../types/routeType";
+import { NavigationType } from "@type/routeType";
 
 const CodeRequest: React.FC = () => {
   const [otpValue, setOtpValue] = useState<string>();
