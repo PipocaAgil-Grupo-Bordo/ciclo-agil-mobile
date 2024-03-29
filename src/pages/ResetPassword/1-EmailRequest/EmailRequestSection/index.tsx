@@ -14,8 +14,8 @@ const EmailRequestSection: React.FC<EmailRequestSectionProps> = ({ control, erro
       <StyledTitle>Esqueci minha senha</StyledTitle>
 
       <StyledResetInfo>
-        Para redefinir sua senha, informe o e-mail cadastrado e enviaremos um link para recuperão da
-        sua senha.
+        Para redefinir sua senha, informe o e-mail cadastrado e enviaremos um código para
+        recuperação da sua senha.
       </StyledResetInfo>
 
       <GenericInput
