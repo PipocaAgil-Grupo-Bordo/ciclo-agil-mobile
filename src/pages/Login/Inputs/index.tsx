@@ -1,7 +1,7 @@
-import GenericInput from "../../../components/GenericInput";
+import GenericInput from "@components/GenericInput";
 import { FormInputsType, InputsProps } from "../type";
 
-const Inputs: React.FC<InputsProps> = ({control, errors}) => {
+const Inputs: React.FC<InputsProps> = ({ control, errors }) => {
   const formInputs: FormInputsType[] = [
     {
       label: "Email:",

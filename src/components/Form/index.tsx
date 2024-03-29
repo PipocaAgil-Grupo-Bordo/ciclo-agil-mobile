@@ -1,9 +1,9 @@
 import React from "react";
 import { StyledContainer } from "./style";
 import { FlatList } from "react-native";
-import GenericInput from "../GenericInput";
 import { FormInputsType } from "./type";
 import { FormInterface } from "./type";
+import GenericInput from "@components/GenericInput";
 
 const Form: React.FC<FormInterface> = ({ formInputs, control, errors }) => {
   return (

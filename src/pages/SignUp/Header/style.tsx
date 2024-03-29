@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
-import { TextLora } from "../../../components/TopicText/style";
-import { StyledText } from "../../../components/TextBox/style";
+import { TextLora } from "@components/TopicText/style";
+import { StyledText } from "@components/TextBox/style";
 
 export const StyledContainer = styled.View`
   align-items: center;

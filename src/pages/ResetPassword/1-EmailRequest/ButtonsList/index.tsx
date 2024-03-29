@@ -1,11 +1,11 @@
 import React from "react";
-import GenericButton from "../../../../components/GenericButton";
+import GenericButton from "@components/GenericButton";
 import { StyledBottomSection } from "./style";
 import { ButtonListProps } from "../type";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "../../../../types/routeType";
+import { NavigationType } from "@type/routeType";
 
-const ButtonList: React.FC<ButtonListProps> = ({ onPress ,isLoading}) => {
+const ButtonList: React.FC<ButtonListProps> = ({ onPress, isLoading }) => {
   const navigation = useNavigation<NavigationType>();
 
   return (
