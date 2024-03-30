@@ -10,6 +10,7 @@ import { registerObject } from "@type/auth";
 import { registerSchema } from "@schemas/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { View } from "react-native";
+import TermsOfService from "../TermsOfService";
 
 const SignUpForm: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
@@ -49,6 +50,7 @@ const SignUpForm: React.FC = () => {
       >
         Cadastrar
       </GenericButton>
+      <TermsOfService />
     </StyledContainer>
   );
 };
