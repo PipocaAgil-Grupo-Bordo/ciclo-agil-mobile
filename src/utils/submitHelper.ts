@@ -39,7 +39,7 @@ export async function handlePasswordRequest(
 ) {
   try {
     const resp = await authApi.resetPassword(data);
-    navigation.navigate("CodeRequest");
+    navigation.navigate("CodeRequest", { email: data.email });
   } catch (error: any) {
     if (error.response.status === 404) {
       setError("email", { message: "Email incorreto" });
