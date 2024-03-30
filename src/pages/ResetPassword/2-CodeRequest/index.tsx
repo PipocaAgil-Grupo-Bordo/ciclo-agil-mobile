@@ -9,6 +9,7 @@ import { View } from "react-native";
 import { CodeRequestRouteParam, NavigationType } from "@type/routeType";
 import { useRoute } from "@react-navigation/native";
 import { handleRedefinitionCodeValidation } from "@utils/submitHelper";
+import authApi from "@services/authApi";
 
 const CodeRequest: React.FC = () => {
   const [otpValue, setOtpValue] = useState<string>();
@@ -20,8 +21,13 @@ const CodeRequest: React.FC = () => {
     setOtpValue(value);
   };
 
-  const handleResendCode = () => {
-    console.log("Resend code button");
+  const handleResendCode = async () => {
+    const resetBody = { email };
+    try {
+      await authApi.resetPassword(resetBody);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

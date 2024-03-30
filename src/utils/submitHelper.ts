@@ -3,7 +3,6 @@ import { userApi } from "@services/userApi";
 import {
   emailObject,
   registerObject,
-  validationCodeObject,
   validationCodeResponse
 } from "@type/auth";
 import dateHelper from "./dateHelpers";
