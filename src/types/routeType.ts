@@ -6,11 +6,15 @@ export type RootStackParamList = {
   SignUp: undefined;
   EmailRequest: undefined;
   CodeRequest: CodeRequestRouteParam;
-  NewPassword: undefined;
+  NewPassword: NewPasswordRouteParam;
 };
 
 export interface CodeRequestRouteParam {
   email: string;
+}
+
+export interface NewPasswordRouteParam {
+  token: string;
 }
 
 export type NavigationType = StackNavigationProp<RootStackParamList>;

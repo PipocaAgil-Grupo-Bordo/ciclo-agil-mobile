@@ -1,9 +1,15 @@
 import { UseFormReset, UseFormSetError } from "react-hook-form";
 import { userApi } from "@services/userApi";
-import { emailObject, registerObject } from "@type/auth";
+import {
+  emailObject,
+  registerObject,
+  validationCodeObject,
+  validationCodeResponse
+} from "@type/auth";
 import dateHelper from "./dateHelpers";
 import { NavigationType } from "@type/routeType";
 import authApi from "@services/authApi";
+import { AxiosResponse } from "axios";
 
 export async function submitRegister(
   data: registerObject,
@@ -38,11 +44,29 @@ export async function handlePasswordRequest(
   setError: UseFormSetError<emailObject>
 ) {
   try {
-    const resp = await authApi.resetPassword(data);
+    await authApi.resetPassword(data);
     navigation.navigate("CodeRequest", { email: data.email });
   } catch (error: any) {
     if (error.response.status === 404) {
       setError("email", { message: "Email incorreto" });
+    }
+  }
+}
+
+export async function handleRedefinitionCodeValidation(
+  code: string | undefined,
+  navigation: NavigationType,
+  email: string
+) {
+  const body = { code, email };
+  if (code === undefined || code?.length < 6) {
+    alert("Código incorreto");
+  } else {
+    try {
+      const resp: AxiosResponse<validationCodeResponse> = await authApi.validateCode(body);
+      navigation.navigate("NewPassword", { token: resp.data.token });
+    } catch (error) {
+      console.log(error);
     }
   }
 }
