@@ -5,8 +5,12 @@ export type RootStackParamList = {
   Home: undefined;
   SignUp: undefined;
   EmailRequest: undefined;
-  CodeRequest: undefined;
+  CodeRequest: CodeRequestRouteParam;
   NewPassword: undefined;
 };
+
+export interface CodeRequestRouteParam {
+  email: string;
+}
 
 export type NavigationType = StackNavigationProp<RootStackParamList>;

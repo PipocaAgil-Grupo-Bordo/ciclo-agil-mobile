@@ -6,11 +6,16 @@ import { useForm } from "react-hook-form";
 import { useNavigation } from "@react-navigation/core";
 import Buttons from "./Buttons";
 import { View } from "react-native";
-import { NavigationType } from "@type/routeType";
+import { CodeRequestRouteParam, NavigationType } from "@type/routeType";
+import { useRoute } from "@react-navigation/native";
 
 const CodeRequest: React.FC = () => {
   const [otpValue, setOtpValue] = useState<string>();
   const navigation = useNavigation<NavigationType>();
+  const route = useRoute();
+  const email = (route.params as CodeRequestRouteParam)?.email;
+
+  console.log("Email:", email);
 
   const { handleSubmit } = useForm();
 
