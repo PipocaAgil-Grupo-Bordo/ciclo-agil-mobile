@@ -7,9 +7,8 @@ import { resetPasswordSchema } from "@schemas/resetPasswordSchema";
 import SubmitButtons from "./SubmitButtons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { NavigationType, NewPasswordRouteParam } from "@type/routeType";
-import PasswordReset from "../1-EmailRequest";
 import authApi from "@services/authApi";
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
 
 const NewPassword: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
@@ -34,7 +33,8 @@ const NewPassword: React.FC = () => {
       const axiosError = error as AxiosError;
 
       if (axiosError.response && axiosError.response.status === 401) {
-        return alert("Tempo expirado, por favor solicite a redefinição de senha novamente");
+        alert("Tempo expirado, por favor solicite a redefinição de senha novamente");
+        return navigation.navigate("EmailRequest");
       }
 
       // Should server go down
