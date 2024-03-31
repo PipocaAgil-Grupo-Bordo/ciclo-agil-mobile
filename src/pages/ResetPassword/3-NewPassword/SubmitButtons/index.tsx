@@ -5,13 +5,14 @@ import { StyledSubmitWrapper } from "./style";
 import React from "react";
 import { NavigationType } from "@type/routeType";
 
-const SubmitButtons: React.FC<SubmitButtonsProps> = ({ SubmitPassword }) => {
+const SubmitButtons: React.FC<SubmitButtonsProps> = ({ SubmitPassword, isLoading }) => {
   const navigation = useNavigation<NavigationType>();
   const buttons: SubmitButtonsArray[] = [
     {
       label: "Redefinir",
       state: "accent",
-      onPress: SubmitPassword
+      onPress: SubmitPassword,
+      loading: isLoading
     },
     {
       label: "Voltar ao login",
@@ -21,7 +22,7 @@ const SubmitButtons: React.FC<SubmitButtonsProps> = ({ SubmitPassword }) => {
   return (
     <StyledSubmitWrapper>
       {buttons.map((button, i) => (
-        <GenericButton key={i} state={button.state} onPress={button.onPress}>
+        <GenericButton key={i} state={button.state} isLoading={button.loading} onPress={button.onPress}>
           {button.label}
         </GenericButton>
       ))}
