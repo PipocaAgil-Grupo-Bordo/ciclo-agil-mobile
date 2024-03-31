@@ -6,7 +6,7 @@ import GenericButton from "@components/GenericButton";
 import { submitRegister } from "@utils/submitHelper";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@type/routeType";
-import { registerObject } from "@type/auth";
+import { RegisterFields } from "@type/auth";
 import { registerSchema } from "@schemas/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { View } from "react-native";
@@ -20,7 +20,7 @@ const SignUpForm: React.FC = () => {
     formState: { errors, isSubmitting },
     reset,
     setError
-  } = useForm<registerObject>({
+  } = useForm<RegisterFields>({
     resolver: yupResolver(registerSchema)
   });
 

@@ -4,7 +4,7 @@ import { StyledPasswordResetContainer, StyledEmailRequestWrapper } from "./style
 import { emailSchema } from "@schemas/emailSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ButtonList from "./ButtonsList";
-import { emailObject } from "@type/auth";
+import { EmailFields } from "@type/auth";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@type/routeType";
 import { handlePasswordRequest } from "@utils/submitHelper";
@@ -17,7 +17,7 @@ const PasswordReset: React.FC = () => {
     control,
     setError,
     formState: { errors, isSubmitting }
-  } = useForm<emailObject>({
+  } = useForm<EmailFields>({
     resolver: yupResolver(emailSchema)
   });
 

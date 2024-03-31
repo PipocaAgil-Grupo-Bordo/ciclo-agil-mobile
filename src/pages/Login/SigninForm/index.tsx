@@ -11,7 +11,7 @@ import {
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "@schemas/loginSchema";
-import { loginObject } from "@type/auth";
+import { LoginFields } from "@type/auth";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import authApi from "@services/authApi";
@@ -30,11 +30,11 @@ const SigninForm: React.FC = () => {
     formState: { errors, isSubmitting },
     reset,
     setError
-  } = useForm<loginObject>({
+  } = useForm<LoginFields>({
     resolver: yupResolver(loginSchema)
   });
 
-  const onSubmit = async (data: loginObject) => {
+  const onSubmit = async (data: LoginFields) => {
     try {
       await authApi.signInUser(data);
 
