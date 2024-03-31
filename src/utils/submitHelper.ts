@@ -1,14 +1,10 @@
 import { UseFormReset, UseFormSetError } from "react-hook-form";
 import { userApi } from "@services/userApi";
-import {
-  emailObject,
-  registerObject,
-  validationCodeResponse
-} from "@type/auth";
+import { emailObject, registerObject, validationCodeResponse } from "@type/auth";
 import dateHelper from "./dateHelpers";
 import { NavigationType } from "@type/routeType";
 import authApi from "@services/authApi";
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 
 export async function submitRegister(
   data: registerObject,
@@ -56,16 +52,27 @@ export async function handleRedefinitionCodeValidation(
   code: string | undefined,
   navigation: NavigationType,
   email: string
-) {
-  const body = { code, email };
-  if (code === undefined || code?.length < 6) {
-    alert("Código incorreto");
-  } else {
-    try {
-      const resp: AxiosResponse<validationCodeResponse> = await authApi.validateCode(body);
-      navigation.navigate("NewPassword", { token: resp.data.token });
-    } catch (error) {
-      console.log(error);
+): Promise<boolean> {
+  if (!code || code.length < 6) {
+    alert("Código incompleto");
+    return false;
+  }
+
+  try {
+    const resp: AxiosResponse<validationCodeResponse> = await authApi.validateCode({ code, email });
+    navigation.navigate("NewPassword", { token: resp.data.token });
+
+    return true;
+  } catch (error) {
+    const axiosError = error as AxiosError;
+
+    if (axiosError.response && axiosError.response.status === 404) {
+      alert("Código invalido ou expirado. Tente novamente ou gere um novo código");
+      return false;
     }
+
+    // Should server go down
+    alert("Algo deu errado, tente novamente!");
+    return false;
   }
 }
