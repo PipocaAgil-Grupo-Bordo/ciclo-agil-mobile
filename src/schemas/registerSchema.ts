@@ -22,12 +22,15 @@ export const registerSchema = yup.object().shape({
     .matches(dateRegex, "Formato de data inválido (dd/mm/aaaa)"),
   email: yup
     .string()
+    .trim()
     .required("O email não pode ser vazio")
     .test("is-email", "Digite um email válido", (value) => isValidEmail(value))
     .transform((value) => (value ? value.toLowerCase() : value)),
   confirmEmail: yup
     .string()
+    .trim()
     .required("O email não pode ser vazio")
+    .test("is-email", "Digite um email válido", (value) => isValidEmail(value))
     .oneOf([yup.ref("email")], "Os campos de email não coincidem")
     .transform((value) => (value ? value.toLowerCase() : value)),
   password: yup
