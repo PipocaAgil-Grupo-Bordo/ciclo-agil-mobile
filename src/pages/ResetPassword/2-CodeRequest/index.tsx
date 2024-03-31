@@ -10,6 +10,7 @@ import { CodeRequestRouteParam, NavigationType } from "@type/routeType";
 import { useRoute } from "@react-navigation/native";
 import { handleRedefinitionCodeValidation } from "@utils/submitHelper";
 import authApi from "@services/authApi";
+import { AxiosError } from "axios";
 
 const CodeRequest: React.FC = () => {
   const [otpValue, setOtpValue] = useState<string>();
@@ -26,7 +27,16 @@ const CodeRequest: React.FC = () => {
     try {
       await authApi.requestPasswordResetCode(resetBody);
     } catch (error) {
-      console.log(error);
+      const axiosError = error as AxiosError;
+
+      // In case user somehow manages to get to this screen without a valid email
+      if (axiosError.response && axiosError.response.status === 404) {
+        alert("Email não encontrado. Tente novamente");
+        return navigation.navigate("EmailRequest");
+      }
+
+      // Should server go down
+      alert("Algo deu errado, tente novamente!");
     }
   };
 

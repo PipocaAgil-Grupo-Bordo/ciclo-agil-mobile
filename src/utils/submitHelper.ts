@@ -41,10 +41,15 @@ export async function handlePasswordRequest(
   try {
     await authApi.requestPasswordResetCode(data);
     navigation.navigate("CodeRequest", { email: data.email });
-  } catch (error: any) {
-    if (error.response.status === 404) {
-      setError("email", { message: "Email incorreto" });
+  } catch (error) {
+    const axiosError = error as AxiosError;
+
+    if (axiosError.response && axiosError.response.status === 404) {
+      return setError("email", { message: "Email não encontrado" });
     }
+
+    // Should server go down
+    alert("Algo deu errado, tente novamente!");
   }
 }
 
