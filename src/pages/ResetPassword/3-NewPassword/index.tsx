@@ -9,6 +9,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { NavigationType, NewPasswordRouteParam } from "@type/routeType";
 import PasswordReset from "../1-EmailRequest";
 import authApi from "@services/authApi";
+import axios, { AxiosError } from "axios";
 
 const NewPassword: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
@@ -25,17 +26,19 @@ const NewPassword: React.FC = () => {
 
   const onSubmit = async (body: passwordObject) => {
     try {
-      if (!token) {
-        alert("Código expirado ou houve algum erro. Tente novamente!");
-        return;
-      }
-
       await authApi.resetPassword(body, token);
 
       alert("Senha redefinida com sucesso!");
       navigation.navigate("Login");
     } catch (error) {
-      console.log("Error:", error);
+      const axiosError = error as AxiosError;
+
+      if (axiosError.response && axiosError.response.status === 401) {
+        return alert("Código expirado, por favor solicite a redefinição de senha novamente");
+      }
+
+      // Should server go down
+      alert("Algo deu errado, tente novamente!");
     }
   };
 
