@@ -8,7 +8,7 @@ import {
 import dateHelper from "./dateHelpers";
 import { NavigationType } from "@type/routeType";
 import authApi from "@services/authApi";
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 
 export async function submitRegister(
   data: RegisterFields,
@@ -45,10 +45,15 @@ export async function handlePasswordRequest(
   try {
     await authApi.requestPasswordResetCode(data);
     navigation.navigate("CodeRequest", { email: data.email });
-  } catch (error: any) {
-    if (error.response.status === 404) {
-      setError("email", { message: "Email incorreto" });
+  } catch (error) {
+    const axiosError = error as AxiosError;
+
+    if (axiosError.response && axiosError.response.status === 404) {
+      return setError("email", { message: "Email não encontrado" });
     }
+
+    // Should server go down
+    alert("Algo deu errado, tente novamente!");
   }
 }
 
@@ -56,16 +61,27 @@ export async function handleRedefinitionCodeValidation(
   code: string | undefined,
   navigation: NavigationType,
   email: string
-) {
-  const body = { code, email };
-  if (code === undefined || code?.length < 6) {
-    alert("Código incorreto");
-  } else {
-    try {
-      const resp: AxiosResponse<ValidationCodeResponse> = await authApi.validateCode(body);
-      navigation.navigate("NewPassword", { token: resp.data.token });
-    } catch (error) {
-      console.log(error);
+): Promise<boolean> {
+  if (!code || code.length < 6) {
+    alert("Código incompleto");
+    return false;
+  }
+
+  try {
+    const resp: AxiosResponse<ValidationCodeResponse> = await authApi.validateCode({ code, email });
+    navigation.navigate("NewPassword", { token: resp.data.token });
+
+    return true;
+  } catch (error) {
+    const axiosError = error as AxiosError;
+
+    if (axiosError.response && axiosError.response.status === 404) {
+      alert("Código invalido ou expirado. Tente novamente ou gere um novo código");
+      return false;
     }
+
+    // Should server go down
+    alert("Algo deu errado, tente novamente!");
+    return false;
   }
 }
