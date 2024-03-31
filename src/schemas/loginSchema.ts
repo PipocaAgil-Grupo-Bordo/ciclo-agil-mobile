@@ -4,6 +4,7 @@ import { isValidEmail } from "./emailSchema";
 export const loginSchema = yup.object().shape({
   email: yup
     .string()
+    .trim()
     .required("O email não pode ser vazio")
     .test("is-email", "Digite um email válido", (value) => isValidEmail(value))
     .transform((value) => (value ? value.toLowerCase() : value)),
