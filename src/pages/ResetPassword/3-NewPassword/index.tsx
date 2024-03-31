@@ -34,7 +34,7 @@ const NewPassword: React.FC = () => {
       const axiosError = error as AxiosError;
 
       if (axiosError.response && axiosError.response.status === 401) {
-        return alert("Código expirado, por favor solicite a redefinição de senha novamente");
+        return alert("Tempo expirado, por favor solicite a redefinição de senha novamente");
       }
 
       // Should server go down
