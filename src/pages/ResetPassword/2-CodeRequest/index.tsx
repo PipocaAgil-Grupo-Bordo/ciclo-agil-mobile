@@ -8,6 +8,8 @@ import Buttons from "./Buttons";
 import { View } from "react-native";
 import { CodeRequestRouteParam, NavigationType } from "@type/routeType";
 import { useRoute } from "@react-navigation/native";
+import { handleRedefinitionCodeValidation } from "@utils/submitHelper";
+import authApi from "@services/authApi";
 
 const CodeRequest: React.FC = () => {
   const [otpValue, setOtpValue] = useState<string>();
@@ -15,25 +17,17 @@ const CodeRequest: React.FC = () => {
   const route = useRoute();
   const email = (route.params as CodeRequestRouteParam)?.email;
 
-  console.log("Email:", email);
-
-  const { handleSubmit } = useForm();
-
-  const handleOnFilled = () => {
-    try {
-      console.log(otpValue);
-      navigation.navigate("NewPassword");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const handleTextInput = (value: string) => {
     setOtpValue(value);
   };
 
-  const handleResendCode = () => {
-    console.log("Resend code button");
+  const handleResendCode = async () => {
+    const resetBody = { email };
+    try {
+      await authApi.resetPassword(resetBody);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -41,15 +35,10 @@ const CodeRequest: React.FC = () => {
       <StyledCodeRequestWrapper>
         <View>
           <Header />
-          <OTPInput
-            onTextChange={handleTextInput}
-            // @ts-expect-error
-            onFilled={handleSubmit(handleOnFilled)}
-            resendCode={handleResendCode}
-          />
+          <OTPInput onTextChange={handleTextInput} resendCode={handleResendCode} />
         </View>
 
-        <Buttons onPress={handleSubmit(handleOnFilled)} />
+        <Buttons onPress={() => handleRedefinitionCodeValidation(otpValue, navigation, email)} />
       </StyledCodeRequestWrapper>
     </StyledCodeRequestContainer>
   );

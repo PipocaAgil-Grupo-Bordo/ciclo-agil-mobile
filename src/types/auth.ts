@@ -17,3 +17,19 @@ export interface resetPasswordObject {
   password: string;
   confirmPassword: string;
 }
+
+export interface validationCodeObject {
+  code: string | undefined;
+  email: string;
+}
+
+export interface validationCodeResponse {
+  verificationCode: {
+    valid: boolean;
+    id: number;
+    code: string;
+    email: string;
+    expiresAt: string;
+  };
+  token: string;
+}
