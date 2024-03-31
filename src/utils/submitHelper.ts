@@ -43,7 +43,7 @@ export async function handlePasswordRequest(
   setError: UseFormSetError<emailObject>
 ) {
   try {
-    await authApi.resetPassword(data);
+    await authApi.requestPasswordResetCode(data);
     navigation.navigate("CodeRequest", { email: data.email });
   } catch (error: any) {
     if (error.response.status === 404) {

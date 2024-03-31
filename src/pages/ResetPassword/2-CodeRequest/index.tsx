@@ -24,7 +24,7 @@ const CodeRequest: React.FC = () => {
   const handleResendCode = async () => {
     const resetBody = { email };
     try {
-      await authApi.resetPassword(resetBody);
+      await authApi.requestPasswordResetCode(resetBody);
     } catch (error) {
       console.log(error);
     }

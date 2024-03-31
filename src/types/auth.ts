@@ -2,6 +2,10 @@ export interface emailObject {
   email: string;
 }
 
+export interface passwordObject {
+  password: string;
+}
+
 export interface loginObject extends emailObject {
   password: string;
 }
