@@ -8,7 +8,7 @@ const nameRegex = /^(?=(?:.*[a-zA-Z]){2})[a-zA-Z\s]+$/;
 const dateRegex = /^(0[1-9]|[1-2][0-9]|3[0-1])(0[1-9]|1[0-2])(19\d{2}|20(?:[0-1][0-9]|20|24))$/;
 
 // Password format (at least one uppercase letter, one lowercase, one number, and one symbol)
-const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/;
+const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
 
 export const registerSchema = yup.object().shape({
   name: yup
