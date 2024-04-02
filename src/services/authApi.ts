@@ -1,28 +1,22 @@
-import {
-  emailObject,
-  loginObject,
-  passwordObject,
-  resetPasswordObject,
-  validationCodeObject
-} from "@type/auth";
+import { LoginFields, EmailFields, PasswordFields, ValidationCodeFields } from "@type/auth";
 import api from "./api";
 
-function signInUser(body: loginObject) {
+function signInUser(body: LoginFields) {
   const promise = api.post("auth/login", body);
   return promise;
 }
 
-function requestPasswordResetCode(body: emailObject) {
+function requestPasswordResetCode(body: EmailFields) {
   const promise = api.post("auth/reset-password/request", body);
   return promise;
 }
 
-function validateCode(body: validationCodeObject) {
+function validateCode(body: ValidationCodeFields) {
   const promise = api.post("auth/reset-password/validate", body);
   return promise;
 }
 
-function resetPassword(body: passwordObject, token: string) {
+function resetPassword(body: PasswordFields, token: string) {
   const promise = api.patch("auth/reset-password", body, {
     headers: {
       Authorization: `Bearer ${token}`

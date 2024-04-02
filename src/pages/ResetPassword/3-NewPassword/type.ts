@@ -1,5 +1,5 @@
 import { Control, FieldErrors } from "react-hook-form";
-import { resetPasswordObject } from "@type/auth";
+import { PasswordResetFields } from "@type/auth";
 import { StatesType } from "@components/GenericButton/type";
 
 export interface SubmitButtonsProps {
@@ -8,7 +8,7 @@ export interface SubmitButtonsProps {
 }
 
 export interface InputsProps {
-  control: Control<resetPasswordObject>;
+  control: Control<PasswordResetFields>;
   errors: FieldErrors;
   errorInstruction: boolean;
 }
