@@ -9,6 +9,7 @@ import MaskInput, { Masks } from "react-native-mask-input";
  */
 const GenericInput: React.FC<GenericInputProps> = ({ label, control, name, errors, ...props }) => {
   const { field } = useController({ control, defaultValue: "", name });
+  const inputErrors = errors && errors[name] && errors[name]?.message;
 
   return (
     <StyledContainer>
@@ -25,15 +26,15 @@ const GenericInput: React.FC<GenericInputProps> = ({ label, control, name, error
         style={{
           backgroundColor: "#e7ecf4",
           borderRadius: 5,
-          padding: 16
+          padding: 16,
+          borderWidth: inputErrors ? 1 : 0,
+          borderColor: inputErrors && "#FF0000"
         }}
         secureTextEntry={(name === "password" && true) || (name === "confirmPassword" && true)}
         {...props}
       />
 
-      <StyledInputError>
-        {(errors && errors[name] && errors[name]?.message) as string}
-      </StyledInputError>
+      <StyledInputError>{inputErrors as string}</StyledInputError>
     </StyledContainer>
   );
 };
