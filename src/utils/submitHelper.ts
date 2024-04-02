@@ -1,16 +1,20 @@
 import { UseFormReset, UseFormSetError } from "react-hook-form";
 import { userApi } from "@services/userApi";
-import { emailObject, registerObject, validationCodeResponse } from "@type/auth";
-import dateHelper from "./dateHelpers";
+import {
+  EmailFields,
+  RegisterFields,
+  ValidationCodeResponse
+} from "@type/auth";
 import { NavigationType } from "@type/routeType";
 import authApi from "@services/authApi";
 import { AxiosError, AxiosResponse } from "axios";
+import { dateHelper } from "./dateHelpers";
 
 export async function submitRegister(
-  data: registerObject,
-  reset: UseFormReset<registerObject>,
+  data: RegisterFields,
+  reset: UseFormReset<RegisterFields>,
   navigation: NavigationType,
-  setError: UseFormSetError<registerObject>
+  setError: UseFormSetError<RegisterFields>
 ) {
   const birthdateISOFormat = dateHelper.formatBirthdateToISODate(data.birthdate);
   const registerFinalFormat = {
@@ -34,9 +38,9 @@ export async function submitRegister(
 }
 
 export async function handlePasswordRequest(
-  data: emailObject,
+  data: EmailFields,
   navigation: NavigationType,
-  setError: UseFormSetError<emailObject>
+  setError: UseFormSetError<EmailFields>
 ) {
   try {
     await authApi.requestPasswordResetCode(data);
@@ -64,7 +68,7 @@ export async function handleRedefinitionCodeValidation(
   }
 
   try {
-    const resp: AxiosResponse<validationCodeResponse> = await authApi.validateCode({ code, email });
+    const resp: AxiosResponse<ValidationCodeResponse> = await authApi.validateCode({ code, email });
     navigation.navigate("NewPassword", { token: resp.data.token });
 
     return true;

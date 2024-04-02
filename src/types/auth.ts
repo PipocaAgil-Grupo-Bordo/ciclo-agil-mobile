@@ -1,33 +1,21 @@
-export interface emailObject {
-  email: string;
-}
-
-export interface passwordObject {
-  password: string;
-}
-
-export interface loginObject extends emailObject {
-  password: string;
-}
-
-export interface registerObject extends loginObject {
+interface AuthObject {
   name: string;
   birthdate: string;
+  email: string;
   confirmEmail: string;
-  confirmPassword: string;
-}
-
-export interface resetPasswordObject {
   password: string;
   confirmPassword: string;
-}
-
-export interface validationCodeObject {
   code: string | undefined;
-  email: string;
 }
 
-export interface validationCodeResponse {
+export type EmailFields = Pick<AuthObject, "email">;
+export type PasswordFields = Pick<AuthObject, "password">;
+export type LoginFields = Pick<AuthObject, "email" | "password">;
+export type RegisterFields = Omit<AuthObject, "code">;
+export type ValidationCodeFields = Pick<AuthObject, "email" | "code">;
+export type PasswordResetFields = Pick<AuthObject, "password" | "confirmPassword">;
+
+export interface ValidationCodeResponse {
   verificationCode: {
     valid: boolean;
     id: number;

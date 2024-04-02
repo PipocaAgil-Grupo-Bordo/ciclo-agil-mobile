@@ -1,9 +1,9 @@
 import { Control, FieldErrors } from "react-hook-form";
-import { emailObject } from "@type/auth";
+import { EmailFields } from "@type/auth";
 
 export interface EmailRequestSectionProps {
-  control: Control<emailObject>;
-  errors: FieldErrors<emailObject>;
+  control: Control<EmailFields>;
+  errors: FieldErrors<EmailFields>;
 }
 
 export interface ButtonListProps {
