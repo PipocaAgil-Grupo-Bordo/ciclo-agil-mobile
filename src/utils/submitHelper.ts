@@ -5,10 +5,10 @@ import {
   RegisterFields,
   ValidationCodeResponse
 } from "@type/auth";
-import dateHelper from "./dateHelpers";
 import { NavigationType } from "@type/routeType";
 import authApi from "@services/authApi";
 import { AxiosError, AxiosResponse } from "axios";
+import { dateHelper } from "./dateHelpers";
 
 export async function submitRegister(
   data: RegisterFields,
