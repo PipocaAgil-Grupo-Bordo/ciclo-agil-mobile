@@ -15,21 +15,13 @@ const GenericInput: React.FC<GenericInputProps> = ({ label, control, name, error
     <StyledContainer>
       {label && <StyledLabel>{label}</StyledLabel>}
 
-      <MaskInput
+      <StyledInput
         textAlign="center"
         value={field.value}
         onChangeText={field.onChange}
-        // @ts-expect-error
         name={name}
         errors={errors}
         mask={name === "birthdate" ? Masks.DATE_DDMMYYYY : undefined}
-        style={{
-          backgroundColor: "#e7ecf4",
-          borderRadius: 5,
-          padding: 16,
-          borderWidth: inputErrors ? 1 : 0,
-          borderColor: inputErrors && "#FF0000"
-        }}
         secureTextEntry={(name === "password" && true) || (name === "confirmPassword" && true)}
         {...props}
       />
