@@ -5,7 +5,7 @@ import { isValidEmail } from "./emailSchema";
 const nameRegex = /^(?=(?:.*[a-zA-ZçÇáÁàÀéÉèÈíÍúÚôÔâÂãÃõÕ]){2})[a-zA-ZçÇáÁàÀéÉíÍúÚôÔâÂãÃõÕ\s]+$/;
 
 // Accept only numbers, not letters nor symbols
-const dateRegex = /^(0[1-9]|[1-2][0-9]|3[0-1])(0[1-9]|1[0-2])(19\d{2}|20(?:[0-1][0-9]|20|24))$/;
+const dateRegex = /^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/(19\d{2}|20(?:[0-1][0-9]|20|24))$/;
 
 // Password format (at least one uppercase letter, one lowercase, one number, and one symbol)
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/;
