@@ -1,7 +1,7 @@
-import { StyledBackArrow } from "./style";
+import { Sc } from "./style";
 
 const BackArrow = () => {
-  return <StyledBackArrow source={require("@images/back-arrow.png")} />;
+  return <Sc.Icon source={require("@images/back-arrow.png")} />;
 };
 
 export default BackArrow;
