@@ -1,14 +1,6 @@
 import React from "react";
 import { Alert } from "react-native";
-import {
-  StyledForgottenPassword,
-  StyledFormContainer,
-  StyledLoginWrapper,
-  StyledRegisterWrapper,
-  StyledRegisterLink,
-  StyledTitle,
-  Sc
-} from "./style";
+import { Sc } from "./style";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "@schemas/loginSchema";
