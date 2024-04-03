@@ -1,18 +1,14 @@
 import { ButtonChildrenProps } from "../type";
-import { StyledButtonIcon, StyledButtonText } from "./style";
+import { Sc } from "./style";
 
 const ButtonChildren: React.FC<ButtonChildrenProps> = ({ icon, state, children }) => {
   return (
     <>
       {icon && (
-        <StyledButtonIcon
-          importantForAccessibility="no"
-          accessibilityElementsHidden={true}
-          source={icon}
-        />
+        <Sc.Icon importantForAccessibility="no" accessibilityElementsHidden={true} source={icon} />
       )}
 
-      <StyledButtonText state={state}>{children}</StyledButtonText>
+      <Sc.ButtonText state={state}>{children}</Sc.ButtonText>
     </>
   );
 };
