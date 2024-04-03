@@ -6,7 +6,8 @@ import {
   StyledLoginWrapper,
   StyledRegisterWrapper,
   StyledRegisterLink,
-  StyledTitle
+  StyledTitle,
+  Sc
 } from "./style";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -62,29 +63,29 @@ const SigninForm: React.FC = () => {
   };
 
   return (
-    <StyledFormContainer>
-      <StyledTitle>Vamos começar?</StyledTitle>
+    <Sc.Container>
+      <Sc.Title>Vamos começar?</Sc.Title>
 
       <Inputs control={control} errors={errors} />
 
       <TouchableOpacity onPress={() => navigation.navigate("EmailRequest")}>
-        <StyledForgottenPassword>Esqueci a senha</StyledForgottenPassword>
+        <Sc.ForgottenPassword>Esqueci a senha</Sc.ForgottenPassword>
       </TouchableOpacity>
 
-      <StyledLoginWrapper>
+      <Sc.LoginWrapper>
         <GenericButton isLoading={isSubmitting} state="accent" onPress={handleSubmit(onSubmit)}>
           Login
         </GenericButton>
-      </StyledLoginWrapper>
+      </Sc.LoginWrapper>
 
-      <StyledRegisterWrapper>
+      <Sc.RegisterWrapper>
         <TextBox>Não tem conta?</TextBox>
 
         <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-          <StyledRegisterLink> Registre-se</StyledRegisterLink>
+          <Sc.RegisterLink> Registre-se</Sc.RegisterLink>
         </TouchableOpacity>
-      </StyledRegisterWrapper>
-    </StyledFormContainer>
+      </Sc.RegisterWrapper>
+    </Sc.Container>
   );
 };
 

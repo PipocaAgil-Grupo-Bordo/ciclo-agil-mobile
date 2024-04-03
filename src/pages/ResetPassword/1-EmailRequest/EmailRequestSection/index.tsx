@@ -1,19 +1,19 @@
 import GenericInput from "@components/GenericInput";
-import { StyledLockeIcon, StyledResetInfo, StyledTitle, StyledTopSectionContainer } from "./style";
 import React from "react";
 import { EmailRequestSectionProps } from "../type";
+import { Sc } from "./style";
 
 const EmailRequestSection: React.FC<EmailRequestSectionProps> = ({ control, errors }) => {
   return (
-    <StyledTopSectionContainer>
-      <StyledLockeIcon source={require("@images/padlock.png")} alt="A locked black padlock" />
+    <Sc.Container>
+      <Sc.Icon source={require("@images/padlock.png")} alt="A locked black padlock" />
 
-      <StyledTitle>Esqueci minha senha</StyledTitle>
+      <Sc.Title>Esqueci minha senha</Sc.Title>
 
-      <StyledResetInfo>
+      <Sc.Text>
         Para redefinir sua senha, informe o e-mail cadastrado e enviaremos um código para
         recuperação da sua senha.
-      </StyledResetInfo>
+      </Sc.Text>
 
       <GenericInput
         label="Email:"
@@ -23,7 +23,7 @@ const EmailRequestSection: React.FC<EmailRequestSectionProps> = ({ control, erro
         keyboardType="email-address"
         autoComplete="email"
       />
-    </StyledTopSectionContainer>
+    </Sc.Container>
   );
 };
 

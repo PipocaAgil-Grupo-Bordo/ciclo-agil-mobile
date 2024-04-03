@@ -1,5 +1,7 @@
 import styled from "styled-components/native";
 
-export const StyledBottomSection = styled.View`
-  gap: 12px;
-`;
+export const Sc = {
+  Container: styled.View`
+    gap: 12px;
+  `
+};

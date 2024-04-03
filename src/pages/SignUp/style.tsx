@@ -1,5 +1,7 @@
 import styled from "styled-components/native";
 
-export const StyledSignUpContainer = styled.ScrollView`
-  padding: 24px;
-`;
+export const Sc = {
+  Container: styled.ScrollView`
+    padding: 24px;
+  `
+};

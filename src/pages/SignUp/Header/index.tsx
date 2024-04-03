@@ -1,16 +1,12 @@
 import React from "react";
-import { StyledInstructionText, StyledTopicName } from "./style";
-
-import { StyledContainer } from "./style";
+import { Sc } from "./style";
 
 const Header: React.FC = () => {
   return (
-    <StyledContainer>
-      <StyledTopicName>Registre-se</StyledTopicName>
-      <StyledInstructionText>
-        Para continuar digite seu nome, data de nascimento, email e senha.
-      </StyledInstructionText>
-    </StyledContainer>
+    <Sc.Container>
+      <Sc.Title>Registre-se</Sc.Title>
+      <Sc.SubTitle>Para continuar digite seu nome, data de nascimento, email e senha.</Sc.SubTitle>
+    </Sc.Container>
   );
 };
 
