@@ -1,8 +1,8 @@
 import React from "react";
-import { StyledContainer, StyledInput, StyledInputError, StyledLabel } from "./style";
 import { GenericInputProps } from "./type";
 import { useController } from "react-hook-form";
-import MaskInput, { Masks } from "react-native-mask-input";
+import { Masks } from "react-native-mask-input";
+import { Sc } from "./style";
 
 /**
  * Generic text input with label and error message to ensure style consistency across components
@@ -12,30 +12,22 @@ const GenericInput: React.FC<GenericInputProps> = ({ label, control, name, error
   const inputErrors = errors && errors[name] && errors[name]?.message;
 
   return (
-    <StyledContainer>
-      {label && <StyledLabel>{label}</StyledLabel>}
+    <Sc.Container>
+      {label && <Sc.Label>{label}</Sc.Label>}
 
-      <MaskInput
+      <Sc.Input
         textAlign="center"
         value={field.value}
         onChangeText={field.onChange}
-        // @ts-expect-error
         name={name}
         errors={errors}
         mask={name === "birthdate" ? Masks.DATE_DDMMYYYY : undefined}
-        style={{
-          backgroundColor: "#e7ecf4",
-          borderRadius: 5,
-          padding: 16,
-          borderWidth: inputErrors ? 1 : 0,
-          borderColor: inputErrors && "#FF0000"
-        }}
         secureTextEntry={(name === "password" && true) || (name === "confirmPassword" && true)}
         {...props}
       />
 
-      <StyledInputError>{inputErrors as string}</StyledInputError>
-    </StyledContainer>
+      <Sc.Error>{inputErrors as string}</Sc.Error>
+    </Sc.Container>
   );
 };
 

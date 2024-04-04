@@ -1,11 +1,11 @@
 import React from "react";
-import { StyledLogoContainer, StyledLogo } from "./style";
+import { Sc } from "./style";
 
 const Logo: React.FC = () => {
   return (
-    <StyledLogoContainer>
-      <StyledLogo source={require("@images/logo.png")} resizeMode="cover"></StyledLogo>
-    </StyledLogoContainer>
+    <Sc.Container>
+      <Sc.Icon source={require("@images/logo.png")} resizeMode="cover"></Sc.Icon>
+    </Sc.Container>
   );
 };
 

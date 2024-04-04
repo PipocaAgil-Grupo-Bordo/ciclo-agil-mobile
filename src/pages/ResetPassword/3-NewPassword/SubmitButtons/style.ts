@@ -1,5 +1,7 @@
 import styled from "styled-components/native";
 
-export const StyledSubmitWrapper = styled.View`
-  gap: 16px;
-`;
+export const Sc = {
+  Container: styled.View`
+    gap: 16px;
+  `
+};

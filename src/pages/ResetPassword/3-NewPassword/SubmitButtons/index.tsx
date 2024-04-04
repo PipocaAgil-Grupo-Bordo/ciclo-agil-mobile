@@ -1,9 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
 import GenericButton from "../../../../components/GenericButton";
 import { SubmitButtonsArray, SubmitButtonsProps } from "../type";
-import { StyledSubmitWrapper } from "./style";
 import React from "react";
 import { NavigationType } from "@type/routeType";
+import { Sc } from "./style";
 
 const SubmitButtons: React.FC<SubmitButtonsProps> = ({ SubmitPassword, isLoading }) => {
   const navigation = useNavigation<NavigationType>();
@@ -20,13 +20,18 @@ const SubmitButtons: React.FC<SubmitButtonsProps> = ({ SubmitPassword, isLoading
     }
   ];
   return (
-    <StyledSubmitWrapper>
+    <Sc.Container>
       {buttons.map((button, i) => (
-        <GenericButton key={i} state={button.state} isLoading={button.loading} onPress={button.onPress}>
+        <GenericButton
+          key={i}
+          state={button.state}
+          isLoading={button.loading}
+          onPress={button.onPress}
+        >
           {button.label}
         </GenericButton>
       ))}
-    </StyledSubmitWrapper>
+    </Sc.Container>
   );
 };
 
