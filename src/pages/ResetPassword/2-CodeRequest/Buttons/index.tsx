@@ -2,8 +2,8 @@ import { NavigationType } from "@type/routeType";
 import GenericButton from "@components/GenericButton";
 import TextBox from "@components/TextBox";
 import { ButtonsInfo, ButtonsProps } from "../type";
-import { StyledButtonsContainer, StyledInstructionText } from "./style";
 import { useNavigation } from "@react-navigation/core";
+import { Sc } from "./style";
 
 const Buttons: React.FC<ButtonsProps> = ({ onPress }) => {
   const navigation = useNavigation<NavigationType>();
@@ -22,18 +22,18 @@ const Buttons: React.FC<ButtonsProps> = ({ onPress }) => {
   ];
 
   return (
-    <StyledButtonsContainer>
-      <StyledInstructionText>
+    <Sc.Container>
+      <Sc.Text>
         <TextBox>
           Caso não encontre o email na sua caixa de entrada, verifique a pasta de spam.
         </TextBox>
-      </StyledInstructionText>
+      </Sc.Text>
       {buttons.map((button, i) => (
         <GenericButton key={i} state={button.state} onPress={button.onPress}>
           {button.label}
         </GenericButton>
       ))}
-    </StyledButtonsContainer>
+    </Sc.Container>
   );
 };
 

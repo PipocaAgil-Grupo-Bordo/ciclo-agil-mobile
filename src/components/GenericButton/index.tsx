@@ -1,7 +1,7 @@
 import { ActivityIndicator } from "react-native";
 import ButtonChildren from "./ButtonChildren";
-import { StyledButton } from "./style";
 import { GenericButtonProps, StatesType } from "./type";
+import { Sc } from "./style";
 
 /**
  * Generic button to ensure style consistency across components
@@ -33,16 +33,11 @@ const GenericButton: React.FC<GenericButtonProps> = ({
   };
 
   return (
-    <StyledButton
-      state={state}
-      activeOpacity={1}
-      underlayColor={HandleUnderlayColor(state)}
-      {...rest}
-    >
+    <Sc.Button state={state} activeOpacity={1} underlayColor={HandleUnderlayColor(state)} {...rest}>
       <ButtonChildren icon={icon} state={state}>
         {isLoading ? <ActivityIndicator color={"#fff"} /> : children}
       </ButtonChildren>
-    </StyledButton>
+    </Sc.Button>
   );
 };
 

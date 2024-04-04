@@ -1,7 +1,7 @@
 import { OtpInput } from "react-native-otp-entry";
 import TextBox from "@components/TextBox";
-import { StyledResendCodeButton, StyledResendCodeText } from "./style";
 import { OTPInputProps } from "../type";
+import { Sc } from "./style";
 
 const OTPIput: React.FC<OTPInputProps> = ({ onTextChange, onFilled, resendCode }) => {
   return (
@@ -28,11 +28,11 @@ const OTPIput: React.FC<OTPInputProps> = ({ onTextChange, onFilled, resendCode }
         }}
       />
 
-      <StyledResendCodeButton onPress={resendCode}>
-        <StyledResendCodeText>
+      <Sc.Button onPress={resendCode}>
+        <Sc.Text>
           <TextBox>Reenviar código</TextBox>
-        </StyledResendCodeText>
-      </StyledResendCodeButton>
+        </Sc.Text>
+      </Sc.Button>
     </>
   );
 };

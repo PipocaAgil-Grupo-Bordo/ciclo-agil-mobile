@@ -1,25 +1,20 @@
 import TextBox from "@components/TextBox";
-import {
-  StyledCheckMark,
-  StyledConfirmationText,
-  StyledConfirmationWrapper,
-  StyledInstructionText
-} from "./style";
+import { Sc } from "./style";
 
 const Header = () => {
   return (
     <>
-      <StyledCheckMark source={require("@images/checkmark.png")} />
+      <Sc.CheckMark source={require("@images/checkmark.png")} />
 
-      <StyledConfirmationWrapper>
-        <StyledConfirmationText>Enviamos um código para o email cadastrado!</StyledConfirmationText>
-        <StyledConfirmationText>Verifique a sua caixa de entrada.</StyledConfirmationText>
-      </StyledConfirmationWrapper>
+      <Sc.ConfirmationWrapper>
+        <Sc.ConfirmationText>Enviamos um código para o email cadastrado!</Sc.ConfirmationText>
+        <Sc.ConfirmationText>Verifique a sua caixa de entrada.</Sc.ConfirmationText>
+      </Sc.ConfirmationWrapper>
 
       <TextBox>
-        <StyledInstructionText>
+        <Sc.Instructions>
           Insira no campo abaixo o código de verificação que enviamos para o seu email.
-        </StyledInstructionText>
+        </Sc.Instructions>
       </TextBox>
     </>
   );

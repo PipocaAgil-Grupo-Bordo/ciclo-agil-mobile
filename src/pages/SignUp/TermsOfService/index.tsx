@@ -1,5 +1,5 @@
 import TextBox from "@components/TextBox";
-import { StyledContainer, StyledHyperlinkText, StyledText } from "./style";
+import { Sc } from "./style";
 
 const TermsOfService = () => {
   const handleTermsPopUp = () => {
@@ -11,18 +11,15 @@ const TermsOfService = () => {
   };
 
   return (
-    <StyledContainer>
+    <Sc.Container>
       <TextBox>
-        <StyledText>
+        <Sc.Text>
           Ao clicar em cadastrar você estará concordando com os nossos{" "}
-          <StyledHyperlinkText onPress={handleTermsPopUp}>Termos de Uso</StyledHyperlinkText> e{" "}
-          <StyledHyperlinkText onPress={handlePrivacyPopUp}>
-            Política de privacidade
-          </StyledHyperlinkText>
-          .
-        </StyledText>
+          <Sc.Hyperlink onPress={handleTermsPopUp}>Termos de Uso</Sc.Hyperlink> e{" "}
+          <Sc.Hyperlink onPress={handlePrivacyPopUp}>Política de privacidade</Sc.Hyperlink>.
+        </Sc.Text>
       </TextBox>
-    </StyledContainer>
+    </Sc.Container>
   );
 };
 

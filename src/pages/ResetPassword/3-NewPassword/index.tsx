@@ -1,6 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import Inputs from "./Inputs";
-import { StyledNewPasswordContainer, StyledNewPasswordWrapper } from "./style";
 import { PasswordFields, PasswordResetFields } from "@type/auth";
 import { useForm } from "react-hook-form";
 import { resetPasswordSchema } from "@schemas/resetPasswordSchema";
@@ -9,6 +8,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { NavigationType, NewPasswordRouteParam } from "@type/routeType";
 import authApi from "@services/authApi";
 import { AxiosError } from "axios";
+import { Sc } from "./style";
 
 const NewPassword: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
@@ -43,8 +43,8 @@ const NewPassword: React.FC = () => {
   };
 
   return (
-    <StyledNewPasswordContainer nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
-      <StyledNewPasswordWrapper>
+    <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
+      <Sc.Wrapper>
         <Inputs
           control={control}
           errors={errors}
@@ -52,8 +52,8 @@ const NewPassword: React.FC = () => {
         />
 
         <SubmitButtons isLoading={isSubmitting} SubmitPassword={handleSubmit(onSubmit)} />
-      </StyledNewPasswordWrapper>
-    </StyledNewPasswordContainer>
+      </Sc.Wrapper>
+    </Sc.Container>
   );
 };
 

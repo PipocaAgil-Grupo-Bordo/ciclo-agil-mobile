@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledInstructionText, StyledContainer, StyledInstructionWrapper } from "./style";
+import { Sc } from "./style";
 import { useForm } from "react-hook-form";
 import Inputs from "../Inputs";
 import GenericButton from "@components/GenericButton";
@@ -9,7 +9,6 @@ import { NavigationType } from "@type/routeType";
 import { RegisterFields } from "@type/auth";
 import { registerSchema } from "@schemas/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { View } from "react-native";
 import TermsOfService from "../TermsOfService";
 
 const SignUpForm: React.FC = () => {
@@ -25,23 +24,19 @@ const SignUpForm: React.FC = () => {
   });
 
   return (
-    <StyledContainer>
+    <Sc.Container>
       <Inputs control={control} errors={errors} />
 
       {/* TODO: Move to a different file after sprint 2 is over */}
-      <StyledInstructionWrapper>
-        <StyledInstructionText
-          error={(errors && errors.password)! || (errors && errors.confirmPassword)!}
-        >
+      <Sc.Wrapper>
+        <Sc.Text error={(errors && errors.password)! || (errors && errors.confirmPassword)!}>
           Senha deve conter no mínimo 8 caracteres.
-        </StyledInstructionText>
+        </Sc.Text>
 
-        <StyledInstructionText
-          error={(errors && errors.password)! || (errors && errors.confirmPassword)!}
-        >
+        <Sc.Text error={(errors && errors.password)! || (errors && errors.confirmPassword)!}>
           Pelo menos 1 caractere especial, 1 número, 1 letra minúscula e 1 letra maiúscula.
-        </StyledInstructionText>
-      </StyledInstructionWrapper>
+        </Sc.Text>
+      </Sc.Wrapper>
 
       <GenericButton
         isLoading={isSubmitting}
@@ -51,7 +46,7 @@ const SignUpForm: React.FC = () => {
         Cadastrar
       </GenericButton>
       <TermsOfService />
-    </StyledContainer>
+    </Sc.Container>
   );
 };
 

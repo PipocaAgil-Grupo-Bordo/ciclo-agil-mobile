@@ -2,8 +2,7 @@ import React from "react";
 import GenericInput from "@components/GenericInput";
 import { InputsProps } from "../type";
 import TextBox from "@components/TextBox";
-import { Text, View } from "react-native";
-import { StyledResetInstruction, StyledResetInstructionWrapper } from "./style";
+import { Sc } from "./style";
 
 const Inputs: React.FC<InputsProps> = ({ control, errors, errorInstruction }) => {
   const passwordInputs = [
@@ -18,7 +17,7 @@ const Inputs: React.FC<InputsProps> = ({ control, errors, errorInstruction }) =>
   ];
 
   return (
-    <View>
+    <Sc.Container>
       {passwordInputs.map((input, i) => (
         <GenericInput
           key={i}
@@ -31,26 +30,24 @@ const Inputs: React.FC<InputsProps> = ({ control, errors, errorInstruction }) =>
 
       {/* TODO: Move to a different file after sprint 2 is over */}
       {errorInstruction && (
-        <StyledResetInstructionWrapper>
+        <Sc.Wrapper>
           <TextBox>
-            <StyledResetInstruction>Por favor, tente novamente</StyledResetInstruction>
+            <Sc.Text>Por favor, tente novamente</Sc.Text>
           </TextBox>
 
-          <View>
+          <Sc.InstructionWrapper>
             <TextBox>
-              <StyledResetInstruction>
-                Senha deve conter no mínimo 8 caracteres.
-              </StyledResetInstruction>
+              <Sc.Text>Senha deve conter no mínimo 8 caracteres.</Sc.Text>
             </TextBox>
             <TextBox>
-              <StyledResetInstruction>
+              <Sc.Text>
                 Pelo menos 1 caractere especial, 1 número, 1 letra minúscula e 1 letra maiúscula.
-              </StyledResetInstruction>
+              </Sc.Text>
             </TextBox>
-          </View>
-        </StyledResetInstructionWrapper>
+          </Sc.InstructionWrapper>
+        </Sc.Wrapper>
       )}
-    </View>
+    </Sc.Container>
   );
 };
 

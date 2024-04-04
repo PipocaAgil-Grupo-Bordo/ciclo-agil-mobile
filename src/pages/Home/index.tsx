@@ -1,12 +1,12 @@
 import React from "react";
-import { StyledHomeContainer } from "./style";
+import { Sc } from "./style";
 import TextBox from "@components/TextBox";
 
 const Home: React.FC = () => {
   return (
-    <StyledHomeContainer>
+    <Sc.Container>
       <TextBox>Tela de ínicio</TextBox>
-    </StyledHomeContainer>
+    </Sc.Container>
   );
 };
 

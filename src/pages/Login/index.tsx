@@ -1,16 +1,16 @@
 import React from "react";
 import SigninForm from "./SigninForm";
 import Logo from "@components/Logo";
-import { StyledLoginContainer, StyledLoginWrapper } from "./style";
+import { Sc } from "./style";
 
 const Login: React.FC = () => {
   return (
-    <StyledLoginContainer>
-      <StyledLoginWrapper>
+    <Sc.Container>
+      <Sc.Wrapper>
         <Logo />
         <SigninForm />
-      </StyledLoginWrapper>
-    </StyledLoginContainer>
+      </Sc.Wrapper>
+    </Sc.Container>
   );
 };
 

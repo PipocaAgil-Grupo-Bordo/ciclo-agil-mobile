@@ -1,13 +1,13 @@
 import Header from "./Header";
 import SignUpForm from "./SignUpForm";
-import { StyledSignUpContainer } from "./style";
+import { Sc } from "./style";
 
 const SignUp: React.FC = () => {
   return (
-    <StyledSignUpContainer>
+    <Sc.Container>
       <Header />
       <SignUpForm />
-    </StyledSignUpContainer>
+    </Sc.Container>
   );
 };
 
