@@ -1,29 +1,17 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import SigninForm from './SigninForm';
-import { LoginBox } from './style';
-import Logo from '../../components/Logo';
+import React from "react";
+import SigninForm from "./SigninForm";
+import Logo from "@components/Logo";
+import { Sc } from "./style";
 
 const Login: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <LoginBox>
+    <Sc.Container>
+      <Sc.Wrapper>
         <Logo />
         <SigninForm />
-      </LoginBox>
-    </View>
+      </Sc.Wrapper>
+    </Sc.Container>
   );
 };
 
 export default Login;
-
-// Just a placeholder so I could remove it from the App.tsx
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FAFCFF',
-    justifyContent: 'center',
-    padding: 30,
-  },
-});

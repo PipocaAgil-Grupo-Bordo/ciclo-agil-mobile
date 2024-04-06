@@ -1,12 +1,14 @@
-import { Text } from "react-native";
-import { Container } from "./style";
+import Header from "./Header";
+import SignUpForm from "./SignUpForm";
+import { Sc } from "./style";
 
 const SignUp: React.FC = () => {
   return (
-    <Container>
-      <Text>Tela de cadastro</Text>
-    </Container>
+    <Sc.Container>
+      <Header />
+      <SignUpForm />
+    </Sc.Container>
   );
 };
 
-export default SignUp
+export default SignUp;

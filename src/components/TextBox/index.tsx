@@ -1,9 +1,5 @@
-import { ReactNode } from 'react';
-import { TextMontserrat } from './style';
-
-interface TextBoxProps {
-  children: ReactNode;
-}
+import { StyledText } from "./style";
+import { TextBoxProps } from "./type";
 
 /**
  * This ensures font family can be consistent across all components
@@ -15,7 +11,7 @@ interface TextBoxProps {
  * export const CustomText = styled(TextMontserrat)` -- rest of the code `
  */
 const TextBox: React.FC<TextBoxProps> = ({ children }) => {
-  return <TextMontserrat>{children}</TextMontserrat>; 
+  return <StyledText>{children}</StyledText>;
 };
 
 export default TextBox;
