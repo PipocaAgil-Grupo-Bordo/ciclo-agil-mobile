@@ -1,13 +1,13 @@
 import TextBox from "@components/TextBox";
 import { Sc } from "./style";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationType } from "@type/routeType";
 
 const TermsOfService = () => {
-  const handleTermsPopUp = () => {
-    alert("Tela dos termos de uso");
-  };
+  const navigation = useNavigation<NavigationType>();
 
-  const handlePrivacyPopUp = () => {
-    alert("Tela da política de privacidade");
+  const handleTermsPopUp = () => {
+    navigation.navigate("Policy");
   };
 
   return (
@@ -15,8 +15,10 @@ const TermsOfService = () => {
       <TextBox>
         <Sc.Text>
           Ao clicar em cadastrar você estará concordando com os nossos{" "}
-          <Sc.Hyperlink onPress={handleTermsPopUp}>Termos de Uso</Sc.Hyperlink> e{" "}
-          <Sc.Hyperlink onPress={handlePrivacyPopUp}>Política de privacidade</Sc.Hyperlink>.
+          <Sc.Hyperlink onPress={handleTermsPopUp}>
+            Termos de Uso e Política de privacidade
+          </Sc.Hyperlink>
+          .
         </Sc.Text>
       </TextBox>
     </Sc.Container>

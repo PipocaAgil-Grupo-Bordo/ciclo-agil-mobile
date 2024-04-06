@@ -28,7 +28,7 @@ export async function submitRegister(
 
     reset({ email: "", password: "" }, { keepErrors: false });
 
-    return navigation.navigate("Home");
+    return navigation.navigate("Team");
   } catch (error: any) {
     if (error.response.status === 409) {
       setError("confirmEmail", { message: "E-mail já cadastrado." });
