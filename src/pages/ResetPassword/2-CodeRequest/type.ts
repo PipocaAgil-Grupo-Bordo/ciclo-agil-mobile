@@ -14,3 +14,7 @@ export interface ButtonsInfo {
   state: StatesType;
   onPress: () => void;
 }
+
+export interface CodeValidationMessageProps {
+  type: "successful" | "unsuccessful" | string;
+}

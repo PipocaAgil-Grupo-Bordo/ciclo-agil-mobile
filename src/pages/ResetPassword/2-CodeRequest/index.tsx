@@ -13,7 +13,7 @@ import { Sc } from "./style";
 
 const CodeRequest: React.FC = () => {
   const [otpValue, setOtpValue] = useState<string>();
-  const [informationAboutCodeValidation, setInfo] = useState<string>("");
+  const [informationAboutCodeValidation, setInfo] = useState({ message: "", type: "" });
   const navigation = useNavigation<NavigationType>();
   const route = useRoute();
   const email = (route.params as CodeRequestRouteParam)?.email;
@@ -47,6 +47,9 @@ const CodeRequest: React.FC = () => {
         <View>
           <Header />
           <OTPInput onTextChange={handleTextInput} resendCode={handleResendCode} />
+          <Sc.CodeValidationMessage type={informationAboutCodeValidation.type}>
+            {informationAboutCodeValidation.message}
+          </Sc.CodeValidationMessage>
         </View>
 
         <Buttons onPress={() => handleRedefinitionCodeValidation(otpValue, navigation, email)} />
