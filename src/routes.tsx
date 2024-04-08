@@ -8,6 +8,10 @@ import { RootStackParamList } from "@type/routeType";
 import CodeRequest from "./pages/ResetPassword/2-CodeRequest";
 import NewPassword from "./pages/ResetPassword/3-NewPassword";
 import BackArrow from "@components/BackArrow";
+import Policy from "./pages/Policy";
+import Team from "./pages/Team";
+import LastPeriod from "./pages/MenstrualInitialSettings/2-LastPeriod";
+import CycleDuration from "./pages/MenstrualInitialSettings/3-CycleDuration";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -38,6 +42,10 @@ const Router = () => {
           name="NewPassword"
           component={NewPassword}
         />
+        <Stack.Screen name="Policy" component={Policy} />
+        <Stack.Screen name="Team" component={Team} />
+        <Stack.Screen name="LastPeriod" component={LastPeriod} />
+        <Stack.Screen name="CycleDuration" component={CycleDuration} />
       </Stack.Navigator>
     </NavigationContainer>
   );
