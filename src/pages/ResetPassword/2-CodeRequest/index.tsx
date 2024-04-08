@@ -26,7 +26,11 @@ const CodeRequest: React.FC = () => {
     const resetBody = { email };
     try {
       await authApi.requestPasswordResetCode(resetBody);
-      alert("Código reenviado. Verifique a sua caixa de entrada.");
+      setInfo({
+        ...informationAboutCodeValidation,
+        message: "Código reenviado. Verifique a sua caixa de entrada.",
+        type:"successful"
+      });
     } catch (error) {
       const axiosError = error as AxiosError;
 
