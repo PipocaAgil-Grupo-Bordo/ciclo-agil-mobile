@@ -13,6 +13,7 @@ import { Sc } from "./style";
 
 const CodeRequest: React.FC = () => {
   const [otpValue, setOtpValue] = useState<string>();
+  const [informationAboutCodeValidation, setInfo] = useState<string>("");
   const navigation = useNavigation<NavigationType>();
   const route = useRoute();
   const email = (route.params as CodeRequestRouteParam)?.email;
@@ -25,7 +26,7 @@ const CodeRequest: React.FC = () => {
     const resetBody = { email };
     try {
       await authApi.requestPasswordResetCode(resetBody);
-      alert("Código reenviado. Verifique a sua caixa de entrada.")
+      alert("Código reenviado. Verifique a sua caixa de entrada.");
     } catch (error) {
       const axiosError = error as AxiosError;
 
