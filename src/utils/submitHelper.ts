@@ -63,7 +63,7 @@ export async function handleRedefinitionCodeValidation(
   email: string
 ): Promise<boolean> {
   if (!code || code.length < 6) {
-    alert("Código incompleto");
+    alert("Código inválido ou expirado. Tente novamente ou gere um novo código");
     return false;
   }
 
