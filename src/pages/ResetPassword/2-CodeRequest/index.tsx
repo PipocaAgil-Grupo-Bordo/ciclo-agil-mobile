@@ -29,7 +29,7 @@ const CodeRequest: React.FC = () => {
       setInfo({
         ...informationAboutCodeValidation,
         message: "Código reenviado. Verifique a sua caixa de entrada.",
-        type:"successful"
+        type: "successful"
       });
     } catch (error) {
       const axiosError = error as AxiosError;
@@ -56,7 +56,17 @@ const CodeRequest: React.FC = () => {
           </Sc.CodeValidationMessage>
         </View>
 
-        <Buttons onPress={() => handleRedefinitionCodeValidation(otpValue, navigation, email)} />
+        <Buttons
+          onPress={() =>
+            handleRedefinitionCodeValidation(
+              otpValue,
+              navigation,
+              email,
+              setInfo,
+              informationAboutCodeValidation
+            )
+          }
+        />
       </Sc.Wrapper>
     </Sc.Container>
   );
