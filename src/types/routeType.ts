@@ -7,6 +7,10 @@ export type RootStackParamList = {
   EmailRequest: undefined;
   CodeRequest: CodeRequestRouteParam;
   NewPassword: NewPasswordRouteParam;
+  Policy: undefined;
+  Team: undefined;
+  LastPeriod: undefined;
+  CycleDuration: undefined;
 };
 
 export interface CodeRequestRouteParam {
