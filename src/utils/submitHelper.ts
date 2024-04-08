@@ -87,7 +87,11 @@ export async function handleRedefinitionCodeValidation(
     const axiosError = error as AxiosError;
 
     if (axiosError.response && axiosError.response.status === 404) {
-      alert("Código invalido ou expirado. Tente novamente ou gere um novo código");
+      setInfo({
+        ...informationAboutCodeValidation,
+        message: "Código inválido ou expirado. Tente novamente ou gere um novo código",
+        type: "unsuccessful"
+      });
       return false;
     }
 
