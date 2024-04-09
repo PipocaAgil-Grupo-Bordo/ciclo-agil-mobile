@@ -1,3 +1,5 @@
+import { DropdownProps } from "@components/Dropdown/type";
+
 export type MonthsType =
   | "Janeiro"
   | "Fevereiro"
@@ -11,3 +13,5 @@ export type MonthsType =
   | "Outubro"
   | "Novembro"
   | "Dezembro";
+
+export interface DatePickerProps<Options> extends Pick<DropdownProps<Options>, "onChange"> {}

@@ -1,8 +1,8 @@
-import { MonthsType } from "../type";
+import { DatePickerProps, MonthsType } from "../type";
 import { Sc } from "./style";
 import Dropdown from "@components/Dropdown";
 
-const DatePicker: React.FC = () => {
+const DatePicker: React.FC<DatePickerProps<MonthsType>> = ({ onChange }) => {
   const months: MonthsType[] = [
     "Janeiro",
     "Fevereiro",
@@ -20,12 +20,18 @@ const DatePicker: React.FC = () => {
 
   const getCurrentMonth = () => {
     const currentDate = new Date();
-    return currentDate.getMonth();
+    const currentMonth = currentDate.getMonth();
+    return months[currentMonth];
   };
 
   return (
     <Sc.Container>
-      <Dropdown label="Mês:" currentOption={months[getCurrentMonth()]} options={months} />
+      <Dropdown
+        label="Mês:"
+        currentOption={getCurrentMonth()}
+        options={months}
+        onChange={onChange}
+      />
     </Sc.Container>
   );
 };

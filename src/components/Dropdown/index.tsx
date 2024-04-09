@@ -3,13 +3,13 @@ import { Sc } from "./style";
 import { DropdownProps } from "./type";
 import { Animated } from "react-native";
 
-function Dropdown<Options>({ label, currentOption, options }: DropdownProps<Options>) {
+function Dropdown<Options>({ label, currentOption, options, onChange }: DropdownProps<Options>) {
+  const [currentSelectedOtion, setCurrentSelectedOption] = useState(currentOption);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const rotation = useState(new Animated.Value(0))[0];
 
-  const handleDropdownMenu = () => {
-    setIsDropdownOpen((prev) => !prev);
-
+  // Rotate the arrow depending on the dropdown status
+  const handleArrowAnimation = () => {
     Animated.timing(rotation, {
       toValue: isDropdownOpen ? 0 : 1,
       duration: 150,
@@ -17,8 +17,19 @@ function Dropdown<Options>({ label, currentOption, options }: DropdownProps<Opti
     }).start();
   };
 
-  const handleOptions = (option: any) => {
-    console.log(option);
+  // Open and close the dropdown menu
+  const handleDropdownMenu = () => {
+    setIsDropdownOpen((prev) => !prev);
+    handleArrowAnimation();
+  };
+
+  // Swap the current option with the new selected one
+  const handleOptions = (option: Options) => {
+    setCurrentSelectedOption(option as string);
+    onChange(option)
+
+    setIsDropdownOpen(false);
+    handleArrowAnimation();
   };
 
   return (
@@ -27,7 +38,7 @@ function Dropdown<Options>({ label, currentOption, options }: DropdownProps<Opti
 
       <Sc.DropdownWrapper>
         <Sc.DropdownMenu onPress={handleDropdownMenu} isOpen={isDropdownOpen}>
-          <Sc.SelectedOption>{currentOption}</Sc.SelectedOption>
+          <Sc.SelectedOption>{currentSelectedOtion}</Sc.SelectedOption>
 
           <Animated.Image
             source={require("@images/arrow.png")}
@@ -49,13 +60,9 @@ function Dropdown<Options>({ label, currentOption, options }: DropdownProps<Opti
         {isDropdownOpen && (
           <Sc.DropdownOptions>
             {options.map((option, i) => (
-              <Sc.Option
-                key={i}
-                isLast={i === options.length - 1}
-                onPress={() => handleOptions(option)}
-              >
-                {String(option)}
-              </Sc.Option>
+              <Sc.OptionButton key={i} onPress={() => handleOptions(option)}>
+                <Sc.Option isLast={i === options.length - 1}>{String(option)}</Sc.Option>
+              </Sc.OptionButton>
             ))}
           </Sc.DropdownOptions>
         )}

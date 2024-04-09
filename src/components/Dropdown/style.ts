@@ -40,6 +40,8 @@ export const Sc = {
     top: 100%;
   `,
 
+  OptionButton: styled.TouchableOpacity``,
+
   Option: styled.Text<OptionStyle>``
 };
 
