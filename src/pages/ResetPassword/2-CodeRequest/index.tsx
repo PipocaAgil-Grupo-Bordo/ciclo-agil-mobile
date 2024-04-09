@@ -13,6 +13,7 @@ import { Sc } from "./style";
 
 const CodeRequest: React.FC = () => {
   const [otpValue, setOtpValue] = useState<string>();
+  const [codeValidationInfo, setCodeValidationInfo] = useState({ message: "", type: "" });
   const navigation = useNavigation<NavigationType>();
   const route = useRoute();
   const email = (route.params as CodeRequestRouteParam)?.email;
@@ -25,6 +26,10 @@ const CodeRequest: React.FC = () => {
     const resetBody = { email };
     try {
       await authApi.requestPasswordResetCode(resetBody);
+      setCodeValidationInfo({
+        message: "Código reenviado. Verifique a sua caixa de entrada.",
+        type: "successful"
+      });
     } catch (error) {
       const axiosError = error as AxiosError;
 
@@ -45,9 +50,16 @@ const CodeRequest: React.FC = () => {
         <View>
           <Header />
           <OTPInput onTextChange={handleTextInput} resendCode={handleResendCode} />
+          <Sc.CodeValidationMessage type={codeValidationInfo.type as "successful" | "unsuccessful"}>
+            {codeValidationInfo.message}
+          </Sc.CodeValidationMessage>
         </View>
 
-        <Buttons onPress={() => handleRedefinitionCodeValidation(otpValue, navigation, email)} />
+        <Buttons
+          onPress={() =>
+            handleRedefinitionCodeValidation(otpValue, navigation, email, setCodeValidationInfo)
+          }
+        />
       </Sc.Wrapper>
     </Sc.Container>
   );

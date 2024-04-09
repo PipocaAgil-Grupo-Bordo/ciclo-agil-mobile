@@ -1,14 +1,11 @@
 import { UseFormReset, UseFormSetError } from "react-hook-form";
 import { userApi } from "@services/userApi";
-import {
-  EmailFields,
-  RegisterFields,
-  ValidationCodeResponse
-} from "@type/auth";
+import { EmailFields, RegisterFields, ValidationCodeResponse } from "@type/auth";
 import { NavigationType } from "@type/routeType";
 import authApi from "@services/authApi";
 import { AxiosError, AxiosResponse } from "axios";
 import { dateHelper } from "./dateHelpers";
+import React from "react";
 
 export async function submitRegister(
   data: RegisterFields,
@@ -60,10 +57,19 @@ export async function handlePasswordRequest(
 export async function handleRedefinitionCodeValidation(
   code: string | undefined,
   navigation: NavigationType,
-  email: string
+  email: string,
+  setCodeValidationInfo: React.Dispatch<
+    React.SetStateAction<{
+      message: string;
+      type: string;
+    }>
+  >
 ): Promise<boolean> {
   if (!code || code.length < 6) {
-    alert("Código incompleto");
+    setCodeValidationInfo({
+      message: "Código inválido ou expirado. Tente novamente ou gere um novo código",
+      type: "unsuccessful"
+    });
     return false;
   }
 
@@ -76,7 +82,10 @@ export async function handleRedefinitionCodeValidation(
     const axiosError = error as AxiosError;
 
     if (axiosError.response && axiosError.response.status === 404) {
-      alert("Código invalido ou expirado. Tente novamente ou gere um novo código");
+      setCodeValidationInfo({
+        message: "Código inválido ou expirado. Tente novamente ou gere um novo código",
+        type: "unsuccessful"
+      });
       return false;
     }
 
