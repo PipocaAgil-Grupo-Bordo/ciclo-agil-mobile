@@ -8,7 +8,9 @@ export const Sc = {
     gap: 8px;
   `,
 
-  Label: styled.Text``,
+  Label: styled.Text`
+    font-size: 16px;
+  `,
 
   DropdownWrapper: styled.View`
     position: relative;

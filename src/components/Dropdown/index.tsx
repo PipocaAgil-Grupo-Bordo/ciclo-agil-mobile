@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Sc } from "./style";
 import { DropdownProps } from "./type";
 import { Animated } from "react-native";
+import TextBox from "@components/TextBox";
 
 /**
  * Dropdown menu component
@@ -52,7 +53,9 @@ function Dropdown<Options>({ label, currentOption, options, onChange }: Dropdown
 
   return (
     <Sc.Container>
-      <Sc.Label>{label}</Sc.Label>
+      <Sc.Label>
+        <TextBox>{label}</TextBox>
+      </Sc.Label>
 
       <Sc.DropdownWrapper>
         <Sc.DropdownMenu onPress={handleDropdownMenu} isOpen={isDropdownOpen}>

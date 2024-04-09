@@ -4,8 +4,14 @@ export const Sc = {
   Container: styled.View`
     background-color: #fafcff;
     flex: 1;
-    /* justify-content: space-between; */
-    align-items: center;
     padding: 24px;
+  `,
+
+  HeaderWrapper: styled.View`
+    align-items: center;
+  `,
+
+  DatePickerWrapper: styled.View`
+    margin-top: 46px;
   `
 };

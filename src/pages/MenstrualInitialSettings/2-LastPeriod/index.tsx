@@ -24,9 +24,13 @@ const LastPeriod: React.FC = () => {
 
   return (
     <Sc.Container>
-      <Header />
+      <Sc.HeaderWrapper>
+        <Header />
+      </Sc.HeaderWrapper>
 
-      <DatePicker onChange={handleCurrentOptionSelection} />
+      <Sc.DatePickerWrapper>
+        <DatePicker onChange={handleCurrentOptionSelection} />
+      </Sc.DatePickerWrapper>
     </Sc.Container>
   );
 };
