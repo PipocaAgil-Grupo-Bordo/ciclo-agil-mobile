@@ -3,12 +3,20 @@ import { Sc } from "./style";
 import { DropdownProps } from "./type";
 import { Animated } from "react-native";
 
+/**
+ * Dropdown menu component
+ *
+ * @param label - Optional label that comes just before the dropdown menu
+ * @param currentOption - Current value selected in the dropdown menu
+ * @param options - An array with the current values inside the dropdown menu
+ * @param onChange - Callback function for when an option is selected
+ */
 function Dropdown<Options>({ label, currentOption, options, onChange }: DropdownProps<Options>) {
   const [currentSelectedOtion, setCurrentSelectedOption] = useState(currentOption);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const rotation = useState(new Animated.Value(0))[0];
 
-  // Rotate the arrow depending on the dropdown status
+  // Rotate the arrow depending on the dropdown menu status
   const handleArrowAnimation = () => {
     Animated.timing(rotation, {
       toValue: isDropdownOpen ? 0 : 1,
@@ -23,11 +31,21 @@ function Dropdown<Options>({ label, currentOption, options, onChange }: Dropdown
     handleArrowAnimation();
   };
 
-  // Swap the current option with the new selected one
+  /**
+   * 1 - Update the currently selected option with the newly selected one.
+   * 2 - Trigger the onChange callback function.
+   * 3 - Close the dropdown menu.
+   *
+   * @param option - The newly selected option to be set as the current option.
+   */
   const handleOptions = (option: Options) => {
+    // 1
     setCurrentSelectedOption(option as string);
-    onChange(option)
 
+    // 2
+    onChange(option);
+
+    // 3
     setIsDropdownOpen(false);
     handleArrowAnimation();
   };
