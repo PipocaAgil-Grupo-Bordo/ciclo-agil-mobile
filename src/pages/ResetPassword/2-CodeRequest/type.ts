@@ -16,5 +16,5 @@ export interface ButtonsInfo {
 }
 
 export interface CodeValidationMessageProps {
-  type: "successful" | "unsuccessful" | string;
+  type: "successful" | "unsuccessful";
 }

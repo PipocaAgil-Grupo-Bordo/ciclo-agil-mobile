@@ -58,20 +58,15 @@ export async function handleRedefinitionCodeValidation(
   code: string | undefined,
   navigation: NavigationType,
   email: string,
-  setInfo: React.Dispatch<
+  setCodeValidationInfo: React.Dispatch<
     React.SetStateAction<{
       message: string;
       type: string;
     }>
-  >,
-  informationAboutCodeValidation: {
-    message: string;
-    type: string;
-  }
+  >
 ): Promise<boolean> {
   if (!code || code.length < 6) {
-    setInfo({
-      ...informationAboutCodeValidation,
+    setCodeValidationInfo({
       message: "Código inválido ou expirado. Tente novamente ou gere um novo código",
       type: "unsuccessful"
     });
@@ -87,8 +82,7 @@ export async function handleRedefinitionCodeValidation(
     const axiosError = error as AxiosError;
 
     if (axiosError.response && axiosError.response.status === 404) {
-      setInfo({
-        ...informationAboutCodeValidation,
+      setCodeValidationInfo({
         message: "Código inválido ou expirado. Tente novamente ou gere um novo código",
         type: "unsuccessful"
       });
