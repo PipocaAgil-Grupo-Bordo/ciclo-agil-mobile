@@ -9,6 +9,7 @@ export const Sc = {
   Wrapper: styled.View`
     flex: 1;
     justify-content: center;
+    align-items: center;
     padding-bottom: 56px;
   `
 };
