@@ -3,18 +3,21 @@ import styled from "styled-components/native";
 
 export const Sc = {
   topic: styled.Text`
-    font-family: "MontserratBold";
+    font-family: "MontserratExtraBold";
     font-weight: 600;
-    background-color: yellow;
+    text-align: left;
+    margin: 24px 0px;
   `,
-  topicParagraph: styled(StyledText)`
+  topicParagraph: styled.Text`
+    font-family: "MontserratBold";
     font-weight: 500;
     font-size: 14px;
-    background-color: aqua;
+    text-align: left;
   `,
   paragraph: styled(StyledText)`
     font-weight: 400;
     font-size: 14px;
-    background-color: brown;
+    text-align: left;
+    margin: 20px 0px;
   `
 };
