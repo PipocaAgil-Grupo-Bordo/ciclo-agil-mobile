@@ -16,7 +16,7 @@ const SubmitButtons: React.FC<SubmitButtonsProps> = ({ SubmitPassword, isLoading
     },
     {
       label: "Voltar ao login",
-      onPress: () => navigation.goBack()
+      onPress: () => navigation.navigate("Login")
     }
   ];
   return (

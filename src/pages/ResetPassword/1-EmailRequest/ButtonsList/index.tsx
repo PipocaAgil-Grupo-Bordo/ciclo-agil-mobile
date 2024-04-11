@@ -14,7 +14,7 @@ const ButtonList: React.FC<ButtonListProps> = ({ onPress, isLoading }) => {
         Enviar
       </GenericButton>
 
-      <GenericButton onPress={() => navigation.goBack()}>Voltar ao login</GenericButton>
+      <GenericButton onPress={() => navigation.navigate("Login")}>Voltar ao login</GenericButton>
     </Sc.Container>
   );
 };

@@ -17,7 +17,7 @@ const Buttons: React.FC<ButtonsProps> = ({ onPress }) => {
     {
       label: "Voltar ao login",
       state: "default",
-      onPress: () => navigation.goBack()
+      onPress: () => navigation.navigate("Login")
     }
   ];
 
