@@ -2,7 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@type/routeType";
 import { Sc } from "./style";
 import Header from "./Header";
-import DatePicker from "./DatePicker";
+import MonthPicker from "./MonthPicker";
 import { MonthsType } from "./type";
 import { useState } from "react";
 import DaysPicker from "./DaysPicker";
@@ -34,9 +34,7 @@ const LastPeriod: React.FC = () => {
         <Header />
       </Sc.HeaderWrapper>
 
-      <Sc.DatePickerWrapper>
-        <DatePicker onChange={handleCurrentOptionSelection} />
-      </Sc.DatePickerWrapper>
+      <MonthPicker onChange={handleCurrentOptionSelection} />
 
       <DaysPicker onIndexChange={handleIndexChange} />
     </Sc.Container>

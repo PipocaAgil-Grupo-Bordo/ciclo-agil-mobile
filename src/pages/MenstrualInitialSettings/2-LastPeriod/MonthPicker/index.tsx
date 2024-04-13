@@ -1,8 +1,8 @@
-import { DatePickerProps, MonthsType } from "../type";
+import { MonthPickerProps, MonthsType } from "../type";
 import { Sc } from "./style";
 import Dropdown from "@components/Dropdown";
 
-const DatePicker: React.FC<DatePickerProps<MonthsType>> = ({ onChange }) => {
+const MonthPicker: React.FC<MonthPickerProps<MonthsType>> = ({ onChange }) => {
   const months: MonthsType[] = [
     "Janeiro",
     "Fevereiro",
@@ -36,4 +36,4 @@ const DatePicker: React.FC<DatePickerProps<MonthsType>> = ({ onChange }) => {
   );
 };
 
-export default DatePicker;
+export default MonthPicker;

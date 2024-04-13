@@ -9,9 +9,5 @@ export const Sc = {
 
   HeaderWrapper: styled.View`
     align-items: center;
-  `,
-
-  DatePickerWrapper: styled.View`
-    margin-top: 46px;
   `
 };
