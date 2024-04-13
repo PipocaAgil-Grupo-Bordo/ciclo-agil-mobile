@@ -30,9 +30,7 @@ const LastPeriod: React.FC = () => {
 
   return (
     <Sc.Container>
-      <Sc.HeaderWrapper>
-        <Header />
-      </Sc.HeaderWrapper>
+      <Header />
 
       <MonthPicker onChange={handleCurrentOptionSelection} />
 

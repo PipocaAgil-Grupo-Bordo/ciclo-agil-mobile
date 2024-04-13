@@ -5,9 +5,5 @@ export const Sc = {
     background-color: #fafcff;
     flex: 1;
     padding: 24px;
-  `,
-
-  HeaderWrapper: styled.View`
-    align-items: center;
   `
 };

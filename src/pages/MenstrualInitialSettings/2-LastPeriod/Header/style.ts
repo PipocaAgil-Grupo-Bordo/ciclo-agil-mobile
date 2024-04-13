@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 export const Sc = {
   Container: styled.View`
     flex-direction: row;
+    align-items: center;
   `,
 
   BackButton: styled.TouchableOpacity``,
