@@ -5,6 +5,7 @@ import Header from "./Header";
 import DatePicker from "./DatePicker";
 import { MonthsType } from "./type";
 import { useState } from "react";
+import DaysPicker from "./DaysPicker";
 
 const LastPeriod: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<MonthsType | undefined>();
@@ -22,6 +23,11 @@ const LastPeriod: React.FC = () => {
     setSelectedOption(option);
   };
 
+  const handleIndexChange = (value: number) => {
+    const day = value + 1;
+    console.warn(`Day ${day} selected`);
+  };
+
   return (
     <Sc.Container>
       <Sc.HeaderWrapper>
@@ -31,6 +37,8 @@ const LastPeriod: React.FC = () => {
       <Sc.DatePickerWrapper>
         <DatePicker onChange={handleCurrentOptionSelection} />
       </Sc.DatePickerWrapper>
+
+      <DaysPicker onIndexChange={handleIndexChange} />
     </Sc.Container>
   );
 };
