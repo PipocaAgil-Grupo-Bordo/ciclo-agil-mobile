@@ -5,9 +5,14 @@ import { MonthsType } from "./type";
 import { useState } from "react";
 import DaysPicker from "./DaysPicker";
 import useMonths from "./Hooks/useMonths";
+import Information from "./Information";
+import Buttons from "./Buttons";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationType } from "@type/routeType";
 
 const LastPeriod: React.FC = () => {
   const months = useMonths();
+  const navigation = useNavigation<NavigationType>();
 
   const [lastPeriodData, setLastPeriodData] = useState({
     month: months[new Date().getMonth()],
@@ -35,11 +40,17 @@ const LastPeriod: React.FC = () => {
 
   return (
     <Sc.Container>
-      <Header />
+      <Sc.TopWrapper>
+        <Header />
 
-      <MonthPicker onChange={handleMonthSelection} />
+        <MonthPicker onChange={handleMonthSelection} />
 
-      <DaysPicker month={indexOfMonth} onIndexChange={handleDaySelection} />
+        <DaysPicker month={indexOfMonth} onIndexChange={handleDaySelection} />
+
+        <Information />
+      </Sc.TopWrapper>
+
+      <Buttons next={() => navigation.navigate("CycleDuration")} />
     </Sc.Container>
   );
 };

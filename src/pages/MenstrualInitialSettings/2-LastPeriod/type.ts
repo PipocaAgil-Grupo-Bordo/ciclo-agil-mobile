@@ -20,3 +20,7 @@ export interface MonthPickerProps<Options> extends Pick<DropdownProps<Options>, 
 export interface DaysPickerProps<Items> extends Pick<ScrollPickerProps<Items>, "onIndexChange"> {
   month: number;
 }
+
+export interface ButtonsProps {
+  next: () => void;
+}
