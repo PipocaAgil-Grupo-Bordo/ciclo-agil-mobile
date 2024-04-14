@@ -14,7 +14,7 @@ import { Sc } from "./style";
  * @param items - An array of items
  * @param onIndexChange - A function that is called when the selected index changes. It receives the index of the selected item as an argument.
  */
-function ScrollPicker<Item>({ items, onIndexChange }: ScrollPickerProps<Item>) {
+const ScrollPicker = <Item,>({ items, onIndexChange }: ScrollPickerProps<Item>) => {
   const [currentItemSelected, setCurrentItemSelected] = useState<number>(1);
 
   const itemHeight = 56;
@@ -70,6 +70,6 @@ function ScrollPicker<Item>({ items, onIndexChange }: ScrollPickerProps<Item>) {
       </Sc.IndicatorWrapper>
     </Sc.Container>
   );
-}
+};
 
 export default ScrollPicker;

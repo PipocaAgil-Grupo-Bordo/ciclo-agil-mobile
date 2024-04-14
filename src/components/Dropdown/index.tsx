@@ -12,7 +12,12 @@ import TextBox from "@components/TextBox";
  * @param options - An array with the current values inside the dropdown menu
  * @param onChange - Callback function for when an option is selected
  */
-function Dropdown<Options>({ label, currentOption, options, onChange }: DropdownProps<Options>) {
+const Dropdown = <Options,>({
+  label,
+  currentOption,
+  options,
+  onChange
+}: DropdownProps<Options>) => {
   const [currentSelectedOtion, setCurrentSelectedOption] = useState(currentOption);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const rotation = useState(new Animated.Value(0))[0];
@@ -90,6 +95,6 @@ function Dropdown<Options>({ label, currentOption, options, onChange }: Dropdown
       </Sc.DropdownWrapper>
     </Sc.Container>
   );
-}
+};
 
 export default Dropdown;
