@@ -3,16 +3,14 @@ import { Sc } from "./style";
 import { useNavigation } from "@react-navigation/native";
 import { ButtonsProps } from "../type";
 
-const Buttons: React.FC<ButtonsProps> = ({ next }) => {
-  const navigation = useNavigation();
-
+const Buttons: React.FC<ButtonsProps> = ({ nextWithData, nextWithoutData }) => {
   return (
     <Sc.Container>
-      <GenericButton onPress={next} state="accent">
+      <GenericButton onPress={nextWithData} state="accent">
         Próximo
       </GenericButton>
 
-      <GenericButton onPress={() => navigation.goBack()}>Não lembro</GenericButton>
+      <GenericButton onPress={nextWithoutData}>Não lembro</GenericButton>
     </Sc.Container>
   );
 };

@@ -50,7 +50,11 @@ const LastPeriod: React.FC = () => {
         <Information />
       </Sc.TopWrapper>
 
-      <Buttons next={() => navigation.navigate("CycleDuration")} />
+      <Buttons
+        // Placeholders for now till backend integration
+        nextWithData={() => navigation.navigate("CycleDuration")}
+        nextWithoutData={() => navigation.navigate("CycleDuration")}
+      />
     </Sc.Container>
   );
 };

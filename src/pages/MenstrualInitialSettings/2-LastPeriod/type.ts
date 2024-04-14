@@ -22,5 +22,6 @@ export interface DaysPickerProps<Items> extends Pick<ScrollPickerProps<Items>, "
 }
 
 export interface ButtonsProps {
-  next: () => void;
+  nextWithData: () => void;
+  nextWithoutData: () => void;
 }
