@@ -30,7 +30,7 @@ export const registerSchema = yup.object().shape({
     .string()
     .required("Data de nascimento não pode ser vazia")
     .matches(dateRegex, "Formato de data inválido (dd/mm/aaaa)")
-    .test("is-valid-date", "Formato de data inválido (dd/mm/aaaa)", isValidDate),
+    .test("is-valid-date", "Data inválida (dd/mm/aaaa)", isValidDate),
   email: yup
     .string()
     .trim()
