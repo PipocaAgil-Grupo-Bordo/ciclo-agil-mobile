@@ -1,22 +1,10 @@
+import useMonths from "../Hooks/useMonths";
 import { MonthPickerProps, MonthsType } from "../type";
 import { Sc } from "./style";
 import Dropdown from "@components/Dropdown";
 
 const MonthPicker: React.FC<MonthPickerProps<MonthsType>> = ({ onChange }) => {
-  const months: MonthsType[] = [
-    "Janeiro",
-    "Fevereiro",
-    "Março",
-    "Abril",
-    "Maio",
-    "Junho",
-    "Julho",
-    "Agosto",
-    "Setembro",
-    "Outubro",
-    "Novembro",
-    "Dezembro"
-  ];
+  const months = useMonths();
 
   const getCurrentMonth = () => {
     const currentDate = new Date();

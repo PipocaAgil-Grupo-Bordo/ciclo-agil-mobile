@@ -17,4 +17,6 @@ export type MonthsType =
 
 export interface MonthPickerProps<Options> extends Pick<DropdownProps<Options>, "onChange"> {}
 
-export interface DaysPickerProps<Items> extends Pick<ScrollPickerProps<Items>, "onIndexChange"> {}
+export interface DaysPickerProps<Items> extends Pick<ScrollPickerProps<Items>, "onIndexChange"> {
+  month: number;
+}
