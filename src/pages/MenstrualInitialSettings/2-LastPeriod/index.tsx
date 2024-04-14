@@ -7,36 +7,39 @@ import DaysPicker from "./DaysPicker";
 import useMonths from "./Hooks/useMonths";
 
 const LastPeriod: React.FC = () => {
-  const [selectedOption, setSelectedOption] = useState<MonthsType | undefined>();
   const months = useMonths();
 
-  const indexOfMonth = months.indexOf(selectedOption!);
+  const [lastPeriodData, setLastPeriodData] = useState({
+    month: months[new Date().getMonth()],
+    day: 1
+  });
 
-  const handleBackendIntegration = () => {
-    console.warn(selectedOption);
-    // - Make sure this is sent to the db once an endpoint is made
-    // - Change name of this function
-    // - Handle cases where user doesn't select any month, so it will count the one as default
-  };
-  handleBackendIntegration();
+  const indexOfMonth = months.indexOf(lastPeriodData.month!);
 
   // Ensure the selected dropdown option is saved in a state hook
-  const handleCurrentOptionSelection = (option: MonthsType) => {
-    setSelectedOption(option);
+  const handleMonthSelection = (option: MonthsType) => {
+    setLastPeriodData((prevData) => ({
+      ...prevData,
+      month: option
+    }));
   };
 
-  const handleIndexChange = (value: number) => {
+  const handleDaySelection = (value: number) => {
     const day = value + 1;
-    console.warn(`Day ${day} selected`);
+
+    setLastPeriodData((prevData) => ({
+      ...prevData,
+      day: day
+    }));
   };
 
   return (
     <Sc.Container>
       <Header />
 
-      <MonthPicker onChange={handleCurrentOptionSelection} />
+      <MonthPicker onChange={handleMonthSelection} />
 
-      <DaysPicker month={indexOfMonth} onIndexChange={handleIndexChange} />
+      <DaysPicker month={indexOfMonth} onIndexChange={handleDaySelection} />
     </Sc.Container>
   );
 };
