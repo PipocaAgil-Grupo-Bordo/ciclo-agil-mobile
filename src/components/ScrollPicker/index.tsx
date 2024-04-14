@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FlatList,
   ListRenderItemInfo,
@@ -15,6 +15,8 @@ import { Sc } from "./style";
  * @param onIndexChange - A function that is called when the selected index changes. It receives the index of the selected item as an argument.
  */
 function ScrollPicker<Item>({ items, onIndexChange }: ScrollPickerProps<Item>) {
+  const [currentItemSelected, setCurrentItemSelected] = useState<number>(1);
+
   const itemHeight = 56;
   const columnAmount = 4;
   const itemBlockSize = itemHeight * columnAmount;
@@ -30,6 +32,7 @@ function ScrollPicker<Item>({ items, onIndexChange }: ScrollPickerProps<Item>) {
     const y = scrollEvent.nativeEvent.contentOffset.y;
     const index = Math.round(y / itemHeight);
 
+    setCurrentItemSelected(index + 1);
     onIndexChange(index);
   };
 
@@ -38,8 +41,10 @@ function ScrollPicker<Item>({ items, onIndexChange }: ScrollPickerProps<Item>) {
       <FlatList
         data={modifiedItem}
         snapToInterval={itemHeight}
-        renderItem={({ item }: ListRenderItemInfo<Item>) => (
-          <Sc.Text yAxis={itemHeight}>{String(item)}</Sc.Text>
+        renderItem={({ item, index }: ListRenderItemInfo<Item>) => (
+          <Sc.Text isSelected={index === currentItemSelected} yAxis={itemHeight}>
+            {String(item)}
+          </Sc.Text>
         )}
         showsVerticalScrollIndicator={false}
         style={{ width: "100%" }}

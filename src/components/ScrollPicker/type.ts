@@ -3,6 +3,10 @@ export interface ScrollPickerProps<Item> {
   onIndexChange: (index: number) => void;
 }
 
-export interface yAxisStyle {
-  yAxis: number
+export interface YAxisStyle {
+  yAxis: number;
+}
+
+export interface isSelectedTextStyle extends YAxisStyle {
+  isSelected: boolean;
 }

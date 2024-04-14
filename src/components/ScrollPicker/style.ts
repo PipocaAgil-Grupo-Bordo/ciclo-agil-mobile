@@ -1,21 +1,21 @@
 import styled from "styled-components/native";
-import { yAxisStyle } from "./type";
+import { YAxisStyle, isSelectedTextStyle } from "./type";
 
 export const Sc = {
-  Container: styled.View<yAxisStyle>`
+  Container: styled.View<YAxisStyle>`
     align-items: center;
     height: ${({ yAxis }) => yAxis}px;
   `,
 
-  Text: styled.Text<yAxisStyle>`
+  Text: styled.Text<isSelectedTextStyle>`
     font-size: 32px;
     font-family: "Montserrat";
     text-align: center;
-    color: #8e37c9;
+    color: ${({ isSelected }) => (isSelected ? "#8e37c9" : "#AFB4BD")};
     height: ${({ yAxis }) => yAxis}px;
   `,
 
-  IndicatorWrapper: styled.View<yAxisStyle>`
+  IndicatorWrapper: styled.View<YAxisStyle>`
     position: absolute;
     background-color: #eee1f7;
     z-index: -1;
@@ -24,7 +24,7 @@ export const Sc = {
     top: ${({ yAxis }) => yAxis}px;
   `,
 
-  Indicator: styled.View<yAxisStyle>`
+  Indicator: styled.View<YAxisStyle>`
     margin-top: ${({ yAxis }) => yAxis}px;
   `
 };
