@@ -26,14 +26,28 @@ function ScrollPicker<Item>({ items, onIndexChange }: ScrollPickerProps<Item>) {
 
   /**
    * Calculate the index of the selected item based on the scroll position once the scrolling event ends.
+   * It then fires the callback function with the current index.
+   *
    * @param scrollEvent - The native scroll event.
    */
   const momentumScrollEnd = (scrollEvent: NativeSyntheticEvent<NativeScrollEvent>) => {
     const y = scrollEvent.nativeEvent.contentOffset.y;
     const index = Math.round(y / itemHeight);
 
-    setCurrentItemSelected(index + 1);
     onIndexChange(index);
+  };
+
+  /**
+   * Calculate the index of the selected item based on the scroll position once the scrolling event ends.
+   * It then selects a new item with the current index.
+   *
+   * @param scrollEvent - The native scroll event.
+   */
+  const handleItemSelection = (scrollEvent: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const y = scrollEvent.nativeEvent.contentOffset.y;
+    const index = Math.round(y / itemHeight);
+
+    setCurrentItemSelected(index + 1);
   };
 
   return (
@@ -49,6 +63,7 @@ function ScrollPicker<Item>({ items, onIndexChange }: ScrollPickerProps<Item>) {
         showsVerticalScrollIndicator={false}
         style={{ width: "100%" }}
         onMomentumScrollEnd={momentumScrollEnd}
+        onScroll={handleItemSelection}
       />
       <Sc.IndicatorWrapper yAxis={itemHeight + 2}>
         <Sc.Indicator yAxis={itemHeight - 8} />
