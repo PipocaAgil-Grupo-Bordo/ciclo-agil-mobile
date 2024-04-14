@@ -81,7 +81,7 @@ function Dropdown<Options>({ label, currentOption, options, onChange }: Dropdown
         {isDropdownOpen && (
           <Sc.DropdownOptions>
             {options.map((option, i) => (
-              <Sc.OptionButton key={i} onPress={() => handleOptions(option)}>
+              <Sc.OptionButton activeOpacity={1} key={i} onPress={() => handleOptions(option)}>
                 <Sc.Option isLast={i === options.length - 1}>{String(option)}</Sc.Option>
               </Sc.OptionButton>
             ))}

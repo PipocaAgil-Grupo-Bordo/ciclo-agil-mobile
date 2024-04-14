@@ -14,6 +14,7 @@ export const Sc = {
 
   DropdownWrapper: styled.View`
     position: relative;
+    z-index: 100;
   `,
 
   DropdownMenu: styled.Pressable<DropdownMenuStyle>`
@@ -32,6 +33,7 @@ export const Sc = {
 
   SelectedOption: styled.Text`
     font-family: "MontserratBold";
+    background-color: #fafcff;
     font-size: 16px;
   `,
 
