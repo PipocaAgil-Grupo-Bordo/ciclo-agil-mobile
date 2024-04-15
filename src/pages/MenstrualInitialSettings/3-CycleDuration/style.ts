@@ -1,13 +1,12 @@
 import styled from "styled-components/native";
 
 export const Sc = {
-  Container: styled.ScrollView`
+  Container: styled.View`
     background-color: #fafcff;
+    justify-content: space-between;
+    flex: 1;
+    padding: 24px;
   `,
 
-  Wrapper: styled.View`
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-  `
+  TopWrapper: styled.View``
 };
