@@ -16,10 +16,9 @@ const Policy: React.FC = () => {
         onPress={() => navigation.navigate("SignUp")}
       />
       <Sc.Wrapper>
-        <Gs.Title>{`Termos de Uso e \nPolítica de Privacidade`}</Gs.Title>
+        <Gs.Title>{`Termos de Uso e Política de Privacidade`}</Gs.Title>
         <Terms />
       </Sc.Wrapper>
-      
     </Sc.Container>
   );
 };

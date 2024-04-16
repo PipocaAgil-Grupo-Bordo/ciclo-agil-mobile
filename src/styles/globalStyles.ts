@@ -6,5 +6,6 @@ export const Gs = {
     font-size: 24px;
     text-align: center;
     margin-bottom: 24px;
+    width: 74%;
   `
 };
