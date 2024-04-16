@@ -1,4 +1,3 @@
-import { DropdownProps } from "@components/Dropdown/type";
 import { ScrollPickerProps } from "@components/ScrollPicker/type";
 
 export type MonthsType =
@@ -15,13 +14,6 @@ export type MonthsType =
   | "Novembro"
   | "Dezembro";
 
-export interface MonthPickerProps<Options> extends Pick<DropdownProps<Options>, "onChange"> {}
-
 export interface DaysPickerProps<Items> extends Pick<ScrollPickerProps<Items>, "onIndexChange"> {
   month: number;
-}
-
-export interface ButtonsProps {
-  nextWithData: () => void;
-  nextWithoutData: () => void;
 }
