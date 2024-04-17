@@ -1,25 +1,36 @@
 import { Sc } from "./style";
-import Header from "./Header";
-import MonthPicker from "./MonthPicker";
 import { MonthsType } from "./type";
 import { useState } from "react";
-import DaysPicker from "./DaysPicker";
-import useMonths from "./Hooks/useMonths";
-import Information from "./Information";
-import Buttons from "./Buttons";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@type/routeType";
+import Header from "@components/Header";
+import Buttons from "../SharedComponents/Buttons";
+import Information from "../SharedComponents/Information";
+import DropdownMenu from "../SharedComponents/DropdownMenu";
+import ScrollableMenu from "../SharedComponents/ScrollableMenu";
 
 const LastPeriod: React.FC = () => {
-  const months = useMonths();
-  const navigation = useNavigation<NavigationType>();
-
-  const [lastPeriodData, setLastPeriodData] = useState({
-    month: months[new Date().getMonth()],
-    day: 1
+  // An array with all the capitalized months in portuguese
+  const months: MonthsType[] = Array.from({ length: 12 }, (_, index) => {
+    const date = new Date(new Date().getFullYear(), index, 1);
+    const monthName = date.toLocaleString("pt-BR", { month: "long" });
+    return (monthName.charAt(0).toUpperCase() + monthName.slice(1)) as MonthsType;
   });
 
+  const [lastPeriodData, setLastPeriodData] = useState({
+    month: months[new Date().getMonth()], // Set the current month as default
+    day: 1
+  });
   const indexOfMonth = months.indexOf(lastPeriodData.month!);
+
+  const currentYear = new Date().getFullYear();
+  const currentMonth = indexOfMonth + 1;
+  const numberOfDays = new Date(currentYear, currentMonth, 0).getDate();
+
+  // Generate an array of days based on the selected month.
+  const days = Array.from({ length: numberOfDays }, (_, index) => index + 1);
+
+  const navigation = useNavigation<NavigationType>();
 
   // Ensure the selected dropdown option is saved in a state hook
   const handleMonthSelection = (option: MonthsType) => {
@@ -41,13 +52,18 @@ const LastPeriod: React.FC = () => {
   return (
     <Sc.Container>
       <Sc.TopWrapper>
-        <Header />
+        <Header title="Qual foi a data de início da sua última menstruação?" />
 
-        <MonthPicker onChange={handleMonthSelection} />
+        <DropdownMenu
+          label="Mês:"
+          onChange={handleMonthSelection}
+          options={months}
+          currentOption={lastPeriodData.month}
+        />
 
-        <DaysPicker month={indexOfMonth} onIndexChange={handleDaySelection} />
+        <ScrollableMenu items={days} onIndexChange={handleDaySelection} />
 
-        <Information />
+        <Information text="Não se preocupe, você pode registar a data de início da sua última menstruação mais tarde ou marcar o início de uma nova" />
       </Sc.TopWrapper>
 
       <Buttons

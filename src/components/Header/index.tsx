@@ -1,10 +1,10 @@
 import { useNavigation } from "@react-navigation/native";
 import { Sc } from "./style";
 import TopicText from "@components/TopicText";
-import { NavigationType } from "@type/routeType";
+import { HeaderProps } from "./type";
 
-const Header: React.FC = () => {
-  const navigation = useNavigation<NavigationType>();
+const Header: React.FC<HeaderProps> = ({ title }) => {
+  const navigation = useNavigation();
 
   return (
     <Sc.Container>
@@ -13,7 +13,7 @@ const Header: React.FC = () => {
       </Sc.BackButton>
 
       <Sc.Title>
-        <TopicText>Qual foi a data de início da sua última menstruação?</TopicText>
+        <TopicText>{title}</TopicText>
       </Sc.Title>
     </Sc.Container>
   );

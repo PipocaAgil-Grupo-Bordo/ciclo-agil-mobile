@@ -1,7 +1,6 @@
 import GenericButton from "@components/GenericButton";
 import { Sc } from "./style";
-import { useNavigation } from "@react-navigation/native";
-import { ButtonsProps } from "../type";
+import { ButtonsProps } from "./type";
 
 const Buttons: React.FC<ButtonsProps> = ({ nextWithData, nextWithoutData }) => {
   return (
