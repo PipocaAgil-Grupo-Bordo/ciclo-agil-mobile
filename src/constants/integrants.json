@@ -1,0 +1,82 @@
+{
+  "data": [
+    {
+      "image": "Carla_Panegocci.png",
+      "name": "Carla Panegocci",
+      "linkedIn": "linkedin.com/in/carla-panegocci-a9407380",
+      "role": "Scrum Master"
+    },
+    {
+      "image": "Elinalda_de_Sá.png",
+      "name": "Elinalda de Sá",
+      "linkedIn": "linkedin.com/in/elinalda-sá",
+      "role": "Scrum Master"
+    },
+    {
+      "image": "Michele_Zacarias.png",
+      "name": "Michele Zacarias",
+      "linkedIn": "linkedin.com/in/michelleszacarias",
+      "role": "Product Owner"
+    },
+    {
+      "image": "Jéssica_Debortolo.png",
+      "name": "Jéssica Debortolo",
+      "linkedIn": "linkedin.com/in/jessicadebortolo",
+      "role": "Product Owner"
+    },
+    {
+      "image": "Aline_Pereira.png",
+      "name": "Aline Pereira",
+      "linkedIn": "linkedin.com/in/aline-soares-qa",
+      "role": "Quality Assurance"
+    },
+    {
+      "image": "Thalita_Lisboa.png",
+      "name": "Thalita Lisboa",
+      "linkedIn": "linkedin.com/in/thalita-lisboa",
+      "role": "Quality Assurance"
+    },
+    {
+      "image": "Karine_Bueno.png",
+      "name": "Karine Bueno",
+      "linkedIn": "linkedin.com/in/karinebueno",
+      "role": "Quality Assurance"
+    },
+    {
+      "image": "Josiane_Silva.png",
+      "name": "Josiane Silva",
+      "linkedIn": "linkedin.com/in/josianecsilva95",
+      "role": "UX/UI"
+    },
+    {
+      "image": "Melissa_Gouvea.png",
+      "name": "Melissa Gouvea",
+      "linkedIn": "linkedin.com/in/melissa-gouv%C3%AAa-1a2801244",
+      "role": "UX/UI"
+    },
+    {
+      "image": "Luciano_Lima.png",
+      "name": "Luciano Lima",
+      "linkedIn": "linkedin.com/in/luciano-d-lima-jr",
+      "role": "Front End"
+    },
+    {
+      "image": "Pedro_Rondelli.png",
+      "name": "Pedro Rondelli",
+      "linkedIn": "linkedin.com/in/pedro-rondelli",
+      "role": "Front End"
+    },
+    {
+      "image": "Luciano_Martins.png",
+      "name": "Luciano Martins",
+      "linkedIn": "linkedin.com/in/lucianodasilvamartins",
+      "role": "Back End"
+    },
+    {
+      "image": "Rayandson_Silva.png",
+      "name": "Rayandson Silva",
+      "linkedIn": "linkedin.com/in/rayandson-silva",
+      "role": "Back End"
+    }
+  ]
+}
