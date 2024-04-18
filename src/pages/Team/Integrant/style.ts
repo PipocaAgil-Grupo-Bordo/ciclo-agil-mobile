@@ -5,5 +5,5 @@ export const Sc = {
   Wrapper: styled.View``,
   Photo:styled.Image``,
   Name:styled.Text``,
-  Link:styled.Image``
+  Link:styled.Button``
 };
