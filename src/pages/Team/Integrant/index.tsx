@@ -1,10 +1,13 @@
-import React from 'react';
-import { View } from 'react-native';
+import React from "react";
 
-// import { Container } from './styles';
+import { Sc } from "./style";
 
 const Integrant: React.FC = () => {
-  return <View />;
-}
+  return (
+    <Sc.Container>
+      <Sc.Wrapper></Sc.Wrapper>
+    </Sc.Container>
+  );
+};
 
 export default Integrant;
