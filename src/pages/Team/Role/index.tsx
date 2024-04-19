@@ -10,12 +10,7 @@ const Role: React.FC<RolesData> = ({ title, integrants }) => {
       <Sc.Wrapper>
         <Sc.RoleTitle>{title}</Sc.RoleTitle>
         {integrants.map((element, i) => (
-          <Integrant
-            key={i}
-            photo={element.image}
-            name={element.name}
-            link={element.linkedIn}
-          ></Integrant>
+          <Integrant key={i} name={element.name} link={element.linkedIn}></Integrant>
         ))}
       </Sc.Wrapper>
     </Sc.Container>

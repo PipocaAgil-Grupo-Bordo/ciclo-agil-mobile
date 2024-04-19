@@ -1,6 +1,6 @@
 import React from "react";
 import { Sc } from "./style";
-import SquadData from "@constants/squad.json";
+import SquadData from "@constants/squadData/squad.json";
 import Role from "../Role";
 const Squad: React.FC = () => {
   const roles = SquadData.data;
