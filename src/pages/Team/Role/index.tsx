@@ -1,10 +1,15 @@
-import React from 'react';
-import { View } from 'react-native';
+import React from "react";
 
-// import { Container } from './styles';
+import { Sc } from "./style";
 
 const Role: React.FC = () => {
-  return <View />;
-}
+  return (
+    <Sc.Container>
+      <Sc.Wrapper>
+        <Sc.RoleTitle></Sc.RoleTitle>
+      </Sc.Wrapper>
+    </Sc.Container>
+  );
+};
 
 export default Role;

@@ -1,5 +1,7 @@
-import styled from 'styled-components/native';
+import styled from "styled-components/native";
 
-export const Container = styled.View`
-  
-`;
+export const Sc = {
+  Container: styled.View``,
+  Wrapper: styled.View``,
+  RoleTitle: styled.Text``
+};
