@@ -5,5 +5,5 @@ export interface RolesData {
     name: string;
     linkedIn: string;
     role: string;
-  };
+  }[];
 }
