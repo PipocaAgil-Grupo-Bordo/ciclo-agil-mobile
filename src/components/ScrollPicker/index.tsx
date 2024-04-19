@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import { ScrollPickerProps } from "./type";
 import { Sc } from "./style";
+import RenderedContent from "./RenderedContent";
 
 /**
  * A picker component. It shows an array of selectable items.
@@ -56,9 +57,12 @@ const ScrollPicker = <Item,>({ items, onIndexChange }: ScrollPickerProps<Item>) 
         data={modifiedItem}
         snapToInterval={itemHeight}
         renderItem={({ item, index }: ListRenderItemInfo<Item>) => (
-          <Sc.Text isSelected={index === currentItemSelected} yAxis={itemHeight}>
-            {String(item)}
-          </Sc.Text>
+          <RenderedContent
+            item={item}
+            index={index}
+            currentItemSelected={currentItemSelected}
+            itemHeight={itemHeight}
+          />
         )}
         showsVerticalScrollIndicator={false}
         style={{ width: "100%" }}
