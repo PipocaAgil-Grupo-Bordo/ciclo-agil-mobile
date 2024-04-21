@@ -26,7 +26,7 @@ const Router = () => {
           headerTitleStyle: { fontFamily: "Lora", fontSize: 24 },
           headerStyle: { backgroundColor: "#fafcff", shadowColor: "transparent" }
         }}
-        initialRouteName="Team"
+        initialRouteName="Login"
       >
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Home} />
