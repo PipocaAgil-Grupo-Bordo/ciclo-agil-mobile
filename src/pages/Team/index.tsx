@@ -13,16 +13,17 @@ const Team: React.FC = () => {
   };
 
   return (
-    <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
+    <Sc.Container>
       <Sc.Wrapper>
         <Gs.Title>Quem somos nós? Equipe Ciclo Ágil</Gs.Title>
         <Sc.SubTitle>Esses são os colaboradores que fizeram este app:</Sc.SubTitle>
-        <Squad/>
+        <Squad />
       </Sc.Wrapper>
       <GenericButton onPress={testNext} state="accent">
         Próximo
       </GenericButton>
     </Sc.Container>
+    
   );
 };
 

@@ -19,6 +19,7 @@ const Integrant: React.FC<IntegrantData> = ({ name, link }) => {
           color="#9BABB7"
           onPress={() => handleLinking(link)}
         />
+        
       </Sc.Wrapper>
     </Sc.Container>
   );

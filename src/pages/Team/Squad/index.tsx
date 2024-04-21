@@ -2,8 +2,10 @@ import React from "react";
 import { Sc } from "./style";
 import SquadData from "@constants/squadData/squad.json";
 import Role from "../Role";
+
 const Squad: React.FC = () => {
   const roles = SquadData.data;
+
   return (
     <Sc.Container>
       <Sc.Wrapper>
@@ -12,6 +14,7 @@ const Squad: React.FC = () => {
         ))}
       </Sc.Wrapper>
     </Sc.Container>
+    
   );
 };
 
