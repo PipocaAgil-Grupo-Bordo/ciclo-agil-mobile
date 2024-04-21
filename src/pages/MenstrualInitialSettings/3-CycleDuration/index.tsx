@@ -65,7 +65,7 @@ const CycleDuration: React.FC = () => {
           onIndexChange={handleDurationChange}
         />
 
-        <Information text="Não se preocupe se você não souber quanto tempo dura o seu ciclo, você pode depois" />
+        <Information text="Não se preocupe se você não souber quanto tempo dura o seu ciclo, você pode registrar depois" />
       </Sc.TopWrapper>
 
       <Buttons
