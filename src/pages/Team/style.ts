@@ -12,6 +12,7 @@ export const Sc = {
 
   Wrapper: styled.View`
     align-items: center;
+    justify-content: space-between;
     
   `,
   SubTitle: styled(StyledText)``

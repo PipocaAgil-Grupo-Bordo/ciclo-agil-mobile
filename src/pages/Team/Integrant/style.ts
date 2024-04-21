@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const Sc = {
   Container: styled.View`
-    margin: 5px 0px;
+    margin: 5px 5px;
   `,
   Wrapper: styled.View`
     flex-direction: row;
