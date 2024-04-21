@@ -6,7 +6,6 @@ import Integrant from "../Integrant";
 import { Dimensions } from "react-native";
 
 const Role: React.FC<RolesData> = ({ title, integrants }) => {
-  const { width, height } = Dimensions.get("window");
   return (
     <Sc.Container>
       <Sc.Wrapper>
