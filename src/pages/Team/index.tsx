@@ -1,29 +1,28 @@
 import { Sc } from "./style";
 import GenericButton from "@components/GenericButton";
-import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "@type/routeType";
 import { Gs } from "src/styles/globalStyles";
 import Squad from "./Squad";
+import { useState } from "react";
+import Modal from "@components/Modal";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const Team: React.FC = () => {
-  const navigation = useNavigation<NavigationType>();
-
-  const testNext = () => {
-    navigation.navigate("LastPeriod");
-  };
+  const [readyToNext, setReadyToNext] = useState(false);
 
   return (
-    <Sc.Container>
-      <Sc.Wrapper>
-        <Gs.Title>Quem somos nós? Equipe Ciclo Ágil</Gs.Title>
-        <Sc.SubTitle>Esses são os colaboradores que fizeram este app:</Sc.SubTitle>
-        <Squad />
-      </Sc.Wrapper>
-      <GenericButton onPress={testNext} state="accent">
-        Próximo
-      </GenericButton>
-    </Sc.Container>
-    
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Sc.Container>
+        <Sc.Wrapper>
+          <Gs.Title>Quem somos nós? Equipe Ciclo Ágil</Gs.Title>
+          <Sc.SubTitle>Esses são os colaboradores que fizeram este app:</Sc.SubTitle>
+          <Squad />
+        </Sc.Wrapper>
+        <GenericButton onPress={() => setReadyToNext(true)} state="accent">
+          Próximo
+        </GenericButton>
+        {readyToNext ? <Modal setReadyToNext={setReadyToNext} /> : <></>}
+      </Sc.Container>
+    </GestureHandlerRootView>
   );
 };
 
