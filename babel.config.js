@@ -3,6 +3,7 @@ module.exports = function (api) {
   return {
     presets: ["babel-preset-expo"],
     plugins: [
+      "react-native-reanimated/plugin",
       [
         "module:react-native-dotenv",
         {
@@ -18,7 +19,7 @@ module.exports = function (api) {
         "module-resolver",
         {
           root: ".",
-          extensions: [".tsx", ".ts", ".js", ".jsx"],
+          extensions: [".tsx", ".ts", ".js", ".jsx", ".png"],
           alias: {
             "@images": "./assets/images",
             "@components": "./src/components",
