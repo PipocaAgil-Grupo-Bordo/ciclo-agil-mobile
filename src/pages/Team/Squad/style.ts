@@ -5,5 +5,6 @@ export const Sc = {
   Wrapper: styled.View`
     flex: 0.8;
     flex-wrap: wrap;
+    background-color: aqua;
   `
 };
