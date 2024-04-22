@@ -10,7 +10,7 @@ export const Sc = {
     padding-right: ${horizontalScale(21) + "px"};
     padding-left: ${horizontalScale(21) + "px"};
     padding-bottom: ${verticalScale(48) + "px"};
-    padding-top: ${verticalScale(52) + "px"};
+    padding-top: ${verticalScale(100) + "px"};
     justify-content: center;
   `,
 
