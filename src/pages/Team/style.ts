@@ -7,14 +7,16 @@ export const Sc = {
   Container: styled.View`
     flex: 1;
     background-color: #fafcff;
-    padding: ${verticalScale(52) + "px" + horizontalScale(21) + "px" + verticalScale(48) + "px"};
+    padding-right: ${horizontalScale(21) + "px"};
+    padding-left: ${horizontalScale(21) + "px"};
+    padding-bottom: ${verticalScale(48) + "px"};
+    padding-top: ${verticalScale(52) + "px"};
     justify-content: center;
   `,
 
   Wrapper: styled.View`
     align-items: center;
     justify-content: space-between;
-    background-color: blueviolet;
   `,
   SubTitle: styled(StyledText)``
 };
