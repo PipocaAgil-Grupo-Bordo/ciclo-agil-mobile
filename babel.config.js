@@ -28,7 +28,8 @@ module.exports = function (api) {
             "@type": "./src/types",
             "@utils": "./src/utils",
             "@constants": "./src/constants",
-            "@pages": "./src/pages"
+            "@pages": "./src/pages",
+            "@routes": "./src/routes"
           }
         }
       ]
