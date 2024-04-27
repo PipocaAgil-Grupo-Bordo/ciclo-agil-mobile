@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { resetPasswordSchema } from "@schemas/resetPasswordSchema";
 import SubmitButtons from "./SubmitButtons";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { NavigationType, NewPasswordRouteParam } from "@type/routeType";
+import { NavigationType, NewPasswordRouteParam } from "@routes/type";
 import authApi from "@services/authApi";
 import { AxiosError } from "axios";
 import { Sc } from "./style";

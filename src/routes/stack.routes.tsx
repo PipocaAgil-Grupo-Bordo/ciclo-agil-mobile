@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { RootStackParamList } from "@type/routeType";
+import { RootStackParamList } from "./type";
 import Login from "@pages/Login";
 import SignUp from "@pages/SignUp";
 import EmailRequest from "@pages/ResetPassword/1-EmailRequest";

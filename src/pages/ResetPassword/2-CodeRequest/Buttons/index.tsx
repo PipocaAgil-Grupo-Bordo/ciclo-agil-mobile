@@ -1,4 +1,4 @@
-import { NavigationType } from "@type/routeType";
+import { NavigationType } from "@routes/type";
 import GenericButton from "@components/GenericButton";
 import TextBox from "@components/TextBox";
 import { ButtonsInfo, ButtonsProps } from "../type";

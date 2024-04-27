@@ -5,7 +5,7 @@ import Inputs from "../Inputs";
 import GenericButton from "@components/GenericButton";
 import { submitRegister } from "@utils/submitHelper";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "@type/routeType";
+import { NavigationType } from "@routes/type";
 import { RegisterFields } from "@type/auth";
 import { registerSchema } from "@schemas/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
