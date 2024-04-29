@@ -1,10 +1,13 @@
 import styled from "styled-components/native";
 
 export const Sc = {
-  Container: styled.View``,
+  Container: styled.View`
+    gap: 8px;
+  `,
   Title: styled.Text``,
   OverviewCard: styled.View`
     flex-direction: row;
+    align-items: center;
   `,
   TextContainer: styled.View``,
   Icon: styled.Image``,
