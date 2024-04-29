@@ -8,6 +8,12 @@ export const Sc = {
   `,
   TextContainer: styled.View``,
   Icon: styled.Image``,
-  MainText: styled.Text``,
-  SecondText: styled.Text``
+  MainText: styled.Text`
+    font-family: Montserrat;
+    font-size: 16px;
+  `,
+  SecondText: styled.Text`
+    font-family: Montserrat;
+    color: #72777a;
+  `
 };
