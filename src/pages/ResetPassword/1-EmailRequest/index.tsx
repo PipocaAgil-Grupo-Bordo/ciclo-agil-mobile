@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import ButtonList from "./ButtonsList";
 import { EmailFields } from "@type/auth";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "@type/routeType";
+import { NavigationType } from "@routes/type";
 import { handlePasswordRequest } from "@utils/submitHelper";
 import { Sc } from "./style";
 

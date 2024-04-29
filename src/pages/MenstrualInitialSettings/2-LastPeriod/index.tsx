@@ -2,7 +2,7 @@ import { Sc } from "./style";
 import { MonthsType } from "./type";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "@type/routeType";
+import { NavigationType } from "@routes/type";
 import Header from "@components/Header";
 import Buttons from "../SharedComponents/Buttons";
 import Information from "../SharedComponents/Information";

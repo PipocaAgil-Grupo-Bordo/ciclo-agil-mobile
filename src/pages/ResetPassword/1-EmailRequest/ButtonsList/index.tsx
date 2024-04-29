@@ -2,7 +2,7 @@ import React from "react";
 import GenericButton from "@components/GenericButton";
 import { ButtonListProps } from "../type";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "@type/routeType";
+import { NavigationType } from "@routes/type";
 import { Sc } from "./style";
 
 const ButtonList: React.FC<ButtonListProps> = ({ onPress, isLoading }) => {

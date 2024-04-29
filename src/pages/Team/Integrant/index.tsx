@@ -5,8 +5,10 @@ import { handleLinking } from "@utils/linkingHelper";
 import { squadPhotos } from "@constants/squadData/squadPhotos";
 import { ImageSourcePropType } from "react-native";
 import Feather from "react-native-vector-icons/Feather";
+
 const Integrant: React.FC<IntegrantData> = ({ name, link }) => {
   const photo = squadPhotos[name] as ImageSourcePropType;
+  
   return (
     <Sc.Container>
       <Sc.Wrapper>

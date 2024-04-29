@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
-import Router from "./src/routes";
+import Router from "src/routes";
 
 export default function App() {
   const [loaded] = useFonts({

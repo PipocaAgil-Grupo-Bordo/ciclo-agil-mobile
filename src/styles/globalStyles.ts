@@ -1,4 +1,3 @@
-import { StyledText } from "@components/TextBox/style";
 import styled from "styled-components/native";
 
 export const Gs = {

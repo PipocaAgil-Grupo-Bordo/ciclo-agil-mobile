@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigation } from "@react-navigation/core";
 import Buttons from "./Buttons";
 import { View } from "react-native";
-import { CodeRequestRouteParam, NavigationType } from "@type/routeType";
+import { CodeRequestRouteParam, NavigationType } from "@routes/type";
 import { useRoute } from "@react-navigation/native";
 import { handleRedefinitionCodeValidation } from "@utils/submitHelper";
 import authApi from "@services/authApi";

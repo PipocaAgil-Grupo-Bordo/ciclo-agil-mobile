@@ -1,7 +1,7 @@
 import { UseFormReset, UseFormSetError } from "react-hook-form";
 import { userApi } from "@services/userApi";
 import { EmailFields, RegisterFields, ValidationCodeResponse } from "@type/auth";
-import { NavigationType } from "@type/routeType";
+import { NavigationType } from "@routes/type";
 import authApi from "@services/authApi";
 import { AxiosError, AxiosResponse } from "axios";
 import { dateHelper } from "./dateHelpers";
