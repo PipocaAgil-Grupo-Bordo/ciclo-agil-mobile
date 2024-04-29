@@ -9,6 +9,7 @@ import Policy from "@pages/Policy";
 import Team from "@pages/Team";
 import LastPeriod from "@pages/MenstrualInitialSettings/2-LastPeriod";
 import CycleDuration from "@pages/MenstrualInitialSettings/3-CycleDuration";
+import TabRoutes from "./tab.routes";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -46,6 +47,11 @@ const StackRoutes = () => {
             component={NewPassword}
           />
         </Stack.Group>
+      </Stack.Group>
+
+      {/* If user is logged in */}
+      <Stack.Group>
+        <Stack.Screen name="Home" component={TabRoutes} />
       </Stack.Group>
     </Stack.Navigator>
   );
