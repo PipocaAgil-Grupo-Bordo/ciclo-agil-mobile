@@ -6,7 +6,6 @@ import Articles from "@pages/Articles";
 import Entypo from "react-native-vector-icons/Entypo";
 import Feather from "react-native-vector-icons/Feather";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { StyleSheet } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -15,13 +14,19 @@ const TabRoutes = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: s.tabBar,
+        tabBarStyle: {
+          backgroundColor: "#eef3fc",
+          elevation: 0,
+          borderTopWidth: 0
+        },
         tabBarActiveTintColor: "#8E37C9",
         tabBarInactiveTintColor: "rgba(65, 67, 71, 0.75)",
-        tabBarLabelStyle: s.tabLabel
+        tabBarLabelStyle: {
+          fontSize: 11,
+          fontFamily: "Montserrat"
+        }
       }}
     >
-      {/* #8E37C9 */}
       <Tab.Group>
         <Tab.Screen
           name="Cycle"
@@ -29,7 +34,7 @@ const TabRoutes = () => {
           options={{
             tabBarIcon: ({ color, size }) => <Entypo name="cycle" color={color} size={size} />,
             tabBarLabel: "Ciclo",
-            tabBarIconStyle: s.tabIcon_rotated
+            tabBarIconStyle: { transform: [{ rotate: "45deg" }] }
           }}
         />
         <Tab.Screen
@@ -66,19 +71,3 @@ const TabRoutes = () => {
 };
 
 export default TabRoutes;
-
-const s = StyleSheet.create({
-  tabBar: {
-    backgroundColor: "#eef3fc",
-    elevation: 0,
-    borderTopWidth: 0
-  },
-
-  tabLabel: {
-    fontFamily: "Montserrat"
-  },
-
-  tabIcon_rotated: {
-    transform: [{ rotate: "45deg" }]
-  }
-});
