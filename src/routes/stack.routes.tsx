@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { RootStackParamList } from "./type";
+import { NavigationType, RootStackParamList } from "./type";
 import Login from "@pages/Login";
 import SignUp from "@pages/SignUp";
 import EmailRequest from "@pages/ResetPassword/1-EmailRequest";
@@ -10,6 +10,7 @@ import Team from "@pages/Team";
 import LastPeriod from "@pages/MenstrualInitialSettings/2-LastPeriod";
 import CycleDuration from "@pages/MenstrualInitialSettings/3-CycleDuration";
 import TabRoutes from "./tab.routes";
+import AuthNavigator from "./auth.router";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -20,6 +21,12 @@ const StackRoutes = () => {
         headerShown: false
       }}
     >
+      {/* If user is logged in */}
+      <Stack.Group>
+        <Stack.Screen name="AuthLoader" component={AuthNavigator} />
+        <Stack.Screen name="Home" component={TabRoutes} />
+      </Stack.Group>
+
       {/* If user has no account or has logged out */}
       <Stack.Group>
         <Stack.Screen name="Login" component={Login} />
@@ -47,11 +54,6 @@ const StackRoutes = () => {
             component={NewPassword}
           />
         </Stack.Group>
-      </Stack.Group>
-
-      {/* If user is logged in */}
-      <Stack.Group>
-        <Stack.Screen name="Home" component={TabRoutes} />
       </Stack.Group>
     </Stack.Navigator>
   );
