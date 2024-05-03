@@ -30,7 +30,8 @@ module.exports = function (api) {
             "@constants": "./src/constants",
             "@pages": "./src/pages",
             "@routes": "./src/routes",
-            "@hooks": "./src/hooks"
+            "@hooks": "./src/hooks",
+            "@context": "./src/context"
           }
         }
       ]
