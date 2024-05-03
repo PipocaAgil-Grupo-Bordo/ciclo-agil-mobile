@@ -13,9 +13,12 @@ import TextBox from "@components/TextBox";
 import GenericButton from "@components/GenericButton";
 import { NavigationType } from "@routes/type";
 import Inputs from "../Inputs";
+import { useTokenContext } from "@context/useToken";
+import { secureStore } from "@utils/secureStore";
 
 const SigninForm: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
+  const { setRefresh, setAccess } = useTokenContext();
 
   const {
     handleSubmit,
@@ -29,7 +32,16 @@ const SigninForm: React.FC = () => {
 
   const onSubmit = async (data: LoginFields) => {
     try {
-      await authApi.signInUser(data);
+      const response = await authApi.signInUser(data);
+
+      const accessToken = response.data.token.accessToken;
+      const refreshToken = response.data.token.refreshToken;
+
+      setAccess(accessToken);
+      setRefresh(refreshToken);
+
+      await secureStore.saveToken({ key: "accessToken", value: accessToken });
+      await secureStore.saveToken({ key: "refreshToken", value: refreshToken });
 
       reset({ email: "", password: "" }, { keepErrors: false });
 
