@@ -1,3 +1,4 @@
+import { memo, useMemo } from "react";
 import { RenderedContentProps } from "../type";
 import { Sc } from "./style";
 
@@ -7,11 +8,13 @@ const RenderedContent = <Item,>({
   currentItemSelected,
   itemHeight
 }: RenderedContentProps<Item>) => {
+  const isSelected = useMemo(() => index === currentItemSelected, [index, currentItemSelected]);
+
   return (
-    <Sc.Text isSelected={index === currentItemSelected} yAxis={itemHeight}>
+    <Sc.Text isSelected={isSelected} yAxis={itemHeight}>
       {String(item)}
     </Sc.Text>
   );
 };
 
-export default RenderedContent;
+export default memo(RenderedContent);
