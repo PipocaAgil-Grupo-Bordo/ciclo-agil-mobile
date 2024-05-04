@@ -1,6 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import StackRoutes from "./stack.routes";
-import { TokenProvider } from "@context/useToken";
+import { TokenProvider } from "@context/useUserToken";
 
 const Router = () => {
   return (
