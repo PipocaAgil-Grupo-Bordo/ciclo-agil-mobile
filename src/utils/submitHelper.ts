@@ -13,8 +13,8 @@ export async function submitRegister(
   reset: UseFormReset<RegisterFields>,
   navigation: NavigationType,
   setError: UseFormSetError<RegisterFields>,
-  setAccess: (accessToken: string) => void,
-  setRefresh: (refreshToken: string) => void
+  setAccessToken: (accessToken: string) => void,
+  setRefreshToken: (refreshToken: string) => void
 ) {
   const birthdateISOFormat = dateHelper.formatBirthdateToISODate(data.birthdate);
   const registerFinalFormat = {
@@ -27,7 +27,7 @@ export async function submitRegister(
   try {
     const response = await userApi.signUpUser(registerFinalFormat);
 
-    tokenAuth.fetchTokens(response, setAccess, setRefresh);
+    tokenAuth.fetchTokens(response, setAccessToken, setRefreshToken);
 
     reset({ email: "", password: "" }, { keepErrors: false });
 

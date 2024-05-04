@@ -13,12 +13,12 @@ import TextBox from "@components/TextBox";
 import GenericButton from "@components/GenericButton";
 import { NavigationType } from "@routes/type";
 import Inputs from "../Inputs";
-import { useTokenContext } from "@context/useToken";
+import { useTokenContext } from "@context/useUserToken";
 import { tokenAuth } from "@utils/tokenAuthHelper";
 
 const SigninForm: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
-  const { setRefresh, setAccess } = useTokenContext();
+  const { setRefreshToken, setAccessToken } = useTokenContext();
 
   const {
     handleSubmit,
@@ -34,7 +34,7 @@ const SigninForm: React.FC = () => {
     try {
       const response = await authApi.signInUser(data);
 
-      tokenAuth.fetchTokens(response, setAccess, setRefresh);
+      tokenAuth.fetchTokens(response, setAccessToken, setRefreshToken);
 
       reset({ email: "", password: "" }, { keepErrors: false });
 

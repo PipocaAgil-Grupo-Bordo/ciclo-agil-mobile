@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "./type";
 import { ActivityIndicator, Text, View } from "react-native";
-import { useTokenContext } from "@context/useToken";
+import { useTokenContext } from "@context/useUserToken";
 import { secureStore } from "@utils/secureStore";
 import { jwtDecode } from "jwt-decode";
 import { decode, encode } from "base-64";
@@ -16,25 +16,25 @@ if (!global.atob) {
 }
 
 const AuthNavigator: React.FC = () => {
-  const { access, setRefresh, setAccess } = useTokenContext();
+  const { accessToken, setRefreshToken, setAccessToken } = useTokenContext();
   const navigation = useNavigation<NavigationType>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAccessToken = async () => {
       try {
-        const accessToken = await secureStore.getToken("accessToken");
-        const refreshToken = await secureStore.getToken("refreshToken");
+        const newAccessToken = await secureStore.getToken("accessToken");
+        const newRefreshToken = await secureStore.getToken("refreshToken");
 
         // await secureStore.deleteToken("accessToken"); // Uncomment to remove token for debugging only
         // await secureStore.deleteToken("refreshToken"); // Uncomment to remove token for debugging only
 
         // Store the tokens in the context
-        if (refreshToken !== null) {
-          setRefresh(refreshToken);
+        if (newRefreshToken !== null) {
+          setRefreshToken(newRefreshToken);
         }
-        if (accessToken !== null) {
-          setAccess(accessToken);
+        if (newAccessToken !== null) {
+          setAccessToken(newAccessToken);
         }
 
         // Set loading to false once tokens are handled
@@ -50,8 +50,8 @@ const AuthNavigator: React.FC = () => {
 
   useEffect(() => {
     if (!loading) {
-      if (access !== undefined) {
-        const accessTokenPayload = jwtDecode(access);
+      if (accessToken !== undefined) {
+        const accessTokenPayload = jwtDecode(accessToken);
 
         // Match the payload expiry date format
         const currentTime = Math.floor(Date.now() / 1000);
@@ -66,7 +66,7 @@ const AuthNavigator: React.FC = () => {
 
       navigation.navigate("Login");
     }
-  }, [access, loading]);
+  }, [accessToken, loading]);
 
   return (
     <View
