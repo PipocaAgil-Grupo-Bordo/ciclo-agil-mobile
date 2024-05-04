@@ -7,6 +7,7 @@ import { AxiosError, AxiosResponse } from "axios";
 import { dateHelper } from "./dateHelpers";
 import React from "react";
 import { secureStore } from "./secureStore";
+import { tokenAuth } from "./tokenAuthHelper";
 
 export async function submitRegister(
   data: RegisterFields,
@@ -27,14 +28,7 @@ export async function submitRegister(
   try {
     const response = await userApi.signUpUser(registerFinalFormat);
 
-    const accessToken = response.data.token.accessToken;
-    const refreshToken = response.data.token.refreshToken;
-
-    setAccess(accessToken);
-    setRefresh(refreshToken);
-
-    await secureStore.saveToken({ key: "accessToken", value: accessToken });
-    await secureStore.saveToken({ key: "refreshToken", value: refreshToken });
+    tokenAuth.fetchTokens(response, setAccess, setRefresh);
 
     reset({ email: "", password: "" }, { keepErrors: false });
 

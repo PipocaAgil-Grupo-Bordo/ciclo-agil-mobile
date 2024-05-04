@@ -14,7 +14,7 @@ import GenericButton from "@components/GenericButton";
 import { NavigationType } from "@routes/type";
 import Inputs from "../Inputs";
 import { useTokenContext } from "@context/useToken";
-import { secureStore } from "@utils/secureStore";
+import { tokenAuth } from "@utils/tokenAuthHelper";
 
 const SigninForm: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
@@ -34,14 +34,7 @@ const SigninForm: React.FC = () => {
     try {
       const response = await authApi.signInUser(data);
 
-      const accessToken = response.data.token.accessToken;
-      const refreshToken = response.data.token.refreshToken;
-
-      setAccess(accessToken);
-      setRefresh(refreshToken);
-
-      await secureStore.saveToken({ key: "accessToken", value: accessToken });
-      await secureStore.saveToken({ key: "refreshToken", value: refreshToken });
+      tokenAuth.fetchTokens(response, setAccess, setRefresh);
 
       reset({ email: "", password: "" }, { keepErrors: false });
 
