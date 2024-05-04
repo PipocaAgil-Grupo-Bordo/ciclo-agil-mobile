@@ -6,12 +6,15 @@ import authApi from "@services/authApi";
 import { AxiosError, AxiosResponse } from "axios";
 import { dateHelper } from "./dateHelpers";
 import React from "react";
+import { secureStore } from "./secureStore";
 
 export async function submitRegister(
   data: RegisterFields,
   reset: UseFormReset<RegisterFields>,
   navigation: NavigationType,
-  setError: UseFormSetError<RegisterFields>
+  setError: UseFormSetError<RegisterFields>,
+  setAccess: (accessToken: string) => void,
+  setRefresh: (refreshToken: string) => void
 ) {
   const birthdateISOFormat = dateHelper.formatBirthdateToISODate(data.birthdate);
   const registerFinalFormat = {
@@ -20,8 +23,18 @@ export async function submitRegister(
     password: data.password,
     birthdate: birthdateISOFormat
   };
+
   try {
-    const resp = await userApi.signUpUser(registerFinalFormat);
+    const response = await userApi.signUpUser(registerFinalFormat);
+
+    const accessToken = response.data.token.accessToken;
+    const refreshToken = response.data.token.refreshToken;
+
+    setAccess(accessToken);
+    setRefresh(refreshToken);
+
+    await secureStore.saveToken({ key: "accessToken", value: accessToken });
+    await secureStore.saveToken({ key: "refreshToken", value: refreshToken });
 
     reset({ email: "", password: "" }, { keepErrors: false });
 
