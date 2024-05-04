@@ -1,6 +1,13 @@
 import { AxiosResponse } from "axios";
 import { secureStore } from "./secureStore";
 
+/**
+ * Ensure the tokens are stored in a context as well as secureStore from expo
+ *
+ * @param response - Authentication promise
+ * @param setAccess - Update the access token
+ * @param setRefresh - Update the refresh token
+ */
 const fetchTokens = async (
   response: AxiosResponse,
   setAccess: (accessToken: string) => void,
