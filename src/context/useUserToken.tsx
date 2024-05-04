@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 
 export const TokenContext = createContext<ITokenContext | undefined>(undefined);
 
-export function TokenProvider({ children }: TokenProviderProps) {
+export const TokenProvider: React.FC<TokenProviderProps> = ({ children }) => {
   const [refreshToken, setRefreshToken] = useState<string>();
   const [accessToken, setAccessToken] = useState<string>();
 
@@ -12,9 +12,9 @@ export function TokenProvider({ children }: TokenProviderProps) {
       {children}
     </TokenContext.Provider>
   );
-}
+};
 
-export function useTokenContext(): ITokenContext {
+export const useTokenContext = () => {
   const context = useContext(TokenContext);
 
   if (!context) {
@@ -22,4 +22,4 @@ export function useTokenContext(): ITokenContext {
   }
 
   return context;
-}
+};

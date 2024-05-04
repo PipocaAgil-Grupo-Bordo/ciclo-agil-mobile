@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { secureStore } from "./secureStore";
+import { secureStore } from "./secureStoreHelper";
 
 /**
  * Ensure the tokens are stored in a context as well as secureStore from expo

@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "./type";
 import { ActivityIndicator, Text, View } from "react-native";
 import { useTokenContext } from "@context/useUserToken";
-import { secureStore } from "@utils/secureStore";
+import { secureStore } from "@utils/secureStoreHelper";
 import { jwtDecode } from "jwt-decode";
 import { decode, encode } from "base-64";
 
