@@ -6,6 +6,7 @@ import { useTokenContext } from "@context/useUserToken";
 import { secureStore } from "@utils/secureStoreHelper";
 import { jwtDecode } from "jwt-decode";
 import { decode, encode } from "base-64";
+import { tokenAuth } from "@utils/tokenAuthHelper";
 
 if (!global.btoa) {
   global.btoa = encode;
@@ -26,8 +27,7 @@ const AuthNavigator: React.FC = () => {
         const newAccessToken = await secureStore.getToken("accessToken");
         const newRefreshToken = await secureStore.getToken("refreshToken");
 
-        // await secureStore.deleteToken("accessToken"); // Uncomment to remove token for debugging only
-        // await secureStore.deleteToken("refreshToken"); // Uncomment to remove token for debugging only
+        // tokenAuth.deleteTokens(setAccessToken, setRefreshToken); // Uncomment to log out (for debugging only)
 
         // Store the tokens in the context
         if (newRefreshToken !== null) {

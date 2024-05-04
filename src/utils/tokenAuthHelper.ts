@@ -23,6 +23,24 @@ const fetchTokens = async (
   await secureStore.saveToken("refreshToken", refreshToken);
 };
 
+/**
+ * Ensure tokens are deleted from both secureStore and context for a proper log out
+ *
+ * @param setAccessToken - Delete the access token
+ * @param setRefreshToken - Delete the refresh token
+ */
+const deleteTokens = async (
+  setAccessToken: (accessToken: string | undefined) => void,
+  setRefreshToken: (refreshToken: string | undefined) => void
+) => {
+  await secureStore.deleteToken("accessToken");
+  await secureStore.deleteToken("refreshToken");
+
+  setAccessToken(undefined);
+  setRefreshToken(undefined);
+};
+
 export const tokenAuth = {
-  fetchTokens
+  fetchTokens,
+  deleteTokens
 };
