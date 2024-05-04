@@ -6,7 +6,6 @@ import authApi from "@services/authApi";
 import { AxiosError, AxiosResponse } from "axios";
 import { dateHelper } from "./dateHelpers";
 import React from "react";
-import { secureStore } from "./secureStore";
 import { tokenAuth } from "./tokenAuthHelper";
 
 export async function submitRegister(

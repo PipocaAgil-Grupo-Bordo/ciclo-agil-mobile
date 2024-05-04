@@ -26,9 +26,4 @@ export interface ValidationCodeResponse {
   token: string;
 }
 
-export interface ISaveToken {
-  key: ITokens;
-  value: string;
-}
-
 export type ITokens = "accessToken" | "refreshToken";

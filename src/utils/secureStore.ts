@@ -1,7 +1,7 @@
-import { ISaveToken, ITokens } from "@type/auth";
+import { ITokens } from "@type/auth";
 import * as SecureStore from "expo-secure-store";
 
-async function saveToken({ key, value }: ISaveToken) {
+async function saveToken(key: ITokens, value: string) {
   await SecureStore.setItemAsync(key, value);
 }
 

@@ -19,8 +19,8 @@ const fetchTokens = async (
   setAccess(accessToken);
   setRefresh(refreshToken);
 
-  await secureStore.saveToken({ key: "accessToken", value: accessToken });
-  await secureStore.saveToken({ key: "refreshToken", value: refreshToken });
+  await secureStore.saveToken("accessToken", accessToken);
+  await secureStore.saveToken("refreshToken", refreshToken);
 };
 
 export const tokenAuth = {
