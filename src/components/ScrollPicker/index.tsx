@@ -10,7 +10,7 @@ import { Sc } from "./style";
 import RenderedContent from "./RenderedContent";
 
 /**
- * A picker component. It shows an array of selectable items.
+ * Render a scrollable array of selectable items
  *
  * @param items - An array of items
  * @param onIndexChange - A function that is called when the selected index changes. It receives the index of the selected item as an argument.
@@ -18,7 +18,7 @@ import RenderedContent from "./RenderedContent";
 const ScrollPicker = <Item,>({ items, onIndexChange }: ScrollPickerProps<Item>) => {
   const [currentItemSelected, setCurrentItemSelected] = useState<number>(1);
 
-  const itemHeight = 56;
+  const itemHeight = 44.8;
   const columnAmount = 4;
   const itemBlockSize = itemHeight * columnAmount;
 
@@ -32,7 +32,7 @@ const ScrollPicker = <Item,>({ items, onIndexChange }: ScrollPickerProps<Item>) 
    * @param scrollEvent - The native scroll event.
    */
   const momentumScrollEnd = (scrollEvent: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const y = scrollEvent.nativeEvent.contentOffset.y;
+    const { y } = scrollEvent.nativeEvent.contentOffset;
     const index = Math.round(y / itemHeight);
 
     onIndexChange(index);
@@ -45,7 +45,7 @@ const ScrollPicker = <Item,>({ items, onIndexChange }: ScrollPickerProps<Item>) 
    * @param scrollEvent - The native scroll event.
    */
   const handleItemSelection = (scrollEvent: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const y = scrollEvent.nativeEvent.contentOffset.y;
+    const { y } = scrollEvent.nativeEvent.contentOffset;
     const index = Math.round(y / itemHeight);
 
     setCurrentItemSelected(index + 1);
@@ -69,8 +69,9 @@ const ScrollPicker = <Item,>({ items, onIndexChange }: ScrollPickerProps<Item>) 
         onMomentumScrollEnd={momentumScrollEnd}
         onScroll={handleItemSelection}
       />
-      <Sc.IndicatorWrapper yAxis={itemHeight + 2}>
-        <Sc.Indicator yAxis={itemHeight - 8} />
+
+      <Sc.IndicatorWrapper yAxis={itemHeight}>
+        <Sc.Indicator yAxis={itemHeight} />
       </Sc.IndicatorWrapper>
     </Sc.Container>
   );

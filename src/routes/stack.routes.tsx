@@ -9,6 +9,8 @@ import Policy from "@pages/Policy";
 import Team from "@pages/Team";
 import LastPeriod from "@pages/MenstrualInitialSettings/2-LastPeriod";
 import CycleDuration from "@pages/MenstrualInitialSettings/3-CycleDuration";
+import TabRoutes from "./tab.routes";
+import AuthNavigator from "./auth.router";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -19,6 +21,12 @@ const StackRoutes = () => {
         headerShown: false
       }}
     >
+      {/* If user is logged in */}
+      <Stack.Group>
+        <Stack.Screen name="AuthLoader" component={AuthNavigator} />
+        <Stack.Screen name="Home" component={TabRoutes} />
+      </Stack.Group>
+
       {/* If user has no account or has logged out */}
       <Stack.Group>
         <Stack.Screen name="Login" component={Login} />
@@ -35,16 +43,8 @@ const StackRoutes = () => {
         {/* Forgotten password */}
         <Stack.Group>
           <Stack.Screen name="EmailRequest" component={EmailRequest} />
-          <Stack.Screen
-            options={{ headerShown: true, title: "Redefinir Senha" }}
-            name="CodeRequest"
-            component={CodeRequest}
-          />
-          <Stack.Screen
-            options={{ headerShown: true, title: "Redefinir Senha" }}
-            name="NewPassword"
-            component={NewPassword}
-          />
+          <Stack.Screen name="CodeRequest" component={CodeRequest} />
+          <Stack.Screen name="NewPassword" component={NewPassword} />
         </Stack.Group>
       </Stack.Group>
     </Stack.Navigator>

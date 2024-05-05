@@ -10,9 +10,11 @@ import { RegisterFields } from "@type/auth";
 import { registerSchema } from "@schemas/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import TermsOfService from "../TermsOfService";
+import { useTokenContext } from "@context/useUserToken";
 
 const SignUpForm: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
+  const { setAccessToken, setRefreshToken } = useTokenContext();
   const {
     handleSubmit,
     control,
@@ -40,7 +42,9 @@ const SignUpForm: React.FC = () => {
 
       <GenericButton
         isLoading={isSubmitting}
-        onPress={handleSubmit((data) => submitRegister(data, reset, navigation, setError))}
+        onPress={handleSubmit((data) =>
+          submitRegister(data, reset, navigation, setError, setAccessToken, setRefreshToken)
+        )}
         state="accent"
       >
         Cadastrar

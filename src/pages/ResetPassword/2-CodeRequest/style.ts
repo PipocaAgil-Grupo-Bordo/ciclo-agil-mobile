@@ -7,12 +7,18 @@ export const Sc = {
 
   Wrapper: styled.View`
     flex: 1;
-    padding: 0px 24px 24px;
+    padding: 32px 24px 24px 24px;
     justify-content: space-between;
     background-color: #fafcff;
   `,
+
   CodeValidationMessage: styled(StyledText)<CodeValidationMessageProps>`
     font-size: 14px;
     color: ${({ type }) => (type === "unsuccessful" ? "#ff0000" : "#29B126")};
+  `,
+
+  Text: styled.Text`
+    color: #000;
+    z-index: 10;
   `
 };
