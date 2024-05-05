@@ -9,5 +9,9 @@ export const Sc = {
     flex: 1;
     padding: 46px 24px 24px;
     justify-content: space-between;
+  `,
+
+  HeaderWrapper: styled.View`
+    gap: 48px;
   `
 };

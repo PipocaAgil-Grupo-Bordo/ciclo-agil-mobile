@@ -43,16 +43,8 @@ const StackRoutes = () => {
         {/* Forgotten password */}
         <Stack.Group>
           <Stack.Screen name="EmailRequest" component={EmailRequest} />
-          <Stack.Screen
-            options={{ headerShown: true, title: "Redefinir Senha" }}
-            name="CodeRequest"
-            component={CodeRequest}
-          />
-          <Stack.Screen
-            options={{ headerShown: true, title: "Redefinir Senha" }}
-            name="NewPassword"
-            component={NewPassword}
-          />
+          <Stack.Screen name="CodeRequest" component={CodeRequest} />
+          <Stack.Screen name="NewPassword" component={NewPassword} />
         </Stack.Group>
       </Stack.Group>
     </Stack.Navigator>
