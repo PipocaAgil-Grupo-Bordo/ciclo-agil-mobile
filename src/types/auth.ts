@@ -25,3 +25,5 @@ export interface ValidationCodeResponse {
   };
   token: string;
 }
+
+export type ITokens = "accessToken" | "refreshToken";
