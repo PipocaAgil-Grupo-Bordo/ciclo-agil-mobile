@@ -63,7 +63,7 @@ const LastPeriod: React.FC = () => {
 
         <ScrollableMenu items={days} onIndexChange={handleDaySelection} />
 
-        <Information text="Não se preocupe, você pode registar a data de início da sua última menstruação mais tarde ou marcar o início de uma nova" />
+        <Information text="Não se preocupe, você pode registrar a data de início da sua última menstruação mais tarde ou marcar o início de uma nova" />
       </Sc.TopWrapper>
 
       <Buttons
