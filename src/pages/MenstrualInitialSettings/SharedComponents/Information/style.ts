@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const Sc = {
   Container: styled.View`
-    margin-top: 56px;
+    margin-top: 36px;
   `,
 
   Text: styled.Text`
