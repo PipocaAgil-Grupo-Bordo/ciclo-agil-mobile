@@ -75,10 +75,17 @@ const AuthNavigator: React.FC = () => {
   }, [accessToken, loading]);
 
   return (
+    // Temporary untill UI team makes a loading screen for this
     <View
-      style={{ backgroundColor: "#000", justifyContent: "center", alignItems: "center", flex: 1 }}
+      style={{
+        backgroundColor: "#fafcff",
+        justifyContent: "center",
+        alignItems: "center",
+        flex: 1
+      }}
     >
-      <ActivityIndicator size={"large"} color={"#fff"} />
+      <Text style={{ marginBottom: 16 }}>Loading...</Text>
+      <ActivityIndicator size={"large"} color={"#000"} />
     </View>
   );
 };
