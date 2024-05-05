@@ -10,14 +10,14 @@ const CycleOverview: React.FC = () => {
         <Feather name="clock" size={20} color={"#8E37C9"} />
         <Sc.TextContainer>
           <Sc.MainText>Iniciou no dia</Sc.MainText>
-          <Sc.SecondText></Sc.SecondText>
+          <Sc.SecondText>00 dias atrás</Sc.SecondText>
         </Sc.TextContainer>
       </Sc.OverviewCard>
       <Sc.OverviewCard>
         <Sc.Icon source={require("@images/dropIcon.png")} />
         <Sc.TextContainer>
           <Sc.MainText>Duração do período:</Sc.MainText>
-          <Sc.SecondText></Sc.SecondText>
+          <Sc.SecondText>Não informado</Sc.SecondText>
         </Sc.TextContainer>
       </Sc.OverviewCard>
       <Sc.OverviewCard>
@@ -29,7 +29,7 @@ const CycleOverview: React.FC = () => {
         />
         <Sc.TextContainer>
           <Sc.MainText>Duração do período:</Sc.MainText>
-          <Sc.SecondText></Sc.SecondText>
+          <Sc.SecondText>Não informado</Sc.SecondText>
         </Sc.TextContainer>
       </Sc.OverviewCard>
     </Sc.Container>

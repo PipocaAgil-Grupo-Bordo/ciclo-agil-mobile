@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 
 export const Sc = {
   Container: styled.View`
-    gap: 8px;
+    gap: 20px;
     justify-content: center;
     width: 90%;
   `,
