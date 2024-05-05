@@ -22,6 +22,9 @@ const AuthNavigator: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    /**
+     * Fetch the access token and store it in the context and secureStore from expo
+     */
     const fetchAccessToken = async () => {
       try {
         const newAccessToken = await secureStore.getToken("accessToken");
@@ -49,6 +52,9 @@ const AuthNavigator: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    /**
+     * After loading is finished, re-direct user to the correct screen based on whether they had previously logged in or not
+     */
     if (!loading) {
       if (accessToken !== undefined) {
         const accessTokenPayload = jwtDecode(accessToken);
