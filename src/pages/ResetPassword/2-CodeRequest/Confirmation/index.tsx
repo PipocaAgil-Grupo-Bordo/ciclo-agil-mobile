@@ -1,7 +1,7 @@
 import TextBox from "@components/TextBox";
 import { Sc } from "./style";
 
-const Header = () => {
+const Confirmation = () => {
   return (
     <>
       <Sc.CheckMark source={require("@images/checkmark.png")} />
@@ -20,4 +20,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Confirmation;

@@ -9,6 +9,8 @@ import { NavigationType, NewPasswordRouteParam } from "@routes/type";
 import authApi from "@services/authApi";
 import { AxiosError } from "axios";
 import { Sc } from "./style";
+import Header from "@components/Header";
+import { View } from "react-native";
 
 const NewPassword: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
@@ -45,11 +47,15 @@ const NewPassword: React.FC = () => {
   return (
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Sc.Wrapper>
-        <Inputs
-          control={control}
-          errors={errors}
-          errorInstruction={errors.password ? true : false}
-        />
+        <Sc.HeaderWrapper>
+          <Header title="Redefinir senha" />
+
+          <Inputs
+            control={control}
+            errors={errors}
+            errorInstruction={errors.password ? true : false}
+          />
+        </Sc.HeaderWrapper>
 
         <SubmitButtons isLoading={isSubmitting} SubmitPassword={handleSubmit(onSubmit)} />
       </Sc.Wrapper>

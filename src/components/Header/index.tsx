@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { Sc } from "./style";
-import TopicText from "@components/TopicText";
 import { HeaderProps } from "./type";
+import Entypo from "react-native-vector-icons/Entypo";
 
 const Header: React.FC<HeaderProps> = ({ title }) => {
   const navigation = useNavigation();
@@ -9,12 +9,10 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
   return (
     <Sc.Container>
       <Sc.BackButton onPress={() => navigation.goBack()}>
-        <Sc.BackIcon source={require("@images/back-arrow.png")} />
+        <Entypo name="chevron-left" size={30} color={"#444444"} />
       </Sc.BackButton>
 
-      <Sc.Title>
-        <TopicText>{title}</TopicText>
-      </Sc.Title>
+      <Sc.Title>{title}</Sc.Title>
     </Sc.Container>
   );
 };

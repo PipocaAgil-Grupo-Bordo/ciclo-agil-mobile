@@ -1,5 +1,5 @@
 import OTPInput from "./OTPInput";
-import Header from "./Header";
+import Confirmation from "./Confirmation";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/core";
 import Buttons from "./Buttons";
@@ -10,6 +10,7 @@ import { handleRedefinitionCodeValidation } from "@utils/submitHelper";
 import authApi from "@services/authApi";
 import { AxiosError } from "axios";
 import { Sc } from "./style";
+import Header from "@components/Header";
 
 const CodeRequest: React.FC = () => {
   const [otpValue, setOtpValue] = useState<string>();
@@ -47,8 +48,10 @@ const CodeRequest: React.FC = () => {
   return (
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Sc.Wrapper>
+        <Header title="Redefinir senha" />
+
         <View>
-          <Header />
+          <Confirmation />
           <OTPInput onTextChange={handleTextInput} resendCode={handleResendCode} />
           <Sc.CodeValidationMessage type={codeValidationInfo.type as "successful" | "unsuccessful"}>
             {codeValidationInfo.message}
