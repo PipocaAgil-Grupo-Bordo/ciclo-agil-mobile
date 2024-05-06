@@ -20,7 +20,14 @@ const Team: React.FC = () => {
         <GenericButton onPress={() => setReadyToNext(true)} state="accent">
           Próximo
         </GenericButton>
-        {readyToNext ? <Modal setReadyToNext={setReadyToNext} /> : <></>}
+        {readyToNext && (
+          <Modal
+            title="Vamos lá!"
+            textContent="Para um melhor uso do app precisamos que você responda algumas perguntas"
+            buttonText="Vamos lá"
+            setReadyToNext={setReadyToNext}
+          />
+        )}
       </Sc.Container>
     </GestureHandlerRootView>
   );
