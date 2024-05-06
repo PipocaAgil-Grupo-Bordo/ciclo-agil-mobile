@@ -8,6 +8,8 @@ import Buttons from "../SharedComponents/Buttons";
 import Information from "../SharedComponents/Information";
 import DropdownMenu from "../SharedComponents/DropdownMenu";
 import ScrollableMenu from "../SharedComponents/ScrollableMenu";
+import { menstrualApi } from "@services/menstrualApi";
+import { useTokenContext } from "@context/useUserToken";
 
 const LastPeriod: React.FC = () => {
   // An array with all the capitalized months in portuguese
@@ -22,6 +24,9 @@ const LastPeriod: React.FC = () => {
     day: 1
   });
   const indexOfMonth = months.indexOf(lastPeriodData.month!);
+
+  const { accessToken } = useTokenContext();
+  const [isLoading, setIsLoading] = useState(false);
 
   const currentYear = new Date().getFullYear();
   const currentMonth = indexOfMonth + 1;
@@ -49,6 +54,22 @@ const LastPeriod: React.FC = () => {
     }));
   };
 
+  const handleLastPeriodDate = async () => {
+    try {
+      setIsLoading(true);
+      const lastPeriodDate = new Date(currentYear, indexOfMonth, lastPeriodData.day);
+      const lastPeriodDateFormatted = lastPeriodDate.toISOString().split("T")[0];
+
+      await menstrualApi.lastPeriod({ startedAt: lastPeriodDateFormatted }, accessToken!);
+
+      setIsLoading(false);
+      navigation.navigate("CycleDuration");
+    } catch (error) {
+      setIsLoading(false);
+      console.warn("Error while trying to save last period date", error);
+    }
+  };
+
   return (
     <Sc.Container>
       <Sc.TopWrapper>
@@ -67,8 +88,8 @@ const LastPeriod: React.FC = () => {
       </Sc.TopWrapper>
 
       <Buttons
-        // Placeholders for now till backend integration
-        nextWithData={() => navigation.navigate("CycleDuration")}
+        isLoading={isLoading}
+        nextWithData={handleLastPeriodDate}
         nextWithoutData={() => navigation.navigate("CycleDuration")}
       />
     </Sc.Container>

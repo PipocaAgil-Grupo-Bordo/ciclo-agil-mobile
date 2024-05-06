@@ -2,10 +2,10 @@ import GenericButton from "@components/GenericButton";
 import { Sc } from "./style";
 import { ButtonsProps } from "./type";
 
-const Buttons: React.FC<ButtonsProps> = ({ nextWithData, nextWithoutData }) => {
+const Buttons: React.FC<ButtonsProps> = ({ isLoading, nextWithData, nextWithoutData }) => {
   return (
     <Sc.Container>
-      <GenericButton onPress={nextWithData} state="accent">
+      <GenericButton isLoading={isLoading} onPress={nextWithData} state="accent">
         Próximo
       </GenericButton>
 
