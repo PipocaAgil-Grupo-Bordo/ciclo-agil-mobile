@@ -14,7 +14,7 @@ const CycleOverview: React.FC = () => {
         </Sc.TextContainer>
       </Sc.OverviewCard>
       <Sc.OverviewCard>
-        <Sc.Icon source={require("@images/dropIcon.png")} />
+        <Feather name="droplet" size={20} color={"#8E37C9"} />
         <Sc.TextContainer>
           <Sc.MainText>Duração do período:</Sc.MainText>
           <Sc.SecondText>Não informado</Sc.SecondText>

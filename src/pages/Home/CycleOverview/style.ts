@@ -16,6 +16,9 @@ export const Sc = {
     align-items: center;
     gap: 16px;
     margin: 0px 20px;
+    padding: 16px;
+    background-color: white;
+    border-radius: 12px;
   `,
   TextContainer: styled.View``,
   Icon: styled.Image``,
