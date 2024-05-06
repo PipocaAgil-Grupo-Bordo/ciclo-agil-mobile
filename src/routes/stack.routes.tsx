@@ -23,7 +23,7 @@ const StackRoutes = () => {
     >
       {/* If user is logged in */}
       <Stack.Group>
-        {/* <Stack.Screen name="AuthLoader" component={AuthNavigator} /> */}
+        <Stack.Screen name="AuthLoader" component={AuthNavigator} />
         <Stack.Screen name="Home" component={TabRoutes} />
       </Stack.Group>
 
