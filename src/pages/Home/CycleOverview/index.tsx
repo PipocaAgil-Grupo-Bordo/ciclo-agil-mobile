@@ -42,7 +42,7 @@ const CycleOverview: React.FC = () => {
           {data.icon}
           <Sc.TextContainer>
             <Sc.MainText>{data.title}</Sc.MainText>
-            <Sc.MainText>{data.time}</Sc.MainText>
+            <Sc.SecondText>{data.time}</Sc.SecondText>
           </Sc.TextContainer>
         </Sc.OverviewCard>
       ))}
