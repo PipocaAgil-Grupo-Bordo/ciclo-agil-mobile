@@ -1,6 +1,7 @@
 import { Control, FieldErrors } from "react-hook-form";
 import { PasswordResetFields } from "@type/auth";
 import { StatesType } from "@components/GenericButton/type";
+import { RootStackParamList } from "@routes/type";
 
 export interface SubmitButtonsProps {
   SubmitPassword: () => void;
@@ -18,4 +19,13 @@ export interface SubmitButtonsArray {
   state?: StatesType;
   onPress: () => void;
   loading?: boolean;
+}
+
+export type RoutesType = keyof Pick<RootStackParamList, "EmailRequest" | "Login">;
+
+export interface IModalOptions {
+  title: string;
+  buttonText: string;
+  textContent: string;
+  route: RoutesType | "";
 }
