@@ -23,13 +23,13 @@ const StackRoutes = () => {
     >
       {/* If user is logged in */}
       <Stack.Group>
-        <Stack.Screen name="AuthLoader" component={AuthNavigator} />
+        {/* <Stack.Screen name="AuthLoader" component={AuthNavigator} /> */}
         <Stack.Screen name="Home" component={TabRoutes} />
       </Stack.Group>
 
       {/* If user has no account or has logged out */}
       <Stack.Group>
-        <Stack.Screen name="Login" component={Login} />
+        {/* <Stack.Screen name="Login" component={Login} /> */}
 
         {/* Account creation plus its initial settings */}
         <Stack.Group>
