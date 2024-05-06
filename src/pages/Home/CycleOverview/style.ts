@@ -5,7 +5,6 @@ export const Sc = {
   Container: styled.View`
     gap: 20px;
     justify-content: center;
-    width: 90%;
   `,
   Title: styled.Text`
     font-family: "MontserratBold";
@@ -15,7 +14,6 @@ export const Sc = {
     flex-direction: row;
     align-items: center;
     gap: 16px;
-    margin: 0px 20px;
     padding: 16px;
     background-color: white;
     border-radius: 12px;
