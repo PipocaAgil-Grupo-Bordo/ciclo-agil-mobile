@@ -17,6 +17,8 @@ export const Sc = {
           return "#8e37c9";
         case "mild":
           return "#EEE1F7";
+        case "no-style":
+          return "#fafcff";
         case "default":
         default:
           return "#F5F5F5";

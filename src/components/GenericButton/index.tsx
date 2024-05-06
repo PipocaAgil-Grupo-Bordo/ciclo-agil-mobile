@@ -26,6 +26,9 @@ const GenericButton: React.FC<GenericButtonProps> = ({
         return "#722CA1";
       case "mild":
         return "#DCC1EE";
+      // Placeholder till UI/UX team figures it out
+      case "no-style":
+        return "#fafcff";
       case "default":
       default:
         return "#F4EBFA";
