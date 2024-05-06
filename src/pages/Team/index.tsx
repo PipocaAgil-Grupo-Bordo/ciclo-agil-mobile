@@ -5,9 +5,12 @@ import Squad from "./Squad";
 import { useState } from "react";
 import Modal from "@components/Modal";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/core";
+import { NavigationType } from "@routes/type";
 
 const Team: React.FC = () => {
   const [readyToNext, setReadyToNext] = useState(false);
+  const navigation = useNavigation<NavigationType>()
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -25,6 +28,7 @@ const Team: React.FC = () => {
             title="Vamos lá!"
             textContent="Para um melhor uso do app precisamos que você responda algumas perguntas"
             buttonText="Vamos lá"
+            onPress={() => navigation.navigate("LastPeriod")}
             setReadyToNext={setReadyToNext}
           />
         )}

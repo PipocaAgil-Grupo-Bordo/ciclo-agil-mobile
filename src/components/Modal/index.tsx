@@ -3,15 +3,18 @@ import React, { useCallback, useMemo, useRef } from "react";
 import { Sc } from "./style";
 import GenericButton from "@components/GenericButton";
 import { Gs } from "src/styles/globalStyles";
-import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "@routes/type";
 import { Modalprops } from "./type";
 import { horizontalScale, verticalScale } from "@utils/responsivenessHelper";
 
-const Modal: React.FC<Modalprops> = ({ title, textContent, buttonText, setReadyToNext }) => {
+const Modal: React.FC<Modalprops> = ({
+  title,
+  textContent,
+  buttonText,
+  onPress,
+  setReadyToNext
+}) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ["30%", "50%"], []);
-  const navigation = useNavigation<NavigationType>();
 
   const handleSheetChanges = useCallback((index: number) => {
     if (index === -1) setReadyToNext(false);
@@ -31,7 +34,7 @@ const Modal: React.FC<Modalprops> = ({ title, textContent, buttonText, setReadyT
         <Gs.Title>{title}</Gs.Title>
         <Sc.Paragraph>{textContent}</Sc.Paragraph>
       </Sc.Container>
-      <GenericButton onPress={() => navigation.navigate("LastPeriod")} state="accent">
+      <GenericButton onPress={onPress} state="accent">
         {buttonText}
       </GenericButton>
     </BottomSheet>
