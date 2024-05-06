@@ -10,6 +10,7 @@ import DropdownMenu from "../SharedComponents/DropdownMenu";
 import ScrollableMenu from "../SharedComponents/ScrollableMenu";
 import { menstrualApi } from "@services/menstrualApi";
 import { useTokenContext } from "@context/useUserToken";
+import Modal from "@components/Modal";
 
 const LastPeriod: React.FC = () => {
   // An array with all the capitalized months in portuguese
@@ -36,6 +37,13 @@ const LastPeriod: React.FC = () => {
   const days = Array.from({ length: numberOfDays }, (_, index) => index + 1);
 
   const navigation = useNavigation<NavigationType>();
+
+  const [showModal, setShowModal] = useState(false);
+  const [modalOptions, setModalOptions] = useState({
+    title: "",
+    textContent: "",
+    buttonText: ""
+  });
 
   // Ensure the selected dropdown option is saved in a state hook
   const handleMonthSelection = (option: MonthsType) => {
@@ -66,8 +74,20 @@ const LastPeriod: React.FC = () => {
       navigation.navigate("CycleDuration");
     } catch (error) {
       setIsLoading(false);
-      console.warn("Error while trying to save last period date", error);
+      setShowModal(true);
+
+      setModalOptions({
+        title: "Ops!",
+        textContent:
+          "Houve um erro ao salvar a data de início da sua última menstruação. Por favor, tente novamente ou avance sem salvar.",
+        buttonText: "Avançar mesmo assim."
+      });
     }
+  };
+
+  const handleNextScreenNavigation = () => {
+    setShowModal(false);
+    navigation.navigate("CycleDuration");
   };
 
   return (
@@ -92,6 +112,16 @@ const LastPeriod: React.FC = () => {
         nextWithData={handleLastPeriodDate}
         nextWithoutData={() => navigation.navigate("CycleDuration")}
       />
+
+      {showModal && (
+        <Modal
+          title={modalOptions.title}
+          buttonText={modalOptions.buttonText}
+          textContent={modalOptions.textContent}
+          setReadyToNext={setShowModal}
+          onPress={handleNextScreenNavigation}
+        />
+      )}
     </Sc.Container>
   );
 };
