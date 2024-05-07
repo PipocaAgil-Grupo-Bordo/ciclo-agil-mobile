@@ -3,6 +3,7 @@ import { Sc } from "./style";
 import useBackButtonExit from "@hooks/useBackButtonExit";
 import UserHeader from "./UserHeader";
 import CycleOverview from "./CycleOverview";
+import CyclePhase from "./CyclePhase";
 
 const Home: React.FC = () => {
   useBackButtonExit();
@@ -10,6 +11,7 @@ const Home: React.FC = () => {
   return (
     <Sc.Container>
       <UserHeader />
+      <CyclePhase />
       <CycleOverview/>
     </Sc.Container>
   );
