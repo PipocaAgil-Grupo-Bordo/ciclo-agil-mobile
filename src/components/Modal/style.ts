@@ -8,5 +8,6 @@ export const Sc = {
   Paragraph: styled.Text`
     margin-top: ${verticalScale(50) + "px"};
     margin-bottom: ${verticalScale(50) + "px"};
+    text-align: center;
   `
 };
