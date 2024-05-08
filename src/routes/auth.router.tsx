@@ -6,7 +6,6 @@ import { useTokenContext } from "@context/useUserToken";
 import { secureStore } from "@utils/secureStoreHelper";
 import { jwtDecode } from "jwt-decode";
 import { decode, encode } from "base-64";
-import { tokenAuth } from "@utils/tokenAuthHelper";
 
 if (!global.btoa) {
   global.btoa = encode;

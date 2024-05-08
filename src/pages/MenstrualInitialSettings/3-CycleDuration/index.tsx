@@ -16,7 +16,7 @@ const CycleDuration: React.FC = () => {
   const regularCycle = Array.from({ length: 35 - REGULAR + 1 }, (_, index) => index + 21);
   const irregularCycle = Array.from({ length: 120 - IRREGULAR + 1 }, (_, index) => index + 7);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, _] = useState(false);
   const [cycleData, setCycleData] = useState<CycleDataType>({
     cycle: "Regular",
     duration: REGULAR

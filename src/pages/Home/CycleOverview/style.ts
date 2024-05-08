@@ -1,4 +1,3 @@
-import { horizontalScale } from "@utils/responsivenessHelper";
 import styled from "styled-components/native";
 
 export const Sc = {
