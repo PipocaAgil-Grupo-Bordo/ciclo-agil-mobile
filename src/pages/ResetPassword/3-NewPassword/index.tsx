@@ -78,7 +78,12 @@ const NewPassword: React.FC = () => {
   };
 
   return (
-    <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
+    <Sc.Container
+      nestedScrollEnabled
+      contentContainerStyle={{ flexGrow: 1 }}
+      keyboardShouldPersistTaps={"always"}
+      
+    >
       <Sc.Wrapper>
         <Sc.HeaderWrapper>
           <Header title="Redefinir senha" />
