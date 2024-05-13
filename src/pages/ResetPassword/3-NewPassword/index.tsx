@@ -23,7 +23,6 @@ const NewPassword: React.FC = () => {
     route: ""
   });
 
-
   const navigation = useNavigation<NavigationType>();
   const route = useRoute();
   const token = (route.params as NewPasswordRouteParam)?.token;
@@ -46,6 +45,7 @@ const NewPassword: React.FC = () => {
         buttonText: "Voltar ao Login",
         route: "Login"
       }));
+      setShowModal(true);
     } catch (error) {
       const axiosError = error as AxiosError;
 
