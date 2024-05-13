@@ -10,3 +10,8 @@ export interface ITokenContext {
 export interface TokenProviderProps {
   children: ReactNode;
 }
+
+export interface IProfileContext {
+  userProfile: string | undefined;
+  setUserProfile: Dispatch<SetStateAction< any | undefined>>;
+}

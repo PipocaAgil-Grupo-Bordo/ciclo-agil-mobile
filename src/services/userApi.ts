@@ -6,6 +6,12 @@ function signUpUser(body: Omit<RegisterFields, "confirmEmail" | "confirmPassword
   return promise;
 }
 
+function getUserProfile(token: String) {
+  const promise = api.get("/profile", { headers: { Authorization: `Bearer ${token}` } });
+  return promise;
+}
+
 export const userApi = {
-  signUpUser
+  signUpUser,
+  getUserProfile
 };
