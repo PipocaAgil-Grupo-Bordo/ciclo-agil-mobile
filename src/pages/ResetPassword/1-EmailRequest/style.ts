@@ -7,7 +7,13 @@ export const Sc = {
 
   Wrapper: styled.View`
     flex: 1;
-    padding: 75px 30px 30px;
+    padding: 60px 30px 30px;
     justify-content: space-between;
+  `,
+
+  BackIcon: styled.TouchableOpacity`
+    position: absolute;
+    top: 36px;
+    left: 20px;
   `
 };

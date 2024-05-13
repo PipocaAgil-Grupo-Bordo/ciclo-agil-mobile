@@ -3,12 +3,11 @@ import { TextLora } from "@components/TopicText/style";
 
 export const Sc = {
   Container: styled.View`
-    align-items: center;
+    margin-top: 8px;
   `,
 
-  Title: styled(TextLora)`
-    font-size: 24px;
-    margin: 32px 0px;
+  Wrapper: styled.View`
+    margin-bottom: 26px;
   `,
 
   SubTitle: styled(TextLora)`

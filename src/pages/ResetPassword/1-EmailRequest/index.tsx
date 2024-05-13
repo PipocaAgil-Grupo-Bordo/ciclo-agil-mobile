@@ -8,6 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@routes/type";
 import { handlePasswordRequest } from "@utils/submitHelper";
 import { Sc } from "./style";
+import Entypo from "react-native-vector-icons/Entypo";
 
 const PasswordReset: React.FC = () => {
   const navigation = useNavigation<NavigationType>();
@@ -24,6 +25,9 @@ const PasswordReset: React.FC = () => {
   return (
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Sc.Wrapper>
+        <Sc.BackIcon onPress={() => navigation.goBack()}>
+          <Entypo name="chevron-left" size={30} color={"#444444"} />
+        </Sc.BackIcon>
         <EmailRequestSection control={control} errors={errors} />
 
         <ButtonList
