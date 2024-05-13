@@ -6,11 +6,11 @@ import Buttons from "../SharedComponents/Buttons";
 import Information from "../SharedComponents/Information";
 import DropdownMenu from "../SharedComponents/DropdownMenu";
 import ScrollableMenu from "../SharedComponents/ScrollableMenu";
-import { menstrualApi } from "@services/menstrualApi";
 import { useTokenContext } from "@context/useUserToken";
 import Modal from "@components/Modal";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@routes/type";
+import { userApi } from "@services/userApi";
 
 const CycleDuration: React.FC = () => {
   // Constants
@@ -73,7 +73,7 @@ const CycleDuration: React.FC = () => {
     try {
       setIsLoading(true);
 
-      await menstrualApi.currentCycle(
+      await userApi.currentCycle(
         {
           isMenstrualCycleRegular: cycleData.cycle === "Regular" ? true : false,
           menstrualCycleDuration: cycleData.duration

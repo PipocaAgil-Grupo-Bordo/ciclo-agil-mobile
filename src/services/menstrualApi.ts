@@ -1,4 +1,4 @@
-import { ICurrentCycle, ILastPeriod } from "@type/menstrual";
+import { ILastPeriod } from "@type/menstrual";
 import api from "./api";
 
 const lastPeriod = (body: ILastPeriod, token: string) => {
@@ -10,16 +10,6 @@ const lastPeriod = (body: ILastPeriod, token: string) => {
   return promise;
 };
 
-const currentCycle = (body: ICurrentCycle, token: string) => {
-  const promise = api.patch("profile", body, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  });
-  return promise;
-};
-
 export const menstrualApi = {
   lastPeriod,
-  currentCycle
 };
