@@ -41,7 +41,7 @@ const NewPassword: React.FC = () => {
 
       setModalOptions(() => ({
         title: "Pronto!",
-        textContent: "Senha alterada com sucesso",
+        textContent: "Senha alterada com sucesso!",
         buttonText: "Voltar ao Login",
         route: "Login"
       }));
