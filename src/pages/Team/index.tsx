@@ -7,11 +7,12 @@ import Modal from "@components/Modal";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/core";
 import { NavigationType } from "@routes/type";
+import useBackButtonExit from "@hooks/useBackButtonExit";
 
 const Team: React.FC = () => {
   const [readyToNext, setReadyToNext] = useState(false);
-  const navigation = useNavigation<NavigationType>()
-
+  const navigation = useNavigation<NavigationType>();
+  useBackButtonExit(false);
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Sc.Container>
