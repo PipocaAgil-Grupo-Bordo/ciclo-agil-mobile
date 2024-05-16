@@ -1,17 +1,16 @@
 import { Sc } from "./style";
 
 const WeeklySection = () => {
-  // const currentDay = new Date().getDate();
-  const currentDay = 11;
+  const currentDay = new Date().getDate();
 
   const weekBlock = [
-    { id: 0, week: "D", day: 9 },
-    { id: 1, week: "S", day: 10 },
-    { id: 2, week: "T", day: 11 },
-    { id: 3, week: "Q", day: 12 },
-    { id: 4, week: "Q", day: 13 },
-    { id: 5, week: "S", day: 14 },
-    { id: 6, week: "S", day: 15 }
+    { id: 0, week: "D", day: 12 },
+    { id: 1, week: "S", day: 13 },
+    { id: 2, week: "T", day: 14 },
+    { id: 3, week: "Q", day: 15 },
+    { id: 4, week: "Q", day: 16 },
+    { id: 5, week: "S", day: 17 },
+    { id: 6, week: "S", day: 18 }
   ];
 
   return (
