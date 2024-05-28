@@ -1,13 +1,12 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
 import { UserData } from "./auth";
-import { AxiosResponse } from "axios";
 
 export interface ITokenContext {
   refreshToken: string | undefined;
   accessToken: string | undefined;
   setRefreshToken: Dispatch<SetStateAction<string | undefined>>;
   setAccessToken: Dispatch<SetStateAction<string | undefined>>;
-  userProfile: AxiosResponse<UserData, any> | undefined;
+  userProfile: UserData | undefined;
 }
 
 export interface TokenProviderProps {

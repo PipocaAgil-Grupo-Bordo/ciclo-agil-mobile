@@ -1,16 +1,18 @@
+import { dateHelper } from "@utils/dateHelpers";
 import { Sc } from "./style";
 
 const WeeklySection = () => {
   const currentDay = new Date().getDate();
-
+  const date = new Date();
+  const daysOfWeek = dateHelper.selectWeek(date);
   const weekBlock = [
-    { id: 0, week: "D", day: 12 },
-    { id: 1, week: "S", day: 13 },
-    { id: 2, week: "T", day: 14 },
-    { id: 3, week: "Q", day: 15 },
-    { id: 4, week: "Q", day: 16 },
-    { id: 5, week: "S", day: 17 },
-    { id: 6, week: "S", day: 18 }
+    { id: 0, week: "D" },
+    { id: 1, week: "S" },
+    { id: 2, week: "T" },
+    { id: 3, week: "Q" },
+    { id: 4, week: "Q" },
+    { id: 5, week: "S" },
+    { id: 6, week: "S" }
   ];
 
   return (
@@ -19,8 +21,8 @@ const WeeklySection = () => {
         <Sc.WeekWrapper key={block.id}>
           <Sc.Week>{block.week}</Sc.Week>
 
-          <Sc.DayWrapper hasBorder={block.day === currentDay ? true : false}>
-            <Sc.Day>{block.day}</Sc.Day>
+          <Sc.DayWrapper hasBorder={daysOfWeek[block.id] === currentDay ? true : false}>
+            <Sc.Day>{daysOfWeek[block.id]}</Sc.Day>
           </Sc.DayWrapper>
         </Sc.WeekWrapper>
       ))}

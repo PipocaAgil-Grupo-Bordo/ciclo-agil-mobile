@@ -1,13 +1,13 @@
 import { userApi } from "@services/userApi";
 import { UserData } from "@type/auth";
-import { AxiosResponse } from "axios";
 import { Dispatch } from "react";
 
 export async function setUserInfo(
   accessToken: string,
-  setUserProfile: Dispatch<React.SetStateAction<AxiosResponse<UserData, any> | undefined>>
+  setUserProfile: Dispatch<React.SetStateAction<UserData | undefined>>
 ) {
   try {
-    setUserProfile(await userApi.getUserProfile(accessToken));
+    const axiosResponse = await userApi.getUserProfile(accessToken);
+    setUserProfile(axiosResponse.data);
   } catch (error) {}
 }
