@@ -1,6 +1,6 @@
 function formatBirthdateToISODate(birthdate: string) {
   // Remove '/' from the birthdate string
-  const birthdateWithoutSlash = birthdate.replace(/\//g, '');
+  const birthdateWithoutSlash = birthdate.replace(/\//g, "");
 
   // Format the birthdate string to ISO date format (YYYY-MM-DD)
   const birthdateStringHighFormat = [
@@ -12,6 +12,12 @@ function formatBirthdateToISODate(birthdate: string) {
   return birthdateStringHighFormat;
 }
 
+function selectWeek(date: Date) {
+  return Array(7)
+    .fill(new Date(date))
+    .map((el, idx) => new Date(el.setDate(el.getDate() - el.getDay() + idx)).getDate());
+}
 export const dateHelper = {
-  formatBirthdateToISODate
+  formatBirthdateToISODate,
+  selectWeek
 };

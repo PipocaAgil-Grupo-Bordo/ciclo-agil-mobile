@@ -1,22 +1,18 @@
-import { RegisterFields } from "@type/auth";
+import { RegisterFields, UserData } from "@type/auth";
 import api from "./api";
-import { ICurrentCycle } from "@type/menstrual";
+import { AxiosResponse } from "axios";
 
-const signUpUser = (body: Omit<RegisterFields, "confirmEmail" | "confirmPassword">) => {
+function signUpUser(body: Omit<RegisterFields, "confirmEmail" | "confirmPassword">) {
   const promise = api.post("/users", body);
   return promise;
-};
+}
 
-const currentCycle = (body: ICurrentCycle, token: string) => {
-  const promise = api.patch("profile", body, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  });
+function getUserProfile(token: String): Promise<AxiosResponse<UserData>> {
+  const promise = api.get("/profile", { headers: { Authorization: `Bearer ${token}` } });
   return promise;
-};
+}
 
 export const userApi = {
   signUpUser,
-  currentCycle
+  getUserProfile
 };
