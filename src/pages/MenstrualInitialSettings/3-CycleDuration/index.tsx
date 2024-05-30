@@ -11,6 +11,8 @@ import Modal from "@components/Modal";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@routes/type";
 import { userApi } from "@services/userApi";
+import axios from "axios";
+import { tokenAuth } from "@utils/tokenAuthHelper";
 
 const CycleDuration: React.FC = () => {
   // Constants
@@ -24,14 +26,14 @@ const CycleDuration: React.FC = () => {
     (_, index) => index + IRREGULAR
   );
 
-  const [isLoading,setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [cycleData, setCycleData] = useState<CycleDataType>({
     cycle: "Regular",
     duration: REGULAR
   });
   const [showModal, setShowModal] = useState(false);
 
-  const { accessToken } = useTokenContext();
+  const { accessToken, setAccessToken, setRefreshToken } = useTokenContext();
   const navigation = useNavigation<NavigationType>();
 
   const handleCycleChange = (value: CyclesType) => {
@@ -83,10 +85,17 @@ const CycleDuration: React.FC = () => {
 
       setIsLoading(false);
       handleNavigation();
-    } catch (error) {
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error) && error.response?.status === 500) {
+        setShowModal(true);
+      } else if (axios.isAxiosError(error) && error.response?.status === 401) {
+        alert("Sessão expirada. Por favor faça login novamente");
+        tokenAuth.deleteTokens(setAccessToken, setRefreshToken);
+        navigation.navigate("Login");
+      }
       // Missing error for code 400 and 401 (not sure what they're for yet, need the doc updated)
       setIsLoading(false);
-      setShowModal(true);
+
       console.log(error); // #temporary for debugging
     }
   };
