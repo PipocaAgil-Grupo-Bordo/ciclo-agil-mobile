@@ -15,6 +15,8 @@
       "@routes/*": ["src/routes/*"],
       "@hooks/*": ["src/hooks/*"],
       "@context/*": ["src/context/*"]
-    }
+    },
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   }
 }

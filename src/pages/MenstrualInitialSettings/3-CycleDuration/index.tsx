@@ -24,7 +24,7 @@ const CycleDuration: React.FC = () => {
     (_, index) => index + IRREGULAR
   );
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, _] = useState(false);
   const [cycleData, setCycleData] = useState<CycleDataType>({
     cycle: "Regular",
     duration: REGULAR

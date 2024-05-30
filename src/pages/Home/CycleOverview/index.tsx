@@ -2,27 +2,29 @@ import React from "react";
 import { Sc } from "./style";
 import Feather from "react-native-vector-icons/Feather";
 import Entypo from "react-native-vector-icons/Entypo";
+
 const CycleOverview: React.FC = () => {
   const ICON_SIZE = 20;
   const ICON_COLOR = "#8E37C9";
+  const DATA_MOCKUP = "Não informado"
 
   const cycleData = [
     {
       id: 1,
       title: "Iniciou no dia",
-      time: "00 dias atrás",
+      time: DATA_MOCKUP,
       icon: <Feather name="clock" size={ICON_SIZE} color={ICON_COLOR} />
     },
     {
       id: 2,
       title: "Duração do período",
-      time: "Não informado",
+      time: DATA_MOCKUP,
       icon: <Feather name="droplet" size={ICON_SIZE} color={ICON_COLOR} />
     },
     {
       id: 3,
       title: "Duração do ciclo",
-      time: "Não informado",
+      time: DATA_MOCKUP,
       icon: (
         <Entypo
           name="cycle"

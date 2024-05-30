@@ -23,7 +23,6 @@ const NewPassword: React.FC = () => {
     route: ""
   });
 
-
   const navigation = useNavigation<NavigationType>();
   const route = useRoute();
   const token = (route.params as NewPasswordRouteParam)?.token;
@@ -42,10 +41,11 @@ const NewPassword: React.FC = () => {
 
       setModalOptions(() => ({
         title: "Pronto!",
-        textContent: "Senha alterada com sucesso",
+        textContent: "Senha alterada com sucesso!",
         buttonText: "Voltar ao Login",
         route: "Login"
       }));
+      setShowModal(true);
     } catch (error) {
       const axiosError = error as AxiosError;
 
@@ -78,7 +78,12 @@ const NewPassword: React.FC = () => {
   };
 
   return (
-    <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
+    <Sc.Container
+      nestedScrollEnabled
+      contentContainerStyle={{ flexGrow: 1 }}
+      keyboardShouldPersistTaps={"always"}
+      
+    >
       <Sc.Wrapper>
         <Sc.HeaderWrapper>
           <Header title="Redefinir senha" />

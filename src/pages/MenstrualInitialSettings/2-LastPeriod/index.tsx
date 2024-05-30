@@ -80,7 +80,7 @@ const LastPeriod: React.FC = () => {
         title: "Ops!",
         textContent:
           "Houve um erro ao salvar a data de início da sua última menstruação. Por favor, tente novamente ou avance sem salvar.",
-        buttonText: "Avançar mesmo assim."
+        buttonText: "Avançar mesmo assim"
       });
     }
   };
