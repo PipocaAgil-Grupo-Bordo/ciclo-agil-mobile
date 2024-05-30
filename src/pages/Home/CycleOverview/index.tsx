@@ -2,12 +2,13 @@ import React from "react";
 import { Sc } from "./style";
 import Feather from "react-native-vector-icons/Feather";
 import Entypo from "react-native-vector-icons/Entypo";
+import { useTokenContext } from "@context/useUserToken";
 
 const CycleOverview: React.FC = () => {
   const ICON_SIZE = 20;
   const ICON_COLOR = "#8E37C9";
-  const DATA_MOCKUP = "Não informado"
-
+  const DATA_MOCKUP = "Não informado";
+  const { userProfile } = useTokenContext();
   const cycleData = [
     {
       id: 1,
@@ -23,7 +24,9 @@ const CycleOverview: React.FC = () => {
     },
     {
       id: 3,
-      title: "Duração do ciclo",
+      title: userProfile?.menstrualCycleDuration
+        ? `Duração do ciclo: ${userProfile?.menstrualCycleDuration} dias`
+        : "Duração do ciclo",
       time: DATA_MOCKUP,
       icon: (
         <Entypo
