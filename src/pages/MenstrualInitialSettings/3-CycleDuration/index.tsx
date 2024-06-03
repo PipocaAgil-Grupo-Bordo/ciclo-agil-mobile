@@ -10,9 +10,9 @@ import { useTokenContext } from "@context/useUserToken";
 import Modal from "@components/Modal";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@routes/type";
-import { userApi } from "@services/userApi";
 import axios from "axios";
 import { tokenAuth } from "@utils/tokenAuthHelper";
+import { menstrualApi } from "@services/menstrualApi";
 
 const CycleDuration: React.FC = () => {
   // Constants
@@ -75,7 +75,7 @@ const CycleDuration: React.FC = () => {
     try {
       setIsLoading(true);
 
-      await userApi.currentCycle(
+      await menstrualApi.updateCurrentCycle(
         {
           isMenstrualCycleRegular: cycleData.cycle === "Regular" ? true : false,
           menstrualCycleDuration: cycleData.duration
