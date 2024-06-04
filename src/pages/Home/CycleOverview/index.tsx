@@ -2,13 +2,12 @@ import React from "react";
 import { Sc } from "./style";
 import Feather from "react-native-vector-icons/Feather";
 import Entypo from "react-native-vector-icons/Entypo";
-import { useTokenContext } from "@context/useUserToken";
+import { UserData } from "@type/auth";
 
-const CycleOverview: React.FC = () => {
+const CycleOverview: React.FC<{ userProfile: UserData | undefined }> = ({ userProfile }) => {
   const ICON_SIZE = 20;
   const ICON_COLOR = "#8E37C9";
   const DATA_MOCKUP = "Não informado";
-  const { userProfile } = useTokenContext();
   const cycleData = [
     {
       id: 1,
@@ -27,7 +26,11 @@ const CycleOverview: React.FC = () => {
       title: userProfile?.menstrualCycleDuration
         ? `Duração do ciclo: ${userProfile?.menstrualCycleDuration} dias`
         : "Duração do ciclo",
-      time: DATA_MOCKUP,
+      time: userProfile?.isMenstrualCycleRegular
+        ? "Normal"
+        : userProfile?.isMenstrualCycleRegular == null
+        ? DATA_MOCKUP
+        : "Irregular",
       icon: (
         <Entypo
           name="cycle"

@@ -1,9 +1,8 @@
+import { WhoAmI } from "@type/auth";
 import { Sc } from "./style";
 import Feather from "react-native-vector-icons/Feather";
 
-const UserHeader = () => {
-  const MOCK_USER = "Ana";
-
+const UserHeader: React.FC<{ whoAmI: WhoAmI | undefined }> = ({ whoAmI }) => {
   return (
     <Sc.Container>
       <Sc.UserWrapper>
@@ -11,7 +10,7 @@ const UserHeader = () => {
           {/* <Sc.Image src="https://github.com/LucianoDLima.png" /> */}
         </Sc.ImageContainer>
 
-        <Sc.Text>Olá, {MOCK_USER}</Sc.Text>
+        <Sc.Text>Olá, {whoAmI?.name}</Sc.Text>
       </Sc.UserWrapper>
 
       <Sc.SettingsWrapper>
