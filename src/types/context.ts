@@ -7,6 +7,7 @@ export interface ITokenContext {
   setRefreshToken: Dispatch<SetStateAction<string | undefined>>;
   setAccessToken: Dispatch<SetStateAction<string | undefined>>;
   userProfile: UserData | undefined;
+  setUserProfile:Dispatch<React.SetStateAction<UserData | undefined>>
 }
 
 export interface TokenProviderProps {

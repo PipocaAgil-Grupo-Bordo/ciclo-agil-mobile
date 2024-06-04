@@ -1,8 +1,6 @@
 import { UserData } from "@type/auth";
 import { ITokenContext, TokenProviderProps } from "@type/context";
-import { setUserInfo } from "@utils/setUserProfileHelper";
-
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 export const TokenContext = createContext<ITokenContext | undefined>(undefined);
 
@@ -11,15 +9,16 @@ export const TokenProvider: React.FC<TokenProviderProps> = ({ children }) => {
   const [accessToken, setAccessToken] = useState<string>();
   const [userProfile, setUserProfile] = useState<UserData>();
 
-  useEffect(() => {
-    if (accessToken) {
-      setUserInfo(accessToken, setUserProfile);
-    }
-  }, [accessToken]);
-
   return (
     <TokenContext.Provider
-      value={{ refreshToken, setRefreshToken, accessToken, setAccessToken, userProfile }}
+      value={{
+        refreshToken,
+        setRefreshToken,
+        accessToken,
+        setAccessToken,
+        userProfile,
+        setUserProfile
+      }}
     >
       {children}
     </TokenContext.Provider>

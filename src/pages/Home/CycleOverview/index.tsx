@@ -2,13 +2,12 @@ import React from "react";
 import { Sc } from "./style";
 import Feather from "react-native-vector-icons/Feather";
 import Entypo from "react-native-vector-icons/Entypo";
-import { useTokenContext } from "@context/useUserToken";
+import { UserData } from "@type/auth";
 
-const CycleOverview: React.FC = () => {
+const CycleOverview: React.FC<{ userProfile: UserData | undefined }> = ({ userProfile }) => {
   const ICON_SIZE = 20;
   const ICON_COLOR = "#8E37C9";
   const DATA_MOCKUP = "Não informado";
-  const { userProfile } = useTokenContext();
   const cycleData = [
     {
       id: 1,
