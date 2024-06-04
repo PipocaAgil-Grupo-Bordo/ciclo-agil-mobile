@@ -47,3 +47,13 @@ export interface UserData {
   userId: number;
   user: User;
 }
+
+export interface WhoAmI {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  name: string;
+  email: string;
+  password: string;
+  birthdate: string;
+}

@@ -1,4 +1,4 @@
-import { UserData } from "@type/auth";
+import { UserData, WhoAmI } from "@type/auth";
 import { ITokenContext, TokenProviderProps } from "@type/context";
 import { createContext, useContext, useState } from "react";
 
@@ -8,6 +8,7 @@ export const TokenProvider: React.FC<TokenProviderProps> = ({ children }) => {
   const [refreshToken, setRefreshToken] = useState<string>();
   const [accessToken, setAccessToken] = useState<string>();
   const [userProfile, setUserProfile] = useState<UserData>();
+  const [whoAmI, setWhoAmI] = useState<WhoAmI>();
 
   return (
     <TokenContext.Provider
@@ -17,7 +18,9 @@ export const TokenProvider: React.FC<TokenProviderProps> = ({ children }) => {
         accessToken,
         setAccessToken,
         userProfile,
-        setUserProfile
+        setUserProfile,
+        whoAmI,
+        setWhoAmI
       }}
     >
       {children}

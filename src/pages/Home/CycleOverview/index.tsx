@@ -26,7 +26,11 @@ const CycleOverview: React.FC<{ userProfile: UserData | undefined }> = ({ userPr
       title: userProfile?.menstrualCycleDuration
         ? `Duração do ciclo: ${userProfile?.menstrualCycleDuration} dias`
         : "Duração do ciclo",
-      time: DATA_MOCKUP,
+      time: userProfile?.isMenstrualCycleRegular
+        ? "Normal"
+        : userProfile?.isMenstrualCycleRegular == null
+        ? DATA_MOCKUP
+        : "Irregular",
       icon: (
         <Entypo
           name="cycle"

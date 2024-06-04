@@ -6,19 +6,20 @@ import CycleOverview from "./CycleOverview";
 import CyclePhase from "./CyclePhase";
 import MiniCalendar from "./MiniCalendar";
 import { useTokenContext } from "@context/useUserToken";
-import { setUserInfo } from "@utils/setUserProfileHelper";
+import { setUserInfo, storeWhoAmI } from "@utils/setUserProfileHelper";
 
 const Home: React.FC = () => {
   useBackButtonExit();
-  const { accessToken, setUserProfile, userProfile } = useTokenContext();
+  const { accessToken, setUserProfile, userProfile, whoAmI, setWhoAmI } = useTokenContext();
   useEffect(() => {
     if (accessToken) {
       setUserInfo(accessToken, setUserProfile);
+      storeWhoAmI(accessToken, setWhoAmI);
     }
   }, [accessToken]);
   return (
     <Sc.Container>
-      <UserHeader />
+      <UserHeader whoAmI={whoAmI} />
       <MiniCalendar />
       <CyclePhase />
       <CycleOverview userProfile={userProfile} />
