@@ -5,7 +5,7 @@ import { ButtonsInfo, ButtonsProps } from "../type";
 import { useNavigation } from "@react-navigation/core";
 import { Sc } from "./style";
 
-const Buttons: React.FC<ButtonsProps> = ({ onPress }) => {
+function Buttons({ onPress }: ButtonsProps) {
   const navigation = useNavigation<NavigationType>();
 
   const buttons: ButtonsInfo[] = [
@@ -35,6 +35,6 @@ const Buttons: React.FC<ButtonsProps> = ({ onPress }) => {
       ))}
     </Sc.Container>
   );
-};
+}
 
 export default Buttons;

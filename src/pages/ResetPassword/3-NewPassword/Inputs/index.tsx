@@ -4,7 +4,7 @@ import { InputsProps } from "../type";
 import TextBox from "@components/TextBox";
 import { Sc } from "./style";
 
-const Inputs: React.FC<InputsProps> = ({ control, errors, errorInstruction }) => {
+function Inputs({ control, errors, errorInstruction }: InputsProps) {
   const passwordInputs = [
     {
       label: "Nova senha:",
@@ -24,8 +24,7 @@ const Inputs: React.FC<InputsProps> = ({ control, errors, errorInstruction }) =>
           label={input.label}
           name={input.name}
           control={control}
-          errors={errors}
-        />
+          errors={errors} />
       ))}
 
       {/* TODO: Move to a different file after sprint 2 is over */}
@@ -49,6 +48,6 @@ const Inputs: React.FC<InputsProps> = ({ control, errors, errorInstruction }) =>
       )}
     </Sc.Container>
   );
-};
+}
 
 export default Inputs;

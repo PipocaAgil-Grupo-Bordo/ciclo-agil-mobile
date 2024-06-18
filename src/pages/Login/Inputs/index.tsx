@@ -1,7 +1,7 @@
 import GenericInput from "@components/GenericInput";
 import { FormInputsType, InputsProps } from "../type";
 
-const Inputs: React.FC<InputsProps> = ({ control, errors }) => {
+function Inputs({ control, errors }: InputsProps) {
   const formInputs: FormInputsType[] = [
     {
       label: "Email:",
@@ -24,9 +24,8 @@ const Inputs: React.FC<InputsProps> = ({ control, errors }) => {
       control={control}
       errors={errors}
       keyboardType={input.keyboard}
-      autoComplete={input.autoComplete}
-    />
+      autoComplete={input.autoComplete} />
   ));
-};
+}
 
 export default Inputs;

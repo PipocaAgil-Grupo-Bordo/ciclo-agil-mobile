@@ -10,14 +10,11 @@ import { handlePasswordRequest } from "@utils/submitHelper";
 import { Sc } from "./style";
 import Entypo from "react-native-vector-icons/Entypo";
 
-const PasswordReset: React.FC = () => {
+function PasswordReset() {
   const navigation = useNavigation<NavigationType>();
 
   const {
-    handleSubmit,
-    control,
-    setError,
-    formState: { errors, isSubmitting }
+    handleSubmit, control, setError, formState: { errors, isSubmitting }
   } = useForm<EmailFields>({
     resolver: yupResolver(emailSchema)
   });
@@ -32,11 +29,10 @@ const PasswordReset: React.FC = () => {
 
         <ButtonList
           isLoading={isSubmitting}
-          onPress={handleSubmit((data) => handlePasswordRequest(data, navigation, setError))}
-        />
+          onPress={handleSubmit((data) => handlePasswordRequest(data, navigation, setError))} />
       </Sc.Wrapper>
     </Sc.Container>
   );
-};
+}
 
 export default PasswordReset;

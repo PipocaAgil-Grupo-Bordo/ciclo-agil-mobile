@@ -9,10 +9,11 @@ import { useNavigation } from "@react-navigation/core";
 import { NavigationType } from "@routes/type";
 import useBackButtonExit from "@hooks/useBackButtonExit";
 
-const Team: React.FC = () => {
+function Team() {
   const [readyToNext, setReadyToNext] = useState(false);
   const navigation = useNavigation<NavigationType>();
   useBackButtonExit(false);
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Sc.Container>
@@ -36,6 +37,6 @@ const Team: React.FC = () => {
       </Sc.Container>
     </GestureHandlerRootView>
   );
-};
+}
 
 export default Team;

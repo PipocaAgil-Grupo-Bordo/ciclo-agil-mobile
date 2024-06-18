@@ -2,7 +2,11 @@ import { WhoAmI } from "@type/auth";
 import { Sc } from "./style";
 import Feather from "react-native-vector-icons/Feather";
 
-const UserHeader: React.FC<{ whoAmI: WhoAmI | undefined }> = ({ whoAmI }) => {
+interface UserHeaderProps {
+  whoAmI: WhoAmI | undefined;
+}
+
+function UserHeader({ whoAmI }: UserHeaderProps) {
   return (
     <Sc.Container>
       <Sc.UserWrapper>
@@ -19,6 +23,6 @@ const UserHeader: React.FC<{ whoAmI: WhoAmI | undefined }> = ({ whoAmI }) => {
       </Sc.SettingsWrapper>
     </Sc.Container>
   );
-};
+}
 
 export default UserHeader;

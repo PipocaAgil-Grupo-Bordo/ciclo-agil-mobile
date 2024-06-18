@@ -16,21 +16,17 @@ import Inputs from "../Inputs";
 import { useTokenContext } from "@context/useUserToken";
 import { tokenAuth } from "@utils/tokenAuthHelper";
 
-const SigninForm: React.FC = () => {
+function SigninForm() {
   const navigation = useNavigation<NavigationType>();
   const { setRefreshToken, setAccessToken } = useTokenContext();
 
   const {
-    handleSubmit,
-    control,
-    formState: { errors, isSubmitting },
-    reset,
-    setError
+    handleSubmit, control, formState: { errors, isSubmitting }, reset, setError
   } = useForm<LoginFields>({
     resolver: yupResolver(loginSchema)
   });
 
-  const onSubmit = async (data: LoginFields) => {
+  async function onSubmit(data: LoginFields) {
     try {
       const response = await authApi.signInUser(data);
 
@@ -57,7 +53,7 @@ const SigninForm: React.FC = () => {
         }
       }
     }
-  };
+  }
 
   return (
     <Sc.Container>
@@ -84,6 +80,6 @@ const SigninForm: React.FC = () => {
       </Sc.RegisterWrapper>
     </Sc.Container>
   );
-};
+}
 
 export default SigninForm;

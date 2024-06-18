@@ -2,13 +2,13 @@ import Header from "./Header";
 import SignUpForm from "./SignUpForm";
 import { Sc } from "./style";
 
-const SignUp: React.FC = () => {
+function SignUp() {
   return (
     <Sc.Container>
       <Header />
       <SignUpForm />
     </Sc.Container>
   );
-};
+}
 
 export default SignUp;

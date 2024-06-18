@@ -12,18 +12,18 @@ import { AxiosError } from "axios";
 import { Sc } from "./style";
 import Header from "@components/Header";
 
-const CodeRequest: React.FC = () => {
+function CodeRequest() {
   const [otpValue, setOtpValue] = useState<string>();
   const [codeValidationInfo, setCodeValidationInfo] = useState({ message: "", type: "" });
   const navigation = useNavigation<NavigationType>();
   const route = useRoute();
   const email = (route.params as CodeRequestRouteParam)?.email;
 
-  const handleTextInput = (value: string) => {
+  function handleTextInput(value: string) {
     setOtpValue(value);
-  };
+  }
 
-  const handleResendCode = async () => {
+  async function handleResendCode() {
     const resetBody = { email };
     try {
       await authApi.requestPasswordResetCode(resetBody);
@@ -43,7 +43,7 @@ const CodeRequest: React.FC = () => {
       // Should server go down
       alert("Algo deu errado, tente novamente!");
     }
-  };
+  }
 
   return (
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
@@ -59,13 +59,10 @@ const CodeRequest: React.FC = () => {
         </View>
 
         <Buttons
-          onPress={() =>
-            handleRedefinitionCodeValidation(otpValue, navigation, email, setCodeValidationInfo)
-          }
-        />
+          onPress={() => handleRedefinitionCodeValidation(otpValue, navigation, email, setCodeValidationInfo)} />
       </Sc.Wrapper>
     </Sc.Container>
   );
-};
+}
 
 export default CodeRequest;

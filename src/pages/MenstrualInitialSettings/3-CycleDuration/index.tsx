@@ -14,7 +14,7 @@ import axios from "axios";
 import { tokenAuth } from "@utils/tokenAuthHelper";
 import { menstrualApi } from "@services/menstrualApi";
 
-const CycleDuration: React.FC = () => {
+function CycleDuration() {
   // Constants
   const REGULAR = 21;
   const IRREGULAR = 7;
@@ -36,14 +36,14 @@ const CycleDuration: React.FC = () => {
   const { accessToken, setAccessToken, setRefreshToken } = useTokenContext();
   const navigation = useNavigation<NavigationType>();
 
-  const handleCycleChange = (value: CyclesType) => {
+  function handleCycleChange(value: CyclesType) {
     setCycleData((prevData) => ({
       ...prevData,
       cycle: value
     }));
-  };
+  }
 
-  const handleDurationChange = (value: number) => {
+  function handleDurationChange(value: number) {
     const isRegular = cycleData.cycle === "Regular";
     const newValue = isRegular ? value + REGULAR : value + IRREGULAR;
 
@@ -51,9 +51,9 @@ const CycleDuration: React.FC = () => {
       ...prevData,
       duration: newValue
     }));
-  };
+  }
 
-  const handleWhichItemArrayShouldShowUp = () => {
+  function handleWhichItemArrayShouldShowUp() {
     const isRegular = cycleData.cycle === "Regular";
 
     if (isRegular) {
@@ -61,17 +61,17 @@ const CycleDuration: React.FC = () => {
     }
 
     return irregularCycle;
-  };
+  }
 
-  const handleNavigation = () => {
+  function handleNavigation() {
     navigation.navigate("Home");
 
     if (showModal) {
       setShowModal(false);
     }
-  };
+  }
 
-  const handleCycleSubmission = async () => {
+  async function handleCycleSubmission() {
     try {
       setIsLoading(true);
 
@@ -98,7 +98,7 @@ const CycleDuration: React.FC = () => {
 
       console.log(error); // #temporary for debugging
     }
-  };
+  }
 
   return (
     <Sc.Container>
@@ -109,13 +109,11 @@ const CycleDuration: React.FC = () => {
           label="Seu ciclo é:"
           onChange={handleCycleChange}
           options={cycles}
-          currentOption={cycleData.cycle}
-        />
+          currentOption={cycleData.cycle} />
 
         <ScrollableMenu
           items={handleWhichItemArrayShouldShowUp()}
-          onIndexChange={handleDurationChange}
-        />
+          onIndexChange={handleDurationChange} />
 
         <Information text="Não se preocupe se você não souber quanto tempo dura o seu ciclo, você pode registrar depois" />
       </Sc.TopWrapper>
@@ -123,8 +121,7 @@ const CycleDuration: React.FC = () => {
       <Buttons
         isLoading={isLoading}
         nextWithData={handleCycleSubmission}
-        nextWithoutData={handleNavigation}
-      />
+        nextWithoutData={handleNavigation} />
 
       {showModal && (
         <Modal
@@ -132,11 +129,10 @@ const CycleDuration: React.FC = () => {
           textContent="Algo deu errado"
           buttonText="Avançar mesmo assim"
           setReadyToNext={setShowModal}
-          onPress={() => navigation.navigate("Home")}
-        />
+          onPress={() => navigation.navigate("Home")} />
       )}
     </Sc.Container>
   );
-};
+}
 
 export default CycleDuration;

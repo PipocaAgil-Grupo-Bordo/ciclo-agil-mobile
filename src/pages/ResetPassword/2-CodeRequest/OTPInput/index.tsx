@@ -3,7 +3,7 @@ import TextBox from "@components/TextBox";
 import { OTPInputProps } from "../type";
 import { Sc } from "./style";
 
-const OTPIput: React.FC<OTPInputProps> = ({ onTextChange, onFilled, resendCode }) => {
+function OTPIput({ onTextChange, onFilled, resendCode }: OTPInputProps) {
   return (
     <>
       <OtpInput
@@ -25,8 +25,7 @@ const OTPIput: React.FC<OTPInputProps> = ({ onTextChange, onFilled, resendCode }
             backgroundColor: "#E7ECF4"
           },
           pinCodeTextStyle: { fontFamily: "Montserrat", fontSize: 26 }
-        }}
-      />
+        }} />
 
       <Sc.Button onPress={resendCode}>
         <Sc.Text>
@@ -35,6 +34,6 @@ const OTPIput: React.FC<OTPInputProps> = ({ onTextChange, onFilled, resendCode }
       </Sc.Button>
     </>
   );
-};
+}
 
 export default OTPIput;

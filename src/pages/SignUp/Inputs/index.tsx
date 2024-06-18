@@ -1,7 +1,8 @@
 import React from "react";
 import GenericInput from "@components/GenericInput";
 
-const Inputs: React.FC<any> = ({ control, errors }) => {
+// REMINDER: FIX THIS ANY
+function Inputs({ control, errors }: any) {
   const inputsData = [
     {
       label: "Como eu gostaria de ser chamada:",
@@ -42,9 +43,8 @@ const Inputs: React.FC<any> = ({ control, errors }) => {
       textAlign="left"
       placeholder={input.placeholder}
       control={control}
-      errors={errors}
-    />
+      errors={errors} />
   ));
-};
+}
 
 export default Inputs;
