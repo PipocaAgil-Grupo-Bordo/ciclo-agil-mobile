@@ -13,14 +13,8 @@ import { Sc } from "./style";
  * If you need to add an image, do so with the icon prop:
  * icon={require('@/assets/image.format')}
  */
-const GenericButton: React.FC<GenericButtonProps> = ({
-  icon,
-  state,
-  isLoading,
-  children,
-  ...rest
-}) => {
-  const HandleUnderlayColor = (state: StatesType | undefined) => {
+function GenericButton({ icon, state, isLoading, children, ...props }: GenericButtonProps) {
+  function HandleUnderlayColor(state: StatesType | undefined) {
     switch (state) {
       case "accent":
         return "#722CA1";
@@ -33,15 +27,20 @@ const GenericButton: React.FC<GenericButtonProps> = ({
       default:
         return "#F4EBFA";
     }
-  };
+  }
 
   return (
-    <Sc.Button state={state} activeOpacity={1} underlayColor={HandleUnderlayColor(state)} {...rest}>
+    <Sc.Button
+      state={state}
+      activeOpacity={1}
+      underlayColor={HandleUnderlayColor(state)}
+      {...props}
+    >
       <ButtonChildren icon={icon} state={state}>
         {isLoading ? <ActivityIndicator color={"#fff"} /> : children}
       </ButtonChildren>
     </Sc.Button>
   );
-};
+}
 
 export default GenericButton;

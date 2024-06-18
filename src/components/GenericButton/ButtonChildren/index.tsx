@@ -1,7 +1,7 @@
 import { ButtonChildrenProps } from "../type";
 import { Sc } from "./style";
 
-const ButtonChildren: React.FC<ButtonChildrenProps> = ({ icon, state, children }) => {
+function ButtonChildren({ icon, state, children }: ButtonChildrenProps) {
   return (
     <>
       {icon && (
@@ -11,6 +11,6 @@ const ButtonChildren: React.FC<ButtonChildrenProps> = ({ icon, state, children }
       <Sc.ButtonText state={state}>{children}</Sc.ButtonText>
     </>
   );
-};
+}
 
 export default ButtonChildren;

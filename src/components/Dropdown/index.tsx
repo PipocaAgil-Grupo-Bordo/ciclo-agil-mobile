@@ -12,30 +12,27 @@ import TextBox from "@components/TextBox";
  * @param options - An array with the current values inside the dropdown menu
  * @param onChange - Callback function for when an option is selected
  */
-const Dropdown = <Options,>({
-  label,
-  currentOption,
-  options,
-  onChange
-}: DropdownProps<Options>) => {
+function Dropdown<Options>({
+  label, currentOption, options, onChange
+}: DropdownProps<Options>) {
   const [currentSelectedOtion, setCurrentSelectedOption] = useState(currentOption);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const rotation = useState(new Animated.Value(0))[0];
 
   // Rotate the arrow depending on the dropdown menu status
-  const handleArrowAnimation = () => {
+  function handleArrowAnimation() {
     Animated.timing(rotation, {
       toValue: isDropdownOpen ? 0 : 1,
       duration: 150,
       useNativeDriver: true
     }).start();
-  };
+  }
 
   // Open and close the dropdown menu
-  const handleDropdownMenu = () => {
+  function handleDropdownMenu() {
     setIsDropdownOpen((prev) => !prev);
     handleArrowAnimation();
-  };
+  }
 
   /**
    * 1 - Update the currently selected option with the newly selected one.
@@ -44,7 +41,7 @@ const Dropdown = <Options,>({
    *
    * @param option - The newly selected option to be set as the current option.
    */
-  const handleOptions = (option: Options) => {
+  function handleOptions(option: Options) {
     // 1
     setCurrentSelectedOption(option as string);
 
@@ -54,7 +51,7 @@ const Dropdown = <Options,>({
     // 3
     setIsDropdownOpen(false);
     handleArrowAnimation();
-  };
+  }
 
   return (
     <Sc.Container>
@@ -79,8 +76,7 @@ const Dropdown = <Options,>({
               ],
               width: 18,
               height: 18
-            }}
-          />
+            }} />
         </Sc.DropdownMenu>
 
         {isDropdownOpen && (
@@ -95,6 +91,6 @@ const Dropdown = <Options,>({
       </Sc.DropdownWrapper>
     </Sc.Container>
   );
-};
+}
 
 export default Dropdown;

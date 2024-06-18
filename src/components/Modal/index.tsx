@@ -6,13 +6,7 @@ import { Gs } from "src/styles/globalStyles";
 import { Modalprops } from "./type";
 import { horizontalScale, verticalScale } from "@utils/responsivenessHelper";
 
-const Modal: React.FC<Modalprops> = ({
-  title,
-  textContent,
-  buttonText,
-  onPress,
-  setReadyToNext
-}) => {
+function Modal({ title, textContent, buttonText, onPress, setReadyToNext }: Modalprops) {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ["30%", "50%"], []);
 
@@ -39,6 +33,6 @@ const Modal: React.FC<Modalprops> = ({
       </GenericButton>
     </BottomSheet>
   );
-};
+}
 
 export default Modal;

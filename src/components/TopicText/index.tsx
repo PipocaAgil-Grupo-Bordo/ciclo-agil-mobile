@@ -14,8 +14,8 @@ interface TopicTextProps {
  * A better approach if you need to add more customization is to add it directly to the styledComponent file:
  * export const CustomText = styled(TextMontserrat)` -- rest of the code `
  */
-const TopicText: React.FC<TopicTextProps> = ({ children }) => {
+function TopicText({ children }: TopicTextProps) {
   return <TextLora>{children}</TextLora>;
-};
+}
 
 export default TopicText;
