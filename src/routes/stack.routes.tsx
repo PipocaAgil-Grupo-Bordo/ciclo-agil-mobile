@@ -14,7 +14,7 @@ import AuthNavigator from "./auth.router";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-const StackRoutes = () => {
+function StackRoutes() {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -49,6 +49,6 @@ const StackRoutes = () => {
       </Stack.Group>
     </Stack.Navigator>
   );
-};
+}
 
 export default StackRoutes;

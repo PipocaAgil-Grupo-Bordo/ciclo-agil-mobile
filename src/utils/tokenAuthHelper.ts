@@ -27,16 +27,14 @@ async function fetchTokens(response: AxiosResponse,
  * @param setAccessToken - Delete the access token
  * @param setRefreshToken - Delete the refresh token
  */
-const deleteTokens = async (
-  setAccessToken: (accessToken: string | undefined) => void,
-  setRefreshToken: (refreshToken: string | undefined) => void
-) => {
+async function deleteTokens(setAccessToken: (accessToken: string | undefined) => void,
+  setRefreshToken: (refreshToken: string | undefined) => void) {
   await secureStore.deleteToken("accessToken");
   await secureStore.deleteToken("refreshToken");
 
   setAccessToken(undefined);
   setRefreshToken(undefined);
-};
+}
 
 export const tokenAuth = {
   fetchTokens,

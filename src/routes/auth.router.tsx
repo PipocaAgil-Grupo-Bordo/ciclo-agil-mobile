@@ -17,7 +17,7 @@ if (!global.atob) {
   global.atob = decode;
 }
 
-const AuthNavigator: React.FC = () => {
+function AuthNavigator() {
   const { accessToken, setRefreshToken, setAccessToken } = useTokenContext();
   const navigation = useNavigation<NavigationType>();
   const [loading, setLoading] = useState(true);
@@ -32,7 +32,6 @@ const AuthNavigator: React.FC = () => {
         const newRefreshToken = await secureStore.getToken("refreshToken");
 
         // tokenAuth.deleteTokens(setAccessToken, setRefreshToken); // Uncomment to log out (for debugging only)
-
         // Store the tokens in the context
         if (newRefreshToken !== null) {
           setRefreshToken(newRefreshToken);
@@ -89,6 +88,6 @@ const AuthNavigator: React.FC = () => {
       <ActivityIndicator size={"large"} color={"#000"} />
     </View>
   );
-};
+}
 
 export default AuthNavigator;
