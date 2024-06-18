@@ -8,11 +8,9 @@ import { secureStore } from "./secureStoreHelper";
  * @param setAccessToken - Update the access token
  * @param setRefreshToken - Update the refresh token
  */
-const fetchTokens = async (
-  response: AxiosResponse,
+async function fetchTokens(response: AxiosResponse,
   setAccessToken: (accessToken: string) => void,
-  setRefreshToken: (refreshToken: string) => void
-) => {
+  setRefreshToken: (refreshToken: string) => void) {
   const accessToken = response.data.token.accessToken;
   const refreshToken = response.data.token.refreshToken;
 
@@ -21,7 +19,7 @@ const fetchTokens = async (
 
   await secureStore.saveToken("accessToken", accessToken);
   await secureStore.saveToken("refreshToken", refreshToken);
-};
+}
 
 /**
  * Ensure tokens are deleted from both secureStore and context for a proper log out
