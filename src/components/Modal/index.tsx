@@ -6,6 +6,7 @@ import { Gs } from "src/styles/globalStyles";
 import { Modalprops } from "./type";
 import { horizontalScale, verticalScale } from "@utils/responsivenessHelper";
 
+// TODO: Add a description for the component
 function Modal({ title, textContent, buttonText, onPress, setReadyToNext }: Modalprops) {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ["30%", "50%"], []);

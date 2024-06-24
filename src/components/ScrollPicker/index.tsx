@@ -18,6 +18,7 @@ import RenderedContent from "./RenderedContent";
 function ScrollPicker<Item>({ items, onIndexChange }: ScrollPickerProps<Item>) {
   const [currentItemSelected, setCurrentItemSelected] = useState<number>(1);
 
+  // Ensure the height of the items is consistent when scrolling
   const itemHeight = 44.8;
   const columnAmount = 4;
   const itemBlockSize = itemHeight * columnAmount;
@@ -61,12 +62,14 @@ function ScrollPicker<Item>({ items, onIndexChange }: ScrollPickerProps<Item>) {
             item={item}
             index={index}
             currentItemSelected={currentItemSelected}
-            itemHeight={itemHeight} />
+            itemHeight={itemHeight}
+          />
         )}
         showsVerticalScrollIndicator={false}
         style={{ width: "100%" }}
         onMomentumScrollEnd={momentumScrollEnd}
-        onScroll={handleItemSelection} />
+        onScroll={handleItemSelection}
+      />
 
       <Sc.IndicatorWrapper yAxis={itemHeight}>
         <Sc.Indicator yAxis={itemHeight} />

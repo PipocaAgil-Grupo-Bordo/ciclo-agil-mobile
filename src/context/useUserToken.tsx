@@ -2,6 +2,10 @@ import { UserData, WhoAmI } from "@type/auth";
 import { ITokenContext, TokenProviderProps } from "@type/context";
 import { createContext, useContext, useState } from "react";
 
+/**
+ * Provide the user token and user profile to the app
+ */
+
 export const TokenContext = createContext<ITokenContext | undefined>(undefined);
 
 export function TokenProvider({ children }: TokenProviderProps) {

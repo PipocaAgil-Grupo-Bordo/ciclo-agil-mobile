@@ -3,6 +3,11 @@ import { Sc } from "./style";
 import { HeaderProps } from "./type";
 import Entypo from "react-native-vector-icons/Entypo";
 
+/**
+ * Header with back button and title
+ *
+ * @param title - Title of the screen
+ */
 function Header({ title }: HeaderProps) {
   const navigation = useNavigation();
 

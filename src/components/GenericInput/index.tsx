@@ -5,7 +5,7 @@ import { Masks } from "react-native-mask-input";
 import { Sc } from "./style";
 
 /**
- * Generic text input with label and error message to ensure style consistency across components
+ * Text input with label and error message
  */
 function GenericInput({ label, control, name, errors, ...props }: GenericInputProps) {
   const { field } = useController({ control, defaultValue: "", name });
