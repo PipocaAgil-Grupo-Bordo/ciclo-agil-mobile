@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator();
 const TabRoutes = () => {
   const setDefaultIconStyle = (focused: boolean) => {
     return {
-      backgroundColor: focused ? "#000" : "transparent",
+      backgroundColor: focused ? "#ff0000" : "transparent",
       borderRadius: 99
     };
   };
@@ -31,10 +31,10 @@ const TabRoutes = () => {
         tabBarLabelStyle: {
           fontSize: 11,
           fontFamily: "Montserrat"
-        },
-        tabBarIcon: ({ color, size, focused }) => (
-          <Entypo name="cycle" color={color} size={size} style={setDefaultIconStyle(focused)} />
-        )
+        }
+        // tabBarIcon: ({ color, size, focused }) => (
+        //   <Entypo name="cycle" color={color} size={size} style={setDefaultIconStyle(focused)} />
+        // )
       }}
     >
       <Tab.Group>
@@ -42,8 +42,8 @@ const TabRoutes = () => {
           name="Cycle"
           component={Home}
           options={{
-            tabBarIcon: ({ color, size, focused }) => (
-              <Entypo name="cycle" color={color} size={size} style={setDefaultIconStyle(focused)} />
+            tabBarIcon: ({ color, focused }) => (
+              <Entypo name="cycle" color={color} size={18} style={setDefaultIconStyle(focused)} />
             ),
             tabBarLabel: "Ciclo",
             tabBarIconStyle: { transform: [{ rotate: "45deg" }] }
@@ -53,11 +53,12 @@ const TabRoutes = () => {
           name="Calendar"
           component={Calendar}
           options={{
-            tabBarIcon: ({ color, size, focused }) => (
+            tabBarIcon: ({ color, focused }) => (
               <MaterialCommunityIcons
                 name="calendar-month-outline"
-                size={size}
+                size={20}
                 color={color}
+                backgroundColor={focused ? "#ff0000" : "transparent"}
                 style={setDefaultIconStyle(focused)}
               />
             ),
@@ -68,11 +69,11 @@ const TabRoutes = () => {
           name="Analytics"
           component={Analytics}
           options={{
-            tabBarIcon: ({ color, size, focused }) => (
+            tabBarIcon: ({ color, focused }) => (
               <Feather
                 name="trending-up"
                 color={color}
-                size={size}
+                size={15}
                 style={setDefaultIconStyle(focused)}
               />
             ),
@@ -83,8 +84,13 @@ const TabRoutes = () => {
           name="Articles"
           component={Articles}
           options={{
-            tabBarIcon: ({ color, size, focused }) => (
-              <Feather name="book-open" color={color} size={size} style={setDefaultIconStyle(focused)} />
+            tabBarIcon: ({ color, focused }) => (
+              <Feather
+                name="book-open"
+                color={color}
+                size={15}
+                style={setDefaultIconStyle(focused)}
+              />
             ),
             tabBarLabel: "Conteúdo"
           }}
