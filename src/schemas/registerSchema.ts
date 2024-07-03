@@ -25,7 +25,8 @@ export const registerSchema = yup.object().shape({
     .string()
     .required("O nome não pode ser vazio")
     .matches(nameRegex, "Nome deve conter apenas letras")
-    .min(2, "O nome deve conter pelo menos 2 caracteres"),
+    .min(2, "O nome deve conter pelo menos 2 caracteres")
+    .max(15, "O nome deve conter no máximo 15 caracteres"),
   birthdate: yup
     .string()
     .required("Data de nascimento não pode ser vazia")

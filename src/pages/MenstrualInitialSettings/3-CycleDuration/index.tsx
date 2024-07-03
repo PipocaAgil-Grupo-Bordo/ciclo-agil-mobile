@@ -6,6 +6,13 @@ import Buttons from "../SharedComponents/Buttons";
 import Information from "../SharedComponents/Information";
 import DropdownMenu from "../SharedComponents/DropdownMenu";
 import ScrollableMenu from "../SharedComponents/ScrollableMenu";
+import { useTokenContext } from "@context/useUserToken";
+import Modal from "@components/Modal";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationType } from "@routes/type";
+import axios from "axios";
+import { tokenAuth } from "@utils/tokenAuthHelper";
+import { menstrualApi } from "@services/menstrualApi";
 
 const CycleDuration: React.FC = () => {
   // Constants
@@ -13,14 +20,21 @@ const CycleDuration: React.FC = () => {
   const IRREGULAR = 7;
 
   const cycles: CyclesType[] = ["Regular", "Irregular"];
-  const regularCycle = Array.from({ length: 35 - REGULAR + 1 }, (_, index) => index + 21);
-  const irregularCycle = Array.from({ length: 120 - IRREGULAR + 1 }, (_, index) => index + 7);
+  const regularCycle = Array.from({ length: 35 - REGULAR + 1 }, (_, index) => index + REGULAR);
+  const irregularCycle = Array.from(
+    { length: 120 - IRREGULAR + 1 },
+    (_, index) => index + IRREGULAR
+  );
 
   const [isLoading, setIsLoading] = useState(false);
   const [cycleData, setCycleData] = useState<CycleDataType>({
     cycle: "Regular",
     duration: REGULAR
   });
+  const [showModal, setShowModal] = useState(false);
+
+  const { accessToken, setAccessToken, setRefreshToken } = useTokenContext();
+  const navigation = useNavigation<NavigationType>();
 
   const handleCycleChange = (value: CyclesType) => {
     setCycleData((prevData) => ({
@@ -49,6 +63,43 @@ const CycleDuration: React.FC = () => {
     return irregularCycle;
   };
 
+  const handleNavigation = () => {
+    navigation.navigate("Home");
+
+    if (showModal) {
+      setShowModal(false);
+    }
+  };
+
+  const handleCycleSubmission = async () => {
+    try {
+      setIsLoading(true);
+
+      await menstrualApi.updateCurrentCycle(
+        {
+          isMenstrualCycleRegular: cycleData.cycle === "Regular" ? true : false,
+          menstrualCycleDuration: cycleData.duration
+        },
+        accessToken!
+      );
+
+      setIsLoading(false);
+      handleNavigation();
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error) && error.response?.status === 500) {
+        setShowModal(true);
+      } else if (axios.isAxiosError(error) && error.response?.status === 401) {
+        alert("Sessão expirada. Por favor faça login novamente");
+        tokenAuth.deleteTokens(setAccessToken, setRefreshToken);
+        navigation.navigate("Login");
+      }
+      // Missing error for code 400 and 401 (not sure what they're for yet, need the doc updated)
+      setIsLoading(false);
+
+      console.log(error); // #temporary for debugging
+    }
+  };
+
   return (
     <Sc.Container>
       <Sc.TopWrapper>
@@ -71,9 +122,19 @@ const CycleDuration: React.FC = () => {
 
       <Buttons
         isLoading={isLoading}
-        nextWithData={() => alert("Próxima tela com os dados selecionados.")}
-        nextWithoutData={() => alert("Próxima tela sem os dados selecionados.")}
+        nextWithData={handleCycleSubmission}
+        nextWithoutData={handleNavigation}
       />
+
+      {showModal && (
+        <Modal
+          title="Ops"
+          textContent="Algo deu errado"
+          buttonText="Avançar mesmo assim"
+          setReadyToNext={setShowModal}
+          onPress={() => navigation.navigate("Home")}
+        />
+      )}
     </Sc.Container>
   );
 };
