@@ -6,19 +6,19 @@ export const Sc = {
 
   Icon: styled.Image`
     margin: 0 auto;
-    width: 66px;
-    height: 88px;
+    width: 98px;
+    height: 98px;
     margin-bottom: 36px;
   `,
 
-  Title: styled(StyledText)`
-    font-size: 24px;
+  Title: styled.Text`
+    font-size: 22px;
     text-align: center;
     margin-bottom: 24px;
+    font-family: "Lora";
   `,
 
   Text: styled(StyledText)`
-    font-size: 16px;
     margin-bottom: 46px;
   `
 };
