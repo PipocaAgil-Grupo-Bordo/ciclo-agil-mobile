@@ -12,15 +12,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import TermsOfService from "../TermsOfService";
 import { useTokenContext } from "@context/useUserToken";
 
-const SignUpForm: React.FC = () => {
+function SignUpForm() {
   const navigation = useNavigation<NavigationType>();
   const { setAccessToken, setRefreshToken } = useTokenContext();
   const {
-    handleSubmit,
-    control,
-    formState: { errors, isSubmitting },
-    reset,
-    setError
+    handleSubmit, control, formState: { errors, isSubmitting }, reset, setError
   } = useForm<RegisterFields>({
     resolver: yupResolver(registerSchema)
   });
@@ -42,8 +38,7 @@ const SignUpForm: React.FC = () => {
 
       <GenericButton
         isLoading={isSubmitting}
-        onPress={handleSubmit((data) =>
-          submitRegister(data, reset, navigation, setError, setAccessToken, setRefreshToken)
+        onPress={handleSubmit((data) => submitRegister(data, reset, navigation, setError, setAccessToken, setRefreshToken)
         )}
         state="accent"
       >
@@ -52,6 +47,6 @@ const SignUpForm: React.FC = () => {
       <TermsOfService />
     </Sc.Container>
   );
-};
+}
 
 export default SignUpForm;

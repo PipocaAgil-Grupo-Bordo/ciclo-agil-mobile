@@ -1,12 +1,8 @@
 import { Sc } from "./style";
 import Terms from "./Terms";
-import { NavigationType } from "@routes/type";
-import { useNavigation } from "@react-navigation/native";
 import Header from "@components/Header";
 
-const Policy: React.FC = () => {
-  const navigation = useNavigation<NavigationType>();
-
+function Policy() {
   return (
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Sc.Wrapper>
@@ -15,6 +11,6 @@ const Policy: React.FC = () => {
       </Sc.Wrapper>
     </Sc.Container>
   );
-};
+}
 
 export default Policy;

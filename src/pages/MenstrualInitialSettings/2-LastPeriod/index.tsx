@@ -12,7 +12,7 @@ import { menstrualApi } from "@services/menstrualApi";
 import { useTokenContext } from "@context/useUserToken";
 import Modal from "@components/Modal";
 
-const LastPeriod: React.FC = () => {
+function LastPeriod() {
   // An array with all the capitalized months in portuguese
   const months: MonthsType[] = Array.from({ length: 12 }, (_, index) => {
     const date = new Date(new Date().getFullYear(), index, 1);
@@ -46,23 +46,23 @@ const LastPeriod: React.FC = () => {
   });
 
   // Ensure the selected dropdown option is saved in a state hook
-  const handleMonthSelection = (option: MonthsType) => {
+  function handleMonthSelection(option: MonthsType) {
     setLastPeriodData((prevData) => ({
       ...prevData,
       month: option
     }));
-  };
+  }
 
-  const handleDaySelection = (value: number) => {
+  function handleDaySelection(value: number) {
     const day = value + 1;
 
     setLastPeriodData((prevData) => ({
       ...prevData,
       day: day
     }));
-  };
+  }
 
-  const handleLastPeriodDate = async () => {
+  async function handleLastPeriodDate() {
     try {
       setIsLoading(true);
       const lastPeriodDate = new Date(currentYear, indexOfMonth, lastPeriodData.day);
@@ -78,17 +78,16 @@ const LastPeriod: React.FC = () => {
 
       setModalOptions({
         title: "Ops!",
-        textContent:
-          "Houve um erro ao salvar a data de início da sua última menstruação. Por favor, tente novamente ou avance sem salvar.",
+        textContent: "Houve um erro ao salvar a data de início da sua última menstruação. Por favor, tente novamente ou avance sem salvar.",
         buttonText: "Avançar mesmo assim"
       });
     }
-  };
+  }
 
-  const handleNextScreenNavigation = () => {
+  function handleNextScreenNavigation() {
     setShowModal(false);
     navigation.navigate("CycleDuration");
-  };
+  }
 
   return (
     <Sc.Container>
@@ -99,8 +98,7 @@ const LastPeriod: React.FC = () => {
           label="Mês:"
           onChange={handleMonthSelection}
           options={months}
-          currentOption={lastPeriodData.month}
-        />
+          currentOption={lastPeriodData.month} />
 
         <ScrollableMenu items={days} onIndexChange={handleDaySelection} />
 
@@ -110,8 +108,7 @@ const LastPeriod: React.FC = () => {
       <Buttons
         isLoading={isLoading}
         nextWithData={handleLastPeriodDate}
-        nextWithoutData={() => navigation.navigate("CycleDuration")}
-      />
+        nextWithoutData={() => navigation.navigate("CycleDuration")} />
 
       {showModal && (
         <Modal
@@ -119,11 +116,10 @@ const LastPeriod: React.FC = () => {
           buttonText={modalOptions.buttonText}
           textContent={modalOptions.textContent}
           setReadyToNext={setShowModal}
-          onPress={handleNextScreenNavigation}
-        />
+          onPress={handleNextScreenNavigation} />
       )}
     </Sc.Container>
   );
-};
+}
 
 export default LastPeriod;

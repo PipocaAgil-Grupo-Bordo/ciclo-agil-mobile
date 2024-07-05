@@ -4,7 +4,7 @@ import { Sc } from "./style";
 import { RolesData } from "./type";
 import Integrant from "../Integrant";
 
-const Role: React.FC<RolesData> = ({ title, integrants }) => {
+function Role({ title, integrants }: RolesData) {
   return (
     <Sc.Container>
       <Sc.Wrapper>
@@ -15,6 +15,6 @@ const Role: React.FC<RolesData> = ({ title, integrants }) => {
       </Sc.Wrapper>
     </Sc.Container>
   );
-};
+}
 
 export default Role;

@@ -14,7 +14,7 @@ import { useState } from "react";
 import Modal from "@components/Modal";
 import { IModalOptions } from "./type";
 
-const NewPassword: React.FC = () => {
+function NewPassword() {
   const [showModal, setShowModal] = useState(false);
   const [modalOptions, setModalOptions] = useState<IModalOptions>({
     title: "",
@@ -28,14 +28,12 @@ const NewPassword: React.FC = () => {
   const token = (route.params as NewPasswordRouteParam)?.token;
 
   const {
-    handleSubmit,
-    control,
-    formState: { errors, isSubmitting }
+    handleSubmit, control, formState: { errors, isSubmitting }
   } = useForm<PasswordResetFields>({
     resolver: yupResolver(resetPasswordSchema)
   });
 
-  const onSubmit = async (body: PasswordFields) => {
+  async function onSubmit(body: PasswordFields) {
     try {
       await authApi.resetPassword(body, token);
 
@@ -70,19 +68,19 @@ const NewPassword: React.FC = () => {
       }));
       setShowModal(true);
     }
-  };
+  }
 
-  const handleNavigation = () => {
+  function handleNavigation() {
     navigation.navigate(modalOptions.route as never);
     setShowModal(false);
-  };
+  }
 
   return (
     <Sc.Container
       nestedScrollEnabled
       contentContainerStyle={{ flexGrow: 1 }}
       keyboardShouldPersistTaps={"always"}
-      
+
     >
       <Sc.Wrapper>
         <Sc.HeaderWrapper>
@@ -91,8 +89,7 @@ const NewPassword: React.FC = () => {
           <Inputs
             control={control}
             errors={errors}
-            errorInstruction={errors.password ? true : false}
-          />
+            errorInstruction={errors.password ? true : false} />
         </Sc.HeaderWrapper>
 
         <SubmitButtons isLoading={isSubmitting} SubmitPassword={handleSubmit(onSubmit)} />
@@ -104,11 +101,10 @@ const NewPassword: React.FC = () => {
           setReadyToNext={setShowModal}
           buttonText={modalOptions.buttonText}
           textContent={modalOptions.textContent}
-          onPress={handleNavigation}
-        />
+          onPress={handleNavigation} />
       )}
     </Sc.Container>
   );
-};
+}
 
 export default NewPassword;

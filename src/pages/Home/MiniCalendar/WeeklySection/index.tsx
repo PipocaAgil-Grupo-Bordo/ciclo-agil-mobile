@@ -1,7 +1,7 @@
 import { dateHelper } from "@utils/dateHelpers";
 import { Sc } from "./style";
 
-const WeeklySection = () => {
+function WeeklySection() {
   const currentDay = new Date().getDate();
   const date = new Date();
   const daysOfWeek = dateHelper.selectWeek(date);
@@ -28,6 +28,6 @@ const WeeklySection = () => {
       ))}
     </Sc.Container>
   );
-};
+}
 
 export default WeeklySection;

@@ -15,9 +15,10 @@ import RenderedContent from "./RenderedContent";
  * @param items - An array of items
  * @param onIndexChange - A function that is called when the selected index changes. It receives the index of the selected item as an argument.
  */
-const ScrollPicker = <Item,>({ items, onIndexChange }: ScrollPickerProps<Item>) => {
+function ScrollPicker<Item>({ items, onIndexChange }: ScrollPickerProps<Item>) {
   const [currentItemSelected, setCurrentItemSelected] = useState<number>(1);
 
+  // Ensure the height of the items is consistent when scrolling
   const itemHeight = 44.8;
   const columnAmount = 4;
   const itemBlockSize = itemHeight * columnAmount;
@@ -31,12 +32,12 @@ const ScrollPicker = <Item,>({ items, onIndexChange }: ScrollPickerProps<Item>) 
    *
    * @param scrollEvent - The native scroll event.
    */
-  const momentumScrollEnd = (scrollEvent: NativeSyntheticEvent<NativeScrollEvent>) => {
+  function momentumScrollEnd(scrollEvent: NativeSyntheticEvent<NativeScrollEvent>) {
     const { y } = scrollEvent.nativeEvent.contentOffset;
     const index = Math.round(y / itemHeight);
 
     onIndexChange(index);
-  };
+  }
 
   /**
    * Calculate the index of the selected item based on the scroll position once the scrolling event ends.
@@ -44,12 +45,12 @@ const ScrollPicker = <Item,>({ items, onIndexChange }: ScrollPickerProps<Item>) 
    *
    * @param scrollEvent - The native scroll event.
    */
-  const handleItemSelection = (scrollEvent: NativeSyntheticEvent<NativeScrollEvent>) => {
+  function handleItemSelection(scrollEvent: NativeSyntheticEvent<NativeScrollEvent>) {
     const { y } = scrollEvent.nativeEvent.contentOffset;
     const index = Math.round(y / itemHeight);
 
     setCurrentItemSelected(index + 1);
-  };
+  }
 
   return (
     <Sc.Container yAxis={itemBlockSize}>
@@ -75,6 +76,6 @@ const ScrollPicker = <Item,>({ items, onIndexChange }: ScrollPickerProps<Item>) 
       </Sc.IndicatorWrapper>
     </Sc.Container>
   );
-};
+}
 
 export default ScrollPicker;

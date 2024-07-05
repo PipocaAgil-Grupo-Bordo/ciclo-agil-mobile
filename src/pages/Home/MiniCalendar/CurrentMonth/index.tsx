@@ -1,9 +1,8 @@
 import CalendarIcon from "react-native-vector-icons/Feather";
 import { Sc } from "./style";
 
-const CurrentMonth = () => {
-  const currentMonth =
-    new Date().toLocaleString("pt-BR", { month: "long" }).charAt(0).toUpperCase() +
+function CurrentMonth() {
+  const currentMonth = new Date().toLocaleString("pt-BR", { month: "long" }).charAt(0).toUpperCase() +
     new Date().toLocaleString("pt-BR", { month: "long" }).slice(1);
   const currentYear = new Date().getFullYear();
 
@@ -16,6 +15,6 @@ const CurrentMonth = () => {
       </Sc.CurrentMonth>
     </Sc.Container>
   );
-};
+}
 
 export default CurrentMonth;

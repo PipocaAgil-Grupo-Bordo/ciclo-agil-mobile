@@ -9,7 +9,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
-const TabRoutes = () => {
+function TabRoutes() {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -35,8 +35,7 @@ const TabRoutes = () => {
             tabBarIcon: ({ color, size }) => <Entypo name="cycle" color={color} size={size} />,
             tabBarLabel: "Ciclo",
             tabBarIconStyle: { transform: [{ rotate: "45deg" }] }
-          }}
-        />
+          }} />
         <Tab.Screen
           name="Calendar"
           component={Calendar}
@@ -45,8 +44,7 @@ const TabRoutes = () => {
               <MaterialCommunityIcons name="calendar-month-outline" size={size} color={color} />
             ),
             tabBarLabel: "Calendário"
-          }}
-        />
+          }} />
         <Tab.Screen
           name="Analytics"
           component={Analytics}
@@ -55,19 +53,17 @@ const TabRoutes = () => {
               <Feather name="trending-up" color={color} size={size} />
             ),
             tabBarLabel: "Análise"
-          }}
-        />
+          }} />
         <Tab.Screen
           name="Articles"
           component={Articles}
           options={{
             tabBarIcon: ({ color, size }) => <Feather name="book-open" color={color} size={size} />,
             tabBarLabel: "Conteúdo"
-          }}
-        />
+          }} />
       </Tab.Group>
     </Tab.Navigator>
   );
-};
+}
 
 export default TabRoutes;

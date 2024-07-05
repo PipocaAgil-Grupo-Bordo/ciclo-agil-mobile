@@ -3,7 +3,7 @@ import { Sc } from "./style";
 
 const { privacyPolicy, termsOfUse } = paragraphs;
 
-const Terms: React.FC = () => {
+function Terms() {
   return (
     <Sc.Container>
       <Sc.Topic>Termos de Uso</Sc.Topic>
@@ -27,6 +27,6 @@ const Terms: React.FC = () => {
       ))}
     </Sc.Container>
   );
-};
+}
 
 export default Terms;

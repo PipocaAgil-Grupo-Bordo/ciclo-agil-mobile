@@ -1,7 +1,7 @@
 import React from "react";
 import { Sc } from "./style";
 
-const CyclePhase: React.FC = () => {
+function CyclePhase() {
   // Mockup while no backend integration
   const CURRENT_CYCLE_PHASE = "Não informado";
   const NEXT_MENSTRUATION_DATE = "";
@@ -17,6 +17,6 @@ const CyclePhase: React.FC = () => {
       </Sc.Card>
     </Sc.Container>
   );
-};
+}
 
 export default CyclePhase;

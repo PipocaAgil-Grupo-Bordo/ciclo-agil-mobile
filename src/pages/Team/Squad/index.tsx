@@ -3,7 +3,7 @@ import { Sc } from "./style";
 import SquadData from "@constants/squadData/squad.json";
 import Role from "../Role";
 
-const Squad: React.FC = () => {
+function Squad() {
   const roles = SquadData.data;
 
   return (
@@ -14,8 +14,8 @@ const Squad: React.FC = () => {
         ))}
       </Sc.Wrapper>
     </Sc.Container>
-    
+
   );
-};
+}
 
 export default Squad;

@@ -5,7 +5,7 @@ import React from "react";
 import { NavigationType } from "@routes/type";
 import { Sc } from "./style";
 
-const SubmitButtons: React.FC<SubmitButtonsProps> = ({ SubmitPassword, isLoading }) => {
+function SubmitButtons({ SubmitPassword, isLoading }: SubmitButtonsProps) {
   const navigation = useNavigation<NavigationType>();
   const buttons: SubmitButtonsArray[] = [
     {
@@ -34,6 +34,6 @@ const SubmitButtons: React.FC<SubmitButtonsProps> = ({ SubmitPassword, isLoading
       ))}
     </Sc.Container>
   );
-};
+}
 
 export default SubmitButtons;

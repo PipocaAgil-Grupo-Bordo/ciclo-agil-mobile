@@ -3,12 +3,12 @@ import { Sc } from "./style";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@routes/type";
 
-const TermsOfService = () => {
+function TermsOfService() {
   const navigation = useNavigation<NavigationType>();
 
-  const handleTermsPopUp = () => {
+  function handleTermsPopUp() {
     navigation.navigate("Policy");
-  };
+  }
 
   return (
     <Sc.Container>
@@ -23,6 +23,6 @@ const TermsOfService = () => {
       </TextBox>
     </Sc.Container>
   );
-};
+}
 
 export default TermsOfService;

@@ -1,7 +1,7 @@
 import TextBox from "@components/TextBox";
 import { Sc } from "./style";
 
-const Confirmation = () => {
+function Confirmation() {
   return (
     <>
       <Sc.CheckMark source={require("@images/checkmark.png")} />
@@ -18,6 +18,6 @@ const Confirmation = () => {
       </TextBox>
     </>
   );
-};
+}
 
 export default Confirmation;
