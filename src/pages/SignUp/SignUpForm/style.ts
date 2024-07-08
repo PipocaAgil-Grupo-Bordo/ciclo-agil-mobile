@@ -4,7 +4,8 @@ import { InstructionTextProps } from "../type";
 
 export const Sc = {
   Container: styled.View`
-    margin: 46px 0px;
+    margin-top: 28px;
+    margin-bottom: 42px;
   `,
 
   Wrapper: styled.View`
@@ -12,7 +13,6 @@ export const Sc = {
   `,
 
   Text: styled(StyledText)<InstructionTextProps>`
-    font-size: 12px;
     color: ${({ error }) => (error ? "#ff0000" : "#414347")};
   `
 };

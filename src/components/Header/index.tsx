@@ -17,7 +17,11 @@ function Header({ title }: HeaderProps) {
         <Entypo name="chevron-left" size={30} color={"#444444"} />
       </Sc.BackButton>
 
-      <Sc.Title>{title}</Sc.Title>
+      {title && (
+        <Sc.Container>
+          <Sc.Title>{title}</Sc.Title>
+        </Sc.Container>
+      )}
     </Sc.Container>
   );
 }
