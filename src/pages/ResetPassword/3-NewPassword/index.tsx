@@ -28,7 +28,9 @@ function NewPassword() {
   const token = (route.params as NewPasswordRouteParam)?.token;
 
   const {
-    handleSubmit, control, formState: { errors, isSubmitting }
+    handleSubmit,
+    control,
+    formState: { errors, isSubmitting }
   } = useForm<PasswordResetFields>({
     resolver: yupResolver(resetPasswordSchema)
   });
@@ -80,7 +82,6 @@ function NewPassword() {
       nestedScrollEnabled
       contentContainerStyle={{ flexGrow: 1 }}
       keyboardShouldPersistTaps={"always"}
-
     >
       <Sc.Wrapper>
         <Sc.HeaderWrapper>
@@ -89,7 +90,8 @@ function NewPassword() {
           <Inputs
             control={control}
             errors={errors}
-            errorInstruction={errors.password ? true : false} />
+            errorInstruction={errors.password ? true : false}
+          />
         </Sc.HeaderWrapper>
 
         <SubmitButtons isLoading={isSubmitting} SubmitPassword={handleSubmit(onSubmit)} />
@@ -101,7 +103,8 @@ function NewPassword() {
           setReadyToNext={setShowModal}
           buttonText={modalOptions.buttonText}
           textContent={modalOptions.textContent}
-          onPress={handleNavigation} />
+          onPress={handleNavigation}
+        />
       )}
     </Sc.Container>
   );

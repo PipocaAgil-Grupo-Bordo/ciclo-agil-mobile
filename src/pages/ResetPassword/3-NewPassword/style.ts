@@ -11,7 +11,5 @@ export const Sc = {
     justify-content: space-between;
   `,
 
-  HeaderWrapper: styled.View`
-    gap: 48px;
-  `
+  HeaderWrapper: styled.View``
 };

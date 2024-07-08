@@ -48,9 +48,8 @@ function CodeRequest() {
   return (
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Sc.Wrapper>
-        <Header title="Redefinir senha" />
-
         <View>
+          <Header title="Redefinir senha" />
           <Confirmation />
           <OTPInput onTextChange={handleTextInput} resendCode={handleResendCode} />
           <Sc.CodeValidationMessage type={codeValidationInfo.type as "successful" | "unsuccessful"}>
@@ -59,7 +58,10 @@ function CodeRequest() {
         </View>
 
         <Buttons
-          onPress={() => handleRedefinitionCodeValidation(otpValue, navigation, email, setCodeValidationInfo)} />
+          onPress={() =>
+            handleRedefinitionCodeValidation(otpValue, navigation, email, setCodeValidationInfo)
+          }
+        />
       </Sc.Wrapper>
     </Sc.Container>
   );

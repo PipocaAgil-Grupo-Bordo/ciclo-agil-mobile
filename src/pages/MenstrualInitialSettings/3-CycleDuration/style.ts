@@ -5,7 +5,7 @@ export const Sc = {
     background-color: #fafcff;
     justify-content: space-between;
     flex: 1;
-    padding: 24px;
+    padding: 32px 24px 24px 24px;
   `,
 
   TopWrapper: styled.View``
