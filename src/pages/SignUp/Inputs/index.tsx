@@ -1,7 +1,7 @@
 import React from "react";
 import GenericInput from "@components/GenericInput";
 
-// REMINDER: FIX THIS ANY
+// TODO: FIX THIS ANY
 function Inputs({ control, errors }: any) {
   const inputsData = [
     {
@@ -35,6 +35,7 @@ function Inputs({ control, errors }: any) {
       placeholder: ""
     }
   ];
+
   return inputsData.map((input, i) => (
     <GenericInput
       key={i}
@@ -43,7 +44,8 @@ function Inputs({ control, errors }: any) {
       textAlign="left"
       placeholder={input.placeholder}
       control={control}
-      errors={errors} />
+      errors={errors}
+    />
   ));
 }
 

@@ -1,16 +1,22 @@
 import styled from "styled-components/native";
-import { TextLora } from "@components/TopicText/style";
 
 export const Sc = {
   Container: styled.View`
-    margin-top: 8px;
+    margin-top: 22px;
+    align-items: center;
   `,
 
   Wrapper: styled.View`
-    margin-bottom: 26px;
+    margin-bottom: 60px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
   `,
 
-  SubTitle: styled(TextLora)`
-    font-size: 16px;
+  SubTitle: styled.Text`
+    font-size: 14px;
+    width: 90%;
+    align-content: center;
+    font-family: "Montserrat";
   `
 };

@@ -1,7 +1,10 @@
 import styled from "styled-components/native";
 
 export const Sc = {
-  Container: styled.View``,
+  Container: styled.View`
+    position: absolute;
+    width: 100%;
+  `,
 
   BackButton: styled.TouchableOpacity`
     position: absolute;

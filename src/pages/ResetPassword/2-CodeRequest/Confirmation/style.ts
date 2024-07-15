@@ -4,7 +4,7 @@ export const Sc = {
   CheckMark: styled.Image`
     align-self: center;
     width: 80px;
-    margin-top: 16px;
+    margin-top: 64px;
     margin-bottom: 16px;
   `,
 
