@@ -9,7 +9,7 @@ export const Sc = {
     align-items: center;
     gap: 25px;
     border-radius: 10px;
-    padding: 16px;
+    padding: 14px;
     border: ${({ state }) => (!state || state === "default" ? "2px solid #D9D9D9" : "none")};
     background-color: ${({ state }) => {
       switch (state) {

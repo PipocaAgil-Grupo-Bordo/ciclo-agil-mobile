@@ -21,5 +21,6 @@ export const Sc = {
       }
     }};
     font-family: ${({ state }) => (state === "accent" ? "MontserratBold" : "Montserrat")};
+    font-size: 16px;
   `
 };
