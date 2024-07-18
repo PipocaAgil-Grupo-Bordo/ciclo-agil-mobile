@@ -1,13 +1,15 @@
-import React from "react";
+import CalendarApp from "./CalendarApp";
 import { Sc } from "./style";
-import TextBox from "@components/TextBox";
+import Header from "@components/Header";
 
-function Calendar() {
+function CalendarC() {
   return (
-    <Sc.Container>
-      <TextBox>Tela do calendário</TextBox>
+    <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
+      <Header title="Calendário" />
+
+      <CalendarApp />
     </Sc.Container>
   );
 }
 
-export default Calendar;
+export default CalendarC;
