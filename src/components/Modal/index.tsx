@@ -4,12 +4,12 @@ import { Sc } from "./style";
 import GenericButton from "@components/GenericButton";
 import { Gs } from "src/styles/globalStyles";
 import { Modalprops } from "./type";
-import { horizontalScale, verticalScale } from "@utils/responsivenessHelper";
+import { horizontalScale } from "@utils/responsivenessHelper";
 
 // TODO: Add a description for the component
 function Modal({ title, textContent, buttonText, onPress, setReadyToNext }: Modalprops) {
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ["30%", "50%"], []);
+  const snapPoints = useMemo(() => ["45%","50%"], []);
 
   const handleSheetChanges = useCallback((index: number) => {
     if (index === -1) setReadyToNext(false);
@@ -23,15 +23,17 @@ function Modal({ title, textContent, buttonText, onPress, setReadyToNext }: Moda
       snapPoints={snapPoints}
       backgroundStyle={{ backgroundColor: "#FFF" }}
       enablePanDownToClose
-      style={{ paddingBottom: verticalScale(60), paddingHorizontal: horizontalScale(20) }}
+      style={{ paddingHorizontal: horizontalScale(20) }}
     >
       <Sc.Container>
         <Gs.Title>{title}</Gs.Title>
         <Sc.Paragraph>{textContent}</Sc.Paragraph>
       </Sc.Container>
-      <GenericButton onPress={onPress} state="accent">
-        {buttonText}
-      </GenericButton>
+      <Sc.ButtonWrapper>
+        <GenericButton onPress={onPress} state="accent">
+          {buttonText}
+        </GenericButton>
+      </Sc.ButtonWrapper>
     </BottomSheet>
   );
 }
