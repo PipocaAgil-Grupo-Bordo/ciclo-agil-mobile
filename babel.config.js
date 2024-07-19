@@ -31,7 +31,8 @@ module.exports = function (api) {
             "@pages": "./src/pages",
             "@routes": "./src/routes",
             "@hooks": "./src/hooks",
-            "@context": "./src/context"
+            "@context": "./src/context",
+            "@styles": "./src/styles"
           }
         }
       ]
