@@ -2,6 +2,7 @@ import styled from "styled-components/native";
 import { StyledInputProps } from "./type";
 import { StyledText } from "@components/TextBox/style";
 import MaskInput from "react-native-mask-input";
+import { ColorScheme } from "@styles/globalStyles";
 
 export const Sc = {
   Container: styled.View``,
@@ -11,14 +12,14 @@ export const Sc = {
   `,
 
   Input: styled(MaskInput)<StyledInputProps>`
-    background-color: #e7ecf4;
+    background-color: ${ColorScheme.backgroundSecondary};
     border-radius: 5px;
     padding: 16px;
-    border: ${(props) => (props.errors && props.errors[props.name] ? "#FF0000" : "none")};
+    border: ${(props) => (props.errors && props.errors[props.name] ? ColorScheme.danger : "none")};
   `,
 
   Error: styled(StyledText)`
-    color: #ff0000;
+    color: ${ColorScheme.danger};
     font-size: 14px;
   `
 };

@@ -1,3 +1,4 @@
+import { ColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -14,7 +15,7 @@ export const Sc = {
 
   Title: styled.Text`
     font-size: 22px;
-    color: #1f2024;
+    color: ${ColorScheme.textPrimary};
     text-align: center;
     font-family: "Lora";
     margin-left: 14px;

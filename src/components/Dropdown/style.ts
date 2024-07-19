@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components/native";
 import { DropdownMenuStyle, OptionStyle } from "./type";
+import { ColorScheme } from "@styles/globalStyles";
 
 export const Sc = {
   Container: styled.View`
@@ -22,7 +23,7 @@ export const Sc = {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border: 2px solid #d7dde9;
+    border: 2px solid ${ColorScheme.borderPrimary};
     border-bottom-width: ${({ isOpen }) => (isOpen ? "0" : "2px")};
     border-radius: 10px;
     border-bottom-left-radius: ${({ isOpen }) => (isOpen ? "0" : "10px")};
@@ -33,12 +34,12 @@ export const Sc = {
 
   SelectedOption: styled.Text`
     font-family: "MontserratBold";
-    background-color: #fafcff;
+    background-color: ${ColorScheme.backgroundPrimary};
     font-size: 16px;
   `,
 
   DropdownOptions: styled.ScrollView`
-    border: 2px solid #d7dde9;
+    border: 2px solid ${ColorScheme.borderPrimary};
     width: 100%;
     position: absolute;
     top: 100%;
@@ -52,7 +53,7 @@ export const Sc = {
 Sc.Option = styled(Sc.SelectedOption)`
   padding: 4px 12px;
   width: 100%;
-  border: 0 solid #d7dde9;
+  border: 0 solid ${ColorScheme.borderPrimary};
   /* Prevent last item from having a thicker width */
   ${({ isLast }) =>
     !isLast &&

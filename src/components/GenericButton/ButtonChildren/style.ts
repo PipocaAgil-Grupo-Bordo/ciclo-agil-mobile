@@ -1,6 +1,8 @@
 import styled from "styled-components/native";
 import { ButtonStyleProps } from "../type";
 import { StyledText } from "@components/TextBox/style";
+import { GeneralColors } from "@styles/colors";
+import { ColorScheme } from "@styles/globalStyles";
 
 export const Sc = {
   Icon: styled.Image`
@@ -12,12 +14,11 @@ export const Sc = {
     color: ${({ state }) => {
       switch (state) {
         case "accent":
-          return "#FFFFFF";
+          return GeneralColors.neutralGray.white;
         case "mild":
-          return "#000000";
         case "default":
         default:
-          return "#1F2024";
+          return ColorScheme.textPrimary;
       }
     }};
     font-family: ${({ state }) => (state === "accent" ? "MontserratBold" : "Montserrat")};
