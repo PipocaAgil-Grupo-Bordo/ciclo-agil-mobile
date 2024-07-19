@@ -1,16 +1,4 @@
-import styled from "styled-components/native";
 import { GeneralColors as clr } from "./colors";
-
-// I don't know why this is here, it will be deleted later
-export const Gs = {
-  Title: styled.Text`
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 24px;
-    width: 74%;
-    font-family: Lora;
-  `
-};
 
 export const ColorScheme = {
   backgroundPrimary: clr.neutralGray[100],

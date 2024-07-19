@@ -14,6 +14,14 @@ export const Sc = {
     justify-content: center;
   `,
 
+  Title: styled.Text`
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 24px;
+    width: 74%;
+    font-family: Lora;
+  `,
+
   Wrapper: styled.View`
     align-items: center;
     justify-content: space-between;

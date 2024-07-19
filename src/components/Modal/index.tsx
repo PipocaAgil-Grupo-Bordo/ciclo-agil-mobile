@@ -2,7 +2,6 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import React, { useCallback, useMemo, useRef } from "react";
 import { Sc } from "./style";
 import GenericButton from "@components/GenericButton";
-import { Gs } from "src/styles/globalStyles";
 import { Modalprops } from "./type";
 import { horizontalScale, verticalScale } from "@utils/responsivenessHelper";
 
@@ -21,12 +20,13 @@ function Modal({ title, textContent, buttonText, onPress, setReadyToNext }: Moda
       index={1}
       onChange={handleSheetChanges}
       snapPoints={snapPoints}
+      // TODO: Remove this white background once we darken the outerbackground
       backgroundStyle={{ backgroundColor: "#FFF" }}
       enablePanDownToClose
       style={{ paddingBottom: verticalScale(60), paddingHorizontal: horizontalScale(20) }}
     >
       <Sc.Container>
-        <Gs.Title>{title}</Gs.Title>
+        <Sc.Title>{title}</Sc.Title>
         <Sc.Paragraph>{textContent}</Sc.Paragraph>
       </Sc.Container>
       <GenericButton onPress={onPress} state="accent">
