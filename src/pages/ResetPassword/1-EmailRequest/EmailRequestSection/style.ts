@@ -17,11 +17,11 @@ export const Sc = {
     text-align: center;
     margin-bottom: 24px;
     font-family: "Lora";
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.text.primary};
   `,
 
   Text: styled(StyledText)`
     margin-bottom: 46px;
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.text.primary};
   `
 };

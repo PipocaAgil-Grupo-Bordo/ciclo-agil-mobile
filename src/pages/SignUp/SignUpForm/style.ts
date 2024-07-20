@@ -15,7 +15,7 @@ export const Sc = {
 
   Text: styled(StyledText)<InstructionTextProps>`
     /* TODO: Doesn't seem to be working properly, this is set up but not being used */
-    color: ${({ error }) => (error ? ColorScheme.danger : "#414347")};
-    color: ${ColorScheme.textPrimary};
+    color: ${({ error }) => (error ? ColorScheme.accent.danger : "#414347")};
+    color: ${ColorScheme.text.primary};
   `
 };

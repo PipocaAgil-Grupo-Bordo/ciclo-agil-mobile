@@ -30,7 +30,7 @@ function GenericButton({ icon, state, isLoading, children, ...props }: GenericBu
       case "mild":
         return GeneralColors.primary[300];
       case "no-style":
-        return ColorScheme.backgroundPrimary;
+        return ColorScheme.background.primary;
       case "default":
       default:
         return GeneralColors.primary[100];

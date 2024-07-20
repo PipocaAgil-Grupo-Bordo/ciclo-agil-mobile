@@ -9,7 +9,7 @@ export const Sc = {
   Title: styled.Text`
     font-family: "MontserratBold";
     font-size: 18px;
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.text.primary};
   `,
   OverviewCard: styled.View`
     flex-direction: row;
@@ -27,6 +27,6 @@ export const Sc = {
   `,
   SecondText: styled.Text`
     font-family: "Montserrat";
-    color: ${ColorScheme.textTertiary};
+    color: ${ColorScheme.text.tertiary};
   `
 };

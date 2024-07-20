@@ -11,7 +11,7 @@ interface CycleOverviewProps {
 
 function CycleOverview({ userProfile }: CycleOverviewProps) {
   const ICON_SIZE = 20;
-  const ICON_COLOR = ColorScheme.accent;
+  const ICON_COLOR = ColorScheme.accent.highlight;
   const DATA_MOCKUP = "Não informado";
 
   const cycleData = [

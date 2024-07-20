@@ -16,12 +16,12 @@ function TabRoutes() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: ColorScheme.backgroundSecondary,
+          backgroundColor: ColorScheme.background.secondary,
           elevation: 0,
           borderTopWidth: 0
         },
-        tabBarActiveTintColor: ColorScheme.accent,
-        tabBarInactiveTintColor: ColorScheme.iconIdle,
+        tabBarActiveTintColor: ColorScheme.accent.highlight,
+        tabBarInactiveTintColor: ColorScheme.icon.idle,
         tabBarLabelStyle: {
           fontSize: 11,
           fontFamily: "Montserrat"

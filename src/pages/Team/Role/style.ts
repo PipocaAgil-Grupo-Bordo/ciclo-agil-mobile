@@ -6,10 +6,12 @@ export const Sc = {
   Container: styled.View`
     margin: ${verticalScale(5) + "px" + " "} 0px;
   `,
+
   Wrapper: styled.View``,
+
   RoleTitle: styled.Text`
     font-family: "Montserrat";
-    color: ${ColorScheme.accent};
+    color: ${ColorScheme.accent.highlight};
     margin: ${verticalScale(5) + "px" + " "} 0px;
   `
 };

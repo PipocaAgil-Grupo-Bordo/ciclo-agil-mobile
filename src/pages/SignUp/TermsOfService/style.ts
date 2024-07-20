@@ -8,11 +8,11 @@ export const Sc = {
 
   Text: styled.Text`
     font-size: 14px;
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.text.primary};
   `,
 
   Hyperlink: styled.Text`
     color: #8e37c9;
-    color: ${ColorScheme.accent};
+    color: ${ColorScheme.accent.highlight};
   `
 };

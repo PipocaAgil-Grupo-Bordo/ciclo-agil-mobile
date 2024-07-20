@@ -15,7 +15,7 @@ export const Sc = {
 
   Title: styled.Text`
     font-size: 22px;
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.text.primary};
     text-align: center;
     font-family: "Lora";
     margin-left: 14px;

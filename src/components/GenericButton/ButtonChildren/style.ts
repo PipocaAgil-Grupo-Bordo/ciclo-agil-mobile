@@ -18,7 +18,7 @@ export const Sc = {
         case "mild":
         case "default":
         default:
-          return ColorScheme.textPrimary;
+          return ColorScheme.text.primary;
       }
     }};
     font-family: ${({ state }) => (state === "accent" ? "MontserratBold" : "Montserrat")};

@@ -8,7 +8,7 @@ export const Sc = {
     font-weight: 600;
     text-align: left;
     margin: 24px 0px;
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.text.primary};
   `,
 
   TopicParagraph: styled.Text`
@@ -16,7 +16,7 @@ export const Sc = {
     font-weight: 500;
     font-size: 14px;
     text-align: left;
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.text.primary};
   `,
 
   Paragraph: styled(StyledText)`
@@ -24,7 +24,7 @@ export const Sc = {
     font-size: 14px;
     text-align: left;
     margin: 20px 0px;
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.text.primary};
   `,
 
   Container: styled.View`

@@ -7,13 +7,13 @@ export const Sc = {
 
   Title: styled(StyledText)`
     font-size: 24px;
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.text.primary};
     font-weight: 400;
     margin: 81px 0px 24px;
   `,
 
   ForgottenPassword: styled(StyledText)`
-    color: ${ColorScheme.accent};
+    color: ${ColorScheme.accent.highlight};
     text-align: right;
     margin: 0px 12px;
   `,
@@ -29,6 +29,6 @@ export const Sc = {
   `,
 
   RegisterLink: styled(StyledText)`
-    color: ${ColorScheme.accent};
+    color: ${ColorScheme.accent.highlight};
   `
 };

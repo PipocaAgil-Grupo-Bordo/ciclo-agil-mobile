@@ -1,3 +1,4 @@
+import { ColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -17,9 +18,11 @@ export const Sc = {
     font-family: "MontserratBold";
     font-size: 16px;
     text-align: center;
+    color: ${ColorScheme.text.primary};
   `,
 
   Instructions: styled.Text`
     font-size: 16px;
+    color: ${ColorScheme.text.primary};
   `
 };
