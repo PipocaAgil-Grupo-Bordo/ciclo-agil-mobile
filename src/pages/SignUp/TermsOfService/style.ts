@@ -13,6 +13,6 @@ export const Sc = {
 
   Hyperlink: styled.Text`
     color: #8e37c9;
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.accent};
   `
 };
