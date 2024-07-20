@@ -26,6 +26,7 @@ function SignUpForm() {
       <Inputs control={control} errors={errors} />
 
       {/* TODO: Move to a different file after sprint 2 is over */}
+      {/* TODO: This doesn't seem to be working? */}
       <Sc.Wrapper>
         <Sc.Text error={(errors && errors.password)! || (errors && errors.confirmPassword)!}>
           Senha deve conter no mínimo 8 caracteres.

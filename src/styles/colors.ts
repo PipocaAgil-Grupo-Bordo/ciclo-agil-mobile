@@ -20,6 +20,15 @@ const secondary = {
   700: "#515A18"
 } as const;
 
+const tertiary = {
+  100: "#ECEBFA",
+  200: "#E2E1F7",
+  300: "#C3C1EE",
+  500: "#3E36C9",
+  600: "#2F2997",
+  700: "#1C185A"
+} as const;
+
 const neutralGray = {
   white: "#FFFFFF",
   100: "#FAFCFF",
@@ -61,6 +70,7 @@ const danger = {
 export const GeneralColors = {
   primary,
   secondary,
+  tertiary,
   neutralGray,
   neutralBlue,
   danger

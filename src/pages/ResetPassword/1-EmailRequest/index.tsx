@@ -9,12 +9,16 @@ import { NavigationType } from "@routes/type";
 import { handlePasswordRequest } from "@utils/submitHelper";
 import { Sc } from "./style";
 import Entypo from "react-native-vector-icons/Entypo";
+import { ColorScheme } from "@styles/globalStyles";
 
 function PasswordReset() {
   const navigation = useNavigation<NavigationType>();
 
   const {
-    handleSubmit, control, setError, formState: { errors, isSubmitting }
+    handleSubmit,
+    control,
+    setError,
+    formState: { errors, isSubmitting }
   } = useForm<EmailFields>({
     resolver: yupResolver(emailSchema)
   });
@@ -23,13 +27,14 @@ function PasswordReset() {
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Sc.Wrapper>
         <Sc.BackIcon onPress={() => navigation.goBack()}>
-          <Entypo name="chevron-left" size={30} color={"#444444"} />
+          <Entypo name="chevron-left" size={30} color={ColorScheme.iconIdle} />
         </Sc.BackIcon>
         <EmailRequestSection control={control} errors={errors} />
 
         <ButtonList
           isLoading={isSubmitting}
-          onPress={handleSubmit((data) => handlePasswordRequest(data, navigation, setError))} />
+          onPress={handleSubmit((data) => handlePasswordRequest(data, navigation, setError))}
+        />
       </Sc.Wrapper>
     </Sc.Container>
   );

@@ -1,3 +1,4 @@
+import { ColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -7,9 +8,11 @@ export const Sc = {
 
   Text: styled.Text`
     font-size: 14px;
+    color: ${ColorScheme.textPrimary};
   `,
 
   Hyperlink: styled.Text`
     color: #8e37c9;
+    color: ${ColorScheme.textPrimary};
   `
 };

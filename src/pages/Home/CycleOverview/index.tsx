@@ -3,6 +3,7 @@ import { Sc } from "./style";
 import Feather from "react-native-vector-icons/Feather";
 import Entypo from "react-native-vector-icons/Entypo";
 import { UserData } from "@type/auth";
+import { ColorScheme } from "@styles/globalStyles";
 
 interface CycleOverviewProps {
   userProfile: UserData | undefined;
@@ -10,7 +11,7 @@ interface CycleOverviewProps {
 
 function CycleOverview({ userProfile }: CycleOverviewProps) {
   const ICON_SIZE = 20;
-  const ICON_COLOR = "#8E37C9";
+  const ICON_COLOR = ColorScheme.accent;
   const DATA_MOCKUP = "Não informado";
 
   const cycleData = [

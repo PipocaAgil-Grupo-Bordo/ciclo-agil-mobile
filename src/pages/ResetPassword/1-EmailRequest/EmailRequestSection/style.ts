@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import { StyledText } from "@components/TextBox/style";
+import { ColorScheme } from "@styles/globalStyles";
 
 export const Sc = {
   Container: styled.View``,
@@ -16,9 +17,11 @@ export const Sc = {
     text-align: center;
     margin-bottom: 24px;
     font-family: "Lora";
+    color: ${ColorScheme.textPrimary};
   `,
 
   Text: styled(StyledText)`
     margin-bottom: 46px;
+    color: ${ColorScheme.textPrimary};
   `
 };

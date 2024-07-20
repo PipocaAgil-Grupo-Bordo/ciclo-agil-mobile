@@ -6,6 +6,7 @@ import Articles from "@pages/Articles";
 import Entypo from "react-native-vector-icons/Entypo";
 import Feather from "react-native-vector-icons/Feather";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { ColorScheme } from "@styles/globalStyles";
 
 const Tab = createBottomTabNavigator();
 
@@ -15,12 +16,12 @@ function TabRoutes() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: "#eef3fc",
+          backgroundColor: ColorScheme.backgroundSecondary,
           elevation: 0,
           borderTopWidth: 0
         },
-        tabBarActiveTintColor: "#8E37C9",
-        tabBarInactiveTintColor: "rgba(65, 67, 71, 0.75)",
+        tabBarActiveTintColor: ColorScheme.accent,
+        tabBarInactiveTintColor: ColorScheme.iconIdle,
         tabBarLabelStyle: {
           fontSize: 11,
           fontFamily: "Montserrat"
@@ -35,7 +36,8 @@ function TabRoutes() {
             tabBarIcon: ({ color, size }) => <Entypo name="cycle" color={color} size={size} />,
             tabBarLabel: "Ciclo",
             tabBarIconStyle: { transform: [{ rotate: "45deg" }] }
-          }} />
+          }}
+        />
         <Tab.Screen
           name="Calendar"
           component={Calendar}
@@ -44,7 +46,8 @@ function TabRoutes() {
               <MaterialCommunityIcons name="calendar-month-outline" size={size} color={color} />
             ),
             tabBarLabel: "Calendário"
-          }} />
+          }}
+        />
         <Tab.Screen
           name="Analytics"
           component={Analytics}
@@ -53,14 +56,16 @@ function TabRoutes() {
               <Feather name="trending-up" color={color} size={size} />
             ),
             tabBarLabel: "Análise"
-          }} />
+          }}
+        />
         <Tab.Screen
           name="Articles"
           component={Articles}
           options={{
             tabBarIcon: ({ color, size }) => <Feather name="book-open" color={color} size={size} />,
             tabBarLabel: "Conteúdo"
-          }} />
+          }}
+        />
       </Tab.Group>
     </Tab.Navigator>
   );

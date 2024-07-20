@@ -1,3 +1,4 @@
+import { ColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -8,6 +9,7 @@ export const Sc = {
   Title: styled.Text`
     font-family: "MontserratBold";
     font-size: 18px;
+    color: ${ColorScheme.textPrimary};
   `,
   OverviewCard: styled.View`
     flex-direction: row;
@@ -25,6 +27,6 @@ export const Sc = {
   `,
   SecondText: styled.Text`
     font-family: "Montserrat";
-    color: #72777a;
+    color: ${ColorScheme.textTertiary};
   `
 };

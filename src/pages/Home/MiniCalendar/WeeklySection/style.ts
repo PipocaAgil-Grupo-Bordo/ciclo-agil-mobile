@@ -1,3 +1,4 @@
+import { ColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -14,14 +15,14 @@ export const Sc = {
   `,
 
   Week: styled.Text`
-    color: #6c7072;
+    color: ${ColorScheme.textSecondary};
     font-size: 14px;
   `,
 
   DayWrapper: styled.View<{ hasBorder: boolean }>`
     border-width: ${({ hasBorder }) => (hasBorder ? "1px" : "0")};
     border-style: solid;
-    border-color: #64278d;
+    border-color: ${ColorScheme.accent};
     border-radius: 99px;
 
     width: 32px;
@@ -31,7 +32,7 @@ export const Sc = {
   `,
 
   Day: styled.Text`
-    font-size: 14px;
     font-weight: 600;
+    color: ${ColorScheme.textPrimary};
   `
 };
