@@ -1,4 +1,4 @@
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -16,7 +16,7 @@ export const Sc = {
 
   Week: styled.Text`
     color: ${ColorScheme.text.secondary};
-    font-size: 14px;
+    font-size: ${FontScheme.size.default}px;
   `,
 
   DayWrapper: styled.View<{ hasBorder: boolean }>`
@@ -34,5 +34,6 @@ export const Sc = {
   Day: styled.Text`
     font-weight: 600;
     color: ${ColorScheme.text.primary};
+    font-size: ${FontScheme.size.default}px;
   `
 };

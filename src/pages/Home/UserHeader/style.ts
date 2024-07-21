@@ -1,4 +1,4 @@
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -31,6 +31,7 @@ export const Sc = {
   Text: styled.Text`
     font-family: "MontserratBold";
     color: ${ColorScheme.text.primary};
+    font-size: ${FontScheme.size.default}px;
   `,
 
   SettingsWrapper: styled.View`

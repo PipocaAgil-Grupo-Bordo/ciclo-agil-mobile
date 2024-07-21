@@ -1,3 +1,4 @@
+import { FontScheme } from "@styles/globalStyles";
 import { verticalScale } from "@utils/responsivenessHelper";
 import styled from "styled-components/native";
 
@@ -7,7 +8,7 @@ export const Sc = {
   `,
 
   Title: styled.Text`
-    font-size: 24px;
+    font-size: ${FontScheme.size.heading}px;
     text-align: center;
     margin-bottom: 24px;
     width: 74%;

@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 import { ButtonStyleProps } from "../type";
 import { StyledText } from "@components/TextBox/style";
 import { GeneralColors } from "@styles/colors";
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 
 export const Sc = {
   Icon: styled.Image`
@@ -22,6 +22,6 @@ export const Sc = {
       }
     }};
     font-family: ${({ state }) => (state === "accent" ? "MontserratBold" : "Montserrat")};
-    font-size: 16px;
+    font-size: ${FontScheme.size.medium}px;
   `
 };

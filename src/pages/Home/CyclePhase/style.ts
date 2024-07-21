@@ -1,4 +1,4 @@
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -8,7 +8,7 @@ export const Sc = {
   `,
 
   Title: styled.Text`
-    font-size: 18px;
+    font-size: ${FontScheme.size.subheading}px;
     font-family: "MontserratBold";
     color: ${ColorScheme.text.primary};
   `,
@@ -20,7 +20,7 @@ export const Sc = {
   `,
 
   CardText: styled.Text`
-    font-size: 16px;
+    font-size: ${FontScheme.size.medium}px;
     font-family: "Montserrat";
     color: ${ColorScheme.text.primary};
   `

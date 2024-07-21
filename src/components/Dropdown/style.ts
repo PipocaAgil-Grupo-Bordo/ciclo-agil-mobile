@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components/native";
 import { DropdownMenuStyle, OptionStyle } from "./type";
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 
 export const Sc = {
   Container: styled.View`
@@ -10,7 +10,7 @@ export const Sc = {
   `,
 
   Label: styled.Text`
-    font-size: 16px;
+    font-size: ${FontScheme.size.medium}px;
   `,
 
   DropdownWrapper: styled.View`
@@ -35,7 +35,7 @@ export const Sc = {
   SelectedOption: styled.Text`
     font-family: "MontserratBold";
     background-color: ${ColorScheme.background.primary};
-    font-size: 16px;
+    font-size: ${FontScheme.size.medium}px;
   `,
 
   DropdownOptions: styled.ScrollView`

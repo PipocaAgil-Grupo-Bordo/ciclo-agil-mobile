@@ -1,12 +1,12 @@
 import styled from "styled-components/native";
 import { StyledText } from "@components/TextBox/style";
-import { ColorScheme } from "src/styles/globalStyles";
+import { ColorScheme, FontScheme } from "src/styles/globalStyles";
 
 export const Sc = {
   Container: styled.View``,
 
   Title: styled(StyledText)`
-    font-size: 24px;
+    font-size: ${FontScheme.size.heading}px;
     color: ${ColorScheme.text.primary};
     font-weight: 400;
     margin: 81px 0px 24px;
@@ -14,6 +14,7 @@ export const Sc = {
 
   ForgottenPassword: styled(StyledText)`
     color: ${ColorScheme.accent.highlight};
+    font-size: ${FontScheme.size.default}px;
     text-align: right;
     margin: 0px 12px;
   `,
@@ -30,5 +31,6 @@ export const Sc = {
 
   RegisterLink: styled(StyledText)`
     color: ${ColorScheme.accent.highlight};
+    font-size: ${FontScheme.size.default}px;
   `
 };

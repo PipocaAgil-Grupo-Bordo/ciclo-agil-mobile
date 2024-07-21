@@ -1,4 +1,4 @@
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -8,7 +8,7 @@ export const Sc = {
 
   Text: styled.Text`
     font-family: "Montserrat";
-    font-size: 16px;
+    font-size: ${FontScheme.size.medium}px;
     text-align: center;
     color: ${ColorScheme.text.primary};
   `

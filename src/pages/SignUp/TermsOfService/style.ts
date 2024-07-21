@@ -1,4 +1,4 @@
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -7,12 +7,12 @@ export const Sc = {
   `,
 
   Text: styled.Text`
-    font-size: 14px;
+    font-size: ${FontScheme.size.default}px;
     color: ${ColorScheme.text.primary};
   `,
 
   Hyperlink: styled.Text`
-    color: #8e37c9;
     color: ${ColorScheme.accent.highlight};
+    font-size: ${FontScheme.size.default}px;
   `
 };

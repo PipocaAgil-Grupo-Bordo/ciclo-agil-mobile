@@ -1,5 +1,5 @@
 import { StyledText } from "@components/TextBox/style";
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import { horizontalScale, verticalScale } from "@utils/responsivenessHelper";
 
 import styled from "styled-components/native";
@@ -16,7 +16,7 @@ export const Sc = {
   `,
 
   Title: styled.Text`
-    font-size: 24px;
+    font-size: ${FontScheme.size.heading}px;
     text-align: center;
     margin-bottom: 24px;
     width: 74%;
@@ -29,5 +29,6 @@ export const Sc = {
   `,
   SubTitle: styled(StyledText)`
     color: ${ColorScheme.text.primary};
+    font-size: ${FontScheme.size.default}px;
   `
 };

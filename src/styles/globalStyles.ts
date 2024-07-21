@@ -31,3 +31,14 @@ export const ColorScheme = {
     idle: clr.neutralGray[900]
   }
 };
+
+export const FontScheme = {
+  size: {
+    small: 12,
+    default: 14,
+    medium: 16,
+    subheading: 18,
+    highlight: 20,
+    heading: 24
+  }
+} as const;

@@ -1,4 +1,4 @@
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -10,9 +10,11 @@ export const Sc = {
 
   CurrentMonth: styled.Text`
     color: ${ColorScheme.text.primary};
+    font-size: ${FontScheme.size.default}px;
   `,
 
   StandOut: styled.Text`
     color: ${ColorScheme.text.tertiary};
+    font-size: ${FontScheme.size.default}px;
   `
 };

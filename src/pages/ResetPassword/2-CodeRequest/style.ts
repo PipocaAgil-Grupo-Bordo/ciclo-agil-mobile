@@ -1,7 +1,7 @@
 import { StyledText } from "@components/TextBox/style";
 import styled from "styled-components/native";
 import { CodeValidationMessageProps } from "./type";
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 
 export const Sc = {
   Container: styled.ScrollView``,
@@ -14,7 +14,7 @@ export const Sc = {
   `,
 
   CodeValidationMessage: styled(StyledText)<CodeValidationMessageProps>`
-    font-size: 14px;
+    font-size: ${FontScheme.size.default}px;
     color: ${({ type }) =>
       type === "unsuccessful" ? ColorScheme.accent.danger : ColorScheme.accent.success};
   `,
@@ -22,5 +22,6 @@ export const Sc = {
   Text: styled.Text`
     color: #000;
     z-index: 10;
+    font-size: ${FontScheme.size.default}px;
   `
 };

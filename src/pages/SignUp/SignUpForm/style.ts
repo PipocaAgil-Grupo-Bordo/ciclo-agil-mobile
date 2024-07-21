@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 import { StyledText } from "@components/TextBox/style";
 import { InstructionTextProps } from "../type";
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 
 export const Sc = {
   Container: styled.View`
@@ -14,8 +14,7 @@ export const Sc = {
   `,
 
   Text: styled(StyledText)<InstructionTextProps>`
-    /* TODO: Doesn't seem to be working properly, this is set up but not being used */
     color: ${({ error }) => (error ? ColorScheme.accent.danger : "#414347")};
-    color: ${ColorScheme.text.primary};
+    font-size: ${FontScheme.size.default}px;
   `
 };

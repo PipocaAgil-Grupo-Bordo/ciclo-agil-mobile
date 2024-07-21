@@ -1,4 +1,4 @@
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -16,13 +16,13 @@ export const Sc = {
 
   ConfirmationText: styled.Text`
     font-family: "MontserratBold";
-    font-size: 16px;
+    font-size: ${FontScheme.size.medium}px;
     text-align: center;
     color: ${ColorScheme.text.primary};
   `,
 
   Instructions: styled.Text`
-    font-size: 16px;
+    font-size: ${FontScheme.size.medium}px;
     color: ${ColorScheme.text.primary};
   `
 };
