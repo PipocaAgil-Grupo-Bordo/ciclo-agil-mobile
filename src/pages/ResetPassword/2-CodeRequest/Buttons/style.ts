@@ -7,6 +7,7 @@ export const Sc = {
   `,
 
   Text: styled.Text`
+    font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.small}px;
     color: ${ColorScheme.text.primary};
   `

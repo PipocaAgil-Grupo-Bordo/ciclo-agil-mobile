@@ -14,10 +14,10 @@ export const Sc = {
   `,
 
   Title: styled.Text`
+    font-family: ${FontScheme.family.secondary};
     font-size: ${FontScheme.size.heading}px;
     color: ${ColorScheme.text.primary};
     text-align: center;
-    font-family: "Lora";
     margin-left: 14px;
   `
 };

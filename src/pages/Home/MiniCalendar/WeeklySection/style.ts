@@ -15,8 +15,9 @@ export const Sc = {
   `,
 
   Week: styled.Text`
+    font-family: ${FontScheme.family.primary};
+    font-size: ${FontScheme.size.small}px;
     color: ${ColorScheme.text.secondary};
-    font-size: ${FontScheme.size.default}px;
   `,
 
   DayWrapper: styled.View<{ hasBorder: boolean }>`
@@ -32,8 +33,8 @@ export const Sc = {
   `,
 
   Day: styled.Text`
-    font-weight: 600;
-    color: ${ColorScheme.text.primary};
+    font-family: ${FontScheme.family.primarySemiBold};
     font-size: ${FontScheme.size.default}px;
+    color: ${ColorScheme.text.primary};
   `
 };

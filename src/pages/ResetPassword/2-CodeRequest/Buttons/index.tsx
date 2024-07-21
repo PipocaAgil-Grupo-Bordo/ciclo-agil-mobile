@@ -1,6 +1,5 @@
 import { NavigationType } from "@routes/type";
 import GenericButton from "@components/GenericButton";
-import TextBox from "@components/TextBox";
 import { ButtonsInfo, ButtonsProps } from "../type";
 import { useNavigation } from "@react-navigation/core";
 import { Sc } from "./style";
@@ -24,9 +23,7 @@ function Buttons({ onPress }: ButtonsProps) {
   return (
     <Sc.Container>
       <Sc.Text>
-        <TextBox>
-          Caso não encontre o email na sua caixa de entrada, verifique a pasta de spam.
-        </TextBox>
+        Caso não encontre o email na sua caixa de entrada, verifique a pasta de spam.
       </Sc.Text>
       {buttons.map((button, i) => (
         <GenericButton key={i} state={button.state} onPress={button.onPress}>

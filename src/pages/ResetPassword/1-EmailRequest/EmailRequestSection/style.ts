@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { StyledText } from "@components/TextBox/style";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
 
 export const Sc = {
@@ -13,16 +12,17 @@ export const Sc = {
   `,
 
   Title: styled.Text`
+    font-family: ${FontScheme.family.secondary};
     font-size: ${FontScheme.size.heading}px;
+    color: ${ColorScheme.text.primary};
     text-align: center;
     margin-bottom: 24px;
-    font-family: "Lora";
-    color: ${ColorScheme.text.primary};
   `,
 
-  Text: styled(StyledText)`
-    margin-bottom: 46px;
+  Text: styled.Text`
+    font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
     color: ${ColorScheme.text.primary};
+    margin-bottom: 46px;
   `
 };

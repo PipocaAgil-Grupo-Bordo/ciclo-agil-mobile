@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 import { verticalScale } from "@utils/responsivenessHelper";
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 
 export const Sc = {
   Container: styled.View`
@@ -10,7 +10,8 @@ export const Sc = {
   Wrapper: styled.View``,
 
   RoleTitle: styled.Text`
-    font-family: "Montserrat";
+    font-family: ${FontScheme.family.primaryMedium};
+    font-size: ${FontScheme.size.default}px;
     color: ${ColorScheme.accent.highlight};
     margin: ${verticalScale(5) + "px" + " "} 0px;
   `

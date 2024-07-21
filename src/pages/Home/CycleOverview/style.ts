@@ -8,7 +8,7 @@ export const Sc = {
   `,
 
   Title: styled.Text`
-    font-family: "MontserratBold";
+    font-family: ${FontScheme.family.primarySemiBold};
     font-size: ${FontScheme.size.subheading}px;
     color: ${ColorScheme.text.primary};
   `,
@@ -27,14 +27,14 @@ export const Sc = {
   Icon: styled.Image``,
 
   MainText: styled.Text`
-    font-family: "Montserrat";
+    font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.medium}px;
     color: ${ColorScheme.text.primary};
   `,
 
   SecondText: styled.Text`
-    font-family: "Montserrat";
-    color: ${ColorScheme.text.tertiary};
+    font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
+    color: ${ColorScheme.text.tertiary};
   `
 };

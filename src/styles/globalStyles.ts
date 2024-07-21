@@ -40,5 +40,14 @@ export const FontScheme = {
     subheading: 18,
     highlight: 20,
     heading: 24
+  },
+
+  family: {
+    primary: "Montserrat",
+    primaryMedium: "MontserratMedium",
+    primarySemiBold: "MontserratSemiBold",
+    secondary: "Lora",
+    secondaryMedium: "LoraMedium",
+    secondarySemiBold: "LoraSemiBold"
   }
 } as const;

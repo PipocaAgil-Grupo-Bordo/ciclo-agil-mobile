@@ -14,6 +14,7 @@ export const Sc = {
   InstructionWrapper: styled.View``,
 
   Text: styled.Text`
+    font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.small}px;
     color: ${ColorScheme.text.primary};
   `

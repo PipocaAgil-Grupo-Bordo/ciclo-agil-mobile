@@ -15,10 +15,10 @@ export const Sc = {
   `,
 
   SubTitle: styled.Text`
+    font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
+    color: ${ColorScheme.text.primary};
     width: 90%;
     align-content: center;
-    font-family: "Montserrat";
-    color: ${ColorScheme.text.primary};
   `
 };

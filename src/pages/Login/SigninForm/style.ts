@@ -1,20 +1,21 @@
 import styled from "styled-components/native";
-import { StyledText } from "@components/TextBox/style";
 import { ColorScheme, FontScheme } from "src/styles/globalStyles";
 
 export const Sc = {
   Container: styled.View``,
 
-  Title: styled(StyledText)`
+  Title: styled.Text`
+    font-family: ${FontScheme.family.secondary};
     font-size: ${FontScheme.size.heading}px;
     color: ${ColorScheme.text.primary};
     font-weight: 400;
     margin: 81px 0px 24px;
   `,
 
-  ForgottenPassword: styled(StyledText)`
-    color: ${ColorScheme.accent.highlight};
+  ForgottenPassword: styled.Text`
+    font-family: ${FontScheme.family.primaryMedium};
     font-size: ${FontScheme.size.default}px;
+    color: ${ColorScheme.accent.highlight};
     text-align: right;
     margin: 0px 12px;
   `,
@@ -29,8 +30,15 @@ export const Sc = {
     justify-content: center;
   `,
 
-  RegisterLink: styled(StyledText)`
-    color: ${ColorScheme.accent.highlight};
+  Text: styled.Text`
+    font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
+    color: ${ColorScheme.text.primary};
+  `,
+
+  RegisterLink: styled.Text`
+    font-family: ${FontScheme.family.primaryMedium};
+    font-size: ${FontScheme.size.default}px;
+    color: ${ColorScheme.accent.highlight};
   `
 };

@@ -9,12 +9,12 @@ export const Sc = {
   `,
 
   CurrentMonth: styled.Text`
-    color: ${ColorScheme.text.primary};
+    font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
+    color: ${ColorScheme.text.primary};
   `,
 
   StandOut: styled.Text`
     color: ${ColorScheme.text.tertiary};
-    font-size: ${FontScheme.size.default}px;
   `
 };

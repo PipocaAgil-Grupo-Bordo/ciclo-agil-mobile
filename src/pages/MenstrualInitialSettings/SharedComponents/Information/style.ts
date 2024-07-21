@@ -7,9 +7,9 @@ export const Sc = {
   `,
 
   Text: styled.Text`
-    font-family: "Montserrat";
+    font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.medium}px;
-    text-align: center;
     color: ${ColorScheme.text.primary};
+    text-align: center;
   `
 };

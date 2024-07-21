@@ -29,9 +29,9 @@ export const Sc = {
   `,
 
   Text: styled.Text`
-    font-family: "MontserratBold";
-    color: ${ColorScheme.text.primary};
+    font-family: ${FontScheme.family.primaryMedium};
     font-size: ${FontScheme.size.default}px;
+    color: ${ColorScheme.text.primary};
   `,
 
   SettingsWrapper: styled.View`

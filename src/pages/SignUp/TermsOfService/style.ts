@@ -7,12 +7,12 @@ export const Sc = {
   `,
 
   Text: styled.Text`
+    font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
     color: ${ColorScheme.text.primary};
   `,
 
   Hyperlink: styled.Text`
     color: ${ColorScheme.accent.highlight};
-    font-size: ${FontScheme.size.default}px;
   `
 };

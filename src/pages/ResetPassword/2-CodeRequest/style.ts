@@ -1,4 +1,3 @@
-import { StyledText } from "@components/TextBox/style";
 import styled from "styled-components/native";
 import { CodeValidationMessageProps } from "./type";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
@@ -13,15 +12,17 @@ export const Sc = {
     background-color: #fafcff;
   `,
 
-  CodeValidationMessage: styled(StyledText)<CodeValidationMessageProps>`
+  CodeValidationMessage: styled.Text<CodeValidationMessageProps>`
+    font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
     color: ${({ type }) =>
       type === "unsuccessful" ? ColorScheme.accent.danger : ColorScheme.accent.success};
   `,
 
   Text: styled.Text`
+    font-family: ${FontScheme.family.primary};
+    font-size: ${FontScheme.size.default}px;
     color: #000;
     z-index: 10;
-    font-size: ${FontScheme.size.default}px;
   `
 };

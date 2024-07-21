@@ -2,6 +2,12 @@ import styled, { css } from "styled-components/native";
 import { DropdownMenuStyle, OptionStyle } from "./type";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
 
+const dropdownOptions = styled.Text`
+  font-family: ${FontScheme.family.primarySemiBold};
+  font-size: ${FontScheme.size.medium}px;
+  background-color: ${ColorScheme.background.primary};
+`;
+
 export const Sc = {
   Container: styled.View`
     flex-direction: row;
@@ -10,6 +16,7 @@ export const Sc = {
   `,
 
   Label: styled.Text`
+    font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.medium}px;
   `,
 
@@ -32,11 +39,7 @@ export const Sc = {
     gap: 8px;
   `,
 
-  SelectedOption: styled.Text`
-    font-family: "MontserratBold";
-    background-color: ${ColorScheme.background.primary};
-    font-size: ${FontScheme.size.medium}px;
-  `,
+  SelectedOption: styled(dropdownOptions)``,
 
   DropdownOptions: styled.ScrollView`
     border: 2px solid ${ColorScheme.border.primary};
@@ -47,17 +50,15 @@ export const Sc = {
 
   OptionButton: styled.TouchableOpacity``,
 
-  Option: styled.Text<OptionStyle>``
+  Option: styled(dropdownOptions)<OptionStyle>`
+    padding: 4px 12px;
+    width: 100%;
+    border: 0 solid ${ColorScheme.border.primary};
+    /* Prevent last item from having a thicker width */
+    ${({ isLast }) =>
+      !isLast &&
+      css`
+        border-bottom-width: 2px;
+      `}
+  `
 };
-
-Sc.Option = styled(Sc.SelectedOption)`
-  padding: 4px 12px;
-  width: 100%;
-  border: 0 solid ${ColorScheme.border.primary};
-  /* Prevent last item from having a thicker width */
-  ${({ isLast }) =>
-    !isLast &&
-    css`
-      border-bottom-width: 2px;
-    `}
-`;

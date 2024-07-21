@@ -9,7 +9,6 @@ import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import authApi from "@services/authApi";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import TextBox from "@components/TextBox";
 import GenericButton from "@components/GenericButton";
 import { NavigationType } from "@routes/type";
 import Inputs from "../Inputs";
@@ -76,7 +75,7 @@ function SigninForm() {
       </Sc.LoginWrapper>
 
       <Sc.RegisterWrapper>
-        <TextBox>Não tem conta?</TextBox>
+        <Sc.Text>Não tem conta?</Sc.Text>
 
         <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
           <Sc.RegisterLink> Registre-se</Sc.RegisterLink>

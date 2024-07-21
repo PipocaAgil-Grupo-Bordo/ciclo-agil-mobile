@@ -15,13 +15,14 @@ export const Sc = {
   `,
 
   ConfirmationText: styled.Text`
-    font-family: "MontserratBold";
+    font-family: ${FontScheme.family.primarySemiBold};
     font-size: ${FontScheme.size.medium}px;
-    text-align: center;
     color: ${ColorScheme.text.primary};
+    text-align: center;
   `,
 
   Instructions: styled.Text`
+    font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.medium}px;
     color: ${ColorScheme.text.primary};
   `

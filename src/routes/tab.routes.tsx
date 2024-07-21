@@ -6,7 +6,7 @@ import Articles from "@pages/Articles";
 import Entypo from "react-native-vector-icons/Entypo";
 import Feather from "react-native-vector-icons/Feather";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 
 const Tab = createBottomTabNavigator();
 
@@ -24,7 +24,7 @@ function TabRoutes() {
         tabBarInactiveTintColor: ColorScheme.icon.idle,
         tabBarLabelStyle: {
           fontSize: 11,
-          fontFamily: "Montserrat"
+          fontFamily: FontScheme.family.primary
         }
       }}
     >

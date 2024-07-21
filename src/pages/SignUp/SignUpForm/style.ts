@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { StyledText } from "@components/TextBox/style";
 import { InstructionTextProps } from "../type";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
 
@@ -13,8 +12,9 @@ export const Sc = {
     margin: 6px 0px 24px;
   `,
 
-  Text: styled(StyledText)<InstructionTextProps>`
+  Text: styled.Text<InstructionTextProps>`
+    font-family: ${FontScheme.family.primary};
+    font-size: ${FontScheme.size.small}px;
     color: ${({ error }) => (error ? ColorScheme.accent.danger : "#414347")};
-    font-size: ${FontScheme.size.default}px;
   `
 };

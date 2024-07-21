@@ -8,8 +8,8 @@ export const Sc = {
   `,
 
   Title: styled.Text`
+    font-family: ${FontScheme.family.primarySemiBold};
     font-size: ${FontScheme.size.subheading}px;
-    font-family: "MontserratBold";
     color: ${ColorScheme.text.primary};
   `,
 
@@ -20,8 +20,8 @@ export const Sc = {
   `,
 
   CardText: styled.Text`
+    font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.medium}px;
-    font-family: "Montserrat";
     color: ${ColorScheme.text.primary};
   `
 };
