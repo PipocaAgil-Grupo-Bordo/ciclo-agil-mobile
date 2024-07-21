@@ -3,6 +3,7 @@ import { GenericInputProps } from "./type";
 import { useController } from "react-hook-form";
 import { Masks } from "react-native-mask-input";
 import { Sc } from "./style";
+import { ColorScheme } from "@styles/globalStyles";
 
 /**
  * Text input with label and error message
@@ -19,6 +20,7 @@ function GenericInput({ label, control, name, errors, ...props }: GenericInputPr
         textAlign="center"
         value={field.value}
         onChangeText={field.onChange}
+        placeholderTextColor={ColorScheme.text.tertiary}
         name={name}
         errors={errors}
         mask={name === "birthdate" ? Masks.DATE_DDMMYYYY : undefined}

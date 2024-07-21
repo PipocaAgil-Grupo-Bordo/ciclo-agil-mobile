@@ -1,3 +1,4 @@
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -7,6 +8,8 @@ export const Sc = {
   `,
 
   Text: styled.Text`
-    font-size: 12px;
+    font-family: ${FontScheme.family.primary};
+    font-size: ${FontScheme.size.small}px;
+    color: ${ColorScheme.text.primary};
   `
 };

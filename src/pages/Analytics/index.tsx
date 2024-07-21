@@ -1,11 +1,11 @@
 import React from "react";
 import { Sc } from "./style";
-import TextBox from "@components/TextBox";
+import { Text } from "react-native";
 
 function Analytics() {
   return (
     <Sc.Container>
-      <TextBox>Tela de análise</TextBox>
+      <Text>Tela de análise</Text>
     </Sc.Container>
   );
 }

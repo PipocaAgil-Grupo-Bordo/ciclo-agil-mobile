@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import { YAxisStyle } from "./type";
+import { ColorScheme } from "@styles/globalStyles";
 
 export const Sc = {
   Container: styled.View<YAxisStyle>`
@@ -9,7 +10,7 @@ export const Sc = {
 
   IndicatorWrapper: styled.View<YAxisStyle>`
     position: absolute;
-    background-color: #eee1f7;
+    background-color: ${ColorScheme.background.tertiary};
     z-index: -1;
     width: 100%;
     border-radius: 10px;

@@ -1,3 +1,4 @@
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -7,18 +8,20 @@ export const Sc = {
   `,
 
   Title: styled.Text`
-    font-size: 18px;
-    font-family: "MontserratBold";
+    font-family: ${FontScheme.family.primarySemiBold};
+    font-size: ${FontScheme.size.subheading}px;
+    color: ${ColorScheme.text.primary};
   `,
 
   Card: styled.View`
     padding: 16px;
-    background-color: #e2e1f7;
+    background-color: ${ColorScheme.foreground.primary};
     border-radius: 8px;
   `,
 
   CardText: styled.Text`
-    font-size: 16px;
-    font-family: "Montserrat";
+    font-family: ${FontScheme.family.primary};
+    font-size: ${FontScheme.size.medium}px;
+    color: ${ColorScheme.text.primary};
   `
 };

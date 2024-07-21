@@ -1,11 +1,11 @@
 import React from "react";
 import { Sc } from "./style";
-import TextBox from "@components/TextBox";
+import { Text } from "react-native";
 
 function Calendar() {
   return (
     <Sc.Container>
-      <TextBox>Tela do calendário</TextBox>
+      <Text>Tela do calendário</Text>
     </Sc.Container>
   );
 }

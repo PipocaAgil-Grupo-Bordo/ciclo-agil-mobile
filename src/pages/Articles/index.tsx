@@ -1,11 +1,11 @@
 import React from "react";
 import { Sc } from "./style";
-import TextBox from "@components/TextBox";
+import { Text } from "react-native";
 
 function Articles() {
   return (
     <Sc.Container>
-      <TextBox>Tela de conteúdos</TextBox>
+      <Text>Tela de conteúdos</Text>
     </Sc.Container>
   );
 }
