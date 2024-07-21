@@ -18,7 +18,7 @@ export const Sc = {
 
   Paragraph: styled.Text`
     font-family: ${FontScheme.family.primary};
-    font-size: ${FontScheme.size.highlight}px;
+    font-size: ${FontScheme.size.default}px;
     color: ${ColorScheme.text.primary};
     margin-top: ${verticalScale(50) + "px"};
     margin-bottom: ${verticalScale(50) + "px"};

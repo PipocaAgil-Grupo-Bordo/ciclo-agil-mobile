@@ -8,7 +8,7 @@ import { horizontalScale, verticalScale } from "@utils/responsivenessHelper";
 // TODO: Add a description for the component
 function Modal({ title, textContent, buttonText, onPress, setReadyToNext }: Modalprops) {
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ["30%", "50%"], []);
+  const snapPoints = useMemo(() => ["50%", "60%"], []);
 
   const handleSheetChanges = useCallback((index: number) => {
     if (index === -1) setReadyToNext(false);

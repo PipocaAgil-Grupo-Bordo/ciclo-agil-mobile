@@ -20,6 +20,7 @@ function StackRoutes() {
       screenOptions={{
         headerShown: false
       }}
+      initialRouteName="LastPeriod"
     >
       {/* If user is logged in */}
       <Stack.Group>
