@@ -20,7 +20,6 @@ function StackRoutes() {
       screenOptions={{
         headerShown: false
       }}
-      initialRouteName="Team"
     >
       {/* If user is logged in */}
       <Stack.Group>

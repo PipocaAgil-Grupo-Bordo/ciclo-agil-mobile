@@ -8,7 +8,6 @@ export const Sc = {
     font-family: ${FontScheme.family.secondary};
     font-size: ${FontScheme.size.heading}px;
     color: ${ColorScheme.text.primary};
-    font-weight: 400;
     margin: 81px 0px 24px;
   `,
 
