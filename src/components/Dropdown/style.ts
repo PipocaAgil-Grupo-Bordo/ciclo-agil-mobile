@@ -23,7 +23,7 @@ export const Sc = {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border: 2px solid ${ColorScheme.borderPrimary};
+    border: 2px solid ${ColorScheme.border.primary};
     border-bottom-width: ${({ isOpen }) => (isOpen ? "0" : "2px")};
     border-radius: 10px;
     border-bottom-left-radius: ${({ isOpen }) => (isOpen ? "0" : "10px")};
@@ -34,12 +34,12 @@ export const Sc = {
 
   SelectedOption: styled.Text`
     font-family: "MontserratBold";
-    background-color: ${ColorScheme.backgroundPrimary};
+    background-color: ${ColorScheme.background.primary};
     font-size: 16px;
   `,
 
   DropdownOptions: styled.ScrollView`
-    border: 2px solid ${ColorScheme.borderPrimary};
+    border: 2px solid ${ColorScheme.border.primary};
     width: 100%;
     position: absolute;
     top: 100%;
@@ -53,7 +53,7 @@ export const Sc = {
 Sc.Option = styled(Sc.SelectedOption)`
   padding: 4px 12px;
   width: 100%;
-  border: 0 solid ${ColorScheme.borderPrimary};
+  border: 0 solid ${ColorScheme.border.primary};
   /* Prevent last item from having a thicker width */
   ${({ isLast }) =>
     !isLast &&

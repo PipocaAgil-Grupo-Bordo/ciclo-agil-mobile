@@ -19,7 +19,7 @@ function Integrant({ name, link }: IntegrantData) {
           style={{ alignSelf: "flex-start" }}
           name="link-2"
           size={20}
-          color={ColorScheme.textSecondary}
+          color={ColorScheme.text.secondary}
           onPress={() => handleLinking(link)}
         />
       </Sc.Wrapper>

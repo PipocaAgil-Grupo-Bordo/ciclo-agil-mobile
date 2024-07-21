@@ -79,7 +79,7 @@ function AuthNavigator() {
     // Temporary untill UI team makes a loading screen for this
     <View
       style={{
-        backgroundColor: ColorScheme.backgroundPrimary,
+        backgroundColor: ColorScheme.background.primary,
         justifyContent: "center",
         alignItems: "center",
         flex: 1

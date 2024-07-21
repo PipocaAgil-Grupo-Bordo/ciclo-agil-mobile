@@ -15,14 +15,14 @@ export const Sc = {
   `,
 
   Week: styled.Text`
-    color: ${ColorScheme.textSecondary};
+    color: ${ColorScheme.text.secondary};
     font-size: 14px;
   `,
 
   DayWrapper: styled.View<{ hasBorder: boolean }>`
     border-width: ${({ hasBorder }) => (hasBorder ? "1px" : "0")};
     border-style: solid;
-    border-color: ${ColorScheme.accent};
+    border-color: ${ColorScheme.accent.highlight};
     border-radius: 99px;
 
     width: 32px;
@@ -33,6 +33,6 @@ export const Sc = {
 
   Day: styled.Text`
     font-weight: 600;
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.text.primary};
   `
 };

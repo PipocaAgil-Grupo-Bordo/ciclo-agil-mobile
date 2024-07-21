@@ -7,6 +7,6 @@ export const Sc = {
     flex: 1;
     justify-content: center;
     align-items: center;
-    background-color: ${ColorScheme.backgroundPrimary};
+    background-color: ${ColorScheme.background.primary};
   `
 };

@@ -12,14 +12,15 @@ export const Sc = {
   `,
 
   Input: styled(MaskInput)<StyledInputProps>`
-    background-color: ${ColorScheme.backgroundSecondary};
+    background-color: ${ColorScheme.background.secondary};
     border-radius: 5px;
     padding: 16px;
-    border: ${(props) => (props.errors && props.errors[props.name] ? ColorScheme.danger : "none")};
+    border: ${(props) =>
+      props.errors && props.errors[props.name] ? ColorScheme.accent.danger : "none"};
   `,
 
   Error: styled(StyledText)`
-    color: ${ColorScheme.danger};
+    color: ${ColorScheme.accent.danger};
     font-size: 14px;
   `
 };

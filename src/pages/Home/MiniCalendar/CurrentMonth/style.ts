@@ -9,10 +9,10 @@ export const Sc = {
   `,
 
   CurrentMonth: styled.Text`
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.text.primary};
   `,
 
   StandOut: styled.Text`
-    color: ${ColorScheme.textTertiary};
+    color: ${ColorScheme.text.tertiary};
   `
 };

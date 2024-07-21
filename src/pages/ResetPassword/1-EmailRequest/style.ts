@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 
 export const Sc = {
   Container: styled.ScrollView`
-    background-color: ${ColorScheme.backgroundPrimary};
+    background-color: ${ColorScheme.background.primary};
   `,
 
   Wrapper: styled.View`

@@ -67,11 +67,21 @@ const danger = {
   700: "#850000"
 } as const;
 
+const success = {
+  100: "#E6FFE5",
+  200: "#BAFFB9",
+  300: "#74E172",
+  500: "#29B126",
+  600: "#038600",
+  700: "#013D00"
+} as const;
+
 export const GeneralColors = {
   primary,
   secondary,
   tertiary,
   neutralGray,
   neutralBlue,
-  danger
+  danger,
+  success
 };

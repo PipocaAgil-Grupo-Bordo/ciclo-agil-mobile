@@ -10,18 +10,18 @@ export const Sc = {
   Title: styled.Text`
     font-size: 18px;
     font-family: "MontserratBold";
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.text.primary};
   `,
 
   Card: styled.View`
     padding: 16px;
-    background-color: ${ColorScheme.foregroundPrimary};
+    background-color: ${ColorScheme.foreground.primary};
     border-radius: 8px;
   `,
 
   CardText: styled.Text`
     font-size: 16px;
     font-family: "Montserrat";
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.text.primary};
   `
 };

@@ -27,7 +27,7 @@ function PasswordReset() {
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Sc.Wrapper>
         <Sc.BackIcon onPress={() => navigation.goBack()}>
-          <Entypo name="chevron-left" size={30} color={ColorScheme.iconIdle} />
+          <Entypo name="chevron-left" size={30} color={ColorScheme.icon.idle} />
         </Sc.BackIcon>
         <EmailRequestSection control={control} errors={errors} />
 

@@ -10,7 +10,7 @@ export const Sc = {
 
   IndicatorWrapper: styled.View<YAxisStyle>`
     position: absolute;
-    background-color: ${ColorScheme.backgroundTertiary};
+    background-color: ${ColorScheme.background.tertiary};
     z-index: -1;
     width: 100%;
     border-radius: 10px;

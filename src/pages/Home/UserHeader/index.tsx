@@ -19,8 +19,8 @@ function UserHeader({ whoAmI }: UserHeaderProps) {
       </Sc.UserWrapper>
 
       <Sc.SettingsWrapper>
-        <Feather size={20} name="settings" color={ColorScheme.iconIdle} />
-        <Feather size={20} name="bell" color={ColorScheme.iconIdle} />
+        <Feather size={20} name="settings" color={ColorScheme.icon.idle} />
+        <Feather size={20} name="bell" color={ColorScheme.icon.idle} />
       </Sc.SettingsWrapper>
     </Sc.Container>
   );

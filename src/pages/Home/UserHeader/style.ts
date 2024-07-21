@@ -30,7 +30,7 @@ export const Sc = {
 
   Text: styled.Text`
     font-family: "MontserratBold";
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.text.primary};
   `,
 
   SettingsWrapper: styled.View`

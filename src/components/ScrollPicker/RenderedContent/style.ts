@@ -7,7 +7,7 @@ export const Sc = {
     font-size: 26px;
     font-family: "Montserrat";
     text-align: center;
-    color: ${({ isSelected }) => (isSelected ? ColorScheme.accent : ColorScheme.textSecondary)};
+    color: ${({ isSelected }) => (isSelected ? ColorScheme.accent.highlight : ColorScheme.text.secondary)};
     height: ${({ yAxis }) => yAxis}px;
   `
 };

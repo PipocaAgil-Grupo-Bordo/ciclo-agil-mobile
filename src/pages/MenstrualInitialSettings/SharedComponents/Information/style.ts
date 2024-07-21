@@ -10,6 +10,6 @@ export const Sc = {
     font-family: "Montserrat";
     font-size: 16px;
     text-align: center;
-    color: ${ColorScheme.textPrimary};
+    color: ${ColorScheme.text.primary};
   `
 };

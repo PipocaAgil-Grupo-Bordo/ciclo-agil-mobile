@@ -1,20 +1,33 @@
 import { GeneralColors as clr } from "./colors";
 
 export const ColorScheme = {
-  backgroundPrimary: clr.neutralGray[100],
-  backgroundSecondary: clr.neutralBlue[200],
-  backgroundTertiary: clr.primary[200],
+  background: {
+    primary: clr.neutralGray[100],
+    secondary: clr.neutralBlue[200],
+    tertiary: clr.primary[200]
+  },
 
-  foregroundPrimary: clr.tertiary[200],
+  foreground: {
+    primary: clr.tertiary[200]
+  },
 
-  textPrimary: clr.neutralBlue[900],
-  textSecondary: clr.neutralGray[600],
-  textTertiary: clr.neutralGray[700],
+  text: {
+    primary: clr.neutralBlue[900],
+    secondary: clr.neutralGray[600],
+    tertiary: clr.neutralGray[700]
+  },
 
-  borderPrimary: clr.neutralGray[400],
+  border: {
+    primary: clr.neutralGray[400]
+  },
 
-  accent: clr.primary[500],
-  danger: clr.danger[500],
+  accent: {
+    highlight: clr.primary[500],
+    danger: clr.danger[500],
+    success: clr.success[500]
+  },
 
-  iconIdle: clr.neutralGray[900]
+  icon: {
+    idle: clr.neutralGray[900]
+  }
 };

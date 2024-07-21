@@ -1,3 +1,4 @@
+import { ColorScheme } from "@styles/globalStyles";
 import { horizontalScale, moderateScale, verticalScale } from "@utils/responsivenessHelper";
 import styled from "styled-components/native";
 
@@ -18,6 +19,7 @@ export const Sc = {
   `,
   Name: styled.Text`
     font-size: ${moderateScale(14)+"px"};
+    color: ${ColorScheme.text.primary};
   `,
   Link: styled.Button`
     width: ${horizontalScale(20)} px;
