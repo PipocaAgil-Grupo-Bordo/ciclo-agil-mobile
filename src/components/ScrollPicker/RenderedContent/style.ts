@@ -1,12 +1,14 @@
 import styled from "styled-components/native";
 import { isSelectedTextStyle } from "../type";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 
 export const Sc = {
   Text: styled.Text<isSelectedTextStyle>`
-    font-size: 26px;
-    font-family: "Montserrat";
+    font-family: ${FontScheme.family.primary};
+    font-size: ${FontScheme.size.heading}px;
     text-align: center;
-    color: ${({ isSelected }) => (isSelected ? "#8e37c9" : "#AFB4BD")};
+    color: ${({ isSelected }) =>
+      isSelected ? ColorScheme.accent.highlight : ColorScheme.text.secondary};
     height: ${({ yAxis }) => yAxis}px;
   `
 };

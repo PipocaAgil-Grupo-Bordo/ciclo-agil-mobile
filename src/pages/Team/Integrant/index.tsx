@@ -5,6 +5,7 @@ import { handleLinking } from "@utils/linkingHelper";
 import { squadPhotos } from "@constants/squadData/squadPhotos";
 import { ImageSourcePropType } from "react-native";
 import Feather from "react-native-vector-icons/Feather";
+import { ColorScheme } from "@styles/globalStyles";
 
 function Integrant({ name, link }: IntegrantData) {
   const photo = squadPhotos[name] as ImageSourcePropType;
@@ -18,9 +19,9 @@ function Integrant({ name, link }: IntegrantData) {
           style={{ alignSelf: "flex-start" }}
           name="link-2"
           size={20}
-          color="#9BABB7"
-          onPress={() => handleLinking(link)} />
-
+          color={ColorScheme.text.secondary}
+          onPress={() => handleLinking(link)}
+        />
       </Sc.Wrapper>
     </Sc.Container>
   );

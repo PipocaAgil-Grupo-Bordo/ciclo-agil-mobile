@@ -1,6 +1,5 @@
 import { Sc } from "./style";
 import GenericButton from "@components/GenericButton";
-import { Gs } from "src/styles/globalStyles";
 import Squad from "./Squad";
 import { useState } from "react";
 import Modal from "@components/Modal";
@@ -18,7 +17,7 @@ function Team() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Sc.Container>
         <Sc.Wrapper>
-          <Gs.Title>Quem somos nós? Equipe Ciclo Ágil</Gs.Title>
+          <Sc.Title>Quem somos nós? Equipe Ciclo Ágil</Sc.Title>
           <Sc.SubTitle>Esses são os colaboradores que fizeram este app:</Sc.SubTitle>
           <Squad />
         </Sc.Wrapper>

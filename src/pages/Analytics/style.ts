@@ -1,3 +1,4 @@
+import { ColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -6,6 +7,6 @@ export const Sc = {
     flex: 1;
     justify-content: center;
     align-items: center;
-    background-color: #fafcff;
+    background-color: ${ColorScheme.background.primary};
   `
 };

@@ -1,7 +1,6 @@
 import React from "react";
 import GenericInput from "@components/GenericInput";
 import { InputsProps } from "../type";
-import TextBox from "@components/TextBox";
 import { Sc } from "./style";
 
 function Inputs({ control, errors, errorInstruction }: InputsProps) {
@@ -24,25 +23,20 @@ function Inputs({ control, errors, errorInstruction }: InputsProps) {
           label={input.label}
           name={input.name}
           control={control}
-          errors={errors} />
+          errors={errors}
+        />
       ))}
 
       {/* TODO: Move to a different file after sprint 2 is over */}
       {errorInstruction && (
         <Sc.Wrapper>
-          <TextBox>
-            <Sc.Text>Por favor, tente novamente</Sc.Text>
-          </TextBox>
+          <Sc.Text>Por favor, tente novamente</Sc.Text>
 
           <Sc.InstructionWrapper>
-            <TextBox>
-              <Sc.Text>Senha deve conter no mínimo 8 caracteres.</Sc.Text>
-            </TextBox>
-            <TextBox>
-              <Sc.Text>
-                Pelo menos 1 caractere especial, 1 número, 1 letra minúscula e 1 letra maiúscula.
-              </Sc.Text>
-            </TextBox>
+            <Sc.Text>Senha deve conter no mínimo 8 caracteres.</Sc.Text>
+            <Sc.Text>
+              Pelo menos 1 caractere especial, 1 número, 1 letra minúscula e 1 letra maiúscula.
+            </Sc.Text>
           </Sc.InstructionWrapper>
         </Sc.Wrapper>
       )}
