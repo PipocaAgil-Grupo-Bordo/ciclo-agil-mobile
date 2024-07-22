@@ -21,7 +21,11 @@ export const Sc = {
     font-size: ${FontScheme.size.default}px;
     color: ${ColorScheme.text.primary};
     margin-top: ${verticalScale(50) + "px"};
-    margin-bottom: ${verticalScale(50) + "px"};
     text-align: center;
+  `,
+
+  ButtonWrapper: styled.View`
+    margin-top: ${verticalScale(120) + "px"};
+    margin-bottom: ${verticalScale(60) + "px"};
   `
 };
