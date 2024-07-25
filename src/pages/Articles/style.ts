@@ -10,3 +10,4 @@ export const Sc = {
     background-color: ${ColorScheme.background.primary};
   `
 };
+
