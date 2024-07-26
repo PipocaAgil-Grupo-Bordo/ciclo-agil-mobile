@@ -12,7 +12,7 @@ export const Sc = {
     justify-content: center;
     align-items: center;
     padding: ${FontScheme.size.medium}px;
-    gap: ${FontScheme.size.small-1}px;
+    gap: ${FontScheme.size.small - 1}px;
   `,
 
   Title: styled.Text`
@@ -32,7 +32,7 @@ export const Sc = {
 
   GroupCaptions: styled.View<GroupCaptionsProps>`
     flex-direction: row;
-    margin-bottom: ${({ isFirstChild }) => (isFirstChild ? '13px' : '0px')};
+    margin-bottom: ${({ isFirstChild }) => (isFirstChild ? "13px" : "0px")};
     gap: ${FontScheme.size.small}px;
   `,
 
@@ -72,5 +72,5 @@ export const Sc = {
     height: 18px;
     border-radius: 500px;
     border: 1px dotted #976f29;
-  `,
+  `
 };
