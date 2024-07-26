@@ -2,50 +2,44 @@ import styled from "styled-components/native";
 import { ColorScheme } from "@styles/globalStyles";
 import { FontScheme } from "@styles/globalStyles";
 
+interface GroupCaptionsProps {
+  isFirstChild: boolean;
+}
+
 export const Sc = {
-  Captions: styled.View`
-    flex-direction: row;
-    gap: 96px;
-  `,
-
-  LeftCaptions: styled.View`
-    flex-direction: column;
-  `,
-
-  RightCaptions: styled.View`
-    flex-direction: column;
-  `,
-
-  GroupCaptions: styled.View`
-    flex-direction: row;
-    margin-bottom: 13px;
-    gap: 12px;
-  `,
-
   Container: styled.View`
-    width: 358px;
-    height: 112px;
-    margin: 0 auto;
-    background-color: ${ColorScheme.white.primary};
+    background-color: ${ColorScheme.background.primary};
     justify-content: center;
     align-items: center;
-    padding: 16px;
-    gap: 11px;
+    padding: ${FontScheme.size.medium}px;
+    gap: ${FontScheme.size.small-1}px;
   `,
 
   Title: styled.Text`
-    font-size: 16px;
+    font-size: ${FontScheme.size.medium}px;
     font-weight: 500;
     font-family: ${FontScheme.family.primary};
-    line-height: 19.5px;
     align-self: flex-start;
   `,
 
+  Captions: styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  `,
+
+  Division: styled.View``,
+
+  GroupCaptions: styled.View<GroupCaptionsProps>`
+    flex-direction: row;
+    margin-bottom: ${({ isFirstChild }) => (isFirstChild ? '13px' : '0px')};
+    gap: ${FontScheme.size.small}px;
+  `,
+
   Text: styled.Text`
-    font-size: 12px;
+    font-size: ${FontScheme.size.small}px;
     font-weight: 400;
     font-family: ${FontScheme.family.primary};
-    line-height: 18px;
   `,
 
   PinkCircle: styled.View`
@@ -78,5 +72,5 @@ export const Sc = {
     height: 18px;
     border-radius: 500px;
     border: 1px dotted #976f29;
-  `
+  `,
 };

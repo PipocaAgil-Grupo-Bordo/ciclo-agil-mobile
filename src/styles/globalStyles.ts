@@ -31,10 +31,6 @@ export const ColorScheme = {
     idle: clr.neutralGray[900]
   },
 
-  white: {
-    primary: clr.neutralGray.white
-  },
-
   circle: {
     primary: clr.primary[400]
   }
