@@ -37,7 +37,7 @@ export const ColorScheme = {
 
   circle: {
     primary: clr.primary[400]
-  },
+  }
 };
 
 export const FontScheme = {
