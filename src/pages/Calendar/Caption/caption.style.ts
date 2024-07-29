@@ -1,10 +1,8 @@
 import styled from "styled-components/native";
 import { ColorScheme } from "@styles/globalStyles";
 import { FontScheme } from "@styles/globalStyles";
+import "./caption.type";
 
-interface GroupCaptionsProps {
-  isFirstChild: boolean;
-}
 
 export const Sc = {
   Container: styled.View`
@@ -30,7 +28,7 @@ export const Sc = {
 
   Division: styled.View``,
 
-  GroupCaptions: styled.View<GroupCaptionsProps>`
+  GroupCaptions: styled.View<IGroupCaptions>`
     flex-direction: row;
     margin-bottom: ${({ isFirstChild }) => (isFirstChild ? "13px" : "0px")};
     gap: ${FontScheme.size.small}px;

@@ -6,7 +6,6 @@ import Caption from "./Caption";
 function Calendar() {
   return (
     <Sc.Container>
-      <Text>Tela do calendário</Text>
       <Caption />
     </Sc.Container>
   );

@@ -12,7 +12,7 @@ function Caption() {
             <Sc.Text>1° dia do ciclo</Sc.Text>
           </Sc.GroupCaptions>
 
-          <Sc.GroupCaptions isFirstChild={true}>
+          <Sc.GroupCaptions isFirstChild={false}>
             <Sc.DottedPurpleCircle />
             <Sc.Text>Ciclo Menstrual</Sc.Text>
           </Sc.GroupCaptions>
@@ -24,7 +24,7 @@ function Caption() {
             <Sc.Text>Período Fértil</Sc.Text>
           </Sc.GroupCaptions>
 
-          <Sc.GroupCaptions isFirstChild={true}>
+          <Sc.GroupCaptions isFirstChild={false}>
             <Sc.DottedFilledCircle />
             <Sc.Text>Ovulação</Sc.Text>
           </Sc.GroupCaptions>
