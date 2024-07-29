@@ -29,6 +29,10 @@ export const ColorScheme = {
 
   icon: {
     idle: clr.neutralGray[900]
+  },
+
+  circle: {
+    primary: clr.primary[400]
   }
 };
 
