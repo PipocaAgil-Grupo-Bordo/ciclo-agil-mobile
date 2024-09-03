@@ -1,24 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Sc } from "./style";
 import Feather from "react-native-vector-icons/Feather";
 import Entypo from "react-native-vector-icons/Entypo";
 import { UserData } from "@type/auth";
 import { ColorScheme } from "@styles/globalStyles";
+import { useTokenContext } from "@context/useUserToken";
+import { menstrualApi } from "@services/menstrualApi";
+import LastPeriod from '../../MenstrualInitialSettings/2-LastPeriod/index';
 
 interface CycleOverviewProps {
   userProfile: UserData | undefined;
+}
+
+interface LastPeriod {
+id: number;
+createdAt: Date;
+updateAt: Date;
+startedAt: Date;
+userId: number;
 }
 
 function CycleOverview({ userProfile }: CycleOverviewProps) {
   const ICON_SIZE = 20;
   const ICON_COLOR = ColorScheme.accent.highlight;
   const DATA_MOCKUP = "Não informado";
-
+  const { accessToken } = useTokenContext();
+  const [lastPeriod, setlastPeriod] = useState<LastPeriod>();
+    
+  useEffect(() => {
+   fetchLastPeriod()
+  }, [accessToken]);
+  
+  async function fetchLastPeriod() {
+  if (accessToken) {
+  const response = await menstrualApi.getLastPeriod(accessToken)
+  setlastPeriod(response.data)
+  }
+}
   const cycleData = [
     {
       id: 1,
       title: "Iniciou no dia",
-      time: DATA_MOCKUP,
+      time: lastPeriod?.startedAt,
       icon: <Feather name="clock" size={ICON_SIZE} color={ICON_COLOR} />
     },
     {
@@ -32,11 +55,12 @@ function CycleOverview({ userProfile }: CycleOverviewProps) {
       title: userProfile?.menstrualCycleDuration
         ? `Duração do ciclo: ${userProfile?.menstrualCycleDuration} dias`
         : "Duração do ciclo",
-      time: userProfile?.isMenstrualCycleRegular
-        ? "Normal"
-        : userProfile?.isMenstrualCycleRegular == null
-        ? DATA_MOCKUP
-        : "Irregular",
+      // time: userProfile?.isMenstrualCycleRegular
+      //   ? "Normal"
+      //   : userProfile?.isMenstrualCycleRegular == null
+      //   ? DATA_MOCKUP
+      //   : "Irregular",
+      time: userProfile?.menstrualCycleDuration,
       icon: (
         <Entypo
           name="cycle"

@@ -13,6 +13,14 @@ function lastPeriod(body: ILastPeriod, token: string) {
   return promise;
 }
 
+function getLastPeriod(token: string) {
+  const promise = api.get("menstrual-period/last", {
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+  });
+  return promise;
+}
 /**
  * Update the user's menstrual cycle
  *
@@ -36,5 +44,6 @@ async function updateCurrentCycle(
 
 export const menstrualApi = {
   lastPeriod,
-  updateCurrentCycle
-};
+  updateCurrentCycle,
+  getLastPeriod
+  };
