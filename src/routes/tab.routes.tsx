@@ -39,16 +39,6 @@ function TabRoutes() {
           }}
         />
         <Tab.Screen
-          name="Calendar"
-          component={Calendar}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="calendar-month-outline" size={size} color={color} />
-            ),
-            tabBarLabel: "Calendário"
-          }}
-        />
-        <Tab.Screen
           name="Analytics"
           component={Analytics}
           options={{
