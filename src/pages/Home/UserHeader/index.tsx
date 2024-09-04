@@ -14,8 +14,11 @@ function UserHeader({ whoAmI }: UserHeaderProps) {
         <Sc.ImageContainer>
           {/* <Sc.Image src="https://github.com/LucianoDLima.png" /> */}
         </Sc.ImageContainer>
-
-        <Sc.Text>Olá, {whoAmI?.name}</Sc.Text>
+        
+        {/**Adicionei um contêiner ao redor do texto com flex: 1 para garantir que ele ocupe o espaço disponível e quebre a linha quando necessário */}
+        <Sc.TextContainer>
+          <Sc.Text>Olá, {whoAmI?.name}</Sc.Text>
+        </Sc.TextContainer>
       </Sc.UserWrapper>
 
       <Sc.SettingsWrapper>
