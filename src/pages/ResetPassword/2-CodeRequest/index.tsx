@@ -1,30 +1,36 @@
 import OTPInput from "./OTPInput";
-import Header from "./Header";
+import Confirmation from "./Confirmation";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/core";
 import Buttons from "./Buttons";
 import { View } from "react-native";
-import { CodeRequestRouteParam, NavigationType } from "@type/routeType";
+import { CodeRequestRouteParam, NavigationType } from "@routes/type";
 import { useRoute } from "@react-navigation/native";
 import { handleRedefinitionCodeValidation } from "@utils/submitHelper";
 import authApi from "@services/authApi";
 import { AxiosError } from "axios";
 import { Sc } from "./style";
+import Header from "@components/Header";
 
-const CodeRequest: React.FC = () => {
+function CodeRequest() {
   const [otpValue, setOtpValue] = useState<string>();
+  const [codeValidationInfo, setCodeValidationInfo] = useState({ message: "", type: "" });
   const navigation = useNavigation<NavigationType>();
   const route = useRoute();
   const email = (route.params as CodeRequestRouteParam)?.email;
 
-  const handleTextInput = (value: string) => {
+  function handleTextInput(value: string) {
     setOtpValue(value);
-  };
+  }
 
-  const handleResendCode = async () => {
+  async function handleResendCode() {
     const resetBody = { email };
     try {
       await authApi.requestPasswordResetCode(resetBody);
+      setCodeValidationInfo({
+        message: "Código reenviado. Verifique a sua caixa de entrada.",
+        type: "successful"
+      });
     } catch (error) {
       const axiosError = error as AxiosError;
 
@@ -37,20 +43,28 @@ const CodeRequest: React.FC = () => {
       // Should server go down
       alert("Algo deu errado, tente novamente!");
     }
-  };
+  }
 
   return (
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Sc.Wrapper>
         <View>
-          <Header />
+          <Header title="Redefinir senha" />
+          <Confirmation />
           <OTPInput onTextChange={handleTextInput} resendCode={handleResendCode} />
+          <Sc.CodeValidationMessage type={codeValidationInfo.type as "successful" | "unsuccessful"}>
+            {codeValidationInfo.message}
+          </Sc.CodeValidationMessage>
         </View>
 
-        <Buttons onPress={() => handleRedefinitionCodeValidation(otpValue, navigation, email)} />
+        <Buttons
+          onPress={() =>
+            handleRedefinitionCodeValidation(otpValue, navigation, email, setCodeValidationInfo)
+          }
+        />
       </Sc.Wrapper>
     </Sc.Container>
   );
-};
+}
 
 export default CodeRequest;

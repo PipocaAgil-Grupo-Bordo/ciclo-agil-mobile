@@ -2,10 +2,10 @@ import { useNavigation } from "@react-navigation/native";
 import GenericButton from "../../../../components/GenericButton";
 import { SubmitButtonsArray, SubmitButtonsProps } from "../type";
 import React from "react";
-import { NavigationType } from "@type/routeType";
+import { NavigationType } from "@routes/type";
 import { Sc } from "./style";
 
-const SubmitButtons: React.FC<SubmitButtonsProps> = ({ SubmitPassword, isLoading }) => {
+function SubmitButtons({ SubmitPassword, isLoading }: SubmitButtonsProps) {
   const navigation = useNavigation<NavigationType>();
   const buttons: SubmitButtonsArray[] = [
     {
@@ -16,7 +16,8 @@ const SubmitButtons: React.FC<SubmitButtonsProps> = ({ SubmitPassword, isLoading
     },
     {
       label: "Voltar ao login",
-      onPress: () => navigation.goBack()
+      state: "no-style",
+      onPress: () => navigation.navigate("Login")
     }
   ];
   return (
@@ -33,6 +34,6 @@ const SubmitButtons: React.FC<SubmitButtonsProps> = ({ SubmitPassword, isLoading
       ))}
     </Sc.Container>
   );
-};
+}
 
 export default SubmitButtons;

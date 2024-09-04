@@ -9,13 +9,15 @@ import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import authApi from "@services/authApi";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import TextBox from "@components/TextBox";
 import GenericButton from "@components/GenericButton";
-import { NavigationType } from "@type/routeType";
+import { NavigationType } from "@routes/type";
 import Inputs from "../Inputs";
+import { useTokenContext } from "@context/useUserToken";
+import { tokenAuth } from "@utils/tokenAuthHelper";
 
-const SigninForm: React.FC = () => {
+function SigninForm() {
   const navigation = useNavigation<NavigationType>();
+  const { setRefreshToken, setAccessToken } = useTokenContext();
 
   const {
     handleSubmit,
@@ -27,9 +29,11 @@ const SigninForm: React.FC = () => {
     resolver: yupResolver(loginSchema)
   });
 
-  const onSubmit = async (data: LoginFields) => {
+  async function onSubmit(data: LoginFields) {
     try {
-      await authApi.signInUser(data);
+      const response = await authApi.signInUser(data);
+
+      tokenAuth.fetchTokens(response, setAccessToken, setRefreshToken);
 
       reset({ email: "", password: "" }, { keepErrors: false });
 
@@ -52,7 +56,7 @@ const SigninForm: React.FC = () => {
         }
       }
     }
-  };
+  }
 
   return (
     <Sc.Container>
@@ -71,7 +75,7 @@ const SigninForm: React.FC = () => {
       </Sc.LoginWrapper>
 
       <Sc.RegisterWrapper>
-        <TextBox>Não tem conta?</TextBox>
+        <Sc.Text>Não tem conta?</Sc.Text>
 
         <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
           <Sc.RegisterLink> Registre-se</Sc.RegisterLink>
@@ -79,6 +83,6 @@ const SigninForm: React.FC = () => {
       </Sc.RegisterWrapper>
     </Sc.Container>
   );
-};
+}
 
 export default SigninForm;

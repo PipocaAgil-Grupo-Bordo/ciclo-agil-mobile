@@ -11,16 +11,27 @@ const dateRegex = /^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/(19\d{2}|20(?:[
 const passwordRegex =
   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~/\\=-]).{8,}$/gm;
 
+// Ensure all dates are valid ones. Including Feb leap years, and months that doesn't have the 31st day
+function isValidDate(dateString: string) {
+  const [day, month, year] = dateString.split("/").map(Number);
+
+  const date = new Date(year, month - 1, day);
+
+  return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+}
+
 export const registerSchema = yup.object().shape({
   name: yup
     .string()
     .required("O nome não pode ser vazio")
     .matches(nameRegex, "Nome deve conter apenas letras")
-    .min(2, "O nome deve conter pelo menos 2 caracteres"),
+    .min(2, "O nome deve conter pelo menos 2 caracteres")
+    .max(15, "O nome deve conter no máximo 15 caracteres"),
   birthdate: yup
     .string()
     .required("Data de nascimento não pode ser vazia")
-    .matches(dateRegex, "Formato de data inválido (dd/mm/aaaa)"),
+    .matches(dateRegex, "Formato de data inválido (dd/mm/aaaa)")
+    .test("is-valid-date", "Data inválida (dd/mm/aaaa)", isValidDate),
   email: yup
     .string()
     .trim()

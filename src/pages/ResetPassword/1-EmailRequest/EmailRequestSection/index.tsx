@@ -3,7 +3,7 @@ import React from "react";
 import { EmailRequestSectionProps } from "../type";
 import { Sc } from "./style";
 
-const EmailRequestSection: React.FC<EmailRequestSectionProps> = ({ control, errors }) => {
+function EmailRequestSection({ control, errors }: EmailRequestSectionProps) {
   return (
     <Sc.Container>
       <Sc.Icon source={require("@images/padlock.png")} alt="A locked black padlock" />
@@ -21,10 +21,9 @@ const EmailRequestSection: React.FC<EmailRequestSectionProps> = ({ control, erro
         control={control}
         errors={errors}
         keyboardType="email-address"
-        autoComplete="email"
-      />
+        autoComplete="email" />
     </Sc.Container>
   );
-};
+}
 
 export default EmailRequestSection;

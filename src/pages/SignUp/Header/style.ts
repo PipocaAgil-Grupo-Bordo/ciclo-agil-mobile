@@ -1,17 +1,24 @@
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
-import { TextLora } from "@components/TopicText/style";
 
 export const Sc = {
   Container: styled.View`
+    margin-top: 22px;
     align-items: center;
   `,
 
-  Title: styled(TextLora)`
-    font-size: 24px;
-    margin: 32px 0px;
+  Wrapper: styled.View`
+    margin-bottom: 60px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
   `,
 
-  SubTitle: styled(TextLora)`
-    font-size: 16px;
+  SubTitle: styled.Text`
+    font-family: ${FontScheme.family.primary};
+    font-size: ${FontScheme.size.default}px;
+    color: ${ColorScheme.text.primary};
+    width: 90%;
+    align-content: center;
   `
 };

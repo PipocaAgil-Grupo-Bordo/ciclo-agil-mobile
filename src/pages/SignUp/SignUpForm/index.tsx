@@ -5,20 +5,18 @@ import Inputs from "../Inputs";
 import GenericButton from "@components/GenericButton";
 import { submitRegister } from "@utils/submitHelper";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "@type/routeType";
+import { NavigationType } from "@routes/type";
 import { RegisterFields } from "@type/auth";
 import { registerSchema } from "@schemas/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import TermsOfService from "../TermsOfService";
+import { useTokenContext } from "@context/useUserToken";
 
-const SignUpForm: React.FC = () => {
+function SignUpForm() {
   const navigation = useNavigation<NavigationType>();
+  const { setAccessToken, setRefreshToken } = useTokenContext();
   const {
-    handleSubmit,
-    control,
-    formState: { errors, isSubmitting },
-    reset,
-    setError
+    handleSubmit, control, formState: { errors, isSubmitting }, reset, setError
   } = useForm<RegisterFields>({
     resolver: yupResolver(registerSchema)
   });
@@ -28,6 +26,7 @@ const SignUpForm: React.FC = () => {
       <Inputs control={control} errors={errors} />
 
       {/* TODO: Move to a different file after sprint 2 is over */}
+      {/* TODO: This doesn't seem to be working? */}
       <Sc.Wrapper>
         <Sc.Text error={(errors && errors.password)! || (errors && errors.confirmPassword)!}>
           Senha deve conter no mínimo 8 caracteres.
@@ -40,7 +39,8 @@ const SignUpForm: React.FC = () => {
 
       <GenericButton
         isLoading={isSubmitting}
-        onPress={handleSubmit((data) => submitRegister(data, reset, navigation, setError))}
+        onPress={handleSubmit((data) => submitRegister(data, reset, navigation, setError, setAccessToken, setRefreshToken)
+        )}
         state="accent"
       >
         Cadastrar
@@ -48,6 +48,6 @@ const SignUpForm: React.FC = () => {
       <TermsOfService />
     </Sc.Container>
   );
-};
+}
 
 export default SignUpForm;

@@ -1,7 +1,10 @@
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
-  Container: styled.View``,
+  Container: styled.View`
+    margin-top: 64px;
+  `,
 
   Wrapper: styled.View`
     margin-top: 12px;
@@ -11,6 +14,8 @@ export const Sc = {
   InstructionWrapper: styled.View``,
 
   Text: styled.Text`
-    font-size: 12px;
+    font-family: ${FontScheme.family.primary};
+    font-size: ${FontScheme.size.small}px;
+    color: ${ColorScheme.text.primary};
   `
 };

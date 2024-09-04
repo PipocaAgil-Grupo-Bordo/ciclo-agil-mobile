@@ -5,11 +5,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import ButtonList from "./ButtonsList";
 import { EmailFields } from "@type/auth";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "@type/routeType";
+import { NavigationType } from "@routes/type";
 import { handlePasswordRequest } from "@utils/submitHelper";
 import { Sc } from "./style";
+import Entypo from "react-native-vector-icons/Entypo";
+import { ColorScheme } from "@styles/globalStyles";
 
-const PasswordReset: React.FC = () => {
+function PasswordReset() {
   const navigation = useNavigation<NavigationType>();
 
   const {
@@ -24,6 +26,9 @@ const PasswordReset: React.FC = () => {
   return (
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Sc.Wrapper>
+        <Sc.BackIcon onPress={() => navigation.goBack()}>
+          <Entypo name="chevron-left" size={30} color={ColorScheme.icon.idle} />
+        </Sc.BackIcon>
         <EmailRequestSection control={control} errors={errors} />
 
         <ButtonList
@@ -33,6 +38,6 @@ const PasswordReset: React.FC = () => {
       </Sc.Wrapper>
     </Sc.Container>
   );
-};
+}
 
 export default PasswordReset;

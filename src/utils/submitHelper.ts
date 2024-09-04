@@ -1,20 +1,20 @@
 import { UseFormReset, UseFormSetError } from "react-hook-form";
 import { userApi } from "@services/userApi";
-import {
-  EmailFields,
-  RegisterFields,
-  ValidationCodeResponse
-} from "@type/auth";
-import { NavigationType } from "@type/routeType";
+import { EmailFields, RegisterFields, ValidationCodeResponse } from "@type/auth";
+import { NavigationType } from "@routes/type";
 import authApi from "@services/authApi";
 import { AxiosError, AxiosResponse } from "axios";
 import { dateHelper } from "./dateHelpers";
+import React from "react";
+import { tokenAuth } from "./tokenAuthHelper";
 
 export async function submitRegister(
   data: RegisterFields,
   reset: UseFormReset<RegisterFields>,
   navigation: NavigationType,
-  setError: UseFormSetError<RegisterFields>
+  setError: UseFormSetError<RegisterFields>,
+  setAccessToken: (accessToken: string) => void,
+  setRefreshToken: (refreshToken: string) => void
 ) {
   const birthdateISOFormat = dateHelper.formatBirthdateToISODate(data.birthdate);
   const registerFinalFormat = {
@@ -23,12 +23,15 @@ export async function submitRegister(
     password: data.password,
     birthdate: birthdateISOFormat
   };
+
   try {
-    const resp = await userApi.signUpUser(registerFinalFormat);
+    const response = await userApi.signUpUser(registerFinalFormat);
+
+    tokenAuth.fetchTokens(response, setAccessToken, setRefreshToken);
 
     reset({ email: "", password: "" }, { keepErrors: false });
 
-    return navigation.navigate("Home");
+    return navigation.navigate("Team");
   } catch (error: any) {
     if (error.response.status === 409) {
       setError("confirmEmail", { message: "E-mail já cadastrado." });
@@ -60,10 +63,19 @@ export async function handlePasswordRequest(
 export async function handleRedefinitionCodeValidation(
   code: string | undefined,
   navigation: NavigationType,
-  email: string
+  email: string,
+  setCodeValidationInfo: React.Dispatch<
+    React.SetStateAction<{
+      message: string;
+      type: string;
+    }>
+  >
 ): Promise<boolean> {
   if (!code || code.length < 6) {
-    alert("Código incompleto");
+    setCodeValidationInfo({
+      message: "Código inválido ou expirado. Tente novamente ou gere um novo código",
+      type: "unsuccessful"
+    });
     return false;
   }
 
@@ -76,7 +88,10 @@ export async function handleRedefinitionCodeValidation(
     const axiosError = error as AxiosError;
 
     if (axiosError.response && axiosError.response.status === 404) {
-      alert("Código invalido ou expirado. Tente novamente ou gere um novo código");
+      setCodeValidationInfo({
+        message: "Código inválido ou expirado. Tente novamente ou gere um novo código",
+        type: "unsuccessful"
+      });
       return false;
     }
 

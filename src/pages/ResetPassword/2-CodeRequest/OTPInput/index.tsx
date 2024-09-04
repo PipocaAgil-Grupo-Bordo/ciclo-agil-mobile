@@ -1,9 +1,9 @@
 import { OtpInput } from "react-native-otp-entry";
-import TextBox from "@components/TextBox";
 import { OTPInputProps } from "../type";
 import { Sc } from "./style";
+import { ColorScheme } from "@styles/globalStyles";
 
-const OTPIput: React.FC<OTPInputProps> = ({ onTextChange, onFilled, resendCode }) => {
+function OTPIput({ onTextChange, onFilled, resendCode }: OTPInputProps) {
   return (
     <>
       <OtpInput
@@ -21,20 +21,18 @@ const OTPIput: React.FC<OTPInputProps> = ({ onTextChange, onFilled, resendCode }
             width: 45,
             height: 48,
             borderRadius: 8,
-            borderColor: "#AFB4BD",
-            backgroundColor: "#E7ECF4"
+            borderColor: ColorScheme.border.primary,
+            backgroundColor: ColorScheme.background.secondary
           },
           pinCodeTextStyle: { fontFamily: "Montserrat", fontSize: 26 }
         }}
       />
 
       <Sc.Button onPress={resendCode}>
-        <Sc.Text>
-          <TextBox>Reenviar código</TextBox>
-        </Sc.Text>
+        <Sc.Text>Reenviar código</Sc.Text>
       </Sc.Button>
     </>
   );
-};
+}
 
 export default OTPIput;

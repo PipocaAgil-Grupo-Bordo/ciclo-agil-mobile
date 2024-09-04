@@ -24,12 +24,17 @@ function resetPassword(body: PasswordFields, token: string) {
   });
   return promise;
 }
+function whoAmI(token: string) {
+  const promise = api.get("auth/whoami", { headers: { Authorization: `Bearer ${token}` } });
+  return promise;
+}
 
 const authApi = {
   signInUser,
   requestPasswordResetCode,
   validateCode,
-  resetPassword
+  resetPassword,
+  whoAmI
 };
 
 export default authApi;
