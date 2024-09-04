@@ -8,6 +8,7 @@ import { jwtDecode } from "jwt-decode";
 import { decode, encode } from "base-64";
 // @ts-ignore
 import { tokenAuth } from "@utils/tokenAuthHelper";
+import { ColorScheme } from "@styles/globalStyles";
 
 if (!global.btoa) {
   global.btoa = encode;
@@ -78,7 +79,7 @@ function AuthNavigator() {
     // Temporary untill UI team makes a loading screen for this
     <View
       style={{
-        backgroundColor: "#fafcff",
+        backgroundColor: ColorScheme.background.primary,
         justifyContent: "center",
         alignItems: "center",
         flex: 1

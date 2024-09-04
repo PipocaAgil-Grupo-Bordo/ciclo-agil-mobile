@@ -2,6 +2,8 @@ import { ActivityIndicator } from "react-native";
 import ButtonChildren from "./ButtonChildren";
 import { GenericButtonProps, StatesType } from "./type";
 import { Sc } from "./style";
+import { GeneralColors } from "@styles/colors";
+import { ColorScheme } from "@styles/globalStyles";
 
 /**
  * Button component
@@ -19,19 +21,19 @@ function GenericButton({ icon, state, isLoading, children, ...props }: GenericBu
   /**
    * Change the color of the button when it's pressed
    *
-   * @param state - Component props (defined the theme of the button)
+   * @param state - Component props (define the theme of the button)
    */
   function HandleUnderlayColor(state: StatesType | undefined) {
     switch (state) {
       case "accent":
-        return "#722CA1";
+        return GeneralColors.primary[600];
       case "mild":
-        return "#DCC1EE";
+        return GeneralColors.primary[300];
       case "no-style":
-        return "#fafcff";
+        return ColorScheme.background.primary;
       case "default":
       default:
-        return "#F4EBFA";
+        return GeneralColors.primary[100];
     }
   }
 

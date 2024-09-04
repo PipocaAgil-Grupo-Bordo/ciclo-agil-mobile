@@ -1,0 +1,3 @@
+interface IGroupCaptions {
+  isFirstChild: boolean;
+}
