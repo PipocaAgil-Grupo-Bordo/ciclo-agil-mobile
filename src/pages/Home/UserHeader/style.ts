@@ -6,16 +6,17 @@ export const Sc = {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
   `,
 
   UserWrapper: styled.View`
+    flex: 1; 
     flex-direction: row;
     align-items: center;
     gap: 12px;
   `,
 
   ImageContainer: styled.View`
-    /* Placeholder bg color as there's no picture atm */
     background-color: #cfcfcf;
     width: 40px;
     height: 40px;
@@ -28,14 +29,20 @@ export const Sc = {
     height: 40px;
   `,
 
+  TextContainer: styled.View`
+    flex: 1;
+  `,
+
   Text: styled.Text`
     font-family: ${FontScheme.family.primaryMedium};
     font-size: ${FontScheme.size.default}px;
     color: ${ColorScheme.text.primary};
+    word-wrap: break-word;
+    word-break: break-word;
   `,
 
   SettingsWrapper: styled.View`
     flex-direction: row;
-    gap: 8px;
+    gap: 12px;
   `
 };
