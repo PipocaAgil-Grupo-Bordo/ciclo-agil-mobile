@@ -10,8 +10,7 @@ export const Sc = {
   `,
 
   UserWrapper: styled.View`
-    flex: 1; /** Adicionei flex: 1 para garantir que o contêiner do usuário ocupe o espaço disponível e permita que o texto quebre a linha.
-    */
+    flex: 1; 
     flex-direction: row;
     align-items: center;
     gap: 12px;
@@ -38,13 +37,12 @@ export const Sc = {
     font-family: ${FontScheme.family.primaryMedium};
     font-size: ${FontScheme.size.default}px;
     color: ${ColorScheme.text.primary};
-    /**Adicionei word-wrap: break-word e word-break: break-word para garantir que o texto quebre a linha corretamente. */
     word-wrap: break-word;
     word-break: break-word;
   `,
 
   SettingsWrapper: styled.View`
     flex-direction: row;
-    gap: 8px;
+    gap: 12px;
   `
 };

@@ -8,6 +8,11 @@ interface UserHeaderProps {
 }
 
 function UserHeader({ whoAmI }: UserHeaderProps) {
+  const getFirstName = (fullName: string | undefined) => {
+    if (!fullName) return "";
+    return fullName.split(" ")[0];
+  };
+
   return (
     <Sc.Container>
       <Sc.UserWrapper>
@@ -15,14 +20,13 @@ function UserHeader({ whoAmI }: UserHeaderProps) {
           {/* <Sc.Image src="https://github.com/LucianoDLima.png" /> */}
         </Sc.ImageContainer>
         
-        {/**Adicionei um contêiner ao redor do texto com flex: 1 para garantir que ele ocupe o espaço disponível e quebre a linha quando necessário */}
         <Sc.TextContainer>
-          <Sc.Text>Olá, {whoAmI?.name}</Sc.Text>
+          <Sc.Text>Olá, {getFirstName(whoAmI?.name)}</Sc.Text>
         </Sc.TextContainer>
       </Sc.UserWrapper>
 
       <Sc.SettingsWrapper>
-        <Feather size={20} name="settings" color={ColorScheme.icon.idle} />
+        <Feather size={20}  name="settings" color={ColorScheme.icon.idle} />
         <Feather size={20} name="bell" color={ColorScheme.icon.idle} />
       </Sc.SettingsWrapper>
     </Sc.Container>
