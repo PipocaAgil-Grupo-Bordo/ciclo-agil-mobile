@@ -31,6 +31,7 @@ export const Sc = {
 
   TextContainer: styled.View`
     flex: 1;
+    margin-right: 10px;
   `,
 
   Text: styled.Text`
