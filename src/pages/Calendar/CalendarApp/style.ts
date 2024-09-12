@@ -1,7 +1,14 @@
-import styled from "styled-components/native";
+import {StyleSheet} from 'react-native';
 
-export const Sc = {
-  Container: styled.ScrollView`
-    padding-top: 45px;
-  `
-};
+
+export const styles = StyleSheet.create({
+  container:{
+    paddingTop:45
+  },
+  calendar:{
+    backgroundColor:'trasnparent'
+  }
+})
+
+
+

@@ -1,94 +1,44 @@
-import React, { useState } from "react";
-import { Sc } from "./style";
-import { Calendar, LocaleConfig } from "react-native-calendars";
-import CalendarHeader from "../CalendarHeader";
+import { useState } from 'react';
+import { View } from 'react-native';
+import { styles } from "./style";
+import {Calendar,DateData,LocaleConfig} from 'react-native-calendars';
+import { ColorScheme } from "@styles/globalStyles";
+import {Feather} from "@expo/vector-icons";
+import {ptBR} from "../../../utils/localeCalendarConfig";
 
+LocaleConfig.locales["pt-br"] = ptBR
+LocaleConfig.defaultLocale = "pt-br"
 function CalendarApp() {
-  const [_, setSelected] = useState("");
-
-  // Configuration for the calendar to be in Brazilian Portuguese
-  LocaleConfig.locales["pt-BR"] = {
-    monthNames: Array.from({ length: 12 }, (_, i) => {
-      const month = new Date(0, i).toLocaleString("pt-BR", { month: "long" });
-      return month.charAt(0).toUpperCase() + month.slice(1);
-    }),
-    monthNamesShort: Array.from({ length: 12 }, (_, i) =>
-      new Date(0, i).toLocaleString("pt-BR", { month: "short" })
-    ),
-    dayNames: Array.from({ length: 7 }, (_, i) =>
-      new Date(1970, 0, i + 4).toLocaleString("pt-BR", { weekday: "long" })
-    ),
-    dayNamesShort: Array.from({ length: 7 }, (_, i) =>
-      new Date(1970, 0, i + 4).toLocaleString("pt-BR", { weekday: "long" })[0].toUpperCase()
-    )
-  };
-
-  LocaleConfig.defaultLocale = "pt-BR";
-
-  function currentCycle(cycle: string) {
-    if (cycle === "firstDay") {
-      return {
-        customStyles: {
-          container: {
-            borderWidth: 1.9,
-            borderColor: "#DCC1EE",
-            backgroundColor: "#DCC1EE"
-          }
-        }
-      };
-    }
-
-    if (cycle === "fertile") {
-      return {
-        customStyles: {
-          container: {
-            borderWidth: 1.9,
-            borderStyle: "dotted",
-            borderColor: "#8E37C9"
-          }
-        }
-      };
-    }
-  }
-
-  return (
-    <Sc.Container>
-      <Calendar
-        onDayPress={(day: any) => {
-          setSelected(day.dateString);
-        }}
-        markingType="custom"
-        markedDates={{
-          // @ts-expect-error
-          "2024-07-11": currentCycle("firstDay")!,
-          // @ts-expect-error
-          "2024-07-12": currentCycle("fertile")!,
-          // @ts-expect-error
-          "2024-07-13": currentCycle("fertile")!,
-          // @ts-expect-error
-          "2024-07-14": currentCycle("fertile")!,
-          // @ts-expect-error
-          "2024-07-15": currentCycle("fertile")!,
-          // @ts-expect-error
-          "2024-07-16": currentCycle("fertile")!,
-          // @ts-expect-error
-          "2024-07-17": currentCycle("fertile")!
-        }}
-        disableMonthChange={true}
-        hideArrows={true}
-        renderHeader={CalendarHeader}
-        style={{
-          backgroundColor: "#fafcff"
+  const [day,setDay] = useState<DateData>()
+    return (
+      <View style = {styles.container}>
+        <Calendar 
+        style = {styles.calendar}
+        renderArrow={(direction: "right" | "left") => <Feather size={24} 
+        color = "#e8e8e8" name={`chevron-${direction}`}/> }
+        headerStyle = {{borderBottomWidth: 1, borderBottomColor:"#e8e8e8",
+        paddingBottom:10, marginBottom:10
         }}
         theme={{
-          calendarBackground: "#fafcff",
-          textSectionTitleColor: "#6C7072",
-          textDayHeaderFontSize: 12,
-          textDayFontSize: 14
+          textMonthFontSize:18,
+          todayTextColor: ColorScheme.circle?.primary,
+          selectedDayBackgroundColor: ColorScheme.circle?.primary,
+          selectedDayTextColor:"#000",
+          arrowColor:"#e8e8e8",
+          textDayStyle:{color:"#000"},
+          arrowStyle:{
+            margin:0,
+            padding:0,
+          }
         }}
-      />
-    </Sc.Container>
+        minDate={new Date().toDateString()}
+        hideExtraDays
+        onDayPress={setDay}
+        markedDates={day &&{
+          [day.dateString]: {selected: true}
+        }}
+        />
+      </View>
   );
 }
-
 export default CalendarApp;

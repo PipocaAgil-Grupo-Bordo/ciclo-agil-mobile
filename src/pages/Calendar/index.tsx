@@ -7,9 +7,9 @@ function CalendarC() {
   return (
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Header title="Calendário" />
-      <Caption />
       <CalendarApp />
-    </Sc.Container>
+      <Caption />
+     </Sc.Container>
   );
 }
 export default CalendarC;
