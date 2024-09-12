@@ -21,12 +21,14 @@ function UserHeader({ whoAmI }: UserHeaderProps) {
         </Sc.ImageContainer>
         
         <Sc.TextContainer>
-          <Sc.Text>Olá, {getFirstName(whoAmI?.name)}</Sc.Text>
+          <Sc.Text numberOfLines={1} ellipsizeMode="tail">
+            Olá, {getFirstName(whoAmI?.name)}
+          </Sc.Text>
         </Sc.TextContainer>
       </Sc.UserWrapper>
 
       <Sc.SettingsWrapper>
-        <Feather size={20}  name="settings" color={ColorScheme.icon.idle} />
+        <Feather size={20} name="settings" color={ColorScheme.icon.idle} />
         <Feather size={20} name="bell" color={ColorScheme.icon.idle} />
       </Sc.SettingsWrapper>
     </Sc.Container>
