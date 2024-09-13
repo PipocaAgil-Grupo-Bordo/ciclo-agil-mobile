@@ -2,12 +2,12 @@ import ScrollPicker from "@components/ScrollPicker";
 import { Sc } from "./style";
 import { ScrollableMenuProps } from "./type";
 
-const ScrollableMenu: React.FC<ScrollableMenuProps<number>> = ({ onIndexChange, items }) => {
+function ScrollableMenu({ onIndexChange, items }: ScrollableMenuProps<number>) {
   return (
     <Sc.Container>
       <ScrollPicker items={items} onIndexChange={onIndexChange} />
     </Sc.Container>
   );
-};
+}
 
 export default ScrollableMenu;

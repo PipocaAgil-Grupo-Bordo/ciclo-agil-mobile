@@ -1,6 +1,5 @@
 import { Sc } from "./style";
 import GenericButton from "@components/GenericButton";
-import { Gs } from "src/styles/globalStyles";
 import Squad from "./Squad";
 import { useState } from "react";
 import Modal from "@components/Modal";
@@ -9,15 +8,16 @@ import { useNavigation } from "@react-navigation/core";
 import { NavigationType } from "@routes/type";
 import useBackButtonExit from "@hooks/useBackButtonExit";
 
-const Team: React.FC = () => {
+function Team() {
   const [readyToNext, setReadyToNext] = useState(false);
   const navigation = useNavigation<NavigationType>();
   useBackButtonExit(false);
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Sc.Container>
         <Sc.Wrapper>
-          <Gs.Title>Quem somos nós? Equipe Ciclo Ágil</Gs.Title>
+          <Sc.Title>Quem somos nós? Equipe Ciclo Ágil</Sc.Title>
           <Sc.SubTitle>Esses são os colaboradores que fizeram este app:</Sc.SubTitle>
           <Squad />
         </Sc.Wrapper>
@@ -36,6 +36,6 @@ const Team: React.FC = () => {
       </Sc.Container>
     </GestureHandlerRootView>
   );
-};
+}
 
 export default Team;

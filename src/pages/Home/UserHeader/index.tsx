@@ -1,8 +1,13 @@
 import { WhoAmI } from "@type/auth";
 import { Sc } from "./style";
 import Feather from "react-native-vector-icons/Feather";
+import { ColorScheme } from "@styles/globalStyles";
 
-const UserHeader: React.FC<{ whoAmI: WhoAmI | undefined }> = ({ whoAmI }) => {
+interface UserHeaderProps {
+  whoAmI: WhoAmI | undefined;
+}
+
+function UserHeader({ whoAmI }: UserHeaderProps) {
   return (
     <Sc.Container>
       <Sc.UserWrapper>
@@ -14,11 +19,11 @@ const UserHeader: React.FC<{ whoAmI: WhoAmI | undefined }> = ({ whoAmI }) => {
       </Sc.UserWrapper>
 
       <Sc.SettingsWrapper>
-        <Feather size={20} name="settings" color={"#414347"} />
-        <Feather size={20} name="bell" color={"#414347"} />
+        <Feather size={20} name="settings" color={ColorScheme.icon.idle} />
+        <Feather size={20} name="bell" color={ColorScheme.icon.idle} />
       </Sc.SettingsWrapper>
     </Sc.Container>
   );
-};
+}
 
 export default UserHeader;

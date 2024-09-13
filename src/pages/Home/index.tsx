@@ -8,15 +8,17 @@ import MiniCalendar from "./MiniCalendar";
 import { useTokenContext } from "@context/useUserToken";
 import { setUserInfo, storeWhoAmI } from "@utils/setUserProfileHelper";
 
-const Home: React.FC = () => {
+function Home() {
   useBackButtonExit();
   const { accessToken, setUserProfile, userProfile, whoAmI, setWhoAmI } = useTokenContext();
+
   useEffect(() => {
     if (accessToken) {
       setUserInfo(accessToken, setUserProfile);
       storeWhoAmI(accessToken, setWhoAmI);
     }
   }, [accessToken]);
+  
   return (
     <Sc.Container>
       <UserHeader whoAmI={whoAmI} />
@@ -25,6 +27,6 @@ const Home: React.FC = () => {
       <CycleOverview userProfile={userProfile} />
     </Sc.Container>
   );
-};
+}
 
 export default Home;

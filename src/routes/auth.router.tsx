@@ -8,6 +8,7 @@ import { jwtDecode } from "jwt-decode";
 import { decode, encode } from "base-64";
 // @ts-ignore
 import { tokenAuth } from "@utils/tokenAuthHelper";
+import { ColorScheme } from "@styles/globalStyles";
 
 if (!global.btoa) {
   global.btoa = encode;
@@ -17,7 +18,7 @@ if (!global.atob) {
   global.atob = decode;
 }
 
-const AuthNavigator: React.FC = () => {
+function AuthNavigator() {
   const { accessToken, setRefreshToken, setAccessToken } = useTokenContext();
   const navigation = useNavigation<NavigationType>();
   const [loading, setLoading] = useState(true);
@@ -32,7 +33,6 @@ const AuthNavigator: React.FC = () => {
         const newRefreshToken = await secureStore.getToken("refreshToken");
 
         // tokenAuth.deleteTokens(setAccessToken, setRefreshToken); // Uncomment to log out (for debugging only)
-
         // Store the tokens in the context
         if (newRefreshToken !== null) {
           setRefreshToken(newRefreshToken);
@@ -79,7 +79,7 @@ const AuthNavigator: React.FC = () => {
     // Temporary untill UI team makes a loading screen for this
     <View
       style={{
-        backgroundColor: "#fafcff",
+        backgroundColor: ColorScheme.background.primary,
         justifyContent: "center",
         alignItems: "center",
         flex: 1
@@ -89,6 +89,6 @@ const AuthNavigator: React.FC = () => {
       <ActivityIndicator size={"large"} color={"#000"} />
     </View>
   );
-};
+}
 
 export default AuthNavigator;

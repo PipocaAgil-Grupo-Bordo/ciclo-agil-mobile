@@ -2,8 +2,7 @@ import CurrentMonth from "./CurrentMonth";
 import WeeklySection from "./WeeklySection";
 import { Sc } from "./style";
 
-const MiniCalendar = () => {
-
+function MiniCalendar() {
   return (
     <Sc.Container>
       <CurrentMonth />
@@ -11,6 +10,6 @@ const MiniCalendar = () => {
       <WeeklySection />
     </Sc.Container>
   );
-};
+}
 
 export default MiniCalendar;

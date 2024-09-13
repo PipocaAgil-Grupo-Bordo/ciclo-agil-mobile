@@ -1,13 +1,13 @@
 import React from "react";
 import { Sc } from "./style";
-import TextBox from "@components/TextBox";
+import { Text } from "react-native";
 
-const Analytics: React.FC = () => {
+function Analytics() {
   return (
     <Sc.Container>
-      <TextBox>Tela de análise</TextBox>
+      <Text>Tela de análise</Text>
     </Sc.Container>
   );
-};
+}
 
 export default Analytics;

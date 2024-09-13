@@ -14,7 +14,7 @@ import { useState } from "react";
 import Modal from "@components/Modal";
 import { IModalOptions } from "./type";
 
-const NewPassword: React.FC = () => {
+function NewPassword() {
   const [showModal, setShowModal] = useState(false);
   const [modalOptions, setModalOptions] = useState<IModalOptions>({
     title: "",
@@ -35,7 +35,7 @@ const NewPassword: React.FC = () => {
     resolver: yupResolver(resetPasswordSchema)
   });
 
-  const onSubmit = async (body: PasswordFields) => {
+  async function onSubmit(body: PasswordFields) {
     try {
       await authApi.resetPassword(body, token);
 
@@ -70,19 +70,18 @@ const NewPassword: React.FC = () => {
       }));
       setShowModal(true);
     }
-  };
+  }
 
-  const handleNavigation = () => {
+  function handleNavigation() {
     navigation.navigate(modalOptions.route as never);
     setShowModal(false);
-  };
+  }
 
   return (
     <Sc.Container
       nestedScrollEnabled
       contentContainerStyle={{ flexGrow: 1 }}
       keyboardShouldPersistTaps={"always"}
-      
     >
       <Sc.Wrapper>
         <Sc.HeaderWrapper>
@@ -109,6 +108,6 @@ const NewPassword: React.FC = () => {
       )}
     </Sc.Container>
   );
-};
+}
 
 export default NewPassword;

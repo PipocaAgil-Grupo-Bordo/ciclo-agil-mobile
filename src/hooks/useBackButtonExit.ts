@@ -7,7 +7,7 @@ import { BackHandler } from "react-native";
  * When called, the app will be minimized instead.
  */
 
-const useBackButtonExit = (enable = true) => {
+function useBackButtonExit(enable = true) {
   useFocusEffect(
     useCallback(() => {
       if (!enable) {
@@ -33,6 +33,6 @@ const useBackButtonExit = (enable = true) => {
       }
     }, [])
   );
-};
+}
 
 export default useBackButtonExit;

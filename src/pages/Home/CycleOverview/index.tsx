@@ -3,11 +3,17 @@ import { Sc } from "./style";
 import Feather from "react-native-vector-icons/Feather";
 import Entypo from "react-native-vector-icons/Entypo";
 import { UserData } from "@type/auth";
+import { ColorScheme } from "@styles/globalStyles";
 
-const CycleOverview: React.FC<{ userProfile: UserData | undefined }> = ({ userProfile }) => {
+interface CycleOverviewProps {
+  userProfile: UserData | undefined;
+}
+
+function CycleOverview({ userProfile }: CycleOverviewProps) {
   const ICON_SIZE = 20;
-  const ICON_COLOR = "#8E37C9";
+  const ICON_COLOR = ColorScheme.accent.highlight;
   const DATA_MOCKUP = "Não informado";
+
   const cycleData = [
     {
       id: 1,
@@ -41,6 +47,7 @@ const CycleOverview: React.FC<{ userProfile: UserData | undefined }> = ({ userPr
       )
     }
   ];
+  
   return (
     <Sc.Container>
       <Sc.Title>Meu Ciclo</Sc.Title>
@@ -56,6 +63,6 @@ const CycleOverview: React.FC<{ userProfile: UserData | undefined }> = ({ userPr
       ))}
     </Sc.Container>
   );
-};
+}
 
 export default CycleOverview;

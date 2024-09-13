@@ -1,13 +1,14 @@
 import React from "react";
 import { Sc } from "./style";
-import TextBox from "@components/TextBox";
+import { Text } from "react-native";
+import Caption from "./Caption";
 
-const Calendar: React.FC = () => {
+function Calendar() {
   return (
     <Sc.Container>
-      <TextBox>Tela do calendário</TextBox>
+      <Caption />
     </Sc.Container>
   );
-};
+}
 
 export default Calendar;

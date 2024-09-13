@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@routes/type";
 import { Sc } from "./style";
 
-const ButtonList: React.FC<ButtonListProps> = ({ onPress, isLoading }) => {
+function ButtonList({ onPress, isLoading }: ButtonListProps) {
   const navigation = useNavigation<NavigationType>();
 
   return (
@@ -19,6 +19,6 @@ const ButtonList: React.FC<ButtonListProps> = ({ onPress, isLoading }) => {
       </GenericButton>
     </Sc.Container>
   );
-};
+}
 
 export default ButtonList;

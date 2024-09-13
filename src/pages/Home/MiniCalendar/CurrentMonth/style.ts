@@ -1,3 +1,4 @@
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -7,9 +8,13 @@ export const Sc = {
     gap: 8px;
   `,
 
-  CurrentMonth: styled.Text``,
+  CurrentMonth: styled.Text`
+    font-family: ${FontScheme.family.primary};
+    font-size: ${FontScheme.size.default}px;
+    color: ${ColorScheme.text.primary};
+  `,
 
   StandOut: styled.Text`
-    color: #8b8f98;
+    color: ${ColorScheme.text.tertiary};
   `
 };

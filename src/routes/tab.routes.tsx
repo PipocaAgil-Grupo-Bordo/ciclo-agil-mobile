@@ -6,35 +6,26 @@ import Articles from "@pages/Articles";
 import Entypo from "react-native-vector-icons/Entypo";
 import Feather from "react-native-vector-icons/Feather";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 
 const Tab = createBottomTabNavigator();
 
-const TabRoutes = () => {
-  const setDefaultIconStyle = (focused: boolean) => {
-    return {
-      backgroundColor: focused ? "#ff0000" : "transparent",
-      borderRadius: 99
-    };
-  };
-
+function TabRoutes() {
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: "#eef3fc",
+          backgroundColor: ColorScheme.background.secondary,
           elevation: 0,
           borderTopWidth: 0
         },
-        tabBarActiveTintColor: "#8E37C9",
-        tabBarInactiveTintColor: "rgba(65, 67, 71, 0.75)",
+        tabBarActiveTintColor: ColorScheme.accent.highlight,
+        tabBarInactiveTintColor: ColorScheme.icon.idle,
         tabBarLabelStyle: {
           fontSize: 11,
-          fontFamily: "Montserrat"
+          fontFamily: FontScheme.family.primary
         }
-        // tabBarIcon: ({ color, size, focused }) => (
-        //   <Entypo name="cycle" color={color} size={size} style={setDefaultIconStyle(focused)} />
-        // )
       }}
     >
       <Tab.Group>
@@ -42,9 +33,7 @@ const TabRoutes = () => {
           name="Cycle"
           component={Home}
           options={{
-            tabBarIcon: ({ color, focused }) => (
-              <Entypo name="cycle" color={color} size={18} style={setDefaultIconStyle(focused)} />
-            ),
+            tabBarIcon: ({ color, size }) => <Entypo name="cycle" color={color} size={size} />,
             tabBarLabel: "Ciclo",
             tabBarIconStyle: { transform: [{ rotate: "45deg" }] }
           }}
@@ -53,14 +42,8 @@ const TabRoutes = () => {
           name="Calendar"
           component={Calendar}
           options={{
-            tabBarIcon: ({ color, focused }) => (
-              <MaterialCommunityIcons
-                name="calendar-month-outline"
-                size={20}
-                color={color}
-                backgroundColor={focused ? "#ff0000" : "transparent"}
-                style={setDefaultIconStyle(focused)}
-              />
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="calendar-month-outline" size={size} color={color} />
             ),
             tabBarLabel: "Calendário"
           }}
@@ -69,13 +52,8 @@ const TabRoutes = () => {
           name="Analytics"
           component={Analytics}
           options={{
-            tabBarIcon: ({ color, focused }) => (
-              <Feather
-                name="trending-up"
-                color={color}
-                size={15}
-                style={setDefaultIconStyle(focused)}
-              />
+            tabBarIcon: ({ color, size }) => (
+              <Feather name="trending-up" color={color} size={size} />
             ),
             tabBarLabel: "Análise"
           }}
@@ -84,20 +62,13 @@ const TabRoutes = () => {
           name="Articles"
           component={Articles}
           options={{
-            tabBarIcon: ({ color, focused }) => (
-              <Feather
-                name="book-open"
-                color={color}
-                size={15}
-                style={setDefaultIconStyle(focused)}
-              />
-            ),
+            tabBarIcon: ({ color, size }) => <Feather name="book-open" color={color} size={size} />,
             tabBarLabel: "Conteúdo"
           }}
         />
       </Tab.Group>
     </Tab.Navigator>
   );
-};
+}
 
 export default TabRoutes;

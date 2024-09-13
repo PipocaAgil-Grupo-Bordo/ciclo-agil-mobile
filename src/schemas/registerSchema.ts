@@ -12,13 +12,13 @@ const passwordRegex =
   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~/\\=-]).{8,}$/gm;
 
 // Ensure all dates are valid ones. Including Feb leap years, and months that doesn't have the 31st day
-const isValidDate = (dateString: string) => {
+function isValidDate(dateString: string) {
   const [day, month, year] = dateString.split("/").map(Number);
 
   const date = new Date(year, month - 1, day);
 
   return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
-};
+}
 
 export const registerSchema = yup.object().shape({
   name: yup

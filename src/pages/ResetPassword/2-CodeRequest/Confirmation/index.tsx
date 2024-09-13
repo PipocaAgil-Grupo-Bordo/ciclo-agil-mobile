@@ -1,7 +1,6 @@
-import TextBox from "@components/TextBox";
 import { Sc } from "./style";
 
-const Confirmation = () => {
+function Confirmation() {
   return (
     <>
       <Sc.CheckMark source={require("@images/checkmark.png")} />
@@ -11,13 +10,11 @@ const Confirmation = () => {
         <Sc.ConfirmationText>Verifique a sua caixa de entrada.</Sc.ConfirmationText>
       </Sc.ConfirmationWrapper>
 
-      <TextBox>
-        <Sc.Instructions>
-          Insira no campo abaixo o código de verificação que enviamos para o seu email.
-        </Sc.Instructions>
-      </TextBox>
+      <Sc.Instructions>
+        Insira no campo abaixo o código de verificação que enviamos para o seu email.
+      </Sc.Instructions>
     </>
   );
-};
+}
 
 export default Confirmation;

@@ -1,7 +1,8 @@
 import React from "react";
 import GenericInput from "@components/GenericInput";
 
-const Inputs: React.FC<any> = ({ control, errors }) => {
+// TODO: FIX THIS ANY
+function Inputs({ control, errors }: any) {
   const inputsData = [
     {
       label: "Como eu gostaria de ser chamada:",
@@ -34,6 +35,7 @@ const Inputs: React.FC<any> = ({ control, errors }) => {
       placeholder: ""
     }
   ];
+
   return inputsData.map((input, i) => (
     <GenericInput
       key={i}
@@ -45,6 +47,6 @@ const Inputs: React.FC<any> = ({ control, errors }) => {
       errors={errors}
     />
   ));
-};
+}
 
 export default Inputs;

@@ -1,8 +1,9 @@
+import { ColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
   Container: styled.ScrollView`
-    background-color: #fafcff;
+    background-color: ${ColorScheme.background.primary};
   `,
 
   Wrapper: styled.View`
@@ -11,7 +12,5 @@ export const Sc = {
     justify-content: space-between;
   `,
 
-  HeaderWrapper: styled.View`
-    gap: 48px;
-  `
+  HeaderWrapper: styled.View``
 };

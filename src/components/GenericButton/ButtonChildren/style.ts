@@ -1,6 +1,7 @@
 import styled from "styled-components/native";
 import { ButtonStyleProps } from "../type";
-import { StyledText } from "@components/TextBox/style";
+import { GeneralColors } from "@styles/colors";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 
 export const Sc = {
   Icon: styled.Image`
@@ -8,18 +9,11 @@ export const Sc = {
     height: 30px;
   `,
 
-  ButtonText: styled(StyledText)<ButtonStyleProps>`
-    color: ${({ state }) => {
-      switch (state) {
-        case "accent":
-          return "#FFFFFF";
-        case "mild":
-          return "#000000";
-        case "default":
-        default:
-          return "#1F2024";
-      }
-    }};
-    font-family: ${({ state }) => (state === "accent" ? "MontserratBold" : "Montserrat")};
+  ButtonText: styled.Text<ButtonStyleProps>`
+    color: ${({ state }) =>
+      state === "accent" ? GeneralColors.neutralGray.white : ColorScheme.text.primary};
+    font-family: ${({ state }) =>
+      state === "accent" ? FontScheme.family.primarySemiBold : FontScheme.family.primary};
+    font-size: ${FontScheme.size.medium}px;
   `
 };
