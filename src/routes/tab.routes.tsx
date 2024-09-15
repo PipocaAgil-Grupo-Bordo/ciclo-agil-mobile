@@ -7,6 +7,7 @@ import Entypo from "react-native-vector-icons/Entypo";
 import Feather from "react-native-vector-icons/Feather";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { View } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +34,15 @@ function TabRoutes() {
           name="Cycle"
           component={Home}
           options={{
-            tabBarIcon: ({ color, size }) => <Entypo name="cycle" color={color} size={size} />,
+            tabBarIcon: ({ color, size, focused }) => (
+              <View style={{
+                backgroundColor: focused ? "" : "transparent",
+                borderRadius: 25,
+                padding: 4,
+              }}>
+                <Entypo name="cycle" color={color} size={size} />
+              </View>
+            ),
             tabBarLabel: "Ciclo",
             tabBarIconStyle: { transform: [{ rotate: "45deg" }] }
           }}
@@ -42,8 +51,14 @@ function TabRoutes() {
           name="Calendar"
           component={Calendar}
           options={{
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="calendar-month-outline" size={size} color={color} />
+            tabBarIcon: ({ color, size, focused }) => (
+              <View style={{
+                backgroundColor: focused ? "" : "transparent",
+                borderRadius: 25,
+                padding: 4,
+              }}>
+                <MaterialCommunityIcons name="calendar-month-outline" size={size} color={color} />
+              </View>
             ),
             tabBarLabel: "Calendário"
           }}
@@ -52,8 +67,14 @@ function TabRoutes() {
           name="Analytics"
           component={Analytics}
           options={{
-            tabBarIcon: ({ color, size }) => (
-              <Feather name="trending-up" color={color} size={size} />
+            tabBarIcon: ({ color, size, focused }) => (
+              <View style={{
+                backgroundColor: focused ? "" : "transparent",
+                borderRadius: 25,
+                padding: 4,
+              }}>
+                <Feather name="trending-up" color={color} size={size} />
+              </View>
             ),
             tabBarLabel: "Análise"
           }}
@@ -62,7 +83,15 @@ function TabRoutes() {
           name="Articles"
           component={Articles}
           options={{
-            tabBarIcon: ({ color, size }) => <Feather name="book-open" color={color} size={size} />,
+            tabBarIcon: ({ color, size, focused }) => (
+              <View style={{
+                backgroundColor: focused ? "" : "transparent",
+                borderRadius: 25,
+                padding: 4,
+              }}>
+                <Feather name="book-open" color={color} size={size} />
+              </View>
+            ),
             tabBarLabel: "Conteúdo"
           }}
         />
