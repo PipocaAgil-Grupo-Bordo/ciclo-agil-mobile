@@ -22,7 +22,7 @@ function UserHeader({ whoAmI }: UserHeaderProps) {
         
         <Sc.TextContainer>
           <Sc.Text numberOfLines={1} ellipsizeMode="tail">
-            Olá,{getFirstName(whoAmI?.name)}
+            Olá, {getFirstName(whoAmI?.name)}
           </Sc.Text>
         </Sc.TextContainer>
       </Sc.UserWrapper>
