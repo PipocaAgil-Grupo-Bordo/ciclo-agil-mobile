@@ -8,6 +8,7 @@ import Feather from "react-native-vector-icons/Feather";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import { View } from "react-native";
+import { GeneralColors } from "@styles/colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +20,9 @@ function TabRoutes() {
         tabBarStyle: {
           backgroundColor: ColorScheme.background.secondary,
           elevation: 0,
-          borderTopWidth: 0
+          borderTopWidth: 0,
+          paddingVertical: 2,
+          height: 90
         },
         tabBarActiveTintColor: ColorScheme.accent.highlight,
         tabBarInactiveTintColor: ColorScheme.icon.idle,
@@ -36,7 +39,7 @@ function TabRoutes() {
           options={{
             tabBarIcon: ({ color, size, focused }) => (
               <View style={{
-                backgroundColor: focused ? "" : "transparent",
+                backgroundColor: focused ? GeneralColors.primary[300] : "transparent",
                 borderRadius: 25,
                 padding: 4,
               }}>
@@ -53,7 +56,7 @@ function TabRoutes() {
           options={{
             tabBarIcon: ({ color, size, focused }) => (
               <View style={{
-                backgroundColor: focused ? "" : "transparent",
+                backgroundColor: focused ? GeneralColors.primary[300] : "transparent",
                 borderRadius: 25,
                 padding: 4,
               }}>
@@ -69,7 +72,7 @@ function TabRoutes() {
           options={{
             tabBarIcon: ({ color, size, focused }) => (
               <View style={{
-                backgroundColor: focused ? "" : "transparent",
+                backgroundColor: focused ? GeneralColors.primary[300] : "transparent",
                 borderRadius: 25,
                 padding: 4,
               }}>
@@ -85,7 +88,7 @@ function TabRoutes() {
           options={{
             tabBarIcon: ({ color, size, focused }) => (
               <View style={{
-                backgroundColor: focused ? "" : "transparent",
+                backgroundColor: focused ? GeneralColors.primary[300] : "transparent",
                 borderRadius: 25,
                 padding: 4,
               }}>
