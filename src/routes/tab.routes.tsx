@@ -21,13 +21,12 @@ function TabRoutes() {
           backgroundColor: ColorScheme.background.secondary,
           elevation: 0,
           borderTopWidth: 0,
-          paddingVertical: 2,
-          height: 58,
-          margin: 4
+          height: 60
         },
         tabBarActiveTintColor: ColorScheme.accent.highlight,
         tabBarInactiveTintColor: ColorScheme.icon.idle,
         tabBarLabelStyle: {
+          paddingBottom: 4,
           fontSize: 11,
           fontFamily: FontScheme.family.primary
         }
