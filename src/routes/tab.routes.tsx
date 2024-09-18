@@ -22,7 +22,8 @@ function TabRoutes() {
           elevation: 0,
           borderTopWidth: 0,
           paddingVertical: 2,
-          height: 90
+          height: 58,
+          margin: 4
         },
         tabBarActiveTintColor: ColorScheme.accent.highlight,
         tabBarInactiveTintColor: ColorScheme.icon.idle,
