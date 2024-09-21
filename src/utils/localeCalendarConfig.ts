@@ -1,5 +1,5 @@
 export const ptBR = {
-    monsthNames:[
+    monthNames:[
         "Janeiro",
         "Fevereiro",
         "Março",

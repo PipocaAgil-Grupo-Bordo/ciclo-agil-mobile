@@ -34,7 +34,74 @@ async function updateCurrentCycle(
   return promise;
 }
 
+
+/**
+ * Create a Period Date
+ *
+ * @param date - date of the period
+ * @param token - The user token
+ */
+async function createPeriodDate(
+  cycleData: { date: string },
+  token: string
+): Promise<AxiosResponse<UserData>> {
+  const promise = instance.post("menstrual-period/date", cycleData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json"
+    }
+  });
+
+  return promise;
+}
+
+/**
+ * Get Menstrual Periods
+ *
+ * @param year - The year for which the periods are retrieved
+ * @param month - (optional) The month for which the periods are retrieved
+ * @param token - The user token
+ */
+async function getMenstrualPeriods(
+  year: number,
+  token: string,
+  month?: number
+
+): Promise<AxiosResponse<any>> {
+  // Define the query parameters
+  const params = month ? { year, month } : { year };
+
+  const promise = instance.get("menstrual-period", {
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+    params
+  });
+
+  return promise;
+}
+
+/**
+ * Get the last Menstrual Period
+ *
+ * @param token - The user token
+ */
+async function getLastMenstrualPeriod(
+  token: string
+): Promise<AxiosResponse<any>> {
+  const promise = instance.get("menstrual-period/last", {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+
+  return promise;
+}
+
 export const menstrualApi = {
   lastPeriod,
-  updateCurrentCycle
+  updateCurrentCycle,
+  createPeriodDate,
+  getMenstrualPeriods,
+  getLastMenstrualPeriod
 };
