@@ -1,25 +1,8 @@
-import { ILastPeriod } from "@type/menstrual";
-import api from "./api";
 import { AxiosResponse } from "axios";
 import { UserData } from "@type/auth";
 import instance from "./api";
+import { ICreateMenstrualPeriodDateResponse } from "@type/menstrual";
 
-function lastPeriod(body: ILastPeriod, token: string) {
-  const promise = api.post("menstrual-period", body, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  });
-  return promise;
-}
-
-/**
- * Update the user's menstrual cycle
- *
- * @param isMenstrualCycleRegular - Whether it is regular (true) or irregular (false)
- * @param menstrualCycleDuration - The duration based on the currenct cycle
- * @param token - The user token
- */
 async function updateCurrentCycle(
   cycleData: { isMenstrualCycleRegular: boolean; menstrualCycleDuration: number },
   token: string
@@ -34,17 +17,11 @@ async function updateCurrentCycle(
   return promise;
 }
 
-
-/**
- * Create a Period Date
- *
- * @param date - date of the period
- * @param token - The user token
- */
 async function createPeriodDate(
   cycleData: { date: string },
   token: string
-): Promise<AxiosResponse<UserData>> {
+): Promise<AxiosResponse<ICreateMenstrualPeriodDateResponse>> {
+  console.log(cycleData)
   const promise = instance.post("menstrual-period/date", cycleData, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -55,13 +32,6 @@ async function createPeriodDate(
   return promise;
 }
 
-/**
- * Get Menstrual Periods
- *
- * @param year - The year for which the periods are retrieved
- * @param month - (optional) The month for which the periods are retrieved
- * @param token - The user token
- */
 async function getMenstrualPeriods(
   year: number,
   token: string,
@@ -81,11 +51,6 @@ async function getMenstrualPeriods(
   return promise;
 }
 
-/**
- * Get the last Menstrual Period
- *
- * @param token - The user token
- */
 async function getLastMenstrualPeriod(
   token: string
 ): Promise<AxiosResponse<any>> {
@@ -98,10 +63,20 @@ async function getLastMenstrualPeriod(
   return promise;
 }
 
+async function deletePeriodDate(id: number, token: string): Promise<AxiosResponse<{ code: string }>> {
+  const promise = instance.delete(`menstrual-period/date/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+
+  return promise;
+}
+
 export const menstrualApi = {
-  lastPeriod,
   updateCurrentCycle,
   createPeriodDate,
   getMenstrualPeriods,
-  getLastMenstrualPeriod
+  getLastMenstrualPeriod,
+  deletePeriodDate
 };

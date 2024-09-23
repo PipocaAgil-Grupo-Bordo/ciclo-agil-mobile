@@ -1,10 +1,13 @@
-import { useState } from 'react';
-import { View, Text } from 'react-native';
+import { useEffect, useState } from 'react';
+import { View, Text, Alert } from 'react-native';
 import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';
 import { Feather } from '@expo/vector-icons';
 import { styles } from './style';
 import { ColorScheme } from '@styles/globalStyles';
 import { ptBR } from '../../../utils/localeCalendarConfig';
+import { useTokenContext } from "@context/useUserToken";
+import { menstrualApi } from '@services/menstrualApi';
+import { ICalendarDateInfo, IMenstrualPeriod } from '@type/menstrual';
 
 LocaleConfig.locales['pt-br'] = ptBR;
 LocaleConfig.defaultLocale = 'pt-br';
@@ -46,35 +49,118 @@ function currentCycle(cycle: string) {
 
 function CalendarApp() {
   const [selectedDates, setSelectedDates] = useState<string[]>([]);
+  const [selectedDatesInfo, setSelectedDatesInfo] = useState<{ id: number, date: string }[]>([])
+  const { accessToken } = useTokenContext();
 
-  const handleDayPress = (day: DateData) => {
+
+  useEffect(() => {
+    fetchMenstrualPeriods()
+  }, [])
+
+  const fetchMenstrualPeriods = async () => {
+    const currentDate = new Date()
+    const year = currentDate.getFullYear()
+    const month = currentDate.getMonth() + 1
+    if (accessToken) {
+      const response = await menstrualApi.getMenstrualPeriods(year, accessToken, month)
+      setSelectedDatesInfo(formatDateInfoList(response.data))
+      const dates = formatDateList(response.data)
+      setSelectedDates(dates)
+    }
+  }
+
+  const handleDayPress = async (day: DateData) => {
     const date = day.dateString;
-
-    // Adds the date if it has not already been selected
-    if (!selectedDates.includes(date)) {
-      setSelectedDates([...selectedDates, date]);
+    if (accessToken) {
+      if (!selectedDates.includes(date)) {
+      return addMenstrualPeriodDate(date)
+      }
+      return deleteMenstrualPeriodDate(date)
     }
   };
 
-  // Setting up scheduled dates
-const markedDates = selectedDates.reduce((acc, date, index) => {
-  if (index === 0) {
-    // The first day selected is given the "firstDay" styles
-    acc[date] = {
-      ...currentCycle('firstDay'),
-      customStyles: currentCycle('firstDay').customStyles, // Apply customStyles
-    };
-  } else {
-    // Os outros dias recebem estilos de "fertile"
-    acc[date] = {
-      ...currentCycle('fertile'),
-      customStyles: currentCycle('fertile').customStyles, 
-    };
+  const addMenstrualPeriodDate = async (date: string) => {
+    setSelectedDates([...selectedDates, date]);
+    try {
+      if (accessToken) {
+        const response = await menstrualApi.createPeriodDate({ date }, accessToken);
+        setSelectedDatesInfo([...selectedDatesInfo, { id: response.data.id, date: response.data.date }])
+      }
+    } catch (error) {
+      Alert.alert('Erro ao adicionar data, tente novamente!')
+      const currentSelectedDates = [...selectedDates]
+      const currentSelectedDatesInfo = [...selectedDatesInfo]
+      currentSelectedDatesInfo.pop()
+      setSelectedDatesInfo(currentSelectedDatesInfo)
+      currentSelectedDates.pop()
+      setSelectedDates(currentSelectedDates)
+    }
   }
-  return acc;
-}, {} as Record<string, any>);
 
+  const deleteMenstrualPeriodDate = async (date: string) => {
+    const dateInfo = selectedDatesInfo.find((info) => info.date === date);
+    if (!dateInfo) return; // Adiciona uma verificação caso não encontre a data.
+    try {
+      if (accessToken) {
+        // Filtrar para remover a data correta
+        const updatedSelectedDates = selectedDates.filter((selectedDate) => selectedDate !== date);
+        const updatedSelectedDatesInfo = selectedDatesInfo.filter((info) => info.date !== date);
+        setSelectedDates(updatedSelectedDates);
+        setSelectedDatesInfo(updatedSelectedDatesInfo);
+  
+        // Chama a API para deletar
+        await menstrualApi.deletePeriodDate(dateInfo.id, accessToken);
+      }
+    } catch (error) {
+      // Reverter a operação em caso de erro
+      Alert.alert('Erro ao deletar data, tente novamente!');
+      setSelectedDates([...selectedDates, date]);
+      setSelectedDatesInfo([...selectedDatesInfo, dateInfo]);
+    }
+  };
+  
 
+  const formatDateList = (menstrualPeriods: IMenstrualPeriod[]) => {
+    return menstrualPeriods.flatMap((menstrualPeriod: IMenstrualPeriod) => {
+      return menstrualPeriod.dates.map((menstrualPeriodDate) => menstrualPeriodDate.date)
+    })
+  }
+
+  const formatDateInfoList = (menstrualPeriods: IMenstrualPeriod[]) => {
+    return menstrualPeriods.flatMap((menstrualPeriod: IMenstrualPeriod) => {
+      return menstrualPeriod.dates.map((menstrualPeriodDate) => {
+        return { id: menstrualPeriodDate.id, date: menstrualPeriodDate.date }
+      }
+      )
+    })
+  }
+
+  const handleMonthChange = async (dateInfo: ICalendarDateInfo) => {
+    setSelectedDates([])
+    if (accessToken) {
+      const response = await menstrualApi.getMenstrualPeriods(dateInfo.year, accessToken, dateInfo.month)
+      const dates = formatDateList(response.data)
+      setSelectedDates(dates)
+    }
+  }
+
+  // Setting up scheduled dates
+  const markedDates = selectedDates.reduce((acc, date, index) => {
+    if (index === 0) {
+      // The first day selected is given the "firstDay" styles
+      acc[date] = {
+        ...currentCycle('firstDay'),
+        customStyles: currentCycle('firstDay').customStyles, // Apply customStyles
+      };
+    } else {
+      // Os outros dias recebem estilos de "fertile"
+      acc[date] = {
+        ...currentCycle('fertile'),
+        customStyles: currentCycle('fertile').customStyles,
+      };
+    }
+    return acc;
+  }, {} as Record<string, any>);
   return (
     <View style={styles.container}>
       <Calendar
@@ -101,8 +187,9 @@ const markedDates = selectedDates.reduce((acc, date, index) => {
             padding: 0,
           },
         }}
-        minDate={new Date().toDateString()}
+        maxDate={new Date().toDateString()}
         hideExtraDays
+        onMonthChange={handleMonthChange}
         onDayPress={handleDayPress}
         markedDates={markedDates} // Applying the dates marked with customStyles
       />
