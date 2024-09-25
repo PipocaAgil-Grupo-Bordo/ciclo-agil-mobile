@@ -21,7 +21,6 @@ async function createPeriodDate(
   cycleData: { date: string },
   token: string
 ): Promise<AxiosResponse<ICreateMenstrualPeriodDateResponse>> {
-  console.log(cycleData)
   const promise = instance.post("menstrual-period/date", cycleData, {
     headers: {
       Authorization: `Bearer ${token}`,
