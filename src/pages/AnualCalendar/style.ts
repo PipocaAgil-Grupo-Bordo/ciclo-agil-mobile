@@ -12,7 +12,6 @@ export const Sc = {
   `,
   Calendar: styled.View`
     flex: 1;
-    gap: 20px;
-    padding-top: 20px; /* Para espaçar o conteúdo do header */
+    padding-top: 32px; /* Para espaçar o conteúdo do header */
   `,
-}; 
+};

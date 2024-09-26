@@ -3,20 +3,19 @@ import { ColorScheme } from "@styles/globalStyles";
 import { FontScheme } from "@styles/globalStyles";
 import "./caption.type";
 
-
 export const Sc = {
   Container: styled.View`
-    background-color: ${ColorScheme.background.primary};
+    background-color: ${ColorScheme.background.white};
     justify-content: center;
     align-items: center;
     padding: ${FontScheme.size.medium}px;
     gap: ${FontScheme.size.small - 1}px;
+    border-radius: ${FontScheme.size.medium}px;
   `,
 
   Title: styled.Text`
     font-size: ${FontScheme.size.medium}px;
-    font-weight: 500;
-    font-family: ${FontScheme.family.primary};
+    font-family: ${FontScheme.family.primaryMedium};
     align-self: flex-start;
   `,
 

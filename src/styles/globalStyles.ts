@@ -4,7 +4,9 @@ export const ColorScheme = {
   background: {
     primary: clr.neutralGray[100],
     secondary: clr.neutralBlue[200],
-    tertiary: clr.primary[200]
+    tertiary: clr.primary[200],
+    white: clr.neutralGray.white
+    
   },
 
   foreground: {

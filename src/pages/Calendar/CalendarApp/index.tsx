@@ -122,52 +122,54 @@ function CalendarApp() {
     setModalVisible(false);
 
     if (response === "yes" && pendingDate) {
-      // Preencher os dias anteriores se o usuário escolher 'sim'
       fillPreviousDates(pendingDate);
     } else if (response === "no" && pendingDate) {
-      const gap = calculateDateGap(pendingDate);
-
-      // Somente adicionar a data se o gap for >= 3 (novo ciclo)
-      if (gap >= 3) {
-        addMenstrualPeriodDate(pendingDate);
-        setSelectedDates([...selectedDates, pendingDate]);
-      }
+      addMenstrualPeriodDate(pendingDate);
+      setSelectedDates([...selectedDates, pendingDate]);
     }
 
     setPendingDate(null);
   };
 
   const fillPreviousDates = async (date: string) => {
+    const selectedDate = new Date(date);
+    const firstSelectedDate = selectedDates[0];
+    const firstDate = new Date(firstSelectedDate);
     const lastSelectedDate = selectedDates[selectedDates.length - 1];
-    const start = new Date(lastSelectedDate);
-    const end = new Date(date);
+    const lastDate = new Date(lastSelectedDate);
+    let start;
+    let end;
     const datesToFill: string[] = [];
     const datesToFillInfo: { id: number; date: string }[] = [];
 
-    // Incrementa a data de início para não incluir o 'start' no intervalo
-    start.setDate(start.getDate() + 1);
-
-    for (let d = new Date(start); d < end; d.setDate(d.getDate() + 1)) {
-      datesToFill.push(d.toISOString().split("T")[0]);
-    }
-
-    // Preenche as datas anteriores
-    datesToFill.forEach(async (dateToAdd) => {
-      const response = await addMenstrualPeriodDate(dateToAdd);
-
-      if (response) {
-        datesToFillInfo.push(response);
+    if (selectedDate < firstDate) {
+      start = selectedDate;
+      end = firstDate;
+      for (let d = new Date(start); d < end; d.setDate(d.getDate() + 1)) {
+        datesToFill.push(d.toISOString().split("T")[0]);
       }
-    });
-
-    // Adiciona a data final selecionada
-    const lastDateInfo = await addMenstrualPeriodDate(date);
-
-    if (lastDateInfo) {
-      datesToFillInfo.push(lastDateInfo);
     }
-    
-    setSelectedDates([...selectedDates, ...datesToFill, date]);
+    if (selectedDate > lastDate) {
+      start = lastDate;
+      end = selectedDate;
+      start.setDate(start.getDate() + 1);
+      for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+        datesToFill.push(d.toISOString().split("T")[0]);
+      }
+    }
+
+    setSelectedDates([...selectedDates, ...datesToFill]);
+
+    await Promise.all(
+      datesToFill.map(async (dateToAdd) => {
+        const response = await addMenstrualPeriodDate(dateToAdd);
+        if (response) {
+          datesToFillInfo.push(response);
+        }
+        return response;
+      })
+    );
+
     setSelectedDatesInfo([...selectedDatesInfo, ...datesToFillInfo]);
   };
 
@@ -188,6 +190,7 @@ function CalendarApp() {
 
   const handleMonthChange = async (dateInfo: ICalendarDateInfo) => {
     setSelectedDates([]);
+    setSelectedDatesInfo([]);
     if (accessToken) {
       const response = await menstrualApi.getMenstrualPeriods(
         dateInfo.year,
@@ -195,7 +198,9 @@ function CalendarApp() {
         dateInfo.month
       );
       const dates = formatDateList(response.data);
+      const datesInfo = formatDateInfoList(response.data);
       setSelectedDates(dates);
+      setSelectedDatesInfo(datesInfo);
     }
   };
 
@@ -239,34 +244,31 @@ function CalendarApp() {
         onDayPress={handleDayPress}
         markedDates={markedDates}
       />
-
-      <Text style={styles.selected}>Data selecionada: {selectedDates.join(", ")}</Text>
-
-      {/* Modal para confirmar o preenchimento de dias anteriores */}
       <View style={styles.centeredView}>
         <Modal
-          animationType="slide"
+          animationType="fade"
           transparent={true}
           visible={modalVisible}
           onRequestClose={() => setModalVisible(!modalVisible)}
         >
-          <View style={styles.centeredView}>
+          <View style={styles.overlay}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>Deseja preencher os dias anteriores?</Text>
+              <Text style={styles.modalTextAlert}>Atenção! Alguns dias ficaram faltando</Text>
+              <Text style={styles.modalText}>Você gostaria de anotar os dias anteriores?</Text>
 
               <View style={styles.buttonContainer}>
+                <Pressable
+                  style={[styles.button, styles.buttonNo]}
+                  onPress={() => handleModalResponse("no")}
+                >
+                  <Text style={styles.textNo}>Não</Text>
+                </Pressable>
+
                 <Pressable
                   style={[styles.button, styles.buttonYes]}
                   onPress={() => handleModalResponse("yes")}
                 >
                   <Text style={styles.textStyle}>Sim</Text>
-                </Pressable>
-
-                <Pressable
-                  style={[styles.button, styles.buttonNo]}
-                  onPress={() => handleModalResponse("no")}
-                >
-                  <Text style={styles.textStyle}>Não</Text>
                 </Pressable>
               </View>
             </View>

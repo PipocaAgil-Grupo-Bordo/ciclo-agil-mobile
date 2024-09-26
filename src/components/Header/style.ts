@@ -5,6 +5,11 @@ export const Sc = {
   Container: styled.View`
     position: absolute;
     width: 100%;
+    margin-top: 10px;
+  `,
+  TitleContainer: styled.View`
+    position: absolute;
+    width: 100%;
   `,
 
   BackButton: styled.TouchableOpacity`
