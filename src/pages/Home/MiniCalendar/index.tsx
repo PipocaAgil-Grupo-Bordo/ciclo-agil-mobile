@@ -10,7 +10,7 @@ function MiniCalendar() {
 
   // Função para navegar para a tela de calendário completo
   const handlePress = () => {
-    navigation.navigate("Calendar");
+    navigation.navigate("MonthlyCalendar");
   };
   return (
     <TouchableOpacity onPress={handlePress}>
