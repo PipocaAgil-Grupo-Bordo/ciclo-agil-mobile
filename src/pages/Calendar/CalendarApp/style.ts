@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {ColorScheme, FontScheme} from '../../../styles/globalStyles'
 
 export const styles = StyleSheet.create({
   container:{
@@ -19,7 +20,19 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 22,
   },
+  overlay: {
+    position: 'absolute',
+    justifyContent: 'center',  
+    flex:1,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',  
+  },
   modalView: {
+    width:345,
+    height:270,
     margin: 20,
     backgroundColor: 'white',
     borderRadius: 20,
@@ -42,27 +55,43 @@ export const styles = StyleSheet.create({
     marginTop: 20,
   },
   button: {
-    borderRadius: 20,
+    borderRadius: 5,
     padding: 10,
-    elevation: 2,
+    elevation: 0,
     width: 100, 
     alignItems: 'center',
-    marginHorizontal: 10, // Margem entre os botões
-  },
-  buttonYes: {
-    backgroundColor: '#DCC1EE', 
+    marginHorizontal: 10, 
   },
   buttonNo: {
-    backgroundColor: '#707070', 
+    backgroundColor:'transparent',
+    borderWidth:0
+  },
+  buttonYes: {
+    backgroundColor: '#8E37C9', 
+  },
+  textNo:{
+    color: ColorScheme.text.primary, 
+    fontSize: 16,  
+    fontFamily: FontScheme.family.primary,       
   },
   textStyle: {
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  modalText: {
-    marginBottom: 15,
+  modalTextAlert:{
+    width:231,
+    height:70,
+    fontSize:24,
+    fontFamily: FontScheme.family.secondary,
     textAlign: 'center',
+    paddingBottom:10
+  },
+  modalText: {
+    marginTop:10,
+    marginBottom: 10,
+    textAlign: 'center',
+    fontFamily: FontScheme.family.primary
   },
 })
 

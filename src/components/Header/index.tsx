@@ -18,9 +18,9 @@ function Header({ title }: HeaderProps) {
       </Sc.BackButton>
 
       {title && (
-        <Sc.Container>
+        <Sc.TitleContainer>
           <Sc.Title>{title}</Sc.Title>
-        </Sc.Container>
+        </Sc.TitleContainer>
       )}
     </Sc.Container>
   );
