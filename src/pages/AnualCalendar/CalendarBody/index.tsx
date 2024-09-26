@@ -228,72 +228,58 @@ function CalendarListScreen(props: Props) {
   }, {} as Record<string, any>);
 
   return (
-    <View style={styles.container}>
+    <View style={{ flex: 1 }}>
       <CalendarList
-        markingType="custom" // Mode that allows customStyles
+        markingType="custom"
         onDayPress={handleDayPress}
         markedDates={markedDates}
         calendarHeight={!horizontalView ? 300 : undefined}
         calendarWidth={!horizontalView ? 361 : undefined}
+        theme={calendarTheme}
         hideExtraDays={false}
-        maxDate={new Date().toDateString()}
-        theme={theme}
         horizontal={horizontalView}
         style={styles.calendar}
-        monthFormat={(`MMMM De yyyy`)}
+        monthFormat={'MMMM De yyyy'}
       />
 
-      {/* Modal para confirmar o preenchimento de dias anteriores */}
-      <View style={styles.centeredView}>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => setModalVisible(!modalVisible)}
-        >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>Deseja preencher os dias anteriores?</Text>
-
-              <View style={styles.buttonContainer}>
-                <Pressable
-                  style={[styles.button, styles.buttonYes]}
-                  onPress={() => handleModalResponse("yes")}
-                >
-                  <Text style={styles.textStyle}>Sim</Text>
-                </Pressable>
-
-                <Pressable
-                  style={[styles.button, styles.buttonNo]}
-                  onPress={() => handleModalResponse("no")}
-                >
-                  <Text style={styles.textStyle}>Não</Text>
-                </Pressable>
-              </View>
+      <Modal animationType="slide" transparent={true} visible={modalVisible}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Deseja preencher os dias anteriores?</Text>
+            <View style={styles.buttonContainer}>
+              <Pressable style={[styles.button, styles.buttonYes]} onPress={() => handleModalResponse('yes')}>
+                <Text style={styles.textStyle}>Sim</Text>
+              </Pressable>
+              <Pressable style={[styles.button, styles.buttonNo]} onPress={() => handleModalResponse('no')}>
+                <Text style={styles.textStyle}>Não</Text>
+              </Pressable>
             </View>
           </View>
-        </Modal>
-      </View>
+        </View>
+      </Modal>
     </View>
   );
 }
 
-const theme = {
+const calendarTheme = {
+  calendarBackground: '#fff',
   textMonthFontSize: 18,
   todayTextColor: ColorScheme.circle?.primary,
   selectedDayBackgroundColor: ColorScheme.circle?.primary,
   selectedDayTextColor: '#000',
+  arrowColor: '#e8e8e8',
   textDayStyle: { color: '#000' },
+  'stylesheet.calendar.main': {
+    week: { flexDirection: 'row', justifyContent: 'space-around' },
+    container: { marginBottom: 20, width: '100%', backgroundColor: '#fff', borderRadius: 16 },
+  },
   'stylesheet.calendar.header': {
-    header: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderBottomWidth: 1,
-      borderBottomColor: '#D9D9D9',
-      paddingBottom: 10,
-      gap: 16,
-    },
+    header: { paddingTop: 12, paddingBottom: 12, backgroundColor: '#fff', flexDirection: 'row', justifyContent: 'center', borderBottomWidth: 1, borderBottomColor: '#D9D9D9' },
+    dayHeader: { paddingTop: 12, paddingBottom: 12, color: '#6C7072' },
+  },
+  'stylesheet.day.basic': {
+    base: { margin: 8, width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
+    selected: { borderRadius: 50 },
   },
 };
 

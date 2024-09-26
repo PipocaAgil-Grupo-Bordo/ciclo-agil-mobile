@@ -2,10 +2,16 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'trasnparent',
     flex: 1,
+    padding:0,
+    margin:0,
+    width: '100%',
   },
   calendar: {
-    backgroundColor: 'trasparent',
+    backgroundColor: 'trasnparent',
+    margin: 0,
+    padding: 0,
   },
   // modal
   centeredView: {
