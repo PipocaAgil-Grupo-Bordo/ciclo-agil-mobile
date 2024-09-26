@@ -1,14 +1,15 @@
-import React from "react";
+import CalendarApp from "./CalendarApp";
 import { Sc } from "./style";
-import { Text } from "react-native";
+import Header from "@components/Header";
 import Caption from "./Caption";
 
-function Calendar() {
+function CalendarC() {
   return (
-    <Sc.Container>
+    <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
+      <Header title="Calendário" />
+      <CalendarApp />
       <Caption />
-    </Sc.Container>
+     </Sc.Container>
   );
 }
-
-export default Calendar;
+export default CalendarC;

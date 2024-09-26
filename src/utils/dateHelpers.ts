@@ -1,3 +1,6 @@
+const currentMonth = new Date().toLocaleString("pt-BR", { month: "long" });
+const currentYear = new Date().getFullYear();
+
 function formatBirthdateToISODate(birthdate: string) {
   // Remove '/' from the birthdate string
   const birthdateWithoutSlash = birthdate.replace(/\//g, "");
@@ -17,7 +20,10 @@ function selectWeek(date: Date) {
     .fill(new Date(date))
     .map((el, idx) => new Date(el.setDate(el.getDate() - el.getDay() + idx)).getDate());
 }
+
 export const dateHelper = {
+  currentYear,
+  currentMonth,
   formatBirthdateToISODate,
   selectWeek
 };
