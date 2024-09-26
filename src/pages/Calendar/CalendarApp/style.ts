@@ -80,8 +80,8 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   modalTextAlert:{
-    width:231,
-    height:70,
+    width:'100%',
+    height:'auto',
     fontSize:24,
     fontFamily: FontScheme.family.secondary,
     textAlign: 'center',
