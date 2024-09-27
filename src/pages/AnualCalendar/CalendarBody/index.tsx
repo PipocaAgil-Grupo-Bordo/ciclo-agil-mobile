@@ -106,7 +106,7 @@ function CalendarListScreen(props: Props) {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth() + 1;
     if (accessToken) {
-      const response = await menstrualApi.getMenstrualPeriods({ year, month, token: accessToken });
+      const response = await menstrualApi.getMenstrualPeriods({ token: accessToken });
       setSelectedDatesInfo(formatDateInfoList(response.data));
       const dates = formatDateList(response.data);
       setSelectedDates(dates);
@@ -239,21 +239,21 @@ function CalendarListScreen(props: Props) {
     }
   };
 
-  const handleMonthChange = async (dateInfo: ICalendarDateInfo) => {
-    setSelectedDates([]);
-    setSelectedDatesInfo([]);
-    if (accessToken) {
-      const response = await menstrualApi.getMenstrualPeriods({
-        year: dateInfo.year,
-        month: dateInfo.month,
-        token: accessToken
-      });
-      const dates = formatDateList(response.data);
-      const datesInfo = formatDateInfoList(response.data);
-      setSelectedDates(dates);
-      setSelectedDatesInfo(datesInfo);
-    }
-  };
+  // const handleMonthChange = async (dateInfo: ICalendarDateInfo) => {
+  //   setSelectedDates([]);
+  //   setSelectedDatesInfo([]);
+  //   if (accessToken) {
+  //     const response = await menstrualApi.getMenstrualPeriods({
+  //       year: dateInfo.year,
+  //       month: dateInfo.month,
+  //       token: accessToken
+  //     });
+  //     const dates = formatDateList(response.data);
+  //     const datesInfo = formatDateInfoList(response.data);
+  //     setSelectedDates(dates);
+  //     setSelectedDatesInfo(datesInfo);
+  //   }
+  // };
 
   const formatDateList = (menstrualPeriods: IMenstrualPeriod[]) => {
     return menstrualPeriods.flatMap((menstrualPeriod: IMenstrualPeriod) => {
@@ -299,7 +299,7 @@ function CalendarListScreen(props: Props) {
         horizontal={horizontalView}
         style={styles.calendar}
         monthFormat={"MMMM De yyyy"}
-        onMonthChange={handleMonthChange}
+        // onMonthChange={handleMonthChange}
       />
 
       <View style={styles.centeredView}>
