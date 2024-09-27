@@ -293,7 +293,7 @@ function CalendarListScreen(props: Props) {
         onDayPress={handleDayPress}
         markedDates={markedDates}
         calendarHeight={!horizontalView ? 300 : undefined}
-        calendarWidth={!horizontalView ? 361 : undefined}
+        calendarWidth={!horizontalView ? 358 : undefined}
         theme={calendarTheme}
         hideExtraDays={false}
         horizontal={horizontalView}
