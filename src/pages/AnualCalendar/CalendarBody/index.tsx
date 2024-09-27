@@ -1,64 +1,98 @@
-import { useTokenContext } from '@context/useUserToken';
-import { menstrualApi } from '@services/menstrualApi';
-import { ColorScheme } from '@styles/globalStyles';
-import { ICalendarDateInfo, IMenstrualPeriod } from '@type/menstrual';
-import { View, Text, Alert, Modal, Pressable } from 'react-native';
-import { useEffect, useState, useCallback } from 'react';
-import { CalendarList, DateData, LocaleConfig } from 'react-native-calendars';
-import { styles } from './style';
+import { useTokenContext } from "@context/useUserToken";
+import { menstrualApi } from "@services/menstrualApi";
+import { ColorScheme } from "@styles/globalStyles";
+import { ICalendarDateInfo, IMenstrualPeriod } from "@type/menstrual";
+import { View, Text, Alert, Modal, Pressable } from "react-native";
+import { useEffect, useState } from "react";
+import { CalendarList, DateData, LocaleConfig } from "react-native-calendars";
+import { styles } from "./style";
 
 interface Props {
   horizontalView?: boolean;
 }
 
-LocaleConfig.locales['pt-br'] = {
-  monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-  monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-  dayNames: ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'],
-  dayNamesShort: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'], // Formato abreviado de "Dom", "Seg", etc.
+LocaleConfig.locales["pt-br"] = {
+  monthNames: [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro"
+  ],
+  monthNamesShort: [
+    "Jan",
+    "Fev",
+    "Mar",
+    "Abr",
+    "Mai",
+    "Jun",
+    "Jul",
+    "Ago",
+    "Set",
+    "Out",
+    "Nov",
+    "Dez"
+  ],
+  dayNames: [
+    "Domingo",
+    "Segunda-feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-feira",
+    "Sábado"
+  ],
+  dayNamesShort: ["D", "S", "T", "Q", "Q", "S", "S"] // Formato abreviado de "Dom", "Seg", etc.
 };
 
-LocaleConfig.defaultLocale = 'pt-br';
+LocaleConfig.defaultLocale = "pt-br";
 
 // Function that returns styles based on cycle
 function currentCycle(cycle: string) {
-  if (cycle === 'firstDay') {
+  if (cycle === "firstDay") {
     return {
       customStyles: {
         container: {
           borderWidth: 1.9,
-          borderColor: '#DCC1EE',
-          backgroundColor: '#DCC1EE',
+          borderColor: "#DCC1EE",
+          backgroundColor: "#DCC1EE"
         },
         text: {
-          color: '#000',
-        },
-      },
+          color: "#000"
+        }
+      }
     };
   }
 
-  if (cycle === 'fertile') {
+  if (cycle === "fertile") {
     return {
       customStyles: {
         container: {
           borderWidth: 1.9,
-          borderColor: '#DCC1EE',
-          backgroundColor: '#DCC1EE',
+          borderColor: "#DCC1EE",
+          backgroundColor: "#DCC1EE"
         },
         text: {
-          color: '#000',
-        },
-      },
+          color: "#000"
+        }
+      }
     };
   }
 
   return {};
 }
 
-const CalendarListScreen = ((props: Props) => {
+function CalendarListScreen(props: Props) {
   const { horizontalView } = props;
   const [selectedDates, setSelectedDates] = useState<string[]>([]);
-  const [selectedDatesInfo, setSelectedDatesInfo] = useState<{ id: number, date: string }[]>([]);
+  const [selectedDatesInfo, setSelectedDatesInfo] = useState<{ id: number; date: string }[]>([]);
   const { accessToken } = useTokenContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
@@ -72,7 +106,7 @@ const CalendarListScreen = ((props: Props) => {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth() + 1;
     if (accessToken) {
-      const response = await menstrualApi.getMenstrualPeriods(year, accessToken, month);
+      const response = await menstrualApi.getMenstrualPeriods({ year, month, token: accessToken });
       setSelectedDatesInfo(formatDateInfoList(response.data));
       const dates = formatDateList(response.data);
       setSelectedDates(dates);
@@ -145,7 +179,7 @@ const CalendarListScreen = ((props: Props) => {
     setSelectedDatesInfo([...selectedDatesInfo, ...datesToFillInfo]);
   };
 
-  const handleDayPress = useCallback((day: DateData) => {
+  const handleDayPress = (day: DateData) => {
     const date = day.dateString;
 
     if (!selectedDates.includes(date)) {
@@ -162,7 +196,7 @@ const CalendarListScreen = ((props: Props) => {
     } else {
       deleteMenstrualPeriodDate(date);
     }
-  }, [selectedDates]);
+  };
 
   const addMenstrualPeriodDate = async (date: string) => {
     try {
@@ -199,7 +233,7 @@ const CalendarListScreen = ((props: Props) => {
       }
     } catch (error) {
       // Reverter a operação em caso de erro
-      Alert.alert('Erro ao deletar data, tente novamente!');
+      Alert.alert("Erro ao deletar data, tente novamente!");
       setSelectedDates([...selectedDates, date]);
       setSelectedDatesInfo([...selectedDatesInfo, dateInfo]);
     }
@@ -209,11 +243,11 @@ const CalendarListScreen = ((props: Props) => {
     setSelectedDates([]);
     setSelectedDatesInfo([]);
     if (accessToken) {
-      const response = await menstrualApi.getMenstrualPeriods(
-        dateInfo.year,
-        accessToken,
-        dateInfo.month
-      );
+      const response = await menstrualApi.getMenstrualPeriods({
+        year: dateInfo.year,
+        month: dateInfo.month,
+        token: accessToken
+      });
       const dates = formatDateList(response.data);
       const datesInfo = formatDateInfoList(response.data);
       setSelectedDates(dates);
@@ -239,14 +273,14 @@ const CalendarListScreen = ((props: Props) => {
     if (index === 0) {
       // The first day selected is given the "firstDay" styles
       acc[date] = {
-        ...currentCycle('firstDay'),
-        customStyles: currentCycle('firstDay').customStyles, // Apply customStyles
+        ...currentCycle("firstDay"),
+        customStyles: currentCycle("firstDay").customStyles // Apply customStyles
       };
     } else {
       // Os outros dias recebem estilos de "fertile"
       acc[date] = {
-        ...currentCycle('fertile'),
-        customStyles: currentCycle('fertile').customStyles,
+        ...currentCycle("fertile"),
+        customStyles: currentCycle("fertile").customStyles
       };
     }
     return acc;
@@ -264,10 +298,8 @@ const CalendarListScreen = ((props: Props) => {
         hideExtraDays={false}
         horizontal={horizontalView}
         style={styles.calendar}
-        monthFormat={'MMMM De yyyy'}
+        monthFormat={"MMMM De yyyy"}
         onMonthChange={handleMonthChange}
-        pastScrollRange={360}
-        futureScrollRange={12}
       />
 
       <View style={styles.centeredView}>
@@ -303,28 +335,36 @@ const CalendarListScreen = ((props: Props) => {
       </View>
     </View>
   );
-});
+}
 
 const calendarTheme = {
-  calendarBackground: '#fff',
+  calendarBackground: "#fff",
   textMonthFontSize: 18,
   todayTextColor: ColorScheme.circle?.primary,
   selectedDayBackgroundColor: ColorScheme.circle?.primary,
-  selectedDayTextColor: '#000',
-  arrowColor: '#e8e8e8',
-  textDayStyle: { color: '#000' },
-  'stylesheet.calendar.main': {
-    week: { flexDirection: 'row', justifyContent: 'space-around' },
-    container: { marginBottom: 20, width: '100%', backgroundColor: '#fff', borderRadius: 16 },
+  selectedDayTextColor: "#000",
+  arrowColor: "#e8e8e8",
+  textDayStyle: { color: "#000" },
+  "stylesheet.calendar.main": {
+    week: { flexDirection: "row", justifyContent: "space-around" },
+    container: { marginBottom: 20, width: "100%", backgroundColor: "#fff", borderRadius: 16 }
   },
-  'stylesheet.calendar.header': {
-    header: { paddingTop: 12, paddingBottom: 12, backgroundColor: '#fff', flexDirection: 'row', justifyContent: 'center', borderBottomWidth: 1, borderBottomColor: '#D9D9D9' },
-    dayHeader: { paddingTop: 12, paddingBottom: 12, color: '#6C7072' },
+  "stylesheet.calendar.header": {
+    header: {
+      paddingTop: 12,
+      paddingBottom: 12,
+      backgroundColor: "#fff",
+      flexDirection: "row",
+      justifyContent: "center",
+      borderBottomWidth: 1,
+      borderBottomColor: "#D9D9D9"
+    },
+    dayHeader: { paddingTop: 12, paddingBottom: 12, color: "#6C7072" }
   },
-  'stylesheet.day.basic': {
-    base: { margin: 8, width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
-    selected: { borderRadius: 50 },
-  },
+  "stylesheet.day.basic": {
+    base: { margin: 8, width: 32, height: 32, alignItems: "center", justifyContent: "center" },
+    selected: { borderRadius: 50 }
+  }
 };
 
 export default CalendarListScreen;

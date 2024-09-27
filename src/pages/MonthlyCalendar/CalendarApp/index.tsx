@@ -46,7 +46,7 @@ function CalendarApp() {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth() + 1;
     if (accessToken) {
-      const response = await menstrualApi.getMenstrualPeriods(year, accessToken, month);
+      const response = await menstrualApi.getMenstrualPeriods({ year, month, token: accessToken });
       setSelectedDatesInfo(formatDateInfoList(response.data));
       const dates = formatDateList(response.data);
       setSelectedDates(dates);
@@ -192,11 +192,11 @@ function CalendarApp() {
     setSelectedDates([]);
     setSelectedDatesInfo([]);
     if (accessToken) {
-      const response = await menstrualApi.getMenstrualPeriods(
-        dateInfo.year,
-        accessToken,
-        dateInfo.month
-      );
+      const response = await menstrualApi.getMenstrualPeriods({
+        year: dateInfo.year,
+        month: dateInfo.month,
+        token: accessToken
+      });
       const dates = formatDateList(response.data);
       const datesInfo = formatDateInfoList(response.data);
       setSelectedDates(dates);
@@ -224,7 +224,7 @@ function CalendarApp() {
           borderBottomWidth: 1,
           borderBottomColor: "#e8e8e8",
           paddingBottom: 10,
-          marginBottom: 10
+          marginBottom: 0
         }}
         theme={{
           textMonthFontSize: 18,

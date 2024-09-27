@@ -31,14 +31,17 @@ async function createPeriodDate(
   return promise;
 }
 
-async function getMenstrualPeriods(
-  year: number,
-  token: string,
-  month?: number
-
-): Promise<AxiosResponse<any>> {
+async function getMenstrualPeriods({
+  year,
+  month,
+  token
+}: {
+  year?: number;
+  month?: number;
+  token: string;
+}): Promise<AxiosResponse<any>> {
   // Define the query parameters
-  const params = month ? { year, month } : { year };
+  const params = year && month ? { year, month } : year ? { year } : null;
 
   const promise = instance.get("menstrual-period", {
     headers: {
@@ -50,9 +53,7 @@ async function getMenstrualPeriods(
   return promise;
 }
 
-async function getLastMenstrualPeriod(
-  token: string
-): Promise<AxiosResponse<any>> {
+async function getLastMenstrualPeriod(token: string): Promise<AxiosResponse<any>> {
   const promise = instance.get("menstrual-period/last", {
     headers: {
       Authorization: `Bearer ${token}`
@@ -62,7 +63,10 @@ async function getLastMenstrualPeriod(
   return promise;
 }
 
-async function deletePeriodDate(id: number, token: string): Promise<AxiosResponse<{ code: string }>> {
+async function deletePeriodDate(
+  id: number,
+  token: string
+): Promise<AxiosResponse<{ code: string }>> {
   const promise = instance.delete(`menstrual-period/date/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`
