@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "@pages/Home";
-import Calendar from "@pages/Calendar";
+// import Calendar from "@pages/Calendar";
 import Analytics from "@pages/Analytics";
 import Articles from "@pages/Articles";
 import Entypo from "react-native-vector-icons/Entypo";
@@ -9,6 +9,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import { View } from "react-native";
 import { GeneralColors } from "@styles/colors";
+import AnnualCalendar from "@pages/AnualCalendar";
 
 const Tab = createBottomTabNavigator();
 
@@ -52,7 +53,7 @@ function TabRoutes() {
         />
         <Tab.Screen
           name="Calendar"
-          component={Calendar}
+          component={AnnualCalendar}
           options={{
             tabBarIcon: ({ color, size, focused }) => (
               <View style={{

@@ -3,7 +3,7 @@ import { Sc } from "./style";
 import Header from "@components/Header";
 import Caption from "./Caption";
 
-function CalendarC() {
+function MonthlyCalendar() {
   return (
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Header title="Calendário" />
@@ -12,4 +12,4 @@ function CalendarC() {
      </Sc.Container>
   );
 }
-export default CalendarC;
+export default MonthlyCalendar;
