@@ -12,6 +12,10 @@ import { ICalendarDateInfo, IMenstrualPeriod } from "@type/menstrual";
 LocaleConfig.locales["pt-br"] = ptBR;
 LocaleConfig.defaultLocale = "pt-br";
 
+interface Props {
+  horizontalView?: boolean;
+}
+
 function currentCycle(cycle: string) {
   if (cycle === "firstDay" || cycle === "selected") {
     return {
@@ -30,7 +34,8 @@ function currentCycle(cycle: string) {
   return {};
 }
 
-function CalendarApp() {
+function CalendarApp(props: Props) {
+  const { horizontalView } = props;
   const [selectedDates, setSelectedDates] = useState<string[]>([]);
   const [selectedDatesInfo, setSelectedDatesInfo] = useState<{ id: number; date: string }[]>([]);
   const { accessToken } = useTokenContext();
@@ -217,32 +222,19 @@ function CalendarApp() {
       <Calendar
         style={styles.calendar}
         markingType="custom"
-        renderArrow={(direction: "right" | "left") => (
-          <Feather size={24} color="#e8e8e8" name={`chevron-${direction}`} />
-        )}
-        headerStyle={{
-          borderBottomWidth: 1,
-          borderBottomColor: "#e8e8e8",
-          paddingBottom: 10,
-          marginBottom: 0
-        }}
-        theme={{
-          textMonthFontSize: 18,
-          todayTextColor: ColorScheme.circle?.primary,
-          selectedDayBackgroundColor: ColorScheme.circle?.primary,
-          selectedDayTextColor: "#000",
-          arrowColor: "#e8e8e8",
-          textDayStyle: { color: "#000" },
-          arrowStyle: {
-            margin: 0,
-            padding: 0
-          }
-        }}
+        // renderArrow={(direction: "right" | "left") => (
+        //   <Feather size={24} color="#e8e8e8" name={`chevron-${direction}`} />
+        // )}
+        theme={calendarTheme}
+        calendarHeight={!horizontalView ? 300 : undefined}
+        calendarWidth={!horizontalView ? 361 : undefined}
         maxDate={new Date().toDateString()}
         hideExtraDays={false}
         onMonthChange={handleMonthChange}
         onDayPress={handleDayPress}
         markedDates={markedDates}
+        horizontal={horizontalView}
+        monthFormat={"MMMM De yyyy"}
       />
       <View style={styles.centeredView}>
         <Modal
@@ -278,5 +270,30 @@ function CalendarApp() {
     </View>
   );
 }
+
+const calendarTheme = {
+  calendarBackground: "transparent",
+  textMonthFontSize: 18,
+  todayTextColor: ColorScheme.circle?.primary,
+  selectedDayBackgroundColor: ColorScheme.circle?.primary,
+  selectedDayTextColor: "#000",
+  arrowColor: "#e8e8e8",
+  textDayStyle: { color: "#000" },
+  "stylesheet.calendar.header": {
+    header: {
+      paddingTop: 12,
+      paddingBottom: 12,
+      flexDirection: "row",
+      justifyContent: "center",
+      borderBottomWidth: 1,
+      borderBottomColor: "#D9D9D9"
+    },
+    dayHeader: { paddingTop: 12, paddingBottom: 12, color: "#6C7072" }
+  },
+  "stylesheet.day.basic": {
+    base: { margin: 8, width: 32, height: 32, alignItems: "center", justifyContent: "center" },
+    selected: { borderRadius: 50 }
+  }
+};
 
 export default CalendarApp;

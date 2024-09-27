@@ -6,7 +6,12 @@ export const styles = StyleSheet.create({
     paddingTop: 45
   },
   calendar: {
-    backgroundColor: "transparent"
+    backgroundColor: "#fff",
+    padding: 0,
+    marginBottom: 0,
+    marginTop: 20,
+    width: "100%",
+    borderRadius: 16
   },
   selected: {
     color: "#000",
