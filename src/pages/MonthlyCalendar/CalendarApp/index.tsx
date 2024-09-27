@@ -239,7 +239,7 @@ function CalendarApp() {
           }
         }}
         maxDate={new Date().toDateString()}
-        hideExtraDays
+        hideExtraDays={false}
         onMonthChange={handleMonthChange}
         onDayPress={handleDayPress}
         markedDates={markedDates}
