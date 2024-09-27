@@ -3,7 +3,7 @@ import { menstrualApi } from '@services/menstrualApi';
 import { ColorScheme } from '@styles/globalStyles';
 import { ICalendarDateInfo, IMenstrualPeriod } from '@type/menstrual';
 import { View, Text, Alert, Modal, Pressable } from 'react-native';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { CalendarList, DateData, LocaleConfig } from 'react-native-calendars';
 import { styles } from './style';
 
@@ -55,7 +55,7 @@ function currentCycle(cycle: string) {
   return {};
 }
 
-function CalendarListScreen(props: Props) {
+const CalendarListScreen = ((props: Props) => {
   const { horizontalView } = props;
   const [selectedDates, setSelectedDates] = useState<string[]>([]);
   const [selectedDatesInfo, setSelectedDatesInfo] = useState<{ id: number, date: string }[]>([]);
@@ -145,7 +145,7 @@ function CalendarListScreen(props: Props) {
     setSelectedDatesInfo([...selectedDatesInfo, ...datesToFillInfo]);
   };
 
-  const handleDayPress = (day: DateData) => {
+  const handleDayPress = useCallback((day: DateData) => {
     const date = day.dateString;
 
     if (!selectedDates.includes(date)) {
@@ -162,7 +162,7 @@ function CalendarListScreen(props: Props) {
     } else {
       deleteMenstrualPeriodDate(date);
     }
-  };
+  }, [selectedDates]);
 
   const addMenstrualPeriodDate = async (date: string) => {
     try {
@@ -221,7 +221,6 @@ function CalendarListScreen(props: Props) {
     }
   };
 
-
   const formatDateList = (menstrualPeriods: IMenstrualPeriod[]) => {
     return menstrualPeriods.flatMap((menstrualPeriod: IMenstrualPeriod) => {
       return menstrualPeriod.dates.map((menstrualPeriodDate) => menstrualPeriodDate.date);
@@ -267,6 +266,8 @@ function CalendarListScreen(props: Props) {
         style={styles.calendar}
         monthFormat={'MMMM De yyyy'}
         onMonthChange={handleMonthChange}
+        pastScrollRange={360}
+        futureScrollRange={12}
       />
 
       <View style={styles.centeredView}>
@@ -302,7 +303,7 @@ function CalendarListScreen(props: Props) {
       </View>
     </View>
   );
-}
+});
 
 const calendarTheme = {
   calendarBackground: '#fff',
