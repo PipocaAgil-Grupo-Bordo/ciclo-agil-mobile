@@ -7,6 +7,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/core";
 import { NavigationType } from "@routes/type";
 import useBackButtonExit from "@hooks/useBackButtonExit";
+import PageContainer from "../../components/PageContainer"
 
 function Team() {
   const [readyToNext, setReadyToNext] = useState(false);
@@ -15,7 +16,7 @@ function Team() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <Sc.Container>
+      <PageContainer>
         <Sc.Wrapper>
           <Sc.Title>Quem somos nós? Equipe Ciclo Ágil</Sc.Title>
           <Sc.SubTitle>Esses são os colaboradores que fizeram este app:</Sc.SubTitle>
@@ -33,7 +34,7 @@ function Team() {
             setReadyToNext={setReadyToNext}
           />
         )}
-      </Sc.Container>
+      </PageContainer>
     </GestureHandlerRootView>
   );
 }

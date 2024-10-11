@@ -1,13 +1,14 @@
 import React from "react";
-import { Sc } from "./style";
+import  PageContainer from "../../components/PageContainer";
 import { Text } from "react-native";
 import Caption from "./Caption";
 
+
 function Calendar() {
   return (
-    <Sc.Container>
+    <PageContainer>
       <Caption />
-    </Sc.Container>
+    </PageContainer>
   );
 }
 
