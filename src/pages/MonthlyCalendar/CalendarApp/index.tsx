@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { View, Text, Alert, Modal, Pressable } from "react-native";
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars";
-import { Feather } from "@expo/vector-icons";
+// import { Feather } from "@expo/vector-icons";
 import { styles } from "./style";
 import { ColorScheme } from "@styles/globalStyles";
 import { ptBR } from "../../../utils/localeCalendarConfig";
@@ -41,12 +41,14 @@ function CalendarApp(props: Props) {
   const { accessToken } = useTokenContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchMenstrualPeriods();
   }, []);
 
   const fetchMenstrualPeriods = async () => {
+    setIsLoading(true);
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth() + 1;
@@ -56,6 +58,7 @@ function CalendarApp(props: Props) {
       const dates = formatDateList(response.data);
       setSelectedDates(dates);
     }
+    setIsLoading(false);
   };
 
   const handleDayPress = (day: DateData) => {
@@ -235,6 +238,7 @@ function CalendarApp(props: Props) {
         markedDates={markedDates}
         horizontal={horizontalView}
         monthFormat={"MMMM De yyyy"}
+        displayLoadingIndicator={isLoading}
       />
       <View style={styles.centeredView}>
         <Modal
