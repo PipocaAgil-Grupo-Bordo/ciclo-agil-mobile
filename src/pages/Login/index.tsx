@@ -9,7 +9,7 @@ function Login() {
   useBackButtonExit();
 
   return (
-    <PageContainer>
+    <PageContainer style={{ padding: 0 }}>
       <Sc.Wrapper>
         <Logo />
         <SigninForm />

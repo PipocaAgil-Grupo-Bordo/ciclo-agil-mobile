@@ -1,12 +1,10 @@
+import styled from "styled-components/native";
+import { ColorScheme, FontScheme } from "../../styles/globalStyles";
 
-import styled from 'styled-components/native';
-import { ColorScheme } from '../../styles/globalStyles'; 
-
-
-export const Container = styled.View<{ backgroundColor?: string; padding?: string }>`
+export const Container = styled.ScrollView`
   display: flex;
   flex: 1;
-  background-color: ${(props) => props.backgroundColor || ColorScheme.background.primary}; 
-  padding: ${(props) => props.padding || '42px 24px'}; 
-      min-height: 100vh 
-`; 
+  background-color: ${ColorScheme.background.primary};
+  padding: ${FontScheme.size.heading}px;
+  flex-grow: 1;
+`;
