@@ -8,6 +8,7 @@ import { useNavigation } from "@react-navigation/core";
 import { NavigationType } from "@routes/type";
 import useBackButtonExit from "@hooks/useBackButtonExit";
 import PageContainer from "../../components/PageContainer"
+import { horizontalScale, verticalScale } from "@utils/responsivenessHelper";
 
 function Team() {
   const [readyToNext, setReadyToNext] = useState(false);
@@ -16,7 +17,7 @@ function Team() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <PageContainer  style={{ padding: 30 }}>
+      <PageContainer style={{ paddingRight: horizontalScale(21), paddingLeft: horizontalScale(21), paddingBottom: verticalScale(48), paddingTop: verticalScale(100) }}>
         <Sc.Wrapper>
           <Sc.Title>Quem somos nós? Equipe Ciclo Ágil</Sc.Title>
           <Sc.SubTitle>Esses são os colaboradores que fizeram este app:</Sc.SubTitle>
