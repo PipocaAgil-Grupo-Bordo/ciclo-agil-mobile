@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { View, Text, Alert, Modal, Pressable } from "react-native";
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars";
-import { Feather } from "@expo/vector-icons";
 import { styles } from "./style";
 import { ColorScheme } from "@styles/globalStyles";
 import { ptBR } from "../../../utils/localeCalendarConfig";
@@ -41,12 +40,14 @@ function CalendarApp(props: Props) {
   const { accessToken } = useTokenContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchMenstrualPeriods();
   }, []);
 
   const fetchMenstrualPeriods = async () => {
+    setIsLoading(true);
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth() + 1;
@@ -56,6 +57,7 @@ function CalendarApp(props: Props) {
       const dates = formatDateList(response.data);
       setSelectedDates(dates);
     }
+    setIsLoading(false);
   };
 
   const handleDayPress = (day: DateData) => {
@@ -67,7 +69,7 @@ function CalendarApp(props: Props) {
       // Exibir o modal apenas para gaps maiores que 1 dia e menores ou iguais a 7 dias
       if (gap > 1 && gap <= 7) {
         setPendingDate(date);
-        setModalVisible(true); // Mostra o modal
+        setModalVisible(true);
       } else {
         addMenstrualPeriodDate(date);
         setSelectedDates([...selectedDates, date]);
@@ -194,6 +196,7 @@ function CalendarApp(props: Props) {
   };
 
   const handleMonthChange = async (dateInfo: ICalendarDateInfo) => {
+    setIsLoading(true);
     setSelectedDates([]);
     setSelectedDatesInfo([]);
     if (accessToken) {
@@ -207,6 +210,7 @@ function CalendarApp(props: Props) {
       setSelectedDates(dates);
       setSelectedDatesInfo(datesInfo);
     }
+    setIsLoading(false);
   };
 
   const markedDates = selectedDates.reduce((acc, date) => {
@@ -222,9 +226,6 @@ function CalendarApp(props: Props) {
       <Calendar
         style={styles.calendar}
         markingType="custom"
-        // renderArrow={(direction: "right" | "left") => (
-        //   <Feather size={24} color="#e8e8e8" name={`chevron-${direction}`} />
-        // )}
         theme={calendarTheme}
         calendarHeight={!horizontalView ? 300 : undefined}
         calendarWidth={!horizontalView ? 361 : undefined}
@@ -235,6 +236,7 @@ function CalendarApp(props: Props) {
         markedDates={markedDates}
         horizontal={horizontalView}
         monthFormat={"MMMM De yyyy"}
+        displayLoadingIndicator={isLoading}
       />
       <View style={styles.centeredView}>
         <Modal

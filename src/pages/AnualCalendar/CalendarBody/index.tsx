@@ -96,12 +96,14 @@ function CalendarListScreen(props: Props) {
   const { accessToken } = useTokenContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchMenstrualPeriods();
   }, []);
 
   const fetchMenstrualPeriods = async () => {
+    setIsLoading(true);
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth() + 1;
@@ -111,6 +113,7 @@ function CalendarListScreen(props: Props) {
       const dates = formatDateList(response.data);
       setSelectedDates(dates);
     }
+    setIsLoading(false);
   };
 
   const calculateDateGap = (newDate: string) => {
@@ -239,22 +242,6 @@ function CalendarListScreen(props: Props) {
     }
   };
 
-  // const handleMonthChange = async (dateInfo: ICalendarDateInfo) => {
-  //   setSelectedDates([]);
-  //   setSelectedDatesInfo([]);
-  //   if (accessToken) {
-  //     const response = await menstrualApi.getMenstrualPeriods({
-  //       year: dateInfo.year,
-  //       month: dateInfo.month,
-  //       token: accessToken
-  //     });
-  //     const dates = formatDateList(response.data);
-  //     const datesInfo = formatDateInfoList(response.data);
-  //     setSelectedDates(dates);
-  //     setSelectedDatesInfo(datesInfo);
-  //   }
-  // };
-
   const formatDateList = (menstrualPeriods: IMenstrualPeriod[]) => {
     return menstrualPeriods.flatMap((menstrualPeriod: IMenstrualPeriod) => {
       return menstrualPeriod.dates.map((menstrualPeriodDate) => menstrualPeriodDate.date);
@@ -301,7 +288,7 @@ function CalendarListScreen(props: Props) {
         monthFormat={"MMMM De yyyy"}
         pastScrollRange={360}
         futureScrollRange={12}
-        // onMonthChange={handleMonthChange}
+        displayLoadingIndicator={isLoading}
       />
 
       <View style={styles.centeredView}>
