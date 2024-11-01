@@ -67,7 +67,7 @@ function CalendarApp(props: Props) {
       const gap = calculateDateGap(date);
 
       // Exibir o modal apenas para gaps maiores que 1 dia e menores ou iguais a 7 dias
-      if (gap > 1 && gap <= 7) {
+      if (gap > 1 && gap <= 8) {
         setPendingDate(date);
         setModalVisible(true);
       } else {
