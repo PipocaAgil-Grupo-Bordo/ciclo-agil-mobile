@@ -1,7 +1,7 @@
 import { useTokenContext } from "@context/useUserToken";
 import { menstrualApi } from "@services/menstrualApi";
 import { ColorScheme } from "@styles/globalStyles";
-import { ICalendarDateInfo, IMenstrualPeriod } from "@type/menstrual";
+import { IMenstrualPeriod } from "@type/menstrual";
 import { View, Text, Alert, Modal, Pressable } from "react-native";
 import { useEffect, useState } from "react";
 import { CalendarList, DateData, LocaleConfig } from "react-native-calendars";
@@ -96,15 +96,13 @@ function CalendarListScreen(props: Props) {
   const { accessToken } = useTokenContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
+  const [futureDateModalVisible, setFutureDateModalVisible] = useState(false); // Novo estado para o modal de datas futuras
 
   useEffect(() => {
     fetchMenstrualPeriods();
   }, []);
 
   const fetchMenstrualPeriods = async () => {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth() + 1;
     if (accessToken) {
       const response = await menstrualApi.getMenstrualPeriods({ token: accessToken });
       setSelectedDatesInfo(formatDateInfoList(response.data));
@@ -181,6 +179,12 @@ function CalendarListScreen(props: Props) {
 
   const handleDayPress = (day: DateData) => {
     const date = day.dateString;
+    const today = new Date().toISOString().split("T")[0];
+
+    if (date > today) {
+      setFutureDateModalVisible(true); // Mostra o modal de datas futuras
+      return;
+    }
 
     if (!selectedDates.includes(date)) {
       const gap = calculateDateGap(date);
@@ -238,22 +242,6 @@ function CalendarListScreen(props: Props) {
       setSelectedDatesInfo([...selectedDatesInfo, dateInfo]);
     }
   };
-
-  // const handleMonthChange = async (dateInfo: ICalendarDateInfo) => {
-  //   setSelectedDates([]);
-  //   setSelectedDatesInfo([]);
-  //   if (accessToken) {
-  //     const response = await menstrualApi.getMenstrualPeriods({
-  //       year: dateInfo.year,
-  //       month: dateInfo.month,
-  //       token: accessToken
-  //     });
-  //     const dates = formatDateList(response.data);
-  //     const datesInfo = formatDateInfoList(response.data);
-  //     setSelectedDates(dates);
-  //     setSelectedDatesInfo(datesInfo);
-  //   }
-  // };
 
   const formatDateList = (menstrualPeriods: IMenstrualPeriod[]) => {
     return menstrualPeriods.flatMap((menstrualPeriod: IMenstrualPeriod) => {
@@ -331,6 +319,25 @@ function CalendarListScreen(props: Props) {
                   <Text style={styles.textStyle}>Sim</Text>
                 </Pressable>
               </View>
+            </View>
+          </View>
+        </Modal>
+
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={futureDateModalVisible}
+          onRequestClose={() => setFutureDateModalVisible(!futureDateModalVisible)}
+        >
+          <View style={styles.overlay}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalTextAlert}>Datas futuras não podem ser adicionadas!!</Text>
+              <Pressable
+                style={[styles.button, styles.buttonYes, { marginTop: 48 }]}
+                onPress={() => setFutureDateModalVisible(false)}
+              >
+                <Text style={styles.textStyle}>Entendi</Text>
+              </Pressable>
             </View>
           </View>
         </Modal>
