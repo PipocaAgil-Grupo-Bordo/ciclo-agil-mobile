@@ -17,7 +17,7 @@ function Team() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <PageContainer style={{ paddingRight: horizontalScale(21), paddingLeft: horizontalScale(21), paddingBottom: verticalScale(48), paddingTop: verticalScale(100) }}>
+      <Sc.Container>
         <Sc.Wrapper>
           <Sc.Title>Quem somos nós? Equipe Ciclo Ágil</Sc.Title>
           <Sc.SubTitle>Esses são os colaboradores que fizeram este app:</Sc.SubTitle>
@@ -35,7 +35,7 @@ function Team() {
             setReadyToNext={setReadyToNext}
           />
         )}
-      </PageContainer>
+      </Sc.Container>
     </GestureHandlerRootView>
   );
 }
