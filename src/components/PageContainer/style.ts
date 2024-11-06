@@ -1,13 +1,13 @@
 import styled from "styled-components/native";
 import { ColorScheme, FontScheme } from "../../styles/globalStyles";
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.ScrollView`
   display: flex;
   flex: 1;
   background-color: ${ColorScheme.background.primary};
-  padding-top: ${FontScheme.size.heading}px;
-  padding-right: ${FontScheme.size.small}px;
-  padding-bottom: ${FontScheme.size.heading}px;
-  padding-left: ${FontScheme.size.small}px;
+  padding-top: 42px;
+  padding-right: ${FontScheme.size.heading}px;
+  padding-bottom: ${FontScheme.size.small}px;
+  padding-left: ${FontScheme.size.heading}px;
   min-height: 100vh;
 `;
