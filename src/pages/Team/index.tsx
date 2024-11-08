@@ -7,6 +7,8 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/core";
 import { NavigationType } from "@routes/type";
 import useBackButtonExit from "@hooks/useBackButtonExit";
+import PageContainer from "../../components/PageContainer"
+import { horizontalScale, verticalScale } from "@utils/responsivenessHelper";
 
 function Team() {
   const [readyToNext, setReadyToNext] = useState(false);
