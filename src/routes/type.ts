@@ -12,6 +12,8 @@ export type RootStackParamList = {
   LastPeriod: undefined;
   CycleDuration: undefined;
   AuthLoader: undefined;
+  MonthlyCalendar: undefined;
+  AnnualCalendar: undefined
 };
 
 export interface CodeRequestRouteParam {
