@@ -64,10 +64,10 @@ function CalendarApp(props: Props) {
     if (!selectedDates.includes(date)) {
       const gap = calculateDateGap(date);
 
-      // Exibir o modal apenas para gaps maiores que 1 dia e menores ou iguais a 7 dias
-      if (gap > 1 && gap <= 8) {
+      // Exibir o modal apenas para gaps maiores ou iguais a 1 dia e menores ou iguais a 7 dias
+      if (gap >= 1 && gap <= 7) {
         setPendingDate(date);
-        setModalVisible(true); // Mostra o modal
+        setModalVisible(true);
       } else {
         addMenstrualPeriodDate(date);
         setSelectedDates([...selectedDates, date]);
@@ -116,11 +116,24 @@ function CalendarApp(props: Props) {
 
   const calculateDateGap = (newDate: string) => {
     if (selectedDates.length === 0) return 0;
-    const lastSelectedDate = selectedDates[selectedDates.length - 1];
-    const differenceInDays =
-      Math.abs(new Date(newDate).getTime() - new Date(lastSelectedDate).getTime()) /
-      (1000 * 3600 * 24);
-    return differenceInDays;
+    
+    const newDateObj = new Date(newDate);
+    let closestDate = null;
+    let minDiff = Infinity;
+    
+    for (const date of selectedDates) {
+      const dateObj = new Date(date);
+      if (dateObj <= newDateObj) {
+        const diff = Math.abs(newDateObj.getTime() - dateObj.getTime());
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestDate = date;
+        }
+      }
+    }
+    
+    const gap = (minDiff / (1000 * 3600 * 24)) - 1;
+    return gap;
   };
 
   const handleModalResponse = (response: "yes" | "no") => {
@@ -194,8 +207,6 @@ function CalendarApp(props: Props) {
   };
 
   const handleMonthChange = async (dateInfo: ICalendarDateInfo) => {
-    setSelectedDates([]);
-    setSelectedDatesInfo([]);
     if (accessToken) {
       const response = await menstrualApi.getMenstrualPeriods({
         year: dateInfo.year,
@@ -204,8 +215,8 @@ function CalendarApp(props: Props) {
       });
       const dates = formatDateList(response.data);
       const datesInfo = formatDateInfoList(response.data);
-      setSelectedDates(dates);
-      setSelectedDatesInfo(datesInfo);
+      setSelectedDates([...selectedDates, ...dates]);
+      setSelectedDatesInfo([...selectedDatesInfo, ...datesInfo]);
     }
   };
 
