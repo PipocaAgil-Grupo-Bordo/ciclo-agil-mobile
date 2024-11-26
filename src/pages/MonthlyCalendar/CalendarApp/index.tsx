@@ -234,7 +234,7 @@ function CalendarApp(props: Props) {
         onDayPress={handleDayPress}
         markedDates={markedDates}
         horizontal={horizontalView}
-        monthFormat={"MMMM De yyyy"}
+        monthFormat={"MMMM 'de' yyyy"}
       />
       <View style={styles.centeredView}>
         <Modal

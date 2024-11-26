@@ -298,7 +298,7 @@ function CalendarListScreen(props: Props) {
         hideExtraDays={false}
         horizontal={horizontalView}
         style={styles.calendar}
-        monthFormat={"MMMM De yyyy"}
+        monthFormat={"MMMM 'de' yyyy"}
         pastScrollRange={360}
         futureScrollRange={12}
         // onMonthChange={handleMonthChange}
