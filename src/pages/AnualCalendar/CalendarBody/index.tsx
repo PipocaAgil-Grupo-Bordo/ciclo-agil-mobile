@@ -1,11 +1,12 @@
 import { useTokenContext } from "@context/useUserToken";
 import { menstrualApi } from "@services/menstrualApi";
 import { ColorScheme } from "@styles/globalStyles";
-import { ICalendarDateInfo, IMenstrualPeriod } from "@type/menstrual";
+import { IMenstrualPeriod } from "@type/menstrual";
 import { View, Text, Alert, Modal, Pressable } from "react-native";
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { CalendarList, DateData, LocaleConfig } from "react-native-calendars";
 import { styles } from "./style";
+import { useFocusEffect } from "@react-navigation/native";
 
 interface Props {
   horizontalView?: boolean;
@@ -97,14 +98,18 @@ function CalendarListScreen(props: Props) {
   const [modalVisible, setModalVisible] = useState(false);
   const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
 
-  useEffect(() => {
-    fetchMenstrualPeriods();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      fetchMenstrualPeriods();
+
+      return () => {
+        setSelectedDates([]);
+        setSelectedDatesInfo([]);
+      };
+    }, [])
+  );
 
   const fetchMenstrualPeriods = async () => {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth() + 1;
     if (accessToken) {
       const response = await menstrualApi.getMenstrualPeriods({ token: accessToken });
       setSelectedDatesInfo(formatDateInfoList(response.data));
@@ -238,22 +243,6 @@ function CalendarListScreen(props: Props) {
       setSelectedDatesInfo([...selectedDatesInfo, dateInfo]);
     }
   };
-
-  // const handleMonthChange = async (dateInfo: ICalendarDateInfo) => {
-  //   setSelectedDates([]);
-  //   setSelectedDatesInfo([]);
-  //   if (accessToken) {
-  //     const response = await menstrualApi.getMenstrualPeriods({
-  //       year: dateInfo.year,
-  //       month: dateInfo.month,
-  //       token: accessToken
-  //     });
-  //     const dates = formatDateList(response.data);
-  //     const datesInfo = formatDateInfoList(response.data);
-  //     setSelectedDates(dates);
-  //     setSelectedDatesInfo(datesInfo);
-  //   }
-  // };
 
   const formatDateList = (menstrualPeriods: IMenstrualPeriod[]) => {
     return menstrualPeriods.flatMap((menstrualPeriod: IMenstrualPeriod) => {

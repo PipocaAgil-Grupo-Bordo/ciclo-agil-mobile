@@ -68,7 +68,7 @@ function AuthNavigator() {
           return navigation.navigate("Login");
         }
 
-        return navigation.navigate("Home");
+        return navigation.navigate("MainTabs");
       }
 
       navigation.navigate("Login");

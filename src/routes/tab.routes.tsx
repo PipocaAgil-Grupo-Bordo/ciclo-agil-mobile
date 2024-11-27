@@ -8,6 +8,7 @@ import Feather from "react-native-vector-icons/Feather";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import AnnualCalendar from "@pages/AnualCalendar";
+import MonthlyCalendar from "@pages/MonthlyCalendar";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,7 +32,7 @@ function TabRoutes() {
     >
       <Tab.Group>
         <Tab.Screen
-          name="Cycle"
+          name="Home"
           component={Home}
           options={{
             tabBarIcon: ({ color, size }) => <Entypo name="cycle" color={color} size={size} />,
@@ -67,6 +68,13 @@ function TabRoutes() {
             tabBarLabel: "Conteúdo"
           }}
         />
+        <Tab.Screen
+        name="MonthlyCalendar"
+        component={MonthlyCalendar}
+        options={{
+          tabBarButton: () => null,
+        }}
+      />
       </Tab.Group>
     </Tab.Navigator>
   );

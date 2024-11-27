@@ -25,8 +25,7 @@ function StackRoutes() {
       {/* If user is logged in */}
       <Stack.Group>
         <Stack.Screen name="AuthLoader" component={AuthNavigator} />
-        <Stack.Screen name="Home" component={TabRoutes} />
-        <Stack.Screen name="MonthlyCalendar" component={MonthlyCalendar} />
+        <Stack.Screen name="MainTabs" component={TabRoutes} options={{ headerShown: false }}/>
       </Stack.Group>
 
       {/* If user has no account or has logged out */}
