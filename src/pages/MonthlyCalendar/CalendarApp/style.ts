@@ -5,6 +5,11 @@ export const styles = StyleSheet.create({
   container: {
     paddingTop: 45
   },
+  containerHeader: {
+    flexDirection: "row",
+    justifyContent: "center",
+    width: "100%"
+  },
   calendar: {
     backgroundColor: "#fff",
     padding: 0,

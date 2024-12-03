@@ -3,9 +3,11 @@ import { menstrualApi } from "@services/menstrualApi";
 import { ColorScheme } from "@styles/globalStyles";
 import { ICalendarDateInfo, IMenstrualPeriod } from "@type/menstrual";
 import { View, Text, Alert, Modal, Pressable } from "react-native";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CalendarList, DateData, LocaleConfig } from "react-native-calendars";
 import { styles } from "./style";
+import { Sc } from "../../MonthlyCalendar/CalendarHeader/style";
+import CalendarIcon from "react-native-vector-icons/Feather";
 
 interface Props {
   horizontalView?: boolean;
@@ -286,6 +288,28 @@ function CalendarListScreen(props: Props) {
     return acc;
   }, {} as Record<string, any>);
 
+  const renderCustomHeader = (date: XDate | undefined) => {
+    // Verifica se `date` está definido, caso contrário, usa a data atual
+    if (!date) {
+      return <View />;
+    }
+  
+    const nativeDate = new Date(date.toString()); 
+    const month = nativeDate.toLocaleString('pt-BR', { month: 'long' });
+    const year = nativeDate.getFullYear(); 
+
+    return (
+      <View style={{margin: "auto"}}>
+        <Sc.HeaderTitle>
+          <CalendarIcon name="calendar" size={20} color={ColorScheme.icon.idle} /> {" "}
+
+          <Sc.CurrentMonth>{month.charAt(0).toUpperCase() + month.slice(1)}</Sc.CurrentMonth> de{" "}
+          <Sc.CurrentYear>{year}</Sc.CurrentYear>
+        </Sc.HeaderTitle>
+      </View>
+    );
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <CalendarList
@@ -298,9 +322,10 @@ function CalendarListScreen(props: Props) {
         hideExtraDays={false}
         horizontal={horizontalView}
         style={styles.calendar}
-        monthFormat={"MMMM 'de' yyyy"}
+        // monthFormat={"MMMM 'de' yyyy"}
         pastScrollRange={360}
         futureScrollRange={12}
+        renderHeader={(date) => renderCustomHeader(date)}
         // onMonthChange={handleMonthChange}
       />
 

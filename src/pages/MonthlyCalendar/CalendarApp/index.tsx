@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, Alert, Modal, Pressable } from "react-native";
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars";
 import { Feather } from "@expo/vector-icons";
@@ -8,6 +8,10 @@ import { ptBR } from "../../../utils/localeCalendarConfig";
 import { useTokenContext } from "@context/useUserToken";
 import { menstrualApi } from "@services/menstrualApi";
 import { ICalendarDateInfo, IMenstrualPeriod } from "@type/menstrual";
+import { dateHelper } from "@utils/dateHelpers";
+import { Sc } from "../CalendarHeader/style";
+import CalendarHeader from "../CalendarHeader";
+import CalendarIcon from "react-native-vector-icons/Feather";
 
 LocaleConfig.locales["pt-br"] = ptBR;
 LocaleConfig.defaultLocale = "pt-br";
@@ -217,24 +221,49 @@ function CalendarApp(props: Props) {
     return acc;
   }, {} as Record<string, any>);
 
+  const renderCustomHeader = (date: XDate | undefined) => {
+    // Verifica se `date` está definido, caso contrário, usa a data atual
+    if (!date) {
+      return <View />;
+    }
+  
+    const nativeDate = new Date(date.toString()); 
+    const month = nativeDate.toLocaleString('pt-BR', { month: 'long' });
+    const year = nativeDate.getFullYear(); 
+
+    return (
+      <View style={{margin: "auto"}}>
+        <Sc.HeaderTitle>
+          <CalendarIcon name="calendar" size={20} color={ColorScheme.icon.idle} /> {" "}
+
+          <Sc.CurrentMonth>{month.charAt(0).toUpperCase() + month.slice(1)}</Sc.CurrentMonth> de{" "}
+          <Sc.CurrentYear>{year}</Sc.CurrentYear>
+        </Sc.HeaderTitle>
+      </View>
+    );
+  };
+
+
   return (
     <View style={styles.container}>
       <Calendar
         style={styles.calendar}
         markingType="custom"
         // renderArrow={(direction: "right" | "left") => (
-        //   <Feather size={24} color="#e8e8e8" name={`chevron-${direction}`} />
-        // )}
-        theme={calendarTheme}
-        calendarHeight={!horizontalView ? 300 : undefined}
-        calendarWidth={!horizontalView ? 361 : undefined}
-        maxDate={new Date().toDateString()}
-        hideExtraDays={false}
-        onMonthChange={handleMonthChange}
-        onDayPress={handleDayPress}
-        markedDates={markedDates}
-        horizontal={horizontalView}
-        monthFormat={"MMMM 'de' yyyy"}
+          //   <Feather size={24} color="#e8e8e8" name={`chevron-${direction}`} />
+          // )}
+          theme={calendarTheme}
+          calendarHeight={!horizontalView ? 300 : undefined}
+          calendarWidth={!horizontalView ? 361 : undefined}
+          maxDate={new Date().toDateString()}
+          hideExtraDays={false}
+          onMonthChange={handleMonthChange}
+          onDayPress={handleDayPress}
+          markedDates={markedDates}
+          horizontal={horizontalView}
+          // monthFormat={"MMMM 'de' yyyy"}
+          renderHeader={(date) => renderCustomHeader(date)}
+          
       />
       <View style={styles.centeredView}>
         <Modal
@@ -273,7 +302,7 @@ function CalendarApp(props: Props) {
 
 const calendarTheme = {
   calendarBackground: "transparent",
-  textMonthFontSize: 18,
+  textMonthFontSize: 18,  
   todayTextColor: ColorScheme.circle?.primary,
   selectedDayBackgroundColor: ColorScheme.circle?.primary,
   selectedDayTextColor: "#000",
