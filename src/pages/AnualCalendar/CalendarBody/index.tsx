@@ -1,7 +1,7 @@
 import { useTokenContext } from "@context/useUserToken";
 import { menstrualApi } from "@services/menstrualApi";
 import { ColorScheme } from "@styles/globalStyles";
-import { ICalendarDateInfo, IMenstrualPeriod } from "@type/menstrual";
+import { IMenstrualPeriod } from "@type/menstrual";
 import { View, Text, Alert, Modal, Pressable } from "react-native";
 import { useEffect, useState } from "react";
 import { CalendarList, DateData, LocaleConfig } from "react-native-calendars";
@@ -96,21 +96,21 @@ function CalendarListScreen(props: Props) {
   const { accessToken } = useTokenContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchMenstrualPeriods();
   }, []);
 
   const fetchMenstrualPeriods = async () => {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth() + 1;
+    setIsLoading(true);
     if (accessToken) {
       const response = await menstrualApi.getMenstrualPeriods({ token: accessToken });
       setSelectedDatesInfo(formatDateInfoList(response.data));
       const dates = formatDateList(response.data);
       setSelectedDates(dates);
     }
+    setIsLoading(false);
   };
 
   const calculateDateGap = (newDate: string) => {
@@ -139,42 +139,41 @@ function CalendarListScreen(props: Props) {
 
   const fillPreviousDates = async (date: string) => {
     const selectedDate = new Date(date);
-    const firstSelectedDate = selectedDates[0];
-    const firstDate = new Date(firstSelectedDate);
-    const lastSelectedDate = selectedDates[selectedDates.length - 1];
-    const lastDate = new Date(lastSelectedDate);
-    let start;
-    let end;
+    const firstDate = new Date(selectedDates[0]);
+    const lastDate = new Date(selectedDates[selectedDates.length - 1]);
+
     const datesToFill: string[] = [];
     const datesToFillInfo: { id: number; date: string }[] = [];
 
-    if (selectedDate < firstDate) {
-      start = selectedDate;
-      end = firstDate;
-      for (let d = new Date(start); d < end; d.setDate(d.getDate() + 1)) {
-        datesToFill.push(d.toISOString().split("T")[0]);
-      }
-    }
-    if (selectedDate > lastDate) {
-      start = lastDate;
-      end = selectedDate;
-      start.setDate(start.getDate() + 1);
+    const fillDates = (start: Date, end: Date) => {
+      const dates = [];
       for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
-        datesToFill.push(d.toISOString().split("T")[0]);
+        dates.push(d.toISOString().split("T")[0]);
       }
+      return dates;
+    };
+
+    if (selectedDate < firstDate) {
+      datesToFill.push(...fillDates(selectedDate, firstDate));
+    } else if (selectedDate > lastDate) {
+      const start = new Date(lastDate);
+      start.setDate(start.getDate() + 1);
+      datesToFill.push(...fillDates(start, selectedDate));
     }
 
-    setSelectedDates([...selectedDates, ...datesToFill]);
+    // Evita adicionar datas duplicadas e ordena as datas.
+    const uniqueDates = Array.from(new Set([...selectedDates, ...datesToFill]));
+    uniqueDates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
 
-    await Promise.all(
-      datesToFill.map(async (dateToAdd) => {
-        const response = await addMenstrualPeriodDate(dateToAdd);
-        if (response) {
-          datesToFillInfo.push(response);
-        }
-        return response;
-      })
+    setSelectedDates(uniqueDates);
+
+    const responses = await Promise.all(
+      datesToFill.map((dateToAdd) => addMenstrualPeriodDate(dateToAdd))
     );
+
+    responses.forEach((response) => {
+      if (response) datesToFillInfo.push(response);
+    });
 
     setSelectedDatesInfo([...selectedDatesInfo, ...datesToFillInfo]);
   };
@@ -239,22 +238,6 @@ function CalendarListScreen(props: Props) {
     }
   };
 
-  // const handleMonthChange = async (dateInfo: ICalendarDateInfo) => {
-  //   setSelectedDates([]);
-  //   setSelectedDatesInfo([]);
-  //   if (accessToken) {
-  //     const response = await menstrualApi.getMenstrualPeriods({
-  //       year: dateInfo.year,
-  //       month: dateInfo.month,
-  //       token: accessToken
-  //     });
-  //     const dates = formatDateList(response.data);
-  //     const datesInfo = formatDateInfoList(response.data);
-  //     setSelectedDates(dates);
-  //     setSelectedDatesInfo(datesInfo);
-  //   }
-  // };
-
   const formatDateList = (menstrualPeriods: IMenstrualPeriod[]) => {
     return menstrualPeriods.flatMap((menstrualPeriod: IMenstrualPeriod) => {
       return menstrualPeriod.dates.map((menstrualPeriodDate) => menstrualPeriodDate.date);
@@ -292,7 +275,7 @@ function CalendarListScreen(props: Props) {
         markingType="custom"
         onDayPress={handleDayPress}
         markedDates={markedDates}
-        calendarHeight={!horizontalView ? 300 : undefined}
+        calendarHeight={!horizontalView ? 390 : undefined}
         calendarWidth={!horizontalView ? 358 : undefined}
         theme={calendarTheme}
         hideExtraDays={false}
@@ -301,7 +284,7 @@ function CalendarListScreen(props: Props) {
         monthFormat={"MMMM De yyyy"}
         pastScrollRange={360}
         futureScrollRange={12}
-        // onMonthChange={handleMonthChange}
+        displayLoadingIndicator={isLoading}
       />
 
       <View style={styles.centeredView}>
@@ -347,9 +330,21 @@ const calendarTheme = {
   selectedDayTextColor: "#000",
   arrowColor: "#e8e8e8",
   textDayStyle: { color: "#000" },
-  "stylesheet.calendar.main": {
-    week: { flexDirection: "row", justifyContent: "space-around" },
-    container: { marginBottom: 20, width: "100%", backgroundColor: "#fff", borderRadius: 16 }
+  stylesheet: {
+    calendar: {
+      main: {
+        container: {
+          marginBottom: 20,
+          backgroundColor: "#fff",
+          width: "100%",
+          borderRadius: 16
+        },
+        week: {
+          flexDirection: "row",
+          justifyContent: "space-around"
+        }
+      }
+    }
   },
   "stylesheet.calendar.header": {
     header: {
@@ -364,7 +359,7 @@ const calendarTheme = {
     dayHeader: { paddingTop: 12, paddingBottom: 12, color: "#6C7072" }
   },
   "stylesheet.day.basic": {
-    base: { margin: 8, width: 32, height: 32, alignItems: "center", justifyContent: "center" },
+    base: { width: 32, height: 32, alignItems: "center", justifyContent: "center" },
     selected: { borderRadius: 50 }
   }
 };
