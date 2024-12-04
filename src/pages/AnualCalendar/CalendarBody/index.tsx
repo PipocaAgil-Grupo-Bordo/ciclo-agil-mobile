@@ -367,7 +367,7 @@ const calendarTheme = {
       flexDirection: "row",
       justifyContent: "center",
       borderBottomWidth: 1,
-      borderBottomColor: "#D9D9D9",
+      borderBottomColor: "#D9D9D9"
     },
 
     dayHeader: { paddingTop: 12, paddingBottom: 12, color: "#6C7072" }
