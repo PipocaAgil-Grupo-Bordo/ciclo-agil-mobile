@@ -249,9 +249,6 @@ function CalendarApp(props: Props) {
       <Calendar
         style={styles.calendar}
         markingType="custom"
-        // renderArrow={(direction: "right" | "left") => (
-          //   <Feather size={24} color="#e8e8e8" name={`chevron-${direction}`} />
-          // )}
           theme={calendarTheme}
           calendarHeight={!horizontalView ? 300 : undefined}
           calendarWidth={!horizontalView ? 361 : undefined}
@@ -262,7 +259,6 @@ function CalendarApp(props: Props) {
           markedDates={markedDates}
           horizontal={horizontalView}
           renderHeader={(date) => renderCustomHeader(date)}
-          monthFormat={"MMMM 'de' yyyy"}
       />
       <View style={styles.centeredView}>
         <Modal
@@ -301,7 +297,6 @@ function CalendarApp(props: Props) {
 
 const calendarTheme = {
   calendarBackground: "transparent",
-  textMonthFontSize: 18,  
   todayTextColor: ColorScheme.circle?.primary,
   selectedDayBackgroundColor: ColorScheme.circle?.primary,
   selectedDayTextColor: "#000",
@@ -310,8 +305,6 @@ const calendarTheme = {
 
   "stylesheet.calendar.header": {
     header: {
-      paddingTop: 12,
-      paddingBottom: 12,
       flexDirection: "row",
       justifyContent: "center",
       borderBottomWidth: 1,
@@ -320,6 +313,7 @@ const calendarTheme = {
 
     dayHeader: { paddingTop: 12, paddingBottom: 12, color: "#6C7072" }
   },
+
   "stylesheet.day.basic": {
     base: { margin: 8, width: 32, height: 32, alignItems: "center", justifyContent: "center" },
     selected: { borderRadius: 50 }
