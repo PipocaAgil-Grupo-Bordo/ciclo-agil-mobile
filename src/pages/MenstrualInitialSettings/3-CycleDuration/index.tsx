@@ -12,7 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@routes/type";
 import axios from "axios";
 import { tokenAuth } from "@utils/tokenAuthHelper";
-import { menstrualApi } from "@services/menstrualApi";
+import { userApi } from "@services/userApi";
 
 function CycleDuration() {
   // Constants
@@ -75,7 +75,7 @@ function CycleDuration() {
     try {
       setIsLoading(true);
 
-      await menstrualApi.updateCurrentCycle(
+      await userApi.updateUserProfile(
         {
           isMenstrualCycleRegular: cycleData.cycle === "Regular" ? true : false,
           menstrualCycleDuration: cycleData.duration
@@ -109,11 +109,13 @@ function CycleDuration() {
           label="Seu ciclo é:"
           onChange={handleCycleChange}
           options={cycles}
-          currentOption={cycleData.cycle} />
+          currentOption={cycleData.cycle}
+        />
 
         <ScrollableMenu
           items={handleWhichItemArrayShouldShowUp()}
-          onIndexChange={handleDurationChange} />
+          onIndexChange={handleDurationChange}
+        />
 
         <Information text="Não se preocupe se você não souber quanto tempo dura o seu ciclo, você pode registrar depois" />
       </Sc.TopWrapper>
@@ -121,7 +123,8 @@ function CycleDuration() {
       <Buttons
         isLoading={isLoading}
         nextWithData={handleCycleSubmission}
-        nextWithoutData={handleNavigation} />
+        nextWithoutData={handleNavigation}
+      />
 
       {showModal && (
         <Modal
@@ -129,7 +132,8 @@ function CycleDuration() {
           textContent="Algo deu errado"
           buttonText="Avançar mesmo assim"
           setReadyToNext={setShowModal}
-          onPress={() => navigation.navigate("Home")} />
+          onPress={() => navigation.navigate("Home")}
+        />
       )}
     </Sc.Container>
   );

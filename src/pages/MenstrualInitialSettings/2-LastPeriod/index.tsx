@@ -8,9 +8,9 @@ import Buttons from "../SharedComponents/Buttons";
 import Information from "../SharedComponents/Information";
 import DropdownMenu from "../SharedComponents/DropdownMenu";
 import ScrollableMenu from "../SharedComponents/ScrollableMenu";
-import { menstrualApi } from "@services/menstrualApi";
 import { useTokenContext } from "@context/useUserToken";
 import Modal from "@components/Modal";
+import { userApi } from "@services/userApi";
 
 function LastPeriod() {
   // An array with all the capitalized months in portuguese
@@ -68,7 +68,7 @@ function LastPeriod() {
       const lastPeriodDate = new Date(currentYear, indexOfMonth, lastPeriodData.day);
       const lastPeriodDateFormatted = lastPeriodDate.toISOString().split("T")[0];
 
-      await menstrualApi.lastPeriod({ startedAt: lastPeriodDateFormatted }, accessToken!);
+      await userApi.updateUserProfile({ initialPeriodDate: lastPeriodDateFormatted }, accessToken!);
 
       setIsLoading(false);
       navigation.navigate("CycleDuration");
@@ -78,7 +78,8 @@ function LastPeriod() {
 
       setModalOptions({
         title: "Ops!",
-        textContent: "Houve um erro ao salvar a data de início da sua última menstruação. Por favor, tente novamente ou avance sem salvar.",
+        textContent:
+          "Houve um erro ao salvar a data de início da sua última menstruação. Por favor, tente novamente ou avance sem salvar.",
         buttonText: "Avançar mesmo assim"
       });
     }
@@ -98,7 +99,8 @@ function LastPeriod() {
           label="Mês:"
           onChange={handleMonthSelection}
           options={months}
-          currentOption={lastPeriodData.month} />
+          currentOption={lastPeriodData.month}
+        />
 
         <ScrollableMenu items={days} onIndexChange={handleDaySelection} />
 
@@ -108,7 +110,8 @@ function LastPeriod() {
       <Buttons
         isLoading={isLoading}
         nextWithData={handleLastPeriodDate}
-        nextWithoutData={() => navigation.navigate("CycleDuration")} />
+        nextWithoutData={() => navigation.navigate("CycleDuration")}
+      />
 
       {showModal && (
         <Modal
@@ -116,7 +119,8 @@ function LastPeriod() {
           buttonText={modalOptions.buttonText}
           textContent={modalOptions.textContent}
           setReadyToNext={setShowModal}
-          onPress={handleNextScreenNavigation} />
+          onPress={handleNextScreenNavigation}
+        />
       )}
     </Sc.Container>
   );
