@@ -241,22 +241,6 @@ function CalendarListScreen(props: Props) {
     }
   };
 
-  // const handleMonthChange = async (dateInfo: ICalendarDateInfo) => {
-  //   setSelectedDates([]);
-  //   setSelectedDatesInfo([]);
-  //   if (accessToken) {
-  //     const response = await menstrualApi.getMenstrualPeriods({
-  //       year: dateInfo.year,
-  //       month: dateInfo.month,
-  //       token: accessToken
-  //     });
-  //     const dates = formatDateList(response.data);
-  //     const datesInfo = formatDateInfoList(response.data);
-  //     setSelectedDates(dates);
-  //     setSelectedDatesInfo(datesInfo);
-  //   }
-  // };
-
   const formatDateList = (menstrualPeriods: IMenstrualPeriod[]) => {
     return menstrualPeriods.flatMap((menstrualPeriod: IMenstrualPeriod) => {
       return menstrualPeriod.dates.map((menstrualPeriodDate) => menstrualPeriodDate.date);
@@ -300,7 +284,7 @@ function CalendarListScreen(props: Props) {
 
     return (
       <View style={{margin: "auto"}}>
-        <Sc.HeaderTitle>
+        <Sc.HeaderTitle style={{ fontSize: 16 }}>
           <CalendarIcon name="calendar" size={20} color={ColorScheme.icon.idle} /> {" "}
 
           <Sc.CurrentMonth>{month.charAt(0).toUpperCase() + month.slice(1)}</Sc.CurrentMonth> de{" "}
@@ -322,11 +306,9 @@ function CalendarListScreen(props: Props) {
         hideExtraDays={false}
         horizontal={horizontalView}
         style={styles.calendar}
-        // monthFormat={"MMMM 'de' yyyy"}
         pastScrollRange={360}
         futureScrollRange={12}
         renderHeader={(date) => renderCustomHeader(date)}
-        // onMonthChange={handleMonthChange}
       />
 
       <View style={styles.centeredView}>

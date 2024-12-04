@@ -232,8 +232,8 @@ function CalendarApp(props: Props) {
     const year = nativeDate.getFullYear(); 
 
     return (
-      <View style={{margin: "auto"}}>
-        <Sc.HeaderTitle>
+      <View style={{ margin: "auto" }}>
+        <Sc.HeaderTitle style={{ fontSize: 16 }}>
           <CalendarIcon name="calendar" size={20} color={ColorScheme.icon.idle} /> {" "}
 
           <Sc.CurrentMonth>{month.charAt(0).toUpperCase() + month.slice(1)}</Sc.CurrentMonth> de{" "}
@@ -261,9 +261,8 @@ function CalendarApp(props: Props) {
           onDayPress={handleDayPress}
           markedDates={markedDates}
           horizontal={horizontalView}
-          // monthFormat={"MMMM 'de' yyyy"}
           renderHeader={(date) => renderCustomHeader(date)}
-          
+          monthFormat={"MMMM 'de' yyyy"}
       />
       <View style={styles.centeredView}>
         <Modal
@@ -308,6 +307,7 @@ const calendarTheme = {
   selectedDayTextColor: "#000",
   arrowColor: "#e8e8e8",
   textDayStyle: { color: "#000" },
+
   "stylesheet.calendar.header": {
     header: {
       paddingTop: 12,
@@ -317,6 +317,7 @@ const calendarTheme = {
       borderBottomWidth: 1,
       borderBottomColor: "#D9D9D9"
     },
+
     dayHeader: { paddingTop: 12, paddingBottom: 12, color: "#6C7072" }
   },
   "stylesheet.day.basic": {
