@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { View, Text, Alert, Modal, Pressable } from "react-native";
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars";
 import { styles } from "./style";
@@ -7,6 +7,7 @@ import { ptBR } from "../../../utils/localeCalendarConfig";
 import { useTokenContext } from "@context/useUserToken";
 import { menstrualApi } from "@services/menstrualApi";
 import { ICalendarDateInfo, IMenstrualPeriod } from "@type/menstrual";
+import { useFocusEffect } from "@react-navigation/native";
 
 LocaleConfig.locales["pt-br"] = ptBR;
 LocaleConfig.defaultLocale = "pt-br";
@@ -25,7 +26,7 @@ function currentCycle(cycle: string) {
           backgroundColor: "#DCC1EE"
         },
         text: {
-          color: "#000" // Text color on the selected days
+          color: "#000"
         }
       }
     };
@@ -40,24 +41,31 @@ function CalendarApp(props: Props) {
   const { accessToken } = useTokenContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
-  const [isLoading, setIsLoading] = useState(false);
+  const [componentKey, setComponentKey] = useState(0);
 
-  useEffect(() => {
-    fetchMenstrualPeriods();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      setComponentKey(prevKey => prevKey + 1);
+
+      fetchMenstrualPeriods();
+      return () => {
+        setSelectedDates([]);
+        setSelectedDatesInfo([]);
+      };
+    }, [])
+  );
 
   const fetchMenstrualPeriods = async () => {
-    setIsLoading(true);
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth() + 1;
+
     if (accessToken) {
       const response = await menstrualApi.getMenstrualPeriods({ year, month, token: accessToken });
       setSelectedDatesInfo(formatDateInfoList(response.data));
       const dates = formatDateList(response.data);
       setSelectedDates(dates);
     }
-    setIsLoading(false);
   };
 
   const handleDayPress = (day: DateData) => {
@@ -118,23 +126,21 @@ function CalendarApp(props: Props) {
 
   const calculateDateGap = (newDate: string) => {
     if (selectedDates.length === 0) return 0;
-    
+
     const newDateObj = new Date(newDate);
-    let closestDate = null;
     let minDiff = Infinity;
-    
+
     for (const date of selectedDates) {
       const dateObj = new Date(date);
       if (dateObj <= newDateObj) {
         const diff = Math.abs(newDateObj.getTime() - dateObj.getTime());
         if (diff < minDiff) {
           minDiff = diff;
-          closestDate = date;
         }
       }
     }
-    
-    const gap = (minDiff / (1000 * 3600 * 24)) - 1;
+
+    const gap = minDiff / (1000 * 3600 * 24) - 1;
     return gap;
   };
 
@@ -209,7 +215,6 @@ function CalendarApp(props: Props) {
   };
 
   const handleMonthChange = async (dateInfo: ICalendarDateInfo) => {
-    setIsLoading(true);
     if (accessToken) {
       const response = await menstrualApi.getMenstrualPeriods({
         year: dateInfo.year,
@@ -221,7 +226,6 @@ function CalendarApp(props: Props) {
       setSelectedDates([...selectedDates, ...dates]);
       setSelectedDatesInfo([...selectedDatesInfo, ...datesInfo]);
     }
-    setIsLoading(false);
   };
 
   const markedDates = selectedDates.reduce((acc, date) => {
@@ -233,7 +237,7 @@ function CalendarApp(props: Props) {
   }, {} as Record<string, any>);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} key={componentKey}>
       <Calendar
         style={styles.calendar}
         markingType="custom"
@@ -247,7 +251,6 @@ function CalendarApp(props: Props) {
         markedDates={markedDates}
         horizontal={horizontalView}
         monthFormat={"MMMM De yyyy"}
-        displayLoadingIndicator={isLoading}
       />
       <View style={styles.centeredView}>
         <Modal

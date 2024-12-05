@@ -2,7 +2,7 @@ import * as yup from "yup";
 import { isValidEmail } from "./emailSchema";
 
 // Accept only letters and whitespace, ensuring there are at least two letters present
-const nameRegex = /^[a-zA-ZçÇáÁàÀéÉíÍúÚôÔâÂãÃõÕ\s]{2,}$/;
+const nameRegex = /^(?=(?:.*[a-zA-ZçÇáÁàÀéÉèÈíÍúÚôÔâÂãÃõÕ]){2})[a-zA-ZçÇáÁàÀéÉíÍúÚôÔâÂãÃõÕ\s]+$/;
 
 // Accept only numbers, not letters nor symbols
 const dateRegex = /^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/(19\d{2}|20(?:[0-1][0-9]|20|24))$/;
@@ -24,9 +24,9 @@ export const registerSchema = yup.object().shape({
   name: yup
     .string()
     .required("O nome não pode ser vazio")
+    .matches(nameRegex, "Nome deve conter apenas letras")
     .min(2, "O nome deve conter pelo menos 2 caracteres")
-    .max(15, "O nome deve conter no máximo 15 caracteres")
-    .matches(nameRegex, "Nome deve conter apenas letras"),
+    .max(15, "O nome deve conter no máximo 15 caracteres"),
   birthdate: yup
     .string()
     .required("Data de nascimento não pode ser vazia")

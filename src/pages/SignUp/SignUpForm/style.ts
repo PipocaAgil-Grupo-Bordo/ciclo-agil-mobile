@@ -4,7 +4,7 @@ import { ColorScheme, FontScheme } from "@styles/globalStyles";
 
 export const Sc = {
   Container: styled.View`
-    flex: 1;
+    margin-top: 28px;
     margin-bottom: 42px;
   `,
 

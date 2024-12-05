@@ -1,11 +1,12 @@
 import { useTokenContext } from "@context/useUserToken";
 import { menstrualApi } from "@services/menstrualApi";
 import { ColorScheme } from "@styles/globalStyles";
-import { ICalendarDateInfo, IMenstrualPeriod } from "@type/menstrual";
+import { IMenstrualPeriod } from "@type/menstrual";
 import { View, Text, Alert, Modal, Pressable } from "react-native";
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { CalendarList, DateData, LocaleConfig } from "react-native-calendars";
 import { styles } from "./style";
+import { useFocusEffect } from "@react-navigation/native";
 
 interface Props {
   horizontalView?: boolean;
@@ -96,24 +97,25 @@ function CalendarListScreen(props: Props) {
   const { accessToken } = useTokenContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
-  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    fetchMenstrualPeriods();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      fetchMenstrualPeriods();
+
+      return () => {
+        setSelectedDates([]);
+        setSelectedDatesInfo([]);
+      };
+    }, [])
+  );
 
   const fetchMenstrualPeriods = async () => {
-    setIsLoading(true);
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth() + 1;
     if (accessToken) {
       const response = await menstrualApi.getMenstrualPeriods({ token: accessToken });
       setSelectedDatesInfo(formatDateInfoList(response.data));
       const dates = formatDateList(response.data);
       setSelectedDates(dates);
     }
-    setIsLoading(false);
   };
 
   const calculateDateGap = (newDate: string) => {
@@ -279,7 +281,7 @@ function CalendarListScreen(props: Props) {
         markingType="custom"
         onDayPress={handleDayPress}
         markedDates={markedDates}
-        calendarHeight={!horizontalView ? 390 : undefined}
+        calendarHeight={!horizontalView ? 300 : undefined}
         calendarWidth={!horizontalView ? 358 : undefined}
         theme={calendarTheme}
         hideExtraDays={false}
@@ -288,7 +290,7 @@ function CalendarListScreen(props: Props) {
         monthFormat={"MMMM De yyyy"}
         pastScrollRange={360}
         futureScrollRange={12}
-        displayLoadingIndicator={isLoading}
+        // onMonthChange={handleMonthChange}
       />
 
       <View style={styles.centeredView}>
@@ -334,21 +336,9 @@ const calendarTheme = {
   selectedDayTextColor: "#000",
   arrowColor: "#e8e8e8",
   textDayStyle: { color: "#000" },
-  stylesheet: {
-    calendar: {
-      main: {
-        container: {
-          marginBottom: 20,
-          backgroundColor: "#fff",
-          width: "100%",
-          borderRadius: 16
-        },
-        week: {
-          flexDirection: "row",
-          justifyContent: "space-around"
-        }
-      }
-    }
+  "stylesheet.calendar.main": {
+    week: { flexDirection: "row", justifyContent: "space-around" },
+    container: { marginBottom: 20, width: "100%", backgroundColor: "#fff", borderRadius: 16 }
   },
   "stylesheet.calendar.header": {
     header: {
@@ -363,7 +353,7 @@ const calendarTheme = {
     dayHeader: { paddingTop: 12, paddingBottom: 12, color: "#6C7072" }
   },
   "stylesheet.day.basic": {
-    base: { width: 32, height: 32, alignItems: "center", justifyContent: "center" },
+    base: { margin: 8, width: 32, height: 32, alignItems: "center", justifyContent: "center" },
     selected: { borderRadius: 50 }
   }
 };

@@ -37,7 +37,7 @@ function SigninForm() {
 
       reset({ email: "", password: "" }, { keepErrors: false });
 
-      return navigation.navigate("Home");
+      return navigation.navigate("MainTabs");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         const invalidCredentials = error.response?.status === 401;

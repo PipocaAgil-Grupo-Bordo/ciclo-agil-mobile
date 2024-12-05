@@ -8,23 +8,14 @@ interface UserHeaderProps {
 }
 
 function UserHeader({ whoAmI }: UserHeaderProps) {
-  const getFirstName = (fullName: string | undefined) => {
-    if (!fullName) return "";
-    return fullName.split(" ")[0];
-  };
-
   return (
     <Sc.Container>
       <Sc.UserWrapper>
         <Sc.ImageContainer>
           {/* <Sc.Image src="https://github.com/LucianoDLima.png" /> */}
         </Sc.ImageContainer>
-        
-        <Sc.TextContainer>
-          <Sc.Text numberOfLines={1} ellipsizeMode="tail">
-            Olá, {getFirstName(whoAmI?.name)}
-          </Sc.Text>
-        </Sc.TextContainer>
+
+        <Sc.Text>Olá, {whoAmI?.name}</Sc.Text>
       </Sc.UserWrapper>
 
       <Sc.SettingsWrapper>

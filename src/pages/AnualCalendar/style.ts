@@ -1,11 +1,10 @@
-import { ColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
   ContainerWithoutScroll: styled.View`
     flex: 1;
     padding: 28px 16px 0px 16px;
-    background-color: ${ColorScheme.background.primary};;
+    background-color: #F6FAFF;
   `,
   Content: styled.View`
     flex: 1;

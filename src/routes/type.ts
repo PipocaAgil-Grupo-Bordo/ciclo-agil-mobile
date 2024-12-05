@@ -1,8 +1,8 @@
 import { StackNavigationProp } from "@react-navigation/stack";
 
 export type RootStackParamList = {
+  MainTabs: undefined;
   Login: undefined;
-  Home: undefined;
   SignUp: undefined;
   EmailRequest: undefined;
   CodeRequest: CodeRequestRouteParam;

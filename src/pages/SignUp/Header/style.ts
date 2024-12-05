@@ -3,8 +3,8 @@ import styled from "styled-components/native";
 
 export const Sc = {
   Container: styled.View`
+    margin-top: 22px;
     align-items: center;
-    padding-bottom: 20px;
   `,
 
   Wrapper: styled.View`

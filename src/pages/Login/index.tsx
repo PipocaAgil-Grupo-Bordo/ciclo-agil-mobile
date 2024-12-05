@@ -3,18 +3,17 @@ import SigninForm from "./SigninForm";
 import Logo from "@components/Logo";
 import { Sc } from "./style";
 import useBackButtonExit from "@hooks/useBackButtonExit";
-import PageContainer from "../../components/PageContainer"
 
 function Login() {
   useBackButtonExit();
 
   return (
-    <PageContainer style={{ paddingLeft: 0, paddingRight: 0, paddingTop: 0 }}>
+    <Sc.Container>
       <Sc.Wrapper>
         <Logo />
         <SigninForm />
       </Sc.Wrapper>
-    </PageContainer>
+    </Sc.Container>
   );
 }
 

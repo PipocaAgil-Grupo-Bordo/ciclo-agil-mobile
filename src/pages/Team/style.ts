@@ -13,7 +13,7 @@ export const Sc = {
     padding-top: ${verticalScale(100) + "px"};
     justify-content: center;
   `,
-  
+
   Title: styled.Text`
     font-family: ${FontScheme.family.secondary};
     font-size: ${FontScheme.size.heading}px;
