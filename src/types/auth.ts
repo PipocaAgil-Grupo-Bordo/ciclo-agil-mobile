@@ -44,7 +44,6 @@ export interface UserData {
   weight: number;
   isMenstrualCycleRegular: boolean;
   menstrualCycleDuration: number;
-  initialPeriodDate: string;
   userId: number;
   user: User;
 }

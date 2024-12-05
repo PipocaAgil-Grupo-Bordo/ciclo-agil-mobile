@@ -31,7 +31,7 @@ const tertiary = {
 
 const neutralGray = {
   white: "#FFFFFF",
-  100: "#F6FAFF",
+  100: "#FAFCFF",
   200: "#EFF1F6",
   300: "#E2E4E9",
   400: "#D9D9D9",

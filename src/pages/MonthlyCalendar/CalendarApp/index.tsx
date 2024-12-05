@@ -42,7 +42,7 @@ function CalendarApp(props: Props) {
   const [modalVisible, setModalVisible] = useState(false);
   const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
   const [componentKey, setComponentKey] = useState(0);
-        
+
   useFocusEffect(
     useCallback(() => {
       setComponentKey(prevKey => prevKey + 1);
@@ -56,7 +56,6 @@ function CalendarApp(props: Props) {
   );
 
   const fetchMenstrualPeriods = async () => {
-    setIsLoading(true);
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth() + 1;
@@ -67,7 +66,6 @@ function CalendarApp(props: Props) {
       const dates = formatDateList(response.data);
       setSelectedDates(dates);
     }
-    setIsLoading(false);
   };
 
   const handleDayPress = (day: DateData) => {
@@ -217,7 +215,6 @@ function CalendarApp(props: Props) {
   };
 
   const handleMonthChange = async (dateInfo: ICalendarDateInfo) => {
-    setIsLoading(true);
     if (accessToken) {
       const response = await menstrualApi.getMenstrualPeriods({
         year: dateInfo.year,
@@ -229,7 +226,6 @@ function CalendarApp(props: Props) {
       setSelectedDates([...selectedDates, ...dates]);
       setSelectedDatesInfo([...selectedDatesInfo, ...datesInfo]);
     }
-    setIsLoading(false);
   };
 
   const markedDates = selectedDates.reduce((acc, date) => {
@@ -255,7 +251,6 @@ function CalendarApp(props: Props) {
         markedDates={markedDates}
         horizontal={horizontalView}
         monthFormat={"MMMM De yyyy"}
-        displayLoadingIndicator={isLoading}
       />
       <View style={styles.centeredView}>
         <Modal

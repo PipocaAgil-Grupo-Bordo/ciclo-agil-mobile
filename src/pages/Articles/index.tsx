@@ -1,12 +1,12 @@
 import React from "react";
-import PageContainer from "../../components/PageContainer";
+import { Sc } from "./style";
 import { Text } from "react-native";
 
 function Articles() {
   return (
-    <PageContainer>
+    <Sc.Container>
       <Text>Tela de conteúdos</Text>
-    </PageContainer>
+    </Sc.Container>
   );
 }
 

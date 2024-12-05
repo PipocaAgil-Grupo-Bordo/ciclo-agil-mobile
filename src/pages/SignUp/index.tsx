@@ -1,13 +1,13 @@
 import Header from "./Header";
 import SignUpForm from "./SignUpForm";
-import PageContainer from "../../components/PageContainer";
+import { Sc } from "./style";
 
 function SignUp() {
   return (
-    <PageContainer>
+    <Sc.Container>
       <Header />
       <SignUpForm />
-    </PageContainer>
+    </Sc.Container>
   );
 }
 
