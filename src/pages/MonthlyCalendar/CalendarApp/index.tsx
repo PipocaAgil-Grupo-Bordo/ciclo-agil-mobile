@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { View, Text, Alert, Modal, Pressable } from "react-native";
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars";
-import { Feather } from "@expo/vector-icons";
 import { styles } from "./style";
 import { ColorScheme } from "@styles/globalStyles";
 import { ptBR } from "../../../utils/localeCalendarConfig";
@@ -26,7 +25,7 @@ function currentCycle(cycle: string) {
           backgroundColor: "#DCC1EE"
         },
         text: {
-          color: "#000" // Text color on the selected days
+          color: "#000"
         }
       }
     };
@@ -41,6 +40,7 @@ function CalendarApp(props: Props) {
   const { accessToken } = useTokenContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
+  const [futureDateModalVisible, setFutureDateModalVisible] = useState(false); // Novo estado para o modal de datas futuras
 
   useEffect(() => {
     fetchMenstrualPeriods();
@@ -60,6 +60,12 @@ function CalendarApp(props: Props) {
 
   const handleDayPress = (day: DateData) => {
     const date = day.dateString;
+    const today = new Date().toISOString().split("T")[0];
+
+    if (date > today) {
+      setFutureDateModalVisible(true); // Mostra o modal de datas futuras
+      return;
+    }
 
     if (!selectedDates.includes(date)) {
       const gap = calculateDateGap(date);
@@ -222,13 +228,9 @@ function CalendarApp(props: Props) {
       <Calendar
         style={styles.calendar}
         markingType="custom"
-        // renderArrow={(direction: "right" | "left") => (
-        //   <Feather size={24} color="#e8e8e8" name={`chevron-${direction}`} />
-        // )}
         theme={calendarTheme}
         calendarHeight={!horizontalView ? 300 : undefined}
         calendarWidth={!horizontalView ? 361 : undefined}
-        maxDate={new Date().toDateString()}
         hideExtraDays={false}
         onMonthChange={handleMonthChange}
         onDayPress={handleDayPress}
@@ -263,6 +265,25 @@ function CalendarApp(props: Props) {
                   <Text style={styles.textStyle}>Sim</Text>
                 </Pressable>
               </View>
+            </View>
+          </View>
+        </Modal>
+
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={futureDateModalVisible}
+          onRequestClose={() => setFutureDateModalVisible(!futureDateModalVisible)}
+        >
+          <View style={styles.overlay}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalTextAlert}>Datas futuras não podem ser adicionadas!!</Text>
+              <Pressable
+                style={[styles.button, styles.buttonYes, { marginTop: 48 }]}
+                onPress={() => setFutureDateModalVisible(false)}
+              >
+                <Text style={styles.textStyle}>Entendi</Text>
+              </Pressable>
             </View>
           </View>
         </Modal>
