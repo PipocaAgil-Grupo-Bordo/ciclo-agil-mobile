@@ -9,9 +9,12 @@ export const styles = StyleSheet.create({
     margin: 0,
     width: "100%"
   },
+  containerHeader: {
+    margin: "auto"
+  },
   calendar: {
     backgroundColor: "transparent",
-    margin: 0,
+    margin: "auto",
     padding: 0
   },
   centeredView: {

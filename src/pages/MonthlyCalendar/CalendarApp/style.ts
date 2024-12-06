@@ -5,6 +5,9 @@ export const styles = StyleSheet.create({
   container: {
     paddingTop: 45
   },
+  containerHeader: {
+    margin: "auto"
+  },
   calendar: {
     backgroundColor: "#fff",
     padding: 0,

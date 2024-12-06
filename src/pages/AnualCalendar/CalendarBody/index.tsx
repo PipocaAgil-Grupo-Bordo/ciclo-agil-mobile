@@ -3,10 +3,11 @@ import { menstrualApi } from "@services/menstrualApi";
 import { ColorScheme } from "@styles/globalStyles";
 import { IMenstrualPeriod } from "@type/menstrual";
 import { View, Text, Alert, Modal, Pressable } from "react-native";
-import { useCallback, useState } from "react";
 import { CalendarList, DateData, LocaleConfig } from "react-native-calendars";
 import { styles } from "./style";
 import { useFocusEffect } from "@react-navigation/native";
+import React, { useCallback, useState } from "react";
+import CalendarHeader from "../CalendarHeader";
 
 interface Props {
   horizontalView?: boolean;
@@ -275,6 +276,14 @@ function CalendarListScreen(props: Props) {
     return acc;
   }, {} as Record<string, any>);
 
+  const renderCustomHeader = (date: XDate | undefined) => {
+    return (
+      <View style={styles.containerHeader}>
+        <CalendarHeader date={date}/>
+      </View>
+    );
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <CalendarList
@@ -287,10 +296,9 @@ function CalendarListScreen(props: Props) {
         hideExtraDays={false}
         horizontal={horizontalView}
         style={styles.calendar}
-        monthFormat={"MMMM De yyyy"}
         pastScrollRange={360}
         futureScrollRange={12}
-        // onMonthChange={handleMonthChange}
+        renderHeader={(date) => renderCustomHeader(date)}
       />
 
       <View style={styles.centeredView}>
@@ -330,16 +338,17 @@ function CalendarListScreen(props: Props) {
 
 const calendarTheme = {
   calendarBackground: "#fff",
-  textMonthFontSize: 18,
   todayTextColor: ColorScheme.circle?.primary,
   selectedDayBackgroundColor: ColorScheme.circle?.primary,
   selectedDayTextColor: "#000",
   arrowColor: "#e8e8e8",
   textDayStyle: { color: "#000" },
+
   "stylesheet.calendar.main": {
     week: { flexDirection: "row", justifyContent: "space-around" },
     container: { marginBottom: 20, width: "100%", backgroundColor: "#fff", borderRadius: 16 }
   },
+
   "stylesheet.calendar.header": {
     header: {
       paddingTop: 12,
@@ -350,8 +359,10 @@ const calendarTheme = {
       borderBottomWidth: 1,
       borderBottomColor: "#D9D9D9"
     },
+
     dayHeader: { paddingTop: 12, paddingBottom: 12, color: "#6C7072" }
   },
+
   "stylesheet.day.basic": {
     base: { margin: 8, width: 32, height: 32, alignItems: "center", justifyContent: "center" },
     selected: { borderRadius: 50 }
