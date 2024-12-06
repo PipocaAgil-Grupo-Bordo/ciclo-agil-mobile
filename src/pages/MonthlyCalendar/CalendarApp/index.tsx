@@ -44,6 +44,7 @@ function CalendarApp(props: Props) {
   const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
   const [isLoading, setIsLoading] = useState(false);
   const [componentKey, setComponentKey] = useState(0);
+  const [futureDateModalVisible, setFutureDateModalVisible] = useState(false); // Novo estado para o modal de datas futuras
 
   useFocusEffect(
     useCallback(() => {
@@ -74,6 +75,12 @@ function CalendarApp(props: Props) {
 
   const handleDayPress = (day: DateData) => {
     const date = day.dateString;
+    const today = new Date().toISOString().split("T")[0];
+
+    if (date > today) {
+      setFutureDateModalVisible(true); // Mostra o modal de datas futuras
+      return;
+    }
 
     if (!selectedDates.includes(date)) {
       const gap = calculateDateGap(date);
@@ -261,7 +268,6 @@ function CalendarApp(props: Props) {
           theme={calendarTheme}
           calendarHeight={!horizontalView ? 300 : undefined}
           calendarWidth={!horizontalView ? 361 : undefined}
-          maxDate={new Date().toDateString()}
           hideExtraDays={false}
           onMonthChange={handleMonthChange}
           onDayPress={handleDayPress}
@@ -297,6 +303,25 @@ function CalendarApp(props: Props) {
                   <Text style={styles.textStyle}>Sim</Text>
                 </Pressable>
               </View>
+            </View>
+          </View>
+        </Modal>
+
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={futureDateModalVisible}
+          onRequestClose={() => setFutureDateModalVisible(!futureDateModalVisible)}
+        >
+          <View style={styles.overlay}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalTextAlert}>Datas futuras não podem ser adicionadas!!</Text>
+              <Pressable
+                style={[styles.button, styles.buttonYes, { marginTop: 48 }]}
+                onPress={() => setFutureDateModalVisible(false)}
+              >
+                <Text style={styles.textStyle}>Entendi</Text>
+              </Pressable>
             </View>
           </View>
         </Modal>

@@ -99,6 +99,7 @@ function CalendarListScreen(props: Props) {
   const [modalVisible, setModalVisible] = useState(false);
   const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
   const [isLoading, setIsLoading] = useState(false);
+  const [futureDateModalVisible, setFutureDateModalVisible] = useState(false); // Novo estado para o modal de datas futuras
 
   useFocusEffect(
     useCallback(() => {
@@ -190,6 +191,12 @@ function CalendarListScreen(props: Props) {
 
   const handleDayPress = (day: DateData) => {
     const date = day.dateString;
+    const today = new Date().toISOString().split("T")[0];
+
+    if (date > today) {
+      setFutureDateModalVisible(true); // Mostra o modal de datas futuras
+      return;
+    }
 
     if (!selectedDates.includes(date)) {
       const gap = calculateDateGap(date);
@@ -332,6 +339,25 @@ function CalendarListScreen(props: Props) {
                   <Text style={styles.textStyle}>Sim</Text>
                 </Pressable>
               </View>
+            </View>
+          </View>
+        </Modal>
+
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={futureDateModalVisible}
+          onRequestClose={() => setFutureDateModalVisible(!futureDateModalVisible)}
+        >
+          <View style={styles.overlay}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalTextAlert}>Datas futuras não podem ser adicionadas!!</Text>
+              <Pressable
+                style={[styles.button, styles.buttonYes, { marginTop: 48 }]}
+                onPress={() => setFutureDateModalVisible(false)}
+              >
+                <Text style={styles.textStyle}>Entendi</Text>
+              </Pressable>
             </View>
           </View>
         </Modal>
