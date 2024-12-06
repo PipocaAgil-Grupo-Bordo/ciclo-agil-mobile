@@ -275,7 +275,7 @@ function CalendarListScreen(props: Props) {
 
   const renderCustomHeader = (date: XDate | undefined) => {
     return (
-      <View style={{ margin: "auto" }}>
+      <View style={styles.containerHeader}>
         <CalendarHeader date={date}/>
       </View>
     );

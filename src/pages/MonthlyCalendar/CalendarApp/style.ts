@@ -6,9 +6,7 @@ export const styles = StyleSheet.create({
     paddingTop: 45
   },
   containerHeader: {
-    flexDirection: "row",
-    justifyContent: "center",
-    width: "100%"
+    margin: "auto"
   },
   calendar: {
     backgroundColor: "#fff",

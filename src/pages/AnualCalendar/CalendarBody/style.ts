@@ -9,6 +9,9 @@ export const styles = StyleSheet.create({
     margin: 0,
     width: "100%"
   },
+  containerHeader: {
+    margin: "auto"
+  },
   calendar: {
     backgroundColor: "transparent",
     margin: "auto",
