@@ -98,6 +98,7 @@ function CalendarListScreen(props: Props) {
   const { accessToken } = useTokenContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
+  const [isLoading, setIsLoading] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
@@ -111,12 +112,14 @@ function CalendarListScreen(props: Props) {
   );
 
   const fetchMenstrualPeriods = async () => {
+    setIsLoading(true);
     if (accessToken) {
       const response = await menstrualApi.getMenstrualPeriods({ token: accessToken });
       setSelectedDatesInfo(formatDateInfoList(response.data));
       const dates = formatDateList(response.data);
       setSelectedDates(dates);
     }
+    setIsLoading(false);
   };
 
   const calculateDateGap = (newDate: string) => {
@@ -290,7 +293,7 @@ function CalendarListScreen(props: Props) {
         markingType="custom"
         onDayPress={handleDayPress}
         markedDates={markedDates}
-        calendarHeight={!horizontalView ? 300 : undefined}
+        calendarHeight={!horizontalView ? 390 : undefined}
         calendarWidth={!horizontalView ? 358 : undefined}
         theme={calendarTheme}
         hideExtraDays={false}
@@ -298,6 +301,7 @@ function CalendarListScreen(props: Props) {
         style={styles.calendar}
         pastScrollRange={360}
         futureScrollRange={12}
+        displayLoadingIndicator={isLoading}
         renderHeader={(date) => renderCustomHeader(date)}
       />
 
@@ -343,12 +347,22 @@ const calendarTheme = {
   selectedDayTextColor: "#000",
   arrowColor: "#e8e8e8",
   textDayStyle: { color: "#000" },
-
-  "stylesheet.calendar.main": {
-    week: { flexDirection: "row", justifyContent: "space-around" },
-    container: { marginBottom: 20, width: "100%", backgroundColor: "#fff", borderRadius: 16 }
+  stylesheet: {
+    calendar: {
+      main: {
+        container: {
+          marginBottom: 20,
+          backgroundColor: "#fff",
+          width: "100%",
+          borderRadius: 16
+        },
+        week: {
+          flexDirection: "row",
+          justifyContent: "space-around"
+        }
+      }
+    }
   },
-
   "stylesheet.calendar.header": {
     header: {
       paddingTop: 12,
@@ -364,7 +378,7 @@ const calendarTheme = {
   },
 
   "stylesheet.day.basic": {
-    base: { margin: 8, width: 32, height: 32, alignItems: "center", justifyContent: "center" },
+    base: { width: 32, height: 32, alignItems: "center", justifyContent: "center" },
     selected: { borderRadius: 50 }
   }
 };

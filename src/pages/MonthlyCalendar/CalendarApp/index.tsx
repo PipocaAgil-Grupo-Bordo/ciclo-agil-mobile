@@ -42,6 +42,7 @@ function CalendarApp(props: Props) {
   const { accessToken } = useTokenContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
+  const [isLoading, setIsLoading] = useState(false);
   const [componentKey, setComponentKey] = useState(0);
 
   useFocusEffect(
@@ -57,6 +58,7 @@ function CalendarApp(props: Props) {
   );
 
   const fetchMenstrualPeriods = async () => {
+    setIsLoading(true);
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth() + 1;
@@ -67,6 +69,7 @@ function CalendarApp(props: Props) {
       const dates = formatDateList(response.data);
       setSelectedDates(dates);
     }
+    setIsLoading(false);
   };
 
   const handleDayPress = (day: DateData) => {
@@ -129,6 +132,7 @@ function CalendarApp(props: Props) {
     if (selectedDates.length === 0) return 0;
 
     const newDateObj = new Date(newDate);
+    let closestDate = null;
     let minDiff = Infinity;
 
     for (const date of selectedDates) {
@@ -137,6 +141,7 @@ function CalendarApp(props: Props) {
         const diff = Math.abs(newDateObj.getTime() - dateObj.getTime());
         if (diff < minDiff) {
           minDiff = diff;
+          closestDate = date;
         }
       }
     }
@@ -216,6 +221,7 @@ function CalendarApp(props: Props) {
   };
 
   const handleMonthChange = async (dateInfo: ICalendarDateInfo) => {
+    setIsLoading(true);
     if (accessToken) {
       const response = await menstrualApi.getMenstrualPeriods({
         year: dateInfo.year,
@@ -227,6 +233,7 @@ function CalendarApp(props: Props) {
       setSelectedDates([...selectedDates, ...dates]);
       setSelectedDatesInfo([...selectedDatesInfo, ...datesInfo]);
     }
+    setIsLoading(false);
   };
 
   const markedDates = selectedDates.reduce((acc, date) => {
@@ -261,6 +268,7 @@ function CalendarApp(props: Props) {
           markedDates={markedDates}
           horizontal={horizontalView}
           renderHeader={(date) => renderCustomHeader(date)}
+          displayLoadingIndicator={isLoading}
       />
       <View style={styles.centeredView}>
         <Modal

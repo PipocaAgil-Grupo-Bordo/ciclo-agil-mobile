@@ -8,7 +8,7 @@ import Buttons from "../SharedComponents/Buttons";
 import Information from "../SharedComponents/Information";
 import DropdownMenu from "../SharedComponents/DropdownMenu";
 import ScrollableMenu from "../SharedComponents/ScrollableMenu";
-import { menstrualApi } from "@services/menstrualApi";
+import { userApi } from "@services/userApi";
 import { useTokenContext } from "@context/useUserToken";
 import Modal from "@components/Modal";
 
@@ -68,7 +68,7 @@ function LastPeriod() {
       const lastPeriodDate = new Date(currentYear, indexOfMonth, lastPeriodData.day);
       const lastPeriodDateFormatted = lastPeriodDate.toISOString().split("T")[0];
 
-      await menstrualApi.lastPeriod({ startedAt: lastPeriodDateFormatted }, accessToken!);
+      await userApi.updateUserProfile({ initialPeriodDate: lastPeriodDateFormatted }, accessToken!);
 
       setIsLoading(false);
       navigation.navigate("CycleDuration");

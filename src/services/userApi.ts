@@ -12,7 +12,22 @@ function getUserProfile(token: String): Promise<AxiosResponse<UserData>> {
   return promise;
 }
 
+async function updateUserProfile(
+  data: { isMenstrualCycleRegular?: boolean; menstrualCycleDuration?: number, initialPeriodDate?: string },
+  token: string
+): Promise<AxiosResponse<UserData>> {
+  const promise = api.patch("profile", data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json"
+    }
+  });
+
+  return promise;
+}
+
 export const userApi = {
   signUpUser,
-  getUserProfile
+  getUserProfile,
+  updateUserProfile
 };
