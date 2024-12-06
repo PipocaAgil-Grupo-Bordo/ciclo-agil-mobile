@@ -6,8 +6,9 @@ import { View, Text, Alert, Modal, Pressable } from "react-native";
 import React, { useEffect, useState } from "react";
 import { CalendarList, DateData, LocaleConfig } from "react-native-calendars";
 import { styles } from "./style";
-import { Sc } from "../../MonthlyCalendar/CalendarHeader/style";
 import CalendarIcon from "react-native-vector-icons/Feather";
+import { Sc } from "../CalendarHeader/style";
+import CalendarHeader from "../CalendarHeader";
 
 interface Props {
   horizontalView?: boolean;
@@ -273,23 +274,9 @@ function CalendarListScreen(props: Props) {
   }, {} as Record<string, any>);
 
   const renderCustomHeader = (date: XDate | undefined) => {
-    // Verifica se `date` está definido, caso contrário, usa a data atual
-    if (!date) {
-      return <View />;
-    }
-  
-    const nativeDate = new Date(date.toString()); 
-    const month = nativeDate.toLocaleString('pt-BR', { month: 'long' });
-    const year = nativeDate.getFullYear(); 
-
     return (
-      <View style={{margin: "auto"}}>
-        <Sc.HeaderTitle style={{ fontSize: 16 }}>
-          <CalendarIcon name="calendar" size={20} color={ColorScheme.icon.idle} /> {" "}
-
-          <Sc.CurrentMonth>{month.charAt(0).toUpperCase() + month.slice(1)}</Sc.CurrentMonth> de{" "}
-          <Sc.CurrentYear>{year}</Sc.CurrentYear>
-        </Sc.HeaderTitle>
+      <View style={{ margin: "auto" }}>
+        <CalendarHeader date={date}/>
       </View>
     );
   };

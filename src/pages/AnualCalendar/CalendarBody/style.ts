@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
   },
   calendar: {
     backgroundColor: "transparent",
-    margin: 0,
+    margin: "auto",
     padding: 0
   },
   centeredView: {
