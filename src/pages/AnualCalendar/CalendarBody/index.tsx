@@ -125,11 +125,22 @@ function CalendarListScreen(props: Props) {
 
   const calculateDateGap = (newDate: string) => {
     if (selectedDates.length === 0) return 0;
-    const lastSelectedDate = selectedDates[selectedDates.length - 1];
-    const differenceInDays =
-      Math.abs(new Date(newDate).getTime() - new Date(lastSelectedDate).getTime()) /
-      (1000 * 3600 * 24);
-    return differenceInDays;
+    const newDateObj = new Date(newDate);
+    let closestDate = null;
+    let minDiff = Infinity;
+
+    for (const date of selectedDates) {
+      const dateObj = new Date(date);
+      const diff = Math.abs(newDateObj.getTime() - dateObj.getTime());
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestDate = date;
+      }
+    }
+
+    const gap = minDiff / (1000 * 3600 * 24) - 1;
+
+    return gap;
   };
 
   const handleModalResponse = (response: "yes" | "no") => {
@@ -149,42 +160,50 @@ function CalendarListScreen(props: Props) {
 
   const fillPreviousDates = async (date: string) => {
     const selectedDate = new Date(date);
-    const firstSelectedDate = selectedDates[0];
-    const firstDate = new Date(firstSelectedDate);
-    const lastSelectedDate = selectedDates[selectedDates.length - 1];
-    const lastDate = new Date(lastSelectedDate);
-    let start;
-    let end;
+    let closestDate = null;
+    let minDiff = Infinity;
+
+    for (const date of selectedDates) {
+      const dateObj = new Date(date);
+      const diff = Math.abs(selectedDate.getTime() - dateObj.getTime());
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestDate = new Date(date);
+      }
+    }
+
     const datesToFill: string[] = [];
     const datesToFillInfo: { id: number; date: string }[] = [];
 
-    if (selectedDate < firstDate) {
-      start = selectedDate;
-      end = firstDate;
-      for (let d = new Date(start); d < end; d.setDate(d.getDate() + 1)) {
-        datesToFill.push(d.toISOString().split("T")[0]);
-      }
-    }
-    if (selectedDate > lastDate) {
-      start = lastDate;
-      end = selectedDate;
-      start.setDate(start.getDate() + 1);
+    const fillDates = (start: Date, end: Date) => {
+      const dates= [];
+
       for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
-        datesToFill.push(d.toISOString().split("T")[0]);
+        dates.push(d.toISOString().split("T")[0]);
       }
+      return dates;
+    };
+
+    if (selectedDate < closestDate!) {
+      datesToFill.push(...fillDates(selectedDate, closestDate!));
+    } else if (selectedDate > closestDate!) {
+      closestDate?.setDate(closestDate.getDate() + 1);
+      datesToFill.push(...fillDates(closestDate!, selectedDate));
     }
 
-    setSelectedDates([...selectedDates, ...datesToFill]);
+    // Evita adicionar datas duplicadas e ordena as datas.
+    const uniqueDates = Array.from(new Set([...selectedDates, ...datesToFill]));
+    uniqueDates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
 
-    await Promise.all(
-      datesToFill.map(async (dateToAdd) => {
-        const response = await addMenstrualPeriodDate(dateToAdd);
-        if (response) {
-          datesToFillInfo.push(response);
-        }
-        return response;
-      })
+    setSelectedDates(uniqueDates);
+
+    const responses = await Promise.all(
+      datesToFill.map((dateToAdd) => addMenstrualPeriodDate(dateToAdd))
     );
+
+    responses.forEach((response) => {
+      if (response) datesToFillInfo.push(response);
+    });
 
     setSelectedDatesInfo([...selectedDatesInfo, ...datesToFillInfo]);
   };
@@ -202,7 +221,7 @@ function CalendarListScreen(props: Props) {
       const gap = calculateDateGap(date);
 
       // Exibir o modal apenas para gaps maiores que 1 dia e menores ou iguais a 7 dias
-      if (gap > 1 && gap <= 8) {
+      if (gap >= 1 && gap <= 7) {
         setPendingDate(date);
         setModalVisible(true); // Mostra o modal
       } else {
