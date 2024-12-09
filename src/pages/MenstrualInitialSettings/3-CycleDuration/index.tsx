@@ -12,7 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@routes/type";
 import axios from "axios";
 import { tokenAuth } from "@utils/tokenAuthHelper";
-import { menstrualApi } from "@services/menstrualApi";
+import { userApi } from "@services/userApi";
 
 function CycleDuration() {
   // Constants
@@ -64,7 +64,7 @@ function CycleDuration() {
   }
 
   function handleNavigation() {
-    navigation.navigate("Home");
+    navigation.navigate("MainTabs");
 
     if (showModal) {
       setShowModal(false);
@@ -75,7 +75,7 @@ function CycleDuration() {
     try {
       setIsLoading(true);
 
-      await menstrualApi.updateCurrentCycle(
+      await userApi.updateUserProfile(
         {
           isMenstrualCycleRegular: cycleData.cycle === "Regular" ? true : false,
           menstrualCycleDuration: cycleData.duration
@@ -129,7 +129,7 @@ function CycleDuration() {
           textContent="Algo deu errado"
           buttonText="Avançar mesmo assim"
           setReadyToNext={setShowModal}
-          onPress={() => navigation.navigate("Home")} />
+          onPress={() => navigation.navigate("MainTabs")} />
       )}
     </Sc.Container>
   );

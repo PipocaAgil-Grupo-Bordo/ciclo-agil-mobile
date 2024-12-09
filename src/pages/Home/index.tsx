@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Sc } from "./style";
+import PageContainer from "../../components/PageContainer";
 import useBackButtonExit from "@hooks/useBackButtonExit";
 import UserHeader from "./UserHeader";
 import CycleOverview from "./CycleOverview";
@@ -20,12 +20,12 @@ function Home() {
   }, [accessToken]);
   
   return (
-    <Sc.Container>
+    <PageContainer>
       <UserHeader whoAmI={whoAmI} />
       <MiniCalendar />
       <CyclePhase />
       <CycleOverview userProfile={userProfile} />
-    </Sc.Container>
+    </PageContainer>
   );
 }
 

@@ -1,12 +1,16 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "@pages/Home";
-import Calendar from "@pages/Calendar";
+// import Calendar from "@pages/Calendar";
 import Analytics from "@pages/Analytics";
 import Articles from "@pages/Articles";
 import Entypo from "react-native-vector-icons/Entypo";
 import Feather from "react-native-vector-icons/Feather";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { View } from "react-native";
+import { GeneralColors } from "@styles/colors";
+import AnnualCalendar from "@pages/AnualCalendar";
+import MonthlyCalendar from "@pages/MonthlyCalendar";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,11 +22,13 @@ function TabRoutes() {
         tabBarStyle: {
           backgroundColor: ColorScheme.background.secondary,
           elevation: 0,
+          height: 60,
           borderTopWidth: 0
         },
         tabBarActiveTintColor: ColorScheme.accent.highlight,
         tabBarInactiveTintColor: ColorScheme.icon.idle,
         tabBarLabelStyle: {
+          paddingBottom: 4,
           fontSize: 11,
           fontFamily: FontScheme.family.primary
         }
@@ -30,20 +36,34 @@ function TabRoutes() {
     >
       <Tab.Group>
         <Tab.Screen
-          name="Cycle"
+          name="Home"
           component={Home}
           options={{
-            tabBarIcon: ({ color, size }) => <Entypo name="cycle" color={color} size={size} />,
+            tabBarIcon: ({ color, size, focused }) => (
+              <View style={{
+                backgroundColor: focused ? GeneralColors.primary[300] : "transparent",
+                borderRadius: 25,
+                padding: 4,
+              }}>
+                <Entypo name="cycle" color={color} size={size} />
+              </View>
+            ),
             tabBarLabel: "Ciclo",
             tabBarIconStyle: { transform: [{ rotate: "45deg" }] }
           }}
         />
         <Tab.Screen
           name="Calendar"
-          component={Calendar}
+          component={AnnualCalendar}
           options={{
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="calendar-month-outline" size={size} color={color} />
+            tabBarIcon: ({ color, size, focused }) => (
+              <View style={{
+                backgroundColor: focused ? GeneralColors.primary[300] : "transparent",
+                borderRadius: 25,
+                padding: 4,
+              }}>
+                <MaterialCommunityIcons name="calendar-month-outline" size={size} color={color} />
+              </View>
             ),
             tabBarLabel: "Calendário"
           }}
@@ -52,8 +72,14 @@ function TabRoutes() {
           name="Analytics"
           component={Analytics}
           options={{
-            tabBarIcon: ({ color, size }) => (
-              <Feather name="trending-up" color={color} size={size} />
+            tabBarIcon: ({ color, size, focused }) => (
+              <View style={{
+                backgroundColor: focused ? GeneralColors.primary[300] : "transparent",
+                borderRadius: 25,
+                padding: 4,
+              }}>
+                <Feather name="trending-up" color={color} size={size} />
+              </View>
             ),
             tabBarLabel: "Análise"
           }}
@@ -62,10 +88,25 @@ function TabRoutes() {
           name="Articles"
           component={Articles}
           options={{
-            tabBarIcon: ({ color, size }) => <Feather name="book-open" color={color} size={size} />,
+            tabBarIcon: ({ color, size, focused }) => (
+              <View style={{
+                backgroundColor: focused ? GeneralColors.primary[300] : "transparent",
+                borderRadius: 25,
+                padding: 4,
+              }}>
+                <Feather name="book-open" color={color} size={size} />
+              </View>
+            ),
             tabBarLabel: "Conteúdo"
           }}
         />
+        <Tab.Screen
+        name="MonthlyCalendar"
+        component={MonthlyCalendar}
+        options={{
+          tabBarButton: () => null,
+        }}
+      />
       </Tab.Group>
     </Tab.Navigator>
   );

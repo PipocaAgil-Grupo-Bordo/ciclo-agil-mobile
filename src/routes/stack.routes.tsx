@@ -11,6 +11,7 @@ import LastPeriod from "@pages/MenstrualInitialSettings/2-LastPeriod";
 import CycleDuration from "@pages/MenstrualInitialSettings/3-CycleDuration";
 import TabRoutes from "./tab.routes";
 import AuthNavigator from "./auth.router";
+import MonthlyCalendar from "@pages/MonthlyCalendar";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -24,7 +25,7 @@ function StackRoutes() {
       {/* If user is logged in */}
       <Stack.Group>
         <Stack.Screen name="AuthLoader" component={AuthNavigator} />
-        <Stack.Screen name="Home" component={TabRoutes} />
+        <Stack.Screen name="MainTabs" component={TabRoutes} options={{ headerShown: false }}/>
       </Stack.Group>
 
       {/* If user has no account or has logged out */}

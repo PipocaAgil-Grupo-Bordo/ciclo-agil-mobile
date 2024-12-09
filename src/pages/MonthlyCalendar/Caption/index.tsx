@@ -7,14 +7,9 @@ function Caption() {
       <Sc.Title> Entenda o seu ciclo </Sc.Title>
       <Sc.Captions>
         <Sc.Division>
-          <Sc.GroupCaptions isFirstChild={true}>
-            <Sc.PinkCircle />
-            <Sc.Text>1° dia do ciclo</Sc.Text>
-          </Sc.GroupCaptions>
-
           <Sc.GroupCaptions isFirstChild={false}>
             <Sc.DottedPurpleCircle />
-            <Sc.Text>Ciclo Menstrual</Sc.Text>
+            <Sc.Text>Período Menstrual</Sc.Text>
           </Sc.GroupCaptions>
         </Sc.Division>
 
