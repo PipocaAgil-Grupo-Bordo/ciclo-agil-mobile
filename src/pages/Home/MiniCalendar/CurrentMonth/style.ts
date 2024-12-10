@@ -10,7 +10,7 @@ export const Sc = {
 
   CurrentMonth: styled.Text`
     font-family: ${FontScheme.family.primary};
-    font-size: ${FontScheme.size.default}px;
+    font-size: ${FontScheme.size.medium}px;
     color: ${ColorScheme.text.primary};
   `,
 
