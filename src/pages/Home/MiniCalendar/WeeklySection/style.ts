@@ -5,13 +5,15 @@ export const Sc = {
   Container: styled.View`
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 16px;
-    margin-top: 16px;
+    padding: 10px 16px 4px 16px;
+    margin-top: 8px;
+    background-color: white;
+    border-radius: 16px;
   `,
 
   WeekWrapper: styled.View`
     align-items: center;
-    gap: 12px;
+    gap: 25px;
   `,
 
   Week: styled.Text`
