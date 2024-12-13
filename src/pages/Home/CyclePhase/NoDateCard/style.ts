@@ -12,6 +12,8 @@ export const Sc = {
     padding: 14px;
     justify-content: start;
     align-items: center;
+    position: relative;
+    overflow: hidden;
   `,
 
   MainContent: styled.View`
@@ -45,5 +47,10 @@ export const Sc = {
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.small}px;
     color: ${NewColorScheme.text.black};
+  `,
+  IconWrapper: styled.View`
+    position: absolute;
+    right: 0;
+    bottom: 0;
   `
 };
