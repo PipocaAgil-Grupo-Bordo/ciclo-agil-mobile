@@ -1,5 +1,5 @@
 import { GeneralColors as clr } from "./colors";
-import { palette } from "./palette";
+import { Palette } from "./palette";
 
 export const ColorScheme = {
   background: {
@@ -40,39 +40,39 @@ export const ColorScheme = {
 
 export const NewColorScheme = {
   background: {
-    primary: palette.info[50],
-    secondary: palette.secondary[200],
-    tertiary: palette.neutralWhite[500],
-    white: palette.neutralWhite[50]
+    primary: Palette.info[50],
+    secondary: Palette.secondary[200],
+    tertiary: Palette.neutralWhite[500],
+    white: Palette.neutralWhite[50]
   },
 
   foreground: {
-    primary: palette.tertiary[300],
-    secondary: palette.secondary[300],
-    tertiary: palette.primary[100]
+    primary: Palette.tertiary[300],
+    secondary: Palette.secondary[300],
+    tertiary: Palette.primary[100]
   },
 
   text: {
-    primary: palette.neutralBlack[600],
-    secondary: palette.neutralWhite[100],
-    tertiary: palette.neutralGray[400],
-    black: palette.neutralBlack[700],
-    white: palette.neutralWhite[50]
+    primary: Palette.neutralBlack[500],
+    secondary: Palette.neutralWhite[100],
+    tertiary: Palette.neutralGray[400],
+    black: Palette.neutralBlack[700],
+    white: Palette.neutralWhite[50]
   },
 
   border: {
-    primary: palette.neutralGray[400]
+    primary: Palette.neutralGray[400]
   },
 
   accent: {
-    highlight: palette.primary[500],
-    danger: palette.error[500],
-    success: palette.success[500],
-    idle: palette.neutralGray[400]
+    highlight: Palette.primary[500],
+    danger: Palette.error[500],
+    success: Palette.success[500],
+    idle: Palette.neutralGray[400]
   },
 
   circle: {
-    primary: palette.primary[400]
+    primary: Palette.primary[400]
   }
 };
 

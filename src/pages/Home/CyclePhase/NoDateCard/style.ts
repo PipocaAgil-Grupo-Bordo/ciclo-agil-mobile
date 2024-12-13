@@ -1,26 +1,32 @@
-import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
+import { Palette } from "@styles/palette";
 import styled from "styled-components/native";
 
 export const Sc = {
   Container: styled.View`
     margin: 25px 0px;
-    gap: 18px;
+    flex-direction: row;
+    gap: 14px;
   `,
 
   MainContent: styled.View`
-    gap: 18px;
+    gap: 14px;
   `,
 
   Title: styled.Text`
     font-family: ${FontScheme.family.primarySemiBold};
-    font-size: ${FontScheme.size.subheading}px;
-    color: ${ColorScheme.text.primary};
+    font-size: ${FontScheme.size.default}px;
+    color: ${Palette.neutralBlack[400]};
   `,
 
   LeftIcon: styled.View`
     padding: 16px;
-    background-color: ${ColorScheme.foreground.primary};
-    border-radius: 8px;
+    background-color: transparent;
+    border-radius: 50%;
+    border-color: ${NewColorScheme.foreground.primary};
+    display: flex;
+    align-items: center;
+    justify-content: center;
   `,
 
   Subtitle: styled.Text`

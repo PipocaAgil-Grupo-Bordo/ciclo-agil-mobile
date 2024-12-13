@@ -84,7 +84,7 @@ const warning = {
   500: "#EE7312"
 } as const;
 
-export const palette = {
+export const Palette = {
   primary,
   secondary,
   tertiary,
