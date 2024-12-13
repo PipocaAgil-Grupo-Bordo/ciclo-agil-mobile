@@ -1,4 +1,5 @@
 import { GeneralColors as clr } from "./colors";
+import { palette } from "./palette";
 
 export const ColorScheme = {
   background: {
@@ -6,7 +7,6 @@ export const ColorScheme = {
     secondary: clr.neutralBlue[200],
     tertiary: clr.primary[200],
     white: clr.neutralGray.white
-    
   },
 
   foreground: {
@@ -38,6 +38,44 @@ export const ColorScheme = {
   }
 };
 
+export const NewColorScheme = {
+  background: {
+    primary: palette.info[50],
+    secondary: palette.secondary[200],
+    tertiary: palette.neutralWhite[500],
+    white: palette.neutralWhite[50]
+  },
+
+  foreground: {
+    primary: palette.tertiary[300],
+    secondary: palette.secondary[300],
+    tertiary: palette.primary[100]
+  },
+
+  text: {
+    primary: palette.neutralBlack[600],
+    secondary: palette.neutralWhite[100],
+    tertiary: palette.neutralGray[400],
+    black: palette.neutralBlack[700],
+    white: palette.neutralWhite[50]
+  },
+
+  border: {
+    primary: palette.neutralGray[400]
+  },
+
+  accent: {
+    highlight: palette.primary[500],
+    danger: palette.error[500],
+    success: palette.success[500],
+    idle: palette.neutralGray[400]
+  },
+
+  circle: {
+    primary: palette.primary[400]
+  }
+};
+
 export const FontScheme = {
   size: {
     small: 12,
@@ -52,6 +90,7 @@ export const FontScheme = {
     primary: "Montserrat",
     primaryMedium: "MontserratMedium",
     primarySemiBold: "MontserratSemiBold",
+    primaryBold: "MontserratBold",
     secondary: "Lora",
     secondaryMedium: "LoraMedium",
     secondarySemiBold: "LoraSemiBold"
