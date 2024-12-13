@@ -11,9 +11,11 @@ export const Sc = {
     border-radius: 12px;
     padding: 14px;
     justify-content: start;
+    align-items: center;
   `,
 
   MainContent: styled.View`
+    max-width: 70%;
     gap: 14px;
   `,
 
@@ -24,16 +26,24 @@ export const Sc = {
   `,
 
   LeftIcon: styled.View`
-    background-color: transparent;
-    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    border-radius: 80px;
     border-color: ${NewColorScheme.foreground.primary};
+    border-width: 1px;
     align-items: center;
     justify-content: center;
   `,
 
+  LeftIconText: styled.Text`
+    font-family: ${FontScheme.family.primarySemiBold};
+    font-size: ${FontScheme.size.default}px;
+    color: ${Palette.neutralBlack[400]};
+  `,
+
   Subtitle: styled.Text`
     font-family: ${FontScheme.family.primary};
-    font-size: ${FontScheme.size.medium}px;
+    font-size: ${FontScheme.size.small}px;
     color: ${NewColorScheme.text.black};
   `
 };
