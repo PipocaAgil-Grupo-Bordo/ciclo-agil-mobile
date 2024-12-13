@@ -1,4 +1,4 @@
-import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
+import { FontScheme, NewColorScheme } from "@styles/globalStyles";
 import { Palette } from "@styles/palette";
 import styled from "styled-components/native";
 
@@ -7,6 +7,10 @@ export const Sc = {
     margin: 25px 0px;
     flex-direction: row;
     gap: 14px;
+    background-color: ${NewColorScheme.foreground.tertiary};
+    border-radius: 12px;
+    padding: 14px;
+    justify-content: start;
   `,
 
   MainContent: styled.View`
@@ -20,11 +24,9 @@ export const Sc = {
   `,
 
   LeftIcon: styled.View`
-    padding: 16px;
     background-color: transparent;
     border-radius: 50%;
     border-color: ${NewColorScheme.foreground.primary};
-    display: flex;
     align-items: center;
     justify-content: center;
   `,
@@ -32,6 +34,6 @@ export const Sc = {
   Subtitle: styled.Text`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.medium}px;
-    color: ${ColorScheme.text.primary};
+    color: ${NewColorScheme.text.black};
   `
 };

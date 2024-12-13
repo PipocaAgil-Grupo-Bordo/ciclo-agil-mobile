@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Text } from "react-native";
 import { Sc } from "./style";
+import NoDateCard from "./NoDateCard";
 
 function CyclePhase() {
   const [nextMenstrualPeriodDate, setNextMenstrualPeriodDate] = useState("");
@@ -18,7 +18,7 @@ function CyclePhase() {
       </Sc.Card>
     </Sc.Container>
   ) : (
-    <Text>oi</Text>
+    <NoDateCard />
   );
 }
 
