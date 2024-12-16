@@ -30,6 +30,7 @@ export const Sc = {
   LeftIcon: styled.View`
     width: 32px;
     height: 32px;
+    background-color: ${Palette.tertiary[100]};
     border-radius: 80px;
     border-color: ${NewColorScheme.foreground.primary};
     border-width: 1px;
@@ -48,6 +49,7 @@ export const Sc = {
     font-size: ${FontScheme.size.small}px;
     color: ${NewColorScheme.text.black};
   `,
+
   IconWrapper: styled.View`
     position: absolute;
     right: 0;
