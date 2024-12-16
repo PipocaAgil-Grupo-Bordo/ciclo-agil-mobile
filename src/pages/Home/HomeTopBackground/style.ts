@@ -5,15 +5,17 @@ const screenWidth = Dimensions.get("window").width;
 
 export const Sc = {
   Container: styled.ImageBackground`
+    flex: 1;
     position: absolute;
-    top: 0;
+    top: -10;
     left: 0;
     right: 0;
     z-index: 0;
   `,
 
-  Icon: styled.ImageBackground`
+  Image: styled.ImageBackground`
+    flex: 1;
     width: ${screenWidth}px;
-    height: 158px;
+    height: 188px;
   `
 };

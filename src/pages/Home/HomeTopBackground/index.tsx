@@ -4,8 +4,8 @@ import { StatusBar } from "expo-status-bar";
 function HomeTopBackground() {
   return (
     <Sc.Container>
-      <StatusBar style="light" translucent />
-      <Sc.Icon source={require("@images/home-top-bg.png")} resizeMode="cover"></Sc.Icon>
+      <StatusBar style="auto" translucent />
+      <Sc.Image source={require("@images/home-top-bg.png")} resizeMode="cover" />
     </Sc.Container>
   );
 }

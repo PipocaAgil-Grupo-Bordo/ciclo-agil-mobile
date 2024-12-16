@@ -12,7 +12,7 @@ function UserHeader({ whoAmI }: UserHeaderProps) {
     if (!fullName) return "";
     return fullName.split(" ")[0];
   };
-  
+
   return (
     <Sc.Container>
       <Sc.UserWrapper>
@@ -27,10 +27,10 @@ function UserHeader({ whoAmI }: UserHeaderProps) {
         </Sc.TextContainer>
       </Sc.UserWrapper>
 
-      <Sc.SettingsWrapper>
+      {/* <Sc.SettingsWrapper>
         <Feather size={20} name="settings" color={ColorScheme.icon.idle} />
         <Feather size={20} name="bell" color={ColorScheme.icon.idle} />
-      </Sc.SettingsWrapper>
+      </Sc.SettingsWrapper> */}
     </Sc.Container>
   );
 }
