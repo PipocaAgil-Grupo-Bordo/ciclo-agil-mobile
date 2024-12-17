@@ -52,7 +52,7 @@ const neutralBlack = {
 } as const;
 
 const info = {
-  50: "EEF7FF",
+  50: "#EEF7FF",
   100: "#DAEDFF",
   200: "#BDE1FF",
   300: "#8FCEFF",
