@@ -5,6 +5,7 @@ export const Sc = {
   Container: styled.View`
     gap: 20px;
     justify-content: center;
+    margin-bottom: 60px;
   `,
 
   Title: styled.Text`
