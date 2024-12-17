@@ -7,7 +7,7 @@ export const Sc = {
   Container: styled.ImageBackground`
     flex: 1;
     position: absolute;
-    top: -10;
+    top: 0;
     left: 0;
     right: 0;
     z-index: 0;
