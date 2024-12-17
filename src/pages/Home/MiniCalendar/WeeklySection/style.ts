@@ -1,4 +1,4 @@
-import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -23,20 +23,22 @@ export const Sc = {
   `,
 
   DayWrapper: styled.View<{ hasBorder: boolean }>`
-    border-width: ${({ hasBorder }) => (hasBorder ? "1px" : "0")};
+    background-color: ${({ hasBorder }) =>
+      hasBorder ? `${NewColorScheme.foreground.secondary};` : ``};
     border-style: solid;
     border-color: ${ColorScheme.accent.highlight};
     border-radius: 99px;
-
-    width: 32px;
-    height: 32px;
+    padding: 12px 8px 12px 8px;
+    width: 34px;
+    height: 42px;
     align-items: center;
     justify-content: center;
   `,
 
-  Day: styled.Text`
+  Day: styled.Text<{ hasBorder: boolean }>`
     font-family: ${FontScheme.family.primarySemiBold};
     font-size: ${FontScheme.size.default}px;
-    color: ${ColorScheme.text.primary};
+    color: ${({ hasBorder }) =>
+      hasBorder ? `${NewColorScheme.text.white}` : `${ColorScheme.text.primary}`};
   `
 };
