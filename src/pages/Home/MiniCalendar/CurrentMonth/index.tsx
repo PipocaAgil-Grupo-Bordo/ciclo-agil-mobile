@@ -10,10 +10,9 @@ function CurrentMonth() {
 
   return (
     <Sc.Container>
-      {/* TODO: ajustar a cor da fonte e verificar espaçamentos */}
       <CalendarIcon name="calendar" size={18} color={ColorScheme.icon.idle} />
       <Sc.CurrentMonth>
-        {currentMonth} de <Sc.StandOut>{currentYear}</Sc.StandOut>
+        {currentMonth} de {currentYear}
       </Sc.CurrentMonth>
     </Sc.Container>
   );

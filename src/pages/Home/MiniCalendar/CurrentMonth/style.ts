@@ -17,9 +17,5 @@ export const Sc = {
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.medium}px;
     color: ${ColorScheme.text.primary};
-  `,
-
-  StandOut: styled.Text`
-    color: ${ColorScheme.text.tertiary};
   `
 };
