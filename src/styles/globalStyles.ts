@@ -6,7 +6,6 @@ export const ColorScheme = {
     secondary: clr.neutralBlue[200],
     tertiary: clr.primary[200],
     white: clr.neutralGray.white
-    
   },
 
   foreground: {
@@ -30,7 +29,7 @@ export const ColorScheme = {
   },
 
   icon: {
-    idle: clr.neutralGray[900]
+    idle: clr.neutralGray[400]
   },
 
   circle: {
