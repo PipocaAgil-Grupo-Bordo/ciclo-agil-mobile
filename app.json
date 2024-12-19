@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ciclo-agil-mobile",
+    "name": "Ciclo Ágil",
     "slug": "ciclo-agil-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.grupobordo.cicloagilmobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -29,6 +30,11 @@
     "plugins": [
       "expo-secure-store",
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "45fbcf44-90bb-447b-b6d5-c6a574b2e3b3"
+      }
+    }
   }
 }
