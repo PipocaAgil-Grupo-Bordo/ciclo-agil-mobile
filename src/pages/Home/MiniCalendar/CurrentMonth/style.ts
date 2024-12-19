@@ -11,11 +11,15 @@ export const Sc = {
     align-items: center;
     justify-content: center;
     gap: 8px;
+    position: relative;
+    overflow: hidden;
   `,
 
   CurrentMonth: styled.Text`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.medium}px;
     color: ${ColorScheme.text.primary};
-  `
+  `,
+
+  IconWrapper: styled.View``
 };

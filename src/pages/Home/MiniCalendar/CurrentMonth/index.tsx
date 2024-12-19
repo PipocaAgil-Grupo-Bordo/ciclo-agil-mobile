@@ -1,6 +1,5 @@
-import CalendarIcon from "react-native-vector-icons/Feather";
 import { Sc } from "./style";
-import { ColorScheme } from "@styles/globalStyles";
+import Icon from "@images/CalendarIcon.svg";
 
 function CurrentMonth() {
   const currentMonth =
@@ -10,7 +9,9 @@ function CurrentMonth() {
 
   return (
     <Sc.Container>
-      <CalendarIcon name="calendar" size={18} color={ColorScheme.icon.idle} />
+      <Sc.IconWrapper>
+        <Icon width={20} height={20} />
+      </Sc.IconWrapper>
       <Sc.CurrentMonth>
         {currentMonth} de {currentYear}
       </Sc.CurrentMonth>
