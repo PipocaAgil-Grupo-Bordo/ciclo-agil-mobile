@@ -5,9 +5,7 @@ export const Sc = {
   Container: styled.View`
     flex-direction: row;
     justify-content: space-between;
-    padding: 10px 16px 8px 16px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    padding: 16px 16px 8px 16px;
     border-radius: 16px;
   `,
 
@@ -30,7 +28,7 @@ export const Sc = {
     text-align: center;
     border-color: ${ColorScheme.accent.highlight};
     border-radius: 99px;
-    padding: 12px 8px 12px 8px;
+    padding: 12px 9px 12px 9px;
     align-items: center;
     justify-content: center;
   `,

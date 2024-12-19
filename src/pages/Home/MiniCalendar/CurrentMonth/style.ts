@@ -1,4 +1,5 @@
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { Palette } from "@styles/palette";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -6,7 +7,7 @@ export const Sc = {
     margin-top: 16px;
     padding-bottom: 12px;
     border-bottom-width: 1px;
-    border-color: ${ColorScheme.foreground.primary};
+    border-color: ${Palette.neutralGray[200]};
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -17,7 +18,7 @@ export const Sc = {
 
   CurrentMonth: styled.Text`
     font-family: ${FontScheme.family.primary};
-    font-size: ${FontScheme.size.medium}px;
+    font-size: ${FontScheme.size.default}px;
     color: ${ColorScheme.text.primary};
   `,
 
