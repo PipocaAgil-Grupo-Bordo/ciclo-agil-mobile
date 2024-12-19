@@ -31,7 +31,7 @@ function TabRoutes() {
           shadowOpacity: 0.05,
           shadowRadius: 12,
           elevation: 10,
-          height: 60,
+          height: 58,
           borderTopWidth: 0
         },
         tabBarActiveTintColor: ColorScheme.accent.highlight,
@@ -48,9 +48,7 @@ function TabRoutes() {
           name="Home"
           component={Home}
           options={{
-            tabBarIcon: ({ color, size, focused }) => (
-              <HomeIcon width={size} height={size} fill={focused ? "#B065E7" : color} />
-            ),
+            tabBarIcon: ({ color, size }) => <HomeIcon width={size} height={size} color={color} />,
             tabBarLabel: "Home"
           }}
         />
@@ -58,8 +56,8 @@ function TabRoutes() {
           name="Calendar"
           component={AnnualCalendar}
           options={{
-            tabBarIcon: ({ color, size, focused }) => (
-              <CalendarIcon width={size} height={size} fill={focused ? "#B065E7" : color} />
+            tabBarIcon: ({ color, size }) => (
+              <CalendarIcon width={size} height={size} color={color} />
             ),
             tabBarLabel: "Calendário"
           }}
@@ -69,7 +67,7 @@ function TabRoutes() {
           component={Analytics}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <AnalyticsIcon width={size} height={size} fill={color} />
+              <AnalyticsIcon width={size} height={size} color={color} fill={"transparent"} />
             ),
             tabBarLabel: "Relatórios"
           }}
