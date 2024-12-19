@@ -22,7 +22,9 @@ function WeeklySection() {
           <Sc.Week>{block.week}</Sc.Week>
 
           <Sc.DayWrapper hasBorder={daysOfWeek[block.id] === currentDay ? true : false}>
-            <Sc.Day>{daysOfWeek[block.id]}</Sc.Day>
+            <Sc.Day hasBorder={daysOfWeek[block.id] === currentDay ? true : false}>
+              {daysOfWeek[block.id]}
+            </Sc.Day>
           </Sc.DayWrapper>
         </Sc.WeekWrapper>
       ))}
