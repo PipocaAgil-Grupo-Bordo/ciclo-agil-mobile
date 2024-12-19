@@ -1,20 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "@pages/Home";
-// import Calendar from "@pages/Calendar";
 import Analytics from "@pages/Analytics";
-// // import Articles from "@pages/Articles";
-// import Entypo from "react-native-vector-icons/Entypo";
-// import Feather from "react-native-vector-icons/Feather";
-// import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
-// import { View } from "react-native";
-// import { GeneralColors } from "@styles/colors";
 import AnnualCalendar from "@pages/AnualCalendar";
 import MonthlyCalendar from "@pages/MonthlyCalendar";
-import HomeIcon from "../../assets/icons/HomeIcon.svg";
-import CalendarIcon from "../../assets/icons/CalendarIcon.svg";
-import AnalyticsIcon from "../../assets/icons/AnalyticsIcon.svg";
-// import TesteIcon from "../../assets/icons/TesteIcon.svg";
+import HomeIcon from "@icons/HomeIcon.svg";
+import CalendarIcon from "@icons/CalendarIcon.svg";
+import AnalyticsIcon from "@icons/AnalyticsIcon.svg";
 
 const Tab = createBottomTabNavigator();
 
@@ -72,24 +64,6 @@ function TabRoutes() {
             tabBarLabel: "Relatórios"
           }}
         />
-        {/* <Tab.Screen
-          name="Articles"
-          component={Articles}
-          options={{
-            tabBarIcon: ({ color, size, focused }) => (
-              <View
-                style={{
-                  backgroundColor: focused ? GeneralColors.primary[300] : "transparent",
-                  borderRadius: 25,
-                  padding: 4
-                }}
-              >
-                <Feather name="book-open" color={color} size={size} />
-              </View>
-            ),
-            tabBarLabel: "Conteúdo"
-          }}
-        /> */}
         <Tab.Screen
           name="MonthlyCalendar"
           component={MonthlyCalendar}

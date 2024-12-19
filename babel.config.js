@@ -19,9 +19,10 @@ module.exports = function (api) {
         "module-resolver",
         {
           root: ".",
-          extensions: [".tsx", ".ts", ".js", ".jsx", ".png"],
+          extensions: [".tsx", ".ts", ".js", ".jsx", ".svg", ".png"],
           alias: {
             "@images": "./assets/images",
+            "@icons": "./assets/icons",
             "@components": "./src/components",
             "@schemas": "./src/schemas",
             "@services": "./src/services",
