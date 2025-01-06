@@ -30,7 +30,7 @@ export const ColorScheme = {
   },
 
   icon: {
-    idle: clr.neutralGray[900]
+    idle: clr.neutralGray[400]
   },
 
   circle: {
