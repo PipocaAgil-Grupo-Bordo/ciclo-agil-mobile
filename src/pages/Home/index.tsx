@@ -18,7 +18,7 @@ function Home() {
       storeWhoAmI(accessToken, setWhoAmI);
     }
   }, [accessToken]);
-  
+
   return (
     <PageContainer>
       <UserHeader whoAmI={whoAmI} />

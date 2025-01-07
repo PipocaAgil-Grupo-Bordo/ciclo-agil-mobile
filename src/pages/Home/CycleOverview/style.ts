@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 
 export const Sc = {
   Container: styled.View`
-    gap: 20px;
+    gap: 8px;
     justify-content: center;
   `,
 
@@ -11,6 +11,7 @@ export const Sc = {
     font-family: ${FontScheme.family.primarySemiBold};
     font-size: ${FontScheme.size.subheading}px;
     color: ${ColorScheme.text.primary};
+    padding-bottom: 8px;
   `,
 
   OverviewCard: styled.View`
@@ -24,8 +25,6 @@ export const Sc = {
 
   TextContainer: styled.View``,
 
-  Icon: styled.Image``,
-
   MainText: styled.Text`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.medium}px;
@@ -36,5 +35,6 @@ export const Sc = {
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
     color: ${ColorScheme.text.tertiary};
-  `
+  `,
+  IconWrapper: styled.View``
 };
