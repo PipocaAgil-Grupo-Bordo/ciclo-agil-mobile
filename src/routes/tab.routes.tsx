@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "@pages/Home";
 // import Calendar from "@pages/Calendar";
 import Analytics from "@pages/Analytics";
+import NonImplementedFeature from "@pages/NonImplementedFeature";
 import Articles from "@pages/Articles";
 import Entypo from "react-native-vector-icons/Entypo";
 import Feather from "react-native-vector-icons/Feather";
@@ -70,7 +71,7 @@ function TabRoutes() {
         />
         <Tab.Screen
           name="Analytics"
-          component={Analytics}
+          component={NonImplementedFeature}
           options={{
             tabBarIcon: ({ color, size, focused }) => (
               <View style={{
