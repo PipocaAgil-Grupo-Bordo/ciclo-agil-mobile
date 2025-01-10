@@ -2,14 +2,11 @@ import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
-  Container: styled.ScrollView`
-    display: flex;
+  Container: styled.View`
     flex: 1;
-    margin-right: 29px;
-    margin-left: 21px;
-    margin-top: 176px;
-    width: 310px;
-    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: ${ColorScheme.background.primary};
     color: ${ColorScheme.text.primary};
   `,
   Title: styled.Text`
