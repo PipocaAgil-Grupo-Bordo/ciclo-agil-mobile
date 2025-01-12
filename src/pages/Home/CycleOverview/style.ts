@@ -1,4 +1,4 @@
-import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -20,7 +20,10 @@ export const Sc = {
     gap: 16px;
     padding: 16px;
     background-color: white;
+    border-color: #f4f4f4;
+    border-width: 1px;
     border-radius: 12px;
+    elevation: 0.2; /* faz a sombra */
   `,
 
   TextContainer: styled.View``,
@@ -34,7 +37,7 @@ export const Sc = {
   SecondText: styled.Text`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
-    color: ${ColorScheme.text.tertiary};
+    color: #7e797e;
   `,
   IconWrapper: styled.View``
 };
