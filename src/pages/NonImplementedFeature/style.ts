@@ -1,4 +1,5 @@
-import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { FontScheme } from "@styles/globalStyles";
+import { info } from "@styles/palette";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -6,7 +7,7 @@ export const Sc = {
     flex: 1;
     align-items: center;
     justify-content: center;
-    background-color: ${ColorScheme.background.primary};
+    background-color: ${info[100]};
     color: #1f2024;
   `,
   Title: styled.Text`
