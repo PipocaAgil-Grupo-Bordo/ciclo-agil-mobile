@@ -1,4 +1,4 @@
-import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
