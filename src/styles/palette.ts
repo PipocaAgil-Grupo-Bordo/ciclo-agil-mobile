@@ -51,7 +51,7 @@ const neutralBlack = {
   700: "#000000"
 } as const;
 
-export const info = {
+const info = {
   50: "#EEF7FF",
   100: "#F7FBFF",
   200: "#BDE1FF",

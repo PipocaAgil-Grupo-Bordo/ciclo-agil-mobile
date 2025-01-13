@@ -1,5 +1,5 @@
 import { FontScheme } from "@styles/globalStyles";
-import { info } from "@styles/palette";
+import { Palette } from "../../styles/palette";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -7,7 +7,7 @@ export const Sc = {
     flex: 1;
     align-items: center;
     justify-content: center;
-    background-color: ${info[100]};
+    background-color: ${Palette.info[100]};
     color: #1f2024;
   `,
   Title: styled.Text`
