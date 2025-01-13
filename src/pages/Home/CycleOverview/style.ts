@@ -1,9 +1,9 @@
-import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
   Container: styled.View`
-    gap: 20px;
+    gap: 8px;
     justify-content: center;
   `,
 
@@ -11,6 +11,7 @@ export const Sc = {
     font-family: ${FontScheme.family.primarySemiBold};
     font-size: ${FontScheme.size.subheading}px;
     color: ${ColorScheme.text.primary};
+    padding-bottom: 8px;
   `,
 
   OverviewCard: styled.View`
@@ -19,12 +20,13 @@ export const Sc = {
     gap: 16px;
     padding: 16px;
     background-color: white;
+    border-color: #f4f4f4;
+    border-width: 1px;
     border-radius: 12px;
+    elevation: 0.2; /* faz a sombra */
   `,
 
   TextContainer: styled.View``,
-
-  Icon: styled.Image``,
 
   MainText: styled.Text`
     font-family: ${FontScheme.family.primary};
@@ -35,6 +37,7 @@ export const Sc = {
   SecondText: styled.Text`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
-    color: ${ColorScheme.text.tertiary};
-  `
+    color: #7e797e;
+  `,
+  IconWrapper: styled.View``
 };
