@@ -8,7 +8,7 @@ export const Sc = {
     align-items: center;
     justify-content: center;
     background-color: ${Palette.info[100]};
-    color: #1f2024;
+    color: ${Palette.neutralBlack[400]};
   `,
   Title: styled.Text`
     align-self: center;
