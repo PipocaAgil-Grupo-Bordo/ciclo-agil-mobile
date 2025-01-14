@@ -24,6 +24,7 @@ export const Sc = {
   Title: styled.Text`
     font-family: ${FontScheme.family.primarySemiBold};
     font-size: ${FontScheme.size.default}px;
+    font-weight: 600;
     color: ${Palette.neutralBlack[400]};
   `,
 
