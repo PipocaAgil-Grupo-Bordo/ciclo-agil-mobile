@@ -1,4 +1,5 @@
 import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
+import { Palette } from "@styles/palette";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -27,10 +28,13 @@ export const Sc = {
     elevation: 0.2; /* faz a sombra */
   `,
 
-  TextContainer: styled.View``,
+  TextContainer: styled.View`
+    flex-direction: column;
+    gap: 4px;
+  `,
 
   MainText: styled.Text`
-    font-family: ${FontScheme.family.primary};
+    font-family: ${FontScheme.family.primarySemiBold};
     font-size: ${FontScheme.size.medium}px;
     color: ${ColorScheme.text.primary};
   `,
@@ -38,7 +42,7 @@ export const Sc = {
   SecondText: styled.Text`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
-    color: #7e797e;
+    color: ${Palette.neutralGray[500]};
   `,
   IconWrapper: styled.View``
 };
