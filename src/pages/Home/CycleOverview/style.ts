@@ -1,4 +1,4 @@
-import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
+import { FontScheme } from "@styles/globalStyles";
 import { Palette } from "@styles/palette";
 import styled from "styled-components/native";
 
@@ -12,7 +12,7 @@ export const Sc = {
   Title: styled.Text`
     font-family: ${FontScheme.family.primarySemiBold};
     font-size: ${FontScheme.size.subheading}px;
-    color: ${ColorScheme.text.primary};
+    color: ${Palette.neutralBlack[400]};
     padding-bottom: 8px;
   `,
 
@@ -36,7 +36,7 @@ export const Sc = {
   MainText: styled.Text`
     font-family: ${FontScheme.family.primarySemiBold};
     font-size: ${FontScheme.size.medium}px;
-    color: ${ColorScheme.text.primary};
+    color: ${Palette.neutralBlack[400]};
   `,
 
   SecondText: styled.Text`
