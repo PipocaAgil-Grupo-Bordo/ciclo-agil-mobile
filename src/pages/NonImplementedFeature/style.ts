@@ -21,5 +21,6 @@ export const Sc = {
     padding-top: 104px;
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.highlight}px;
+    max-width: 85%;
   `
 };
