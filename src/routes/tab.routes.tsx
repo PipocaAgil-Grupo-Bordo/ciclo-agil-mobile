@@ -6,7 +6,7 @@ import Entypo from "react-native-vector-icons/Entypo";
 import Feather from "react-native-vector-icons/Feather";
 import NonImplementedFeature from "@pages/NonImplementedFeature";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { NewColorScheme, FontScheme } from "@styles/globalStyles";
 import AnnualCalendar from "@pages/AnualCalendar";
 import MonthlyCalendar from "@pages/MonthlyCalendar";
 import HomeIcon from "@icons/HomeIcon.svg";
@@ -22,7 +22,7 @@ function TabRoutes() {
         headerShown: false,
         tabBarStyle: {
           paddingTop: 5,
-          backgroundColor: ColorScheme.background.white,
+          backgroundColor: NewColorScheme.background.white,
           shadowColor: "black",
           shadowOffset: { width: 0, height: -6 },
           shadowOpacity: 0.05,
@@ -31,8 +31,8 @@ function TabRoutes() {
           height: 58,
           borderTopWidth: 0
         },
-        tabBarActiveTintColor: ColorScheme.accent.highlight,
-        tabBarInactiveTintColor: ColorScheme.icon.idle,
+        tabBarActiveTintColor: NewColorScheme.accent.highlight,
+        tabBarInactiveTintColor: NewColorScheme.icon.idle,
         tabBarLabelStyle: {
           paddingBottom: 5,
           fontSize: 12,

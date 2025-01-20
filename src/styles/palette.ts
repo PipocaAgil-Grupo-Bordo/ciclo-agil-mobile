@@ -3,7 +3,7 @@ const primary = {
   200: "#EBD9FB",
   300: "#DCBBF7",
   400: "#C690F0",
-  500: "#8E37C9"
+  500: "#B065E7"
 } as const;
 
 const secondary = {

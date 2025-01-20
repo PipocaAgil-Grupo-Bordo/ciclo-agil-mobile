@@ -71,6 +71,10 @@ export const NewColorScheme = {
     idle: Palette.neutralGray[400]
   },
 
+  icon: {
+    idle: Palette.neutralGray[400]
+  },
+
   circle: {
     primary: Palette.primary[400]
   }
