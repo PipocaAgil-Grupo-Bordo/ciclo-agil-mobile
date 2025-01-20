@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "@pages/Home";
 import Analytics from "@pages/Analytics";
-import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { FontScheme, NewColorScheme } from "@styles/globalStyles";
 import AnnualCalendar from "@pages/AnualCalendar";
 import MonthlyCalendar from "@pages/MonthlyCalendar";
 import HomeIcon from "@icons/HomeIcon.svg";
@@ -17,7 +17,7 @@ function TabRoutes() {
         headerShown: false,
         tabBarStyle: {
           paddingTop: 5,
-          backgroundColor: ColorScheme.background.white,
+          backgroundColor: NewColorScheme.background.white,
           shadowColor: "black",
           shadowOffset: { width: 0, height: -6 },
           shadowOpacity: 0.05,
@@ -26,8 +26,8 @@ function TabRoutes() {
           height: 58,
           borderTopWidth: 0
         },
-        tabBarActiveTintColor: ColorScheme.accent.highlight,
-        tabBarInactiveTintColor: ColorScheme.icon.idle,
+        tabBarActiveTintColor: NewColorScheme.accent.highlight,
+        tabBarInactiveTintColor: NewColorScheme.icon.idle,
         tabBarLabelStyle: {
           paddingBottom: 5,
           fontSize: 12,
