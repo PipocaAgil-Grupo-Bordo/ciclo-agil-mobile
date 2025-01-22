@@ -9,6 +9,7 @@ import { decode, encode } from "base-64";
 // @ts-ignore
 import { tokenAuth } from "@utils/tokenAuthHelper";
 import { ColorScheme } from "@styles/globalStyles";
+import AnimationScreen from "@pages/AnimationScreen";
 
 if (!global.btoa) {
   global.btoa = encode;
@@ -22,6 +23,7 @@ function AuthNavigator() {
   const { accessToken, setRefreshToken, setAccessToken } = useTokenContext();
   const navigation = useNavigation<NavigationType>();
   const [loading, setLoading] = useState(true);
+  const [splashAnimationFinished, setSplashAnimationFinished] = useState<boolean>(false);
 
   useEffect(() => {
     /**
@@ -56,7 +58,7 @@ function AuthNavigator() {
     /**
      * After loading is finished, re-direct user to the correct screen based on whether they had previously logged in or not
      */
-    if (!loading) {
+    if (!loading && splashAnimationFinished) {
       if (accessToken !== undefined) {
         const accessTokenPayload = jwtDecode(accessToken);
 
@@ -73,22 +75,21 @@ function AuthNavigator() {
 
       navigation.navigate("Login");
     }
-  }, [accessToken, loading]);
+  }, [accessToken, loading, splashAnimationFinished]);
 
-  return (
-    // Temporary untill UI team makes a loading screen for this
-    <View
-      style={{
-        backgroundColor: ColorScheme.background.primary,
-        justifyContent: "center",
-        alignItems: "center",
-        flex: 1
-      }}
-    >
-      <Text style={{ marginBottom: 16 }}>Loading...</Text>
-      <ActivityIndicator size={"large"} color={"#000"} />
-    </View>
-  );
+  if (loading || !splashAnimationFinished) {
+    return (
+      <AnimationScreen
+        onAnimationFinish={(isCancelled) => {
+          if (!isCancelled) {
+            setSplashAnimationFinished(true);
+          }
+        }}
+      />
+    );
+  }
+
+  return <View />;
 }
 
 export default AuthNavigator;

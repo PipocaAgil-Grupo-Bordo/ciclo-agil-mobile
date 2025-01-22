@@ -19,8 +19,9 @@ module.exports = function (api) {
         "module-resolver",
         {
           root: ".",
-          extensions: [".tsx", ".ts", ".js", ".jsx", ".png"],
+          extensions: [".tsx", ".ts", ".js", ".jsx", ".png", "json"],
           alias: {
+            "@lottie": "./assets/lottie",
             "@images": "./assets/images",
             "@components": "./src/components",
             "@schemas": "./src/schemas",
