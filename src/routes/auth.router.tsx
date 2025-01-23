@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "./type";
-import { ActivityIndicator, Text, View } from "react-native";
 import { useTokenContext } from "@context/useUserToken";
 import { secureStore } from "@utils/secureStoreHelper";
 import { jwtDecode } from "jwt-decode";
 import { decode, encode } from "base-64";
 // @ts-ignore
 import { tokenAuth } from "@utils/tokenAuthHelper";
-import { ColorScheme } from "@styles/globalStyles";
 import AnimationScreen from "@pages/AnimationScreen";
 
 if (!global.btoa) {
@@ -77,19 +75,15 @@ function AuthNavigator() {
     }
   }, [accessToken, loading, splashAnimationFinished]);
 
-  if (loading || !splashAnimationFinished) {
-    return (
-      <AnimationScreen
-        onAnimationFinish={(isCancelled) => {
-          if (!isCancelled) {
-            setSplashAnimationFinished(true);
-          }
-        }}
-      />
-    );
-  }
-
-  return <View />;
+  return (
+    <AnimationScreen
+      onAnimationFinish={(isCancelled) => {
+        if (!isCancelled) {
+          setSplashAnimationFinished(true);
+        }
+      }}
+    />
+  );
 }
 
 export default AuthNavigator;

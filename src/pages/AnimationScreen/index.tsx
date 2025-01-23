@@ -1,6 +1,8 @@
 import LottieView from "lottie-react-native";
 import { useRef } from "react";
-import { View, StatusBar } from "react-native";
+import Animated, { FadeIn } from "react-native-reanimated";
+
+const AnimatedLottieView = Animated.createAnimatedComponent(LottieView);
 
 function AnimationScreen({
   onAnimationFinish = (isCancelled) => {}
@@ -10,18 +12,16 @@ function AnimationScreen({
   const animation = useRef<LottieView>(null);
 
   return (
-    <>
-      <StatusBar hidden />
-      <LottieView
-        ref={animation}
-        style={{ flex: 1 }}
-        resizeMode="cover"
-        onAnimationFinish={onAnimationFinish}
-        loop={false}
-        autoPlay
-        source={require("@lottie/animated-splashscreen.json")}
-      />
-    </>
+    <AnimatedLottieView
+      entering={FadeIn}
+      ref={animation}
+      style={{ flex: 1 }}
+      resizeMode="cover"
+      onAnimationFinish={onAnimationFinish}
+      loop={false}
+      autoPlay
+      source={require("@lottie/animated-splashcreen.json")}
+    />
   );
 }
 
