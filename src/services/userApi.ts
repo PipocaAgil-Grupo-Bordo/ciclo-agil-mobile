@@ -8,15 +8,21 @@ function signUpUser(body: Omit<RegisterFields, "confirmEmail" | "confirmPassword
 }
 
 function getUserProfile(token: String): Promise<AxiosResponse<UserData>> {
-  const promise = api.get("/profile", { headers: { Authorization: `Bearer ${token}` } });
+  const promise = api.get("/profiles/my-profile", {
+    headers: { Authorization: `Bearer ${token}` }
+  });
   return promise;
 }
 
 async function updateUserProfile(
-  data: { isMenstrualCycleRegular?: boolean; menstrualCycleDuration?: number, initialPeriodDate?: string },
+  data: {
+    isMenstrualCycleRegular?: boolean;
+    menstrualCycleDuration?: number;
+    initialPeriodDate?: string;
+  },
   token: string
 ): Promise<AxiosResponse<UserData>> {
-  const promise = api.patch("profile", data, {
+  const promise = api.patch("/profiles", data, {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json"
