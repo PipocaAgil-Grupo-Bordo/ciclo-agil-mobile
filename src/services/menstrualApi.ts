@@ -6,7 +6,7 @@ async function createPeriodDate(
   cycleData: { date: string },
   token: string
 ): Promise<AxiosResponse<ICreateMenstrualPeriodDateResponse>> {
-  const promise = api.post("menstrual-period/date", cycleData, {
+  const promise = api.post("menstrual-periods/dates", cycleData, {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json"
@@ -28,7 +28,7 @@ async function getMenstrualPeriods({
   // Define the query parameters
   const params = year && month ? { year, month } : year ? { year } : null;
 
-  const promise = api.get("menstrual-period", {
+  const promise = api.get("menstrual-periods", {
     headers: {
       Authorization: `Bearer ${token}`
     },
@@ -39,7 +39,7 @@ async function getMenstrualPeriods({
 }
 
 async function getLastMenstrualPeriod(token: string): Promise<AxiosResponse<any>> {
-  const promise = api.get("menstrual-period/last", {
+  const promise = api.get("menstrual-periods/last", {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -52,7 +52,7 @@ async function deletePeriodDate(
   id: number,
   token: string
 ): Promise<AxiosResponse<{ code: string }>> {
-  const promise = api.delete(`menstrual-period/date/${id}`, {
+  const promise = api.delete(`menstrual-periods/dates/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`
     }
