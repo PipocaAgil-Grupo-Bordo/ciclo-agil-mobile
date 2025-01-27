@@ -12,19 +12,30 @@
       "resizeMode": "cover",
       "backgroundColor": "#8c37c6"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#8c37c6"
+      },
+      "package": "com.grupobordo.cicloagilmobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-secure-store", "expo-font"]
+    "plugins": [
+      "expo-secure-store",
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "45fbcf44-90bb-447b-b6d5-c6a574b2e3b3"
+      }
+    }
   }
 }
