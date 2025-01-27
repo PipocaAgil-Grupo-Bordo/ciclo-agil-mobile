@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "./type";
+import { ActivityIndicator, Text, View } from "react-native";
 import { useTokenContext } from "@context/useUserToken";
 import { secureStore } from "@utils/secureStoreHelper";
 import { jwtDecode } from "jwt-decode";
 import { decode, encode } from "base-64";
 // @ts-ignore
 import { tokenAuth } from "@utils/tokenAuthHelper";
-import AnimationScreen from "@pages/AnimationScreen";
+import { ColorScheme } from "@styles/globalStyles";
 
 if (!global.btoa) {
   global.btoa = encode;
@@ -21,7 +22,6 @@ function AuthNavigator() {
   const { accessToken, setRefreshToken, setAccessToken } = useTokenContext();
   const navigation = useNavigation<NavigationType>();
   const [loading, setLoading] = useState(true);
-  const [splashAnimationFinished, setSplashAnimationFinished] = useState<boolean>(false);
 
   useEffect(() => {
     /**
@@ -56,7 +56,7 @@ function AuthNavigator() {
     /**
      * After loading is finished, re-direct user to the correct screen based on whether they had previously logged in or not
      */
-    if (!loading && splashAnimationFinished) {
+    if (!loading) {
       if (accessToken !== undefined) {
         const accessTokenPayload = jwtDecode(accessToken);
 
@@ -73,16 +73,21 @@ function AuthNavigator() {
 
       navigation.navigate("Login");
     }
-  }, [accessToken, loading, splashAnimationFinished]);
+  }, [accessToken, loading]);
 
   return (
-    <AnimationScreen
-      onAnimationFinish={(isCancelled) => {
-        if (!isCancelled) {
-          setSplashAnimationFinished(true);
-        }
+    // Temporary untill UI team makes a loading screen for this
+    <View
+      style={{
+        backgroundColor: ColorScheme.background.primary,
+        justifyContent: "center",
+        alignItems: "center",
+        flex: 1
       }}
-    />
+    >
+      <Text style={{ marginBottom: 16 }}>Loading...</Text>
+      <ActivityIndicator size={"large"} color={"#000"} />
+    </View>
   );
 }
 

@@ -1,6 +1,6 @@
 import LottieView from "lottie-react-native";
 import { useRef } from "react";
-import Animated, { FadeIn } from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 
 const AnimatedLottieView = Animated.createAnimatedComponent(LottieView);
 
@@ -13,7 +13,6 @@ function AnimationScreen({
 
   return (
     <AnimatedLottieView
-      entering={FadeIn}
       ref={animation}
       style={{ flex: 1 }}
       resizeMode="cover"
