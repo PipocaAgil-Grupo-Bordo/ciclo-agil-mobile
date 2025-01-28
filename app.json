@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Ciclo Ágil",
-    "backgroundColor": "#8c37c6",
+    "backgroundColor": "#9c5ad0",
     "slug": "ciclo-agil-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/splashscreen.png",
       "resizeMode": "cover",
-      "backgroundColor": "#8c37c6"
+      "backgroundColor": "#9c5ad0"
     },
     "assetBundlePatterns": [
       "**/*"
