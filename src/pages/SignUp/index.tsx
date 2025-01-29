@@ -4,7 +4,7 @@ import PageContainer from "../../components/PageContainer";
 
 function SignUp() {
   return (
-    <PageContainer>
+    <PageContainer style={{ backgroundColor: "#F6FAFF" }}>
       <Header />
       <SignUpForm />
     </PageContainer>
