@@ -1,3 +1,4 @@
+import { StatusBar } from "expo-status-bar";
 import LottieView from "lottie-react-native";
 import { useRef } from "react";
 import Animated from "react-native-reanimated";
@@ -12,15 +13,18 @@ function AnimationScreen({
   const animation = useRef<LottieView>(null);
 
   return (
-    <AnimatedLottieView
-      ref={animation}
-      style={{ flex: 1 }}
-      resizeMode="cover"
-      onAnimationFinish={onAnimationFinish}
-      loop={false}
-      autoPlay
-      source={require("@lottie/animated-splashcreen.json")}
-    />
+    <>
+      <StatusBar translucent />
+      <AnimatedLottieView
+        ref={animation}
+        style={{ flex: 1 }}
+        resizeMode="cover"
+        onAnimationFinish={onAnimationFinish}
+        loop={false}
+        autoPlay
+        source={require("../../../assets/lottie/animated-splashscreen.json")}
+      />
+    </>
   );
 }
 
