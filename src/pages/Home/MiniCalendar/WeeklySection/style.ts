@@ -21,23 +21,33 @@ export const Sc = {
     color: ${ColorScheme.text.secondary};
   `,
 
-  DayWrapper: styled.View<{ hasBorder: boolean }>`
-    background-color: ${({ hasBorder }) =>
-      hasBorder ? `${NewColorScheme.foreground.secondary};` : ``};
+  DayWrapper: styled.View<{
+    hasBorder: boolean;
+    isSelected?: boolean;
+    isFirstMenstrualDay?: boolean;
+  }>`
+    background-color: ${({ hasBorder, isSelected }) =>
+      isSelected ? `#F6ABEC` : hasBorder ? `${NewColorScheme.foreground.secondary};` : ``};
     border-style: solid;
     text-align: center;
-    border-color: ${ColorScheme.accent.highlight};
+    width: 30px;
+    height: 41px;
+    border-width: ${({ isSelected }) => (!isSelected ? `0px` : `1px`)};
+    border-color: ${({ isSelected }) => (!isSelected ? `transparent` : `#F067E1`)};
     border-radius: 99px;
-    padding: 12px 9px 12px 9px;
     align-items: center;
     justify-content: center;
   `,
 
-  Day: styled.Text<{ hasBorder: boolean }>`
+  Day: styled.Text<{ hasBorder: boolean; isSelected?: boolean; isFirstMenstrualDay?: boolean }>`
     text-align: center;
     font-family: ${FontScheme.family.primarySemiBold};
     font-size: ${FontScheme.size.small}px;
-    color: ${({ hasBorder }) =>
-      hasBorder ? `${NewColorScheme.text.white}` : `${ColorScheme.text.primary}`};
+    color: ${({ hasBorder, isSelected }) =>
+      isSelected
+        ? `${NewColorScheme.text.white}`
+        : hasBorder
+        ? `${NewColorScheme.text.white}`
+        : `${ColorScheme.text.primary}`};
   `
 };

@@ -14,11 +14,11 @@ function MiniCalendar() {
   };
   return (
     <TouchableOpacity onPress={handlePress}>
-    <Sc.Container>
-      <CurrentMonth />
+      <Sc.Container>
+        <CurrentMonth />
 
-      <WeeklySection />
-    </Sc.Container>
+        <WeeklySection />
+      </Sc.Container>
     </TouchableOpacity>
   );
 }
