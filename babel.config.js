@@ -21,6 +21,7 @@ module.exports = function (api) {
           root: ".",
           extensions: [".tsx", ".ts", ".js", ".jsx", ".svg", ".png"],
           alias: {
+            "@lottie": "./assets/lottie",
             "@images": "./assets/images",
             "@icons": "./assets/icons",
             "@components": "./src/components",

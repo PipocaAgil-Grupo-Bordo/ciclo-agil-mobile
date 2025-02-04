@@ -1,6 +1,7 @@
 {
   "expo": {
-    "name": "ciclo-agil-mobile",
+    "name": "Ciclo Ágil",
+    "backgroundColor": "#B065E7",
     "slug": "ciclo-agil-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,17 +10,19 @@
     "splash": {
       "image": "./assets/splashscreen.png",
       "resizeMode": "cover",
-      "backgroundColor": "#8c37c6"
+      "backgroundColor": "#B065E7"
     },
+    "assetBundlePatterns": ["**/*"],
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "foregroundImage": "./assets/adaptative-icon.png",
+        "backgroundColor": "#B065E7"
+      },
+      "package": "com.grupobordo.cicloagilmobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
