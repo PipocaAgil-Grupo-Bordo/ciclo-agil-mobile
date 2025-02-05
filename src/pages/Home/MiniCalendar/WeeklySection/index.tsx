@@ -58,7 +58,7 @@ function WeeklySection() {
   const getFirstMenstrualDayOfWeek = () => {
     return selectedDates.find((dateString) => {
       const dateObj = new Date(dateString);
-      return daysOfWeek.includes(dateObj.getDate());
+      return daysOfWeek.includes(dateObj.getDate()) && isSelectedDate(dateObj.getDate());
     });
   };
 
@@ -70,6 +70,7 @@ function WeeklySection() {
         const firstMenstrualDay = getFirstMenstrualDayOfWeek();
         const isFirstMenstrualDay =
           !!firstMenstrualDay && new Date(firstMenstrualDay).getDate() === day;
+        console.log(firstMenstrualDay);
 
         return (
           <Sc.WeekWrapper key={block.id}>
