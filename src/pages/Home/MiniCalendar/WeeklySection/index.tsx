@@ -70,7 +70,7 @@ function WeeklySection() {
         const firstMenstrualDay = getFirstMenstrualDayOfWeek();
         const isFirstMenstrualDay =
           !!firstMenstrualDay && new Date(firstMenstrualDay).getDate() === day;
-        // TODO arrumar a borda do dia selecionado do perido
+        // TODO refresh na lista quando selecionar um novo dia
         return (
           <Sc.WeekWrapper key={block.id}>
             <Sc.Week>{block.week}</Sc.Week>

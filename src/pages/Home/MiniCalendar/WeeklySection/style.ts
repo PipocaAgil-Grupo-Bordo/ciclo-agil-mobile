@@ -28,12 +28,13 @@ export const Sc = {
   }>`
     background-color: ${({ hasBorder, isSelected }) =>
       isSelected ? `#F6ABEC` : hasBorder ? `${NewColorScheme.foreground.secondary};` : ``};
-    border-style: solid;
+    border-width: ${({ isSelected }) => (isSelected ? "1px" : "0")};
+    border-color: ${({ isSelected }) => (isSelected ? "#F067E1" : "transparent")};
+    border-style: ${({ isFirstMenstrualDay, isSelected }) =>
+      isSelected && !isFirstMenstrualDay ? "dashed" : "solid"};
     text-align: center;
     width: 30px;
     height: 41px;
-    border-width: ${({ isSelected }) => (!isSelected ? `0px` : `1px`)};
-    border-color: ${({ isSelected }) => (!isSelected ? `transparent` : `#F067E1`)};
     border-radius: 99px;
     align-items: center;
     justify-content: center;
