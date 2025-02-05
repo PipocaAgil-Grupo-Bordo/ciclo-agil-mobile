@@ -20,7 +20,7 @@ function WeeklySection() {
       };
     }, [])
   );
-
+  // TODO esternalizar isso para um hook esta sendo usado em mais de um lugar
   const fetchMenstrualPeriods = async () => {
     if (accessToken) {
       const response = await menstrualApi.getMenstrualPeriods({ token: accessToken });
@@ -70,8 +70,7 @@ function WeeklySection() {
         const firstMenstrualDay = getFirstMenstrualDayOfWeek();
         const isFirstMenstrualDay =
           !!firstMenstrualDay && new Date(firstMenstrualDay).getDate() === day;
-        console.log(firstMenstrualDay);
-
+        // TODO arrumar a borda do dia selecionado do perido
         return (
           <Sc.WeekWrapper key={block.id}>
             <Sc.Week>{block.week}</Sc.Week>
