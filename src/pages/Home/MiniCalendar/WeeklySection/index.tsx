@@ -17,10 +17,11 @@ function WeeklySection() {
 
       return () => {
         setSelectedDates([]);
-        console.log(setSelectedDates([]));
       };
     }, [accessToken])
   );
+
+  // TODO passar isso para um hook, usamos isso em mais de um lugar
 
   const fetchMenstrualPeriods = async () => {
     if (!accessToken) return;
