@@ -1,6 +1,34 @@
 import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
+const getBackgroundColor = ({
+  hasBorder,
+  isSelected
+}: {
+  hasBorder: boolean;
+  isSelected?: boolean;
+}) => {
+  if (isSelected) return "#F6ABEC";
+  if (hasBorder) return NewColorScheme.foreground.secondary;
+  return "transparent";
+};
+
+const getBorderColor = ({ isSelected }: { isSelected?: boolean }) =>
+  isSelected ? "#F067E1" : "transparent";
+
+const getBorderStyle = ({
+  isFirstMenstrualDay,
+  isSelected
+}: {
+  isFirstMenstrualDay?: boolean;
+  isSelected?: boolean;
+}) => (isSelected && !isFirstMenstrualDay ? "dashed" : "solid");
+
+const getTextColor = ({ hasBorder, isSelected }: { hasBorder: boolean; isSelected?: boolean }) => {
+  if (isSelected || hasBorder) return NewColorScheme.text.white;
+  return ColorScheme.text.primary;
+};
+
 export const Sc = {
   Container: styled.View`
     flex-direction: row;
@@ -26,12 +54,10 @@ export const Sc = {
     isSelected?: boolean;
     isFirstMenstrualDay?: boolean;
   }>`
-    background-color: ${({ hasBorder, isSelected }) =>
-      isSelected ? `#F6ABEC` : hasBorder ? `${NewColorScheme.foreground.secondary};` : ``};
+    background-color: ${getBackgroundColor};
     border-width: ${({ isSelected }) => (isSelected ? "1px" : "0")};
-    border-color: ${({ isSelected }) => (isSelected ? "#F067E1" : "transparent")};
-    border-style: ${({ isFirstMenstrualDay, isSelected }) =>
-      isSelected && !isFirstMenstrualDay ? "dashed" : "solid"};
+    border-color: ${getBorderColor};
+    border-style: ${getBorderStyle};
     text-align: center;
     width: 30px;
     height: 41px;
@@ -44,11 +70,6 @@ export const Sc = {
     text-align: center;
     font-family: ${FontScheme.family.primarySemiBold};
     font-size: ${FontScheme.size.small}px;
-    color: ${({ hasBorder, isSelected }) =>
-      isSelected
-        ? `${NewColorScheme.text.white}`
-        : hasBorder
-        ? `${NewColorScheme.text.white}`
-        : `${ColorScheme.text.primary}`};
+    color: ${getTextColor};
   `
 };

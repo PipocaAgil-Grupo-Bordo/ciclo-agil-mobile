@@ -17,39 +17,33 @@ function WeeklySection() {
 
       return () => {
         setSelectedDates([]);
+        console.log(setSelectedDates([]));
       };
-    }, [])
+    }, [accessToken])
   );
-  // TODO esternalizar isso para um hook esta sendo usado em mais de um lugar
+
   const fetchMenstrualPeriods = async () => {
-    if (accessToken) {
+    if (!accessToken) return;
+
+    try {
       const response = await menstrualApi.getMenstrualPeriods({ token: accessToken });
       const dates = formatDateList(response.data);
       setSelectedDates(dates);
+    } catch (error) {
+      console.error("Failed to fetch menstrual periods:", error);
     }
   };
 
   const formatDateList = (menstrualPeriods: IMenstrualPeriod[]) => {
-    return menstrualPeriods.flatMap((menstrualPeriod: IMenstrualPeriod) => {
-      return menstrualPeriod.dates.map((menstrualPeriodDate) => menstrualPeriodDate.date);
-    });
+    return menstrualPeriods.flatMap((period) => period.dates.map((date) => date.date));
   };
 
   const currentDay = new Date().getDate();
-  const date = new Date();
-  const daysOfWeek = dateHelper.selectWeek(date);
-  const weekBlock = [
-    { id: 0, week: "D" },
-    { id: 1, week: "S" },
-    { id: 2, week: "T" },
-    { id: 3, week: "Q" },
-    { id: 4, week: "Q" },
-    { id: 5, week: "S" },
-    { id: 6, week: "S" }
-  ];
+  const daysOfWeek = dateHelper.selectWeek(new Date());
+  const weekBlock = ["D", "S", "T", "Q", "Q", "S", "S"];
 
   const isSelectedDate = (day: number) => {
-    const dateString = new Date(date.getFullYear(), date.getMonth(), day)
+    const dateString = new Date(new Date().getFullYear(), new Date().getMonth(), day)
       .toISOString()
       .split("T")[0];
     return selectedDates.includes(dateString);
@@ -64,16 +58,16 @@ function WeeklySection() {
 
   return (
     <Sc.Container>
-      {weekBlock.map((block) => {
-        const day = daysOfWeek[block.id];
+      {weekBlock.map((week, index) => {
+        const day = daysOfWeek[index];
         const isMenstrualDay = isSelectedDate(day);
         const firstMenstrualDay = getFirstMenstrualDayOfWeek();
         const isFirstMenstrualDay =
           !!firstMenstrualDay && new Date(firstMenstrualDay).getDate() === day;
-        // TODO refresh na lista quando selecionar um novo dia
+
         return (
-          <Sc.WeekWrapper key={block.id}>
-            <Sc.Week>{block.week}</Sc.Week>
+          <Sc.WeekWrapper key={index}>
+            <Sc.Week>{week}</Sc.Week>
             <Sc.DayWrapper
               hasBorder={day === currentDay}
               isSelected={isMenstrualDay}
