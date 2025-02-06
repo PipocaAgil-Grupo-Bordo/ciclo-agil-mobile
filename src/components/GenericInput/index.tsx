@@ -17,7 +17,7 @@ function GenericInput({ label, control, name, errors, ...props }: GenericInputPr
       {label && <Sc.Label>{label}</Sc.Label>}
 
       <Sc.Input
-        textAlign="center"
+        textAlign="left"
         value={field.value}
         onChangeText={field.onChange}
         placeholderTextColor={ColorScheme.text.tertiary}
