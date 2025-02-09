@@ -9,13 +9,18 @@ import { Shadow } from "react-native-shadow-2";
 /**
  * Text input with label and error message
  */
-function GenericInput({ label, control, name, errors, ...props }: GenericInputProps) {
+function GenericInput({
+  label,
+  control,
+  name,
+  errors,
+  isFocused,
+  onFocus,
+  onBlur,
+  ...props
+}: GenericInputProps) {
   const { field } = useController({ control, defaultValue: "", name });
   const inputErrors = errors && errors[name] && errors[name]?.message;
-  const [isFocused, setIsFocused] = useState(false);
-
-  const handleFocus = () => setIsFocused(true);
-  const handleBlur = () => setIsFocused(false);
 
   return (
     <Sc.Container>
@@ -24,15 +29,10 @@ function GenericInput({ label, control, name, errors, ...props }: GenericInputPr
           {label}
         </Sc.Label>
       )}
-      <Shadow
-        disabled={isFocused ? false : true}
-        distance={4}
-        startColor="#b4d2f8"
-        style={{ borderRadius: 5 }}
-      >
+      <Shadow disabled={!isFocused} distance={4} startColor="#b4d2f8" style={{ borderRadius: 5 }}>
         <Sc.Input
-          onFocus={handleFocus}
-          onBlur={handleBlur}
+          onFocus={onFocus}
+          onBlur={onBlur}
           textAlign="left"
           value={field.value}
           onChangeText={field.onChange}
