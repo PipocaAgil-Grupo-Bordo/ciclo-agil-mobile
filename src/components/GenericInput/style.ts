@@ -43,6 +43,7 @@ export const Sc = {
   `,
 
   Error: styled.Text`
+    margin-bottom: 15px;
     color: ${ColorScheme.accent.danger};
     font-size: ${FontScheme.size.default}px;
     font-family: ${FontScheme.family.primary};
