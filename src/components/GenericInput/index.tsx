@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { GenericInputProps } from "./type";
 import { useController } from "react-hook-form";
 import { Masks } from "react-native-mask-input";
@@ -29,7 +29,13 @@ function GenericInput({
           {label}
         </Sc.Label>
       )}
-      <Shadow disabled={!isFocused} distance={4} startColor="#b4d2f8" style={{ borderRadius: 5 }}>
+      <Shadow
+        disabled={!isFocused}
+        distance={2}
+        startColor="#b4d2f8"
+        endColor="#b4d2f8"
+        style={{ borderRadius: 5 }}
+      >
         <Sc.Input
           onFocus={onFocus}
           onBlur={onBlur}

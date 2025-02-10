@@ -9,7 +9,8 @@ interface LabelProps {
 
 export const Sc = {
   Container: styled.View`
-    position: relative;
+    /* position: relative; */
+    margin: 0 auto;
   `,
 
   Label: styled.Text<LabelProps>`
