@@ -4,14 +4,14 @@ import { FormInputsType, InputsProps } from "../type";
 function Inputs({ control, errors }: InputsProps) {
   const formInputs: FormInputsType[] = [
     {
-      label: "Email:",
+      label: "Email",
       placeholder: "Digite seu E-mail",
       name: "email",
       keyboard: "email-address",
       autoComplete: "email"
     },
     {
-      label: "Senha:",
+      label: "Senha",
       placeholder: "Digite sua senha",
       name: "password",
       autoComplete: "password"

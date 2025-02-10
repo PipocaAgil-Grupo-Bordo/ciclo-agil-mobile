@@ -14,7 +14,7 @@ function GenericInput({ label, control, name, errors, ...props }: GenericInputPr
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => setIsFocused(true);
-  const handleBlur = () => setIsFocused(field.value !== ""); // Mantém label acima se já tiver texto
+  const handleBlur = () => setIsFocused(false); // Mantém label acima se já tiver texto
 
   <Sc.Label isFocused={isFocused || field.value !== ""}>{label}</Sc.Label>;
   // <Sc.Label isFocused={isFocused || field.value !== `${label}`}>{label}</Sc.Label>;
@@ -22,12 +22,14 @@ function GenericInput({ label, control, name, errors, ...props }: GenericInputPr
   return (
     <Sc.Container>
       {label && (
-        <Sc.Label style={{ zIndex: 999 }} isFocused={!!isFocused}>
-          {label}
-        </Sc.Label>
+        <Sc.LabelContainer>
+          <Sc.LabelBottomContainer></Sc.LabelBottomContainer>
+          <Sc.Label style={{ zIndex: 999 }} isFocused={isFocused}>
+            {label}
+          </Sc.Label>
+        </Sc.LabelContainer>
       )}
       <Sc.Input
-        // style={{ elevation: isFocused ? 4 : 0 }}
         onFocus={handleFocus}
         onBlur={handleBlur}
         textAlign="left"
@@ -36,21 +38,9 @@ function GenericInput({ label, control, name, errors, ...props }: GenericInputPr
         placeholderTextColor={ColorScheme.text.tertiary}
         name={name}
         errors={errors}
+        isFocused={isFocused}
         mask={name === "birthdate" ? Masks.DATE_DDMMYYYY : undefined}
         secureTextEntry={(name === "password" && true) || (name === "confirmPassword" && true)}
-        style={[
-          {
-            zIndex: 0,
-            borderWidth: 2,
-            borderColor: isFocused ? "#194ab4" : "#7e797e", // Azul escuro ao focar, cinza quando desfocado
-            borderRadius: 4,
-            elevation: isFocused ? 4 : 0, // Simula o "outline" no Android com sombra
-            shadowColor: "#194ab4", // Cor azulada para a sombra sem transparência
-            shadowOffset: { width: 0, height: 10 },
-            shadowOpacity: 1, // Torna a sombra totalmente opaca
-            shadowRadius: 6 // Intensidade da sombra no iOS
-          }
-        ]}
         {...props}
       />
       <Sc.Error>{inputErrors as string}</Sc.Error>

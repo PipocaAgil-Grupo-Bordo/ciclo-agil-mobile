@@ -10,49 +10,47 @@ interface LabelProps {
 export const Sc = {
   Container: styled.View`
     position: relative;
+    margin-top: ${FontScheme.size.default / 2}px;
   `,
 
-  // Label: styled.Text<LabelProps>`
-  //   position: absolute;
-  //   top: 16px;
-  //   left: 16px;
-  //   font-size: ${FontScheme.size.default}px;
-  //   font-family: ${FontScheme.family.primaryMedium};
-  //   color: ${ColorScheme.text.primary};
-  //   opacity: ${(props) => (props.isFocused ? 0 : 1)};
-  //   transform: translateY(${(props) => (props.isFocused ? "-12px" : "0px")});
-  //   transition: all 0.2s ease-in-out;
-  // `,
-  Label: styled.Text<LabelProps>`
+  LabelContainer: styled.View`
     position: absolute;
-    /* top: ${({ isFocused }) => (isFocused ? "6px" : "16px")}; */
-    top: -10px;
+    top: -11px;
     left: 16px;
-    font-size: ${FontScheme.size.default}px;
-    font-family: ${FontScheme.family.primaryMedium};
-    color: #49454f;
-    background-color: #fafcff;
-    /* opacity: ${({ isFocused }) => (isFocused ? 1 : 0.5)}; */
-    /* transform: translateY(${({ isFocused }) => (isFocused ? "-16px" : "-35px")});
-    transition: all 0.2s ease-in-out; */
-    padding: 0 4px; /* Pequeno padding para evitar corte da label */
+    height: ${FontScheme.size.default + 6}px;
     z-index: 999;
   `,
 
+  LabelBottomContainer: styled.View`
+    top: 11px;
+    background-color: #fffefe;
+    height: ${(FontScheme.size.default + 6)/2}px;
+    z-index: 999;
+  `,
+
+  Label: styled.Text<LabelProps>`
+    top: -11px;
+    font-size: ${FontScheme.size.default}px;
+    font-family: ${FontScheme.family.primaryMedium};
+    color: #49454f;
+    padding: 0 4px; /* Pequeno padding para evitar corte da label */
+  `,
+
   Input: styled(MaskInput)<StyledInputProps>`
-    position: relative;
     background-color: #fffefe;
     font-family: ${FontScheme.family.primary};
     color: ${ColorScheme.text.primary};
     border-radius: 5px;
     padding: 16px;
     font-size: ${FontScheme.size.default}px;
-    /* outline: ${({ isFocused }) => (isFocused ? "solid blue" : "none")}; */
     border: ${(props) =>
       props.errors && props.errors[props.name]
-        ? `0.5px solid ${ColorScheme.accent.danger}`
+        ? `1px solid ${ColorScheme.accent.danger}`
+        : props.isFocused
+        ? "#194ab4"
         : "#7e797e"};
     z-index: 0;
+    border-radius: 4px;
   `,
 
   Error: styled.Text`
