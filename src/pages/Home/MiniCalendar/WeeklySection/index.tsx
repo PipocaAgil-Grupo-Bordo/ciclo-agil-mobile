@@ -33,7 +33,7 @@ function WeeklySection() {
       period.dates.map(({ date }) => new Date(date).getDate())
     );
 
-    setSelectedDates(Array.from(new Set(dates.filter((day) => daysOfWeek.includes(day)))));
+    setSelectedDates(Array.from(new Set(dates.filter((day: number) => daysOfWeek.includes(day)))));
   };
 
   const firstSelectedDate = Math.min(...selectedDates);
