@@ -1,82 +1,61 @@
-import { dateHelper } from "@utils/dateHelpers";
-import { Sc } from "./style";
-import { menstrualApi } from "@services/menstrualApi";
-import { useFocusEffect } from "@react-navigation/native";
 import { useCallback, useState } from "react";
-import { IMenstrualPeriod } from "@type/menstrual";
+import { useFocusEffect } from "@react-navigation/native";
 import { useTokenContext } from "@context/useUserToken";
+import { menstrualApi } from "@services/menstrualApi";
+import { dateHelper } from "@utils/dateHelpers";
+import { IMenstrualPeriod } from "@type/menstrual";
 import Icon from "@icons/DropIcon.svg";
+import { Sc } from "./style";
 
 function WeeklySection() {
   const { accessToken } = useTokenContext();
-  const [selectedDates, setSelectedDates] = useState<string[]>([]);
+  const [selectedDates, setSelectedDates] = useState<number[]>([]);
+
+  const currentDate = new Date();
+  const currentDay = currentDate.getDate();
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1;
+  const daysOfWeek = dateHelper.selectWeek(currentDate);
+  const weekBlock = ["D", "S", "T", "Q", "Q", "S", "S"];
 
   useFocusEffect(
     useCallback(() => {
       fetchMenstrualPeriods();
-
-      return () => {
-        setSelectedDates([]);
-      };
+      return () => setSelectedDates([]);
     }, [accessToken])
   );
-
-  // TODO passar isso para um hook, usamos isso em mais de um lugar
 
   const fetchMenstrualPeriods = async () => {
     if (!accessToken) return;
 
-    try {
-      const response = await menstrualApi.getMenstrualPeriods({ token: accessToken });
-      const dates = formatDateList(response.data);
-      setSelectedDates(dates);
-    } catch (error) {
-      console.error("Failed to fetch menstrual periods:", error);
-    }
+    const response = await menstrualApi.getMenstrualPeriods({ year, month, token: accessToken });
+    const dates = response.data.flatMap((period: IMenstrualPeriod) =>
+      period.dates.map(({ date }) => new Date(date).getDate())
+    );
+
+    setSelectedDates(Array.from(new Set(dates.filter((day) => daysOfWeek.includes(day)))));
   };
 
-  const formatDateList = (menstrualPeriods: IMenstrualPeriod[]) => {
-    return menstrualPeriods.flatMap((period) => period.dates.map((date) => date.date));
-  };
-
-  const currentDay = new Date().getDate();
-  const daysOfWeek = dateHelper.selectWeek(new Date());
-  const weekBlock = ["D", "S", "T", "Q", "Q", "S", "S"];
-
-  const isSelectedDate = (day: number) => {
-    const dateString = new Date(new Date().getFullYear(), new Date().getMonth(), day)
-      .toISOString()
-      .split("T")[0];
-    return selectedDates.includes(dateString);
-  };
-
-  const getFirstMenstrualDayOfWeek = () => {
-    return selectedDates.find((dateString) => {
-      const dateObj = new Date(dateString);
-      return daysOfWeek.includes(dateObj.getDate()) && isSelectedDate(dateObj.getDate());
-    });
-  };
+  const firstSelectedDate = Math.min(...selectedDates);
 
   return (
     <Sc.Container>
-      {weekBlock.map((week, index) => {
-        const day = daysOfWeek[index];
-        const isMenstrualDay = isSelectedDate(day);
-        const firstMenstrualDay = getFirstMenstrualDayOfWeek();
-        const isFirstMenstrualDay =
-          !!firstMenstrualDay && new Date(firstMenstrualDay).getDate() === day;
+      {daysOfWeek.map((day, index) => {
+        const isSelected = selectedDates.includes(day);
+        const isFirstMenstrualDay = day === firstSelectedDate;
+        const hasBorder = day === currentDay;
 
         return (
           <Sc.WeekWrapper key={index}>
-            <Sc.Week>{week}</Sc.Week>
+            <Sc.Week>{weekBlock[index]}</Sc.Week>
             <Sc.DayWrapper
-              hasBorder={day === currentDay}
-              isSelected={isMenstrualDay}
+              hasBorder={hasBorder}
+              isSelected={isSelected}
               isFirstMenstrualDay={isFirstMenstrualDay}
             >
               <Sc.Day
-                hasBorder={day === currentDay}
-                isSelected={isMenstrualDay}
+                hasBorder={hasBorder}
+                isSelected={isSelected}
                 isFirstMenstrualDay={isFirstMenstrualDay}
               >
                 {isFirstMenstrualDay ? <Icon width={14} height={17} /> : day}
