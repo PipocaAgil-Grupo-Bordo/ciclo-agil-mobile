@@ -26,7 +26,7 @@ const neutralGray = {
   100: "#EFEFEF",
   200: "#DCDCDC",
   300: "#BEBBBE",
-  400: "#99969A",
+  400: "#9A969A",
   500: "#7E797E",
   600: "#CFC8D5",
   700: "#B2ACB7"
@@ -34,7 +34,7 @@ const neutralGray = {
 
 const neutralWhite = {
   50: "#FFFFFF",
-  100: "#FCFCFC",
+  100: "#FFFEFE",
   200: "#FAFAFA",
   300: "#F8F7F8",
   400: "#FAF6FD",

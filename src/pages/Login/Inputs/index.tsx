@@ -24,7 +24,8 @@ function Inputs({ control, errors }: InputsProps) {
       control={control}
       errors={errors}
       keyboardType={input.keyboard}
-      autoComplete={input.autoComplete} />
+      autoComplete={input.autoComplete}
+    />
   ));
 }
 
