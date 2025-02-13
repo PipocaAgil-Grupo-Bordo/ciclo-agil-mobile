@@ -3,17 +3,12 @@ import { StyledInputProps } from "./type";
 import MaskInput from "react-native-mask-input";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
 
-interface LabelProps {
-  isFocused?: boolean;
-}
-
 export const Sc = {
   Container: styled.View`
-    /* position: relative; */
     margin: 0 auto;
   `,
 
-  Label: styled.Text<LabelProps>`
+  Label: styled.Text`
     position: absolute;
     top: -10px;
     left: 16px;

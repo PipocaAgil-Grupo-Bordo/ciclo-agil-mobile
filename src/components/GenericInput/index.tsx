@@ -3,7 +3,7 @@ import { GenericInputProps } from "./type";
 import { useController } from "react-hook-form";
 import { Masks } from "react-native-mask-input";
 import { Sc } from "./style";
-import { ColorScheme } from "@styles/globalStyles";
+import { NewColorScheme } from "@styles/globalStyles";
 import { Shadow } from "react-native-shadow-2";
 
 /**
@@ -24,11 +24,7 @@ function GenericInput({
 
   return (
     <Sc.Container>
-      {label && (
-        <Sc.Label style={{ zIndex: 999 }} isFocused={isFocused}>
-          {label}
-        </Sc.Label>
-      )}
+      {label && <Sc.Label style={{ zIndex: 999 }}>{label}</Sc.Label>}
       <Shadow
         disabled={!isFocused}
         distance={2}
@@ -42,7 +38,7 @@ function GenericInput({
           textAlign="left"
           value={field.value}
           onChangeText={field.onChange}
-          placeholderTextColor={ColorScheme.text.tertiary}
+          placeholderTextColor={NewColorScheme.text.tertiary}
           name={name}
           errors={errors}
           mask={name === "birthdate" ? Masks.DATE_DDMMYYYY : undefined}

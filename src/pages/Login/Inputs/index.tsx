@@ -1,17 +1,9 @@
 import GenericInput from "@components/GenericInput";
 import { FormInputsType, InputsProps } from "../type";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 
 function Inputs({ control, errors }: InputsProps) {
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
-
-  const handleFocus = useCallback((name: string) => {
-    setFocusedInput(name);
-  }, []);
-
-  const handleBlur = useCallback(() => {
-    setFocusedInput(null);
-  }, []);
 
   const formInputs: FormInputsType[] = [
     {
@@ -40,8 +32,8 @@ function Inputs({ control, errors }: InputsProps) {
       keyboardType={input.keyboard}
       autoComplete={input.autoComplete}
       isFocused={focusedInput === input.name}
-      onFocus={() => handleFocus(input.name)}
-      onBlur={handleBlur}
+      onFocus={() => setFocusedInput(input.name)}
+      onBlur={() => setFocusedInput(null)}
     />
   ));
 }
