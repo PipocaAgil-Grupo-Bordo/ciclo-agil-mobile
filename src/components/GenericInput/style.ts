@@ -15,7 +15,7 @@ export const Sc = {
     font-size: ${FontScheme.size.default}px;
     font-family: ${FontScheme.family.primaryMedium};
     color: #49454f;
-    background-color: #fafcff;
+    background: linear-gradient(180deg, #f7fbff 0%, #fffefe 100%);
     padding: 0 4px;
     z-index: 999;
   `,

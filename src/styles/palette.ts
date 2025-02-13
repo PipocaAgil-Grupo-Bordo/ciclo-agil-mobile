@@ -57,7 +57,7 @@ const info = {
   200: "#BDE1FF",
   300: "#8FCEFF",
   400: "#5AB2FF",
-  500: "#3F97FD"
+  500: "#194AB4"
 } as const;
 
 const error = {
