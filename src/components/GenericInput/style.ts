@@ -3,8 +3,8 @@ import { StyledInputProps } from "./type";
 import MaskInput from "react-native-mask-input";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
 
-interface LabelProps {
-  isFocused?: boolean; // Add isFocused prop with optional boolean type
+interface InputWrapperProps {
+  isFocused?: boolean;
 }
 
 export const Sc = {
@@ -15,42 +15,47 @@ export const Sc = {
 
   LabelContainer: styled.View`
     position: absolute;
-    top: -11px;
+    top: -8px;
     left: 16px;
     height: ${FontScheme.size.default + 6}px;
     z-index: 999;
   `,
 
-  LabelBottomContainer: styled.View`
-    top: 11px;
-    background-color: #fffefe;
-    height: ${(FontScheme.size.default + 6)/2}px;
+  LabelBottomContainer: styled.View<InputWrapperProps>`
+    top: ${props => props.isFocused ? 7.5 : 10.5}px;
+    background-color: #ffffff;
+    height: ${(FontScheme.size.default + 3) / 2}px;
     z-index: 999;
   `,
 
-  Label: styled.Text<LabelProps>`
-    top: -11px;
+  Label: styled.Text`
+    top: -8px;
     font-size: ${FontScheme.size.default}px;
     font-family: ${FontScheme.family.primaryMedium};
     color: #49454f;
-    padding: 0 4px; /* Pequeno padding para evitar corte da label */
+    padding: 0 4px;
+  `,
+
+  InputWrapper: styled.View<InputWrapperProps>`
+    background-color: ${props => props.isFocused ? '#B4D2F8' : 'transparent'};
+    border-radius: 10px;
+    padding: 3px;
   `,
 
   Input: styled(MaskInput)<StyledInputProps>`
     background-color: #fffefe;
     font-family: ${FontScheme.family.primary};
     color: ${ColorScheme.text.primary};
-    border-radius: 5px;
     padding: 16px;
     font-size: ${FontScheme.size.default}px;
     border: ${(props) =>
       props.errors && props.errors[props.name]
         ? `1px solid ${ColorScheme.accent.danger}`
         : props.isFocused
-        ? "#194ab4"
-        : "#7e797e"};
+        ? "1px solid #194ab4"
+        : "1px solid #7e797e"};
     z-index: 0;
-    border-radius: 4px;
+    border-radius: 8px;
   `,
 
   Error: styled.Text`
