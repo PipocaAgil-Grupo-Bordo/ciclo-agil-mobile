@@ -1,7 +1,10 @@
 import GenericInput from "@components/GenericInput";
 import { FormInputsType, InputsProps } from "../type";
+import { useState } from "react";
 
 function Inputs({ control, errors }: InputsProps) {
+  const [focusedInput, setFocusedInput] = useState<string | null>(null);
+
   const formInputs: FormInputsType[] = [
     {
       label: "Email:",
@@ -28,6 +31,9 @@ function Inputs({ control, errors }: InputsProps) {
       errors={errors}
       keyboardType={input.keyboard}
       autoComplete={input.autoComplete}
+      isFocused={focusedInput === input.name}
+      onFocus={() => setFocusedInput(input.name)}
+      onBlur={() => setFocusedInput(null)}
     />
   ));
 }
