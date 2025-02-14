@@ -32,8 +32,16 @@ function Inputs({ control, errors }: InputsProps) {
       keyboardType={input.keyboard}
       autoComplete={input.autoComplete}
       isFocused={focusedInput === input.name}
-      onFocus={() => setFocusedInput(input.name)}
-      onBlur={() => setFocusedInput(null)}
+      onFocus={() => {
+        console.log("Entrei em foco");
+        setFocusedInput(input.name);
+        console.log("setFocusedInput");
+      }}
+      onBlur={() => {
+        console.log("Sai de foco");
+        setFocusedInput(null);
+        console.log("setFocusedInput null");
+      }}
     />
   ));
 }
