@@ -5,12 +5,14 @@ function Inputs({ control, errors }: InputsProps) {
   const formInputs: FormInputsType[] = [
     {
       label: "Email:",
+      placeholder: "Digite seu E-mail",
       name: "email",
       keyboard: "email-address",
       autoComplete: "email"
     },
     {
       label: "Senha:",
+      placeholder: "Digite sua senha",
       name: "password",
       autoComplete: "password"
     }
@@ -20,6 +22,7 @@ function Inputs({ control, errors }: InputsProps) {
     <GenericInput
       key={i}
       label={input.label}
+      placeholder={input.placeholder}
       name={input.name}
       control={control}
       errors={errors}
