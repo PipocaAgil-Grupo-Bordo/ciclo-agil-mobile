@@ -1,6 +1,7 @@
 import GenericInput from "@components/GenericInput";
 import { FormInputsType, InputsProps } from "../type";
 import { useState } from "react";
+import EyeClosed from "@icons/EyeClosed.svg";
 
 function Inputs({ control, errors }: InputsProps) {
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
@@ -33,14 +34,10 @@ function Inputs({ control, errors }: InputsProps) {
       autoComplete={input.autoComplete}
       isFocused={focusedInput === input.name}
       onFocus={() => {
-        console.log("Entrei em foco");
         setFocusedInput(input.name);
-        console.log("setFocusedInput");
       }}
       onBlur={() => {
-        console.log("Sai de foco");
         setFocusedInput(null);
-        console.log("setFocusedInput null");
       }}
     />
   ));
