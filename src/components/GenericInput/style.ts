@@ -1,48 +1,61 @@
 import styled from "styled-components/native";
 import { StyledInputProps } from "./type";
 import MaskInput from "react-native-mask-input";
-import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
-import { Palette } from "@styles/palette";
-import { LinearGradient } from "expo-linear-gradient";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
+
+interface InputWrapperProps {
+  isFocused?: boolean;
+}
 
 export const Sc = {
   Container: styled.View`
-    margin: 0 auto;
+    position: relative;
+    margin-top: ${FontScheme.size.default / 2}px;
   `,
 
-  LabelWrapper: styled(LinearGradient).attrs({
-    colors: [NewColorScheme.background.white, Palette.info[100]],
-    start: { x: 0, y: 1 },
-    end: { x: 0, y: 0 }
-  })`
+  LabelContainer: styled.View`
     position: absolute;
-    top: -10px;
-    left: 10px;
-    padding: 2px 8px;
+    top: -8px;
+    left: 16px;
+    height: ${FontScheme.size.default + 6}px;
+    z-index: 999;
+  `,
+
+  LabelBottomContainer: styled.View<InputWrapperProps>`
+    top: ${(props) => (props.isFocused ? 7.5 : 10.5)}px;
+    background-color: #ffffff;
+    height: ${(FontScheme.size.default + 3) / 2}px;
     z-index: 999;
   `,
 
   Label: styled.Text`
-    font-size: ${FontScheme.size.small}px;
+    top: -8px;
+    font-size: ${FontScheme.size.default}px;
     font-family: ${FontScheme.family.primaryMedium};
-    color: "#49454F";
+    color: #49454f;
+    padding: 0 4px;
+  `,
+
+  InputWrapper: styled.View<InputWrapperProps>`
+    background-color: ${(props) => (props.isFocused ? "#B4D2F8" : "transparent")};
+    border-radius: 10px;
+    padding: 3px;
   `,
 
   Input: styled(MaskInput)<StyledInputProps>`
-    position: relative;
-    width: 300px;
-    background-color: ${NewColorScheme.background.white};
+    background-color: #fffefe;
     font-family: ${FontScheme.family.primary};
-    color: "#292829";
-    border-radius: 8px;
+    color: ${ColorScheme.text.primary};
     padding: 16px;
-    font-size: ${FontScheme.size.medium}px;
+    font-size: ${FontScheme.size.default}px;
     border: ${(props) =>
       props.errors && props.errors[props.name]
-        ? ColorScheme.accent.danger
+        ? `1px solid ${ColorScheme.accent.danger}`
         : props.isFocused
-        ? "#194ab4"
-        : "#7e797e"};
+        ? "1px solid #194ab4"
+        : "1px solid #7e797e"};
+    z-index: 0;
+    border-radius: 8px;
   `,
 
   Error: styled.Text`
