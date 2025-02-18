@@ -14,6 +14,7 @@ import { NavigationType } from "@routes/type";
 import Inputs from "../Inputs";
 import { useTokenContext } from "@context/useUserToken";
 import { tokenAuth } from "@utils/tokenAuthHelper";
+import { NewColorScheme } from "@styles/globalStyles";
 
 function SigninForm() {
   const navigation = useNavigation<NavigationType>();
@@ -22,11 +23,12 @@ function SigninForm() {
   const {
     handleSubmit,
     control,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isValid },
     reset,
     setError
   } = useForm<LoginFields>({
-    resolver: yupResolver(loginSchema)
+    resolver: yupResolver(loginSchema),
+    mode: "onChange"
   });
 
   async function onSubmit(data: LoginFields) {
@@ -69,7 +71,13 @@ function SigninForm() {
       </TouchableOpacity>
 
       <Sc.LoginWrapper>
-        <GenericButton isLoading={isSubmitting} state="accent" onPress={handleSubmit(onSubmit)}>
+        <GenericButton
+          isLoading={isSubmitting}
+          state={isValid ? "accent" : "mild"}
+          isDisabled={!isValid || isSubmitting}
+          onPress={handleSubmit(onSubmit)}
+          underlayColor={NewColorScheme.circle.primary}
+        >
           Login
         </GenericButton>
       </Sc.LoginWrapper>

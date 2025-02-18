@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 import { ButtonStyleProps } from "./type";
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, NewColorScheme } from "@styles/globalStyles";
 
 export const Sc = {
   Button: styled.TouchableHighlight<ButtonStyleProps>`
@@ -16,13 +16,12 @@ export const Sc = {
     background-color: ${({ state }) => {
       switch (state) {
         case "accent":
-          return ColorScheme.accent.highlight;
+          return NewColorScheme.accent.highlight; // Highlight color for accent state
         case "mild":
-          return ColorScheme.background.secondary;
-        case "no-style":
         case "default":
+        case "no-style":
         default:
-          return ColorScheme.background.primary;
+          return "#DCBBF0";
       }
     }};
   `

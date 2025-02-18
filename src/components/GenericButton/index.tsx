@@ -2,8 +2,7 @@ import { ActivityIndicator } from "react-native";
 import ButtonChildren from "./ButtonChildren";
 import { GenericButtonProps, StatesType } from "./type";
 import { Sc } from "./style";
-import { GeneralColors } from "@styles/colors";
-import { ColorScheme } from "@styles/globalStyles";
+import { NewColorScheme } from "@styles/globalStyles";
 
 /**
  * Button component
@@ -17,23 +16,31 @@ import { ColorScheme } from "@styles/globalStyles";
  * @param children - Can be a string or another component
  * @param props - All the props that a TouchableHighlight component accepts
  */
-function GenericButton({ icon, state, isLoading, children, ...props }: GenericButtonProps) {
+function GenericButton({
+  icon,
+  state,
+  isLoading,
+  isDisabled,
+  children,
+  ...props
+}: GenericButtonProps) {
   /**
    * Change the color of the button when it's pressed
    *
    * @param state - Component props (define the theme of the button)
    */
   function HandleUnderlayColor(state: StatesType | undefined) {
+    // TODO - precisamos melhorar essa lógica nao sei se ultilizar um switch é a melhor opção para isso
+    // tem uma maneira de fazer componentes reultilizavel ultilizando reactFC e passando props para ele
+    // mas nao sei se funcionaria aqui no react native
     switch (state) {
       case "accent":
-        return GeneralColors.primary[600];
+        return NewColorScheme.accent.highlight;
       case "mild":
-        return GeneralColors.primary[300];
-      case "no-style":
-        return ColorScheme.background.primary;
       case "default":
+      case "no-style":
       default:
-        return GeneralColors.primary[100];
+        return "#DCBBF0";
     }
   }
 
