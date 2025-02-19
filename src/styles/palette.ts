@@ -73,7 +73,7 @@ const success /* (green) State Colors on figma */ = {
   200: "#BDE1FF" /* on figma is #BDF5D3 */,
   300: "#8FCEFF" /* no figam é #89ECB0 */,
   400: "#5AB2FF" /* on figma is #4EDA86 */,
-  500: "#3F97FD" /* on figma is #25b860 and #3F97FD is on color blue (info) */
+  500: "#3F97FD" /* on figma is #25b860 and #3F97FD is on color blue (info) in this file */
 } as const;
 
 const warning /* (orange) State Colors on figma */ = {
