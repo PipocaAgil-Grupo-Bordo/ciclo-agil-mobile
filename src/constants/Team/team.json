@@ -1,0 +1,112 @@
+[
+  {
+    "role": "Scrum Master",
+    "members": [
+      {
+        "name": "Carla Panegocci",
+        "picture": "Carla_Panegocci.png",
+        "linkedIn": "https://www.linkedin.com/in/carla-panegocci-a9407380/"
+      },
+      {
+        "name": "Carla Panegocci",
+        "picture": "Carla_Panegocci.png",
+        "linkedIn": "https://www.linkedin.com/in/carla-panegocci-a9407380/"
+      },
+      {
+        "name": "Elinalda de Sá",
+        "picture": "Elinalda_de_Sá.png",
+        "linkedIn": "https://www.linkedin.com/in/elinalda-sá"
+      }
+    ]
+  },
+  {
+    "role": "UX/UI",
+    "members": [
+      {
+        "name": "Josiane Silva",
+        "picture": "Josiane_Silva.png",
+        "linkedIn": "https://www.linkedin.com/in/josianecsilva95"
+      },
+      {
+        "name": "Melissa Gouvea",
+        "picture": "Melissa_Gouvea.png",
+        "linkedIn": "https://www.linkedin.com/in/melissa-gouv%C3%AAa-1a2801244"
+      }
+    ]
+  },
+  {
+    "role": "Product Owner",
+    "members": [
+      {
+        "name": "Michele Zacarias",
+        "picture": "Michele_Zacarias.png",
+        "linkedIn": "https://www.linkedin.com/in/michelleszacarias"
+      },
+      {
+        "name": "Michele Zacarias",
+        "picture": "Michele_Zacarias.png",
+        "linkedIn": "https://www.linkedin.com/in/michelleszacarias"
+      },
+      {
+        "name": "Jéssica Debortolo",
+        "picture": "Jéssica_Debortolo.png",
+        "linkedIn": "https://www.linkedin.com/in/jessicadebortolo"
+      }
+    ]
+  },
+  {
+    "role": "Quality Assurance",
+    "members": [
+      {
+        "name": "Aline Pereira",
+        "picture": "Aline_Pereira.png",
+        "linkedIn": "https://www.linkedin.com/in/aline-soares-qa"
+      },
+      {
+        "name": "Thalita Lisboa",
+        "picture": "Thalita_Lisboa.png",
+        "linkedIn": "https://www.linkedin.com/in/thalita-lisboa"
+      },
+      {
+        "name": "Karine Bueno",
+        "picture": "Karine_Bueno.png",
+        "linkedIn": "https://www.linkedin.com/in/karinebueno"
+      }
+    ]
+  },
+  {
+    "role": "Front End",
+    "members": [
+      {
+        "name": "Luciano Lima",
+        "picture": "Luciano_Lima.png",
+        "linkedIn": "https://www.linkedin.com/in/luciano-d-lima-jr"
+      },
+      {
+        "name": "Luciano Lima",
+        "picture": "Luciano_Lima.png",
+        "linkedIn": "https://www.linkedin.com/in/luciano-d-lima-jr"
+      },
+      {
+        "name": "Pedro Rondelli",
+        "picture": "Pedro_Rondelli.png",
+        "linkedIn": "https://www.linkedin.com/in/pedro-rondelli"
+      }
+    ]
+  },
+  {
+    "role": "Back End",
+    "members": [
+      {
+        "name": "Luciano Martins",
+        "picture": "Luciano_Martins.png",
+        "linkedIn": "https://www.linkedin.com/in/lucianodasilvamartins"
+      },
+      {
+        "name": "Rayandson Silva",
+        "picture": "Rayandson_Silva.png",
+        "linkedIn": "https://www.linkedin.com/in/rayandson-silva"
+      }
+    ]
+  }
+]
