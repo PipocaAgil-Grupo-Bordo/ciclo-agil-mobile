@@ -3,7 +3,7 @@ import { GenericInputProps } from "./type";
 import { useController } from "react-hook-form";
 import { Masks } from "react-native-mask-input";
 import { Sc } from "./style";
-import { ColorScheme } from "@styles/globalStyles";
+import { NewColorScheme } from "@styles/globalStyles";
 
 function GenericInput({ label, control, name, errors, ...props }: GenericInputProps) {
   const { field } = useController({ control, defaultValue: "", name });
@@ -28,7 +28,7 @@ function GenericInput({ label, control, name, errors, ...props }: GenericInputPr
           textAlign="left"
           value={field.value}
           onChangeText={field.onChange}
-          placeholderTextColor={ColorScheme.text.tertiary}
+          placeholderTextColor={NewColorScheme.text.tertiary}
           name={name}
           errors={errors}
           isFocused={isFocused}

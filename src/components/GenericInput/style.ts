@@ -1,7 +1,8 @@
 import styled from "styled-components/native";
 import { StyledInputProps } from "./type";
 import MaskInput from "react-native-mask-input";
-import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { Palette } from "@styles/palette";
+import { ColorScheme, NewColorScheme, FontScheme } from "@styles/globalStyles";
 
 interface InputWrapperProps {
   isFocused?: boolean;
@@ -23,7 +24,7 @@ export const Sc = {
 
   LabelBottomContainer: styled.View<InputWrapperProps>`
     top: ${(props) => (props.isFocused ? 7.5 : 10.5)}px;
-    background-color: #ffffff;
+    background-color: ${Palette.neutralWhite[50]};
     height: ${(FontScheme.size.default + 3) / 2}px;
     z-index: 999;
   `,
@@ -43,9 +44,9 @@ export const Sc = {
   `,
 
   Input: styled(MaskInput)<StyledInputProps>`
-    background-color: #fffefe;
+    background-color: ${Palette.neutralWhite[50]};
     font-family: ${FontScheme.family.primary};
-    color: ${ColorScheme.text.primary};
+    color: ${NewColorScheme.text.primary};
     padding: 16px;
     font-size: ${FontScheme.size.default}px;
     border: ${(props) =>
@@ -53,7 +54,7 @@ export const Sc = {
         ? `1px solid ${ColorScheme.accent.danger}`
         : props.isFocused
         ? "1px solid #194ab4"
-        : "1px solid #7e797e"};
+        : `1px solid ${Palette.neutralGray[500]}`};
     z-index: 0;
     border-radius: 8px;
   `,
