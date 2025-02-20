@@ -238,7 +238,8 @@ function CalendarListScreen(props: Props) {
       if (accessToken) {
         const response = await menstrualApi.createPeriodDate({ date }, accessToken);
         const data = response.data;
-        setSelectedDatesInfo([...selectedDatesInfo, { id: data.id, date: data.date }]);
+        // setSelectedDatesInfo([...selectedDatesInfo, { id: data.id, date: data.date }]);
+        fetchMenstrualPeriods();
         return { id: data.id, date: data.date };
       }
     } catch (error) {
@@ -254,6 +255,7 @@ function CalendarListScreen(props: Props) {
 
   const deleteMenstrualPeriodDate = async (date: string) => {
     const dateInfo = selectedDatesInfo.find((info) => info.date === date);
+    console.log(dateInfo);
     if (!dateInfo) return; // Adiciona uma verificação caso não encontre a data.
     try {
       if (accessToken) {
@@ -263,7 +265,7 @@ function CalendarListScreen(props: Props) {
         setSelectedDates(updatedSelectedDates);
         setSelectedDatesInfo(updatedSelectedDatesInfo);
 
-        // Chama a API para deletar
+        console.log("date info id:", dateInfo.id)
         await menstrualApi.deletePeriodDate(dateInfo.id, accessToken);
       }
     } catch (error) {
@@ -281,11 +283,14 @@ function CalendarListScreen(props: Props) {
   };
 
   const formatDateInfoList = (menstrualPeriods: IMenstrualPeriod[]) => {
-    return menstrualPeriods.flatMap((menstrualPeriod: IMenstrualPeriod) => {
+    const response = menstrualPeriods.flatMap((menstrualPeriod: IMenstrualPeriod) => {
       return menstrualPeriod.dates.map((menstrualPeriodDate) => {
         return { id: menstrualPeriodDate.id, date: menstrualPeriodDate.date };
       });
     });
+    console.log(response)
+
+    return response;
   };
 
   const markedDates = selectedDates.reduce((acc, date, index) => {
@@ -327,7 +332,7 @@ function CalendarListScreen(props: Props) {
         style={styles.calendar}
         pastScrollRange={360}
         futureScrollRange={12}
-        displayLoadingIndicator={isLoading}
+        // displayLoadingIndicator={isLoading}
         renderHeader={(date) => renderCustomHeader(date)}
       />
 
