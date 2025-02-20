@@ -27,8 +27,8 @@ module.exports = {
   },
   rules: {
     "react-native/no-unused-styles": "error",
+    "react-native/no-inline-styles": "off",
     "react-native/split-platform-components": "error",
-    "rеact-nativе/no-inline-styles": "warn",
     "react-native/no-raw-text": ["warn", { skip: ["CustomText"] }],
 
     "react/prop-types": "off",
