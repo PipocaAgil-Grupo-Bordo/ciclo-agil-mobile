@@ -4,7 +4,7 @@ import { useController } from "react-hook-form";
 import { Masks } from "react-native-mask-input";
 import { Sc } from "./style";
 import { NewColorScheme } from "@styles/globalStyles";
-import PasswordButton from "@components/PasswordButton";
+import Feather from "@expo/vector-icons/Feather";
 
 function GenericInput({ label, control, name, errors, ...props }: GenericInputProps) {
   const { field } = useController({ control, defaultValue: "", name });
@@ -36,18 +36,20 @@ function GenericInput({ label, control, name, errors, ...props }: GenericInputPr
           onChangeText={field.onChange}
           placeholderTextColor={NewColorScheme.text.tertiary}
           name={name}
+          id="passwordInput"
           errors={errors}
           isFocused={isFocused}
           mask={name === "birthdate" ? Masks.DATE_DDMMYYYY : undefined}
-          secureTextEntry={name === "password" ? !showPassword : false} // ✅ Usando o estado global
+          secureTextEntry={!showPassword}
           {...props}
         />
+        {name === "password" && (
+          <Sc.PasswordButtonContainer onPress={toggleShowPassword}>
+            {showPassword === true && <Feather name="eye-off" size={24} color="#1B1A1B" />}
+            {showPassword === false && <Feather name="eye" size={24} color="#1B1A1B" />}
+          </Sc.PasswordButtonContainer>
+        )}
       </Sc.InputWrapper>
-      {name === "password" && (
-        <Sc.ButtonPassowrdIcon>
-          <PasswordButton showPassword={showPassword} onPress={toggleShowPassword} />
-        </Sc.ButtonPassowrdIcon>
-      )}
       <Sc.Error>{inputErrors as string}</Sc.Error>
     </Sc.Container>
   );

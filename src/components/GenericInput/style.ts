@@ -59,10 +59,13 @@ export const Sc = {
     border-radius: 8px;
   `,
 
-  ButtonPassowrdIcon: styled.TouchableOpacity`
+  PasswordButtonContainer: styled.Pressable`
     position: absolute;
-    top: 24px;
-    right: 16px;
+    top: 4px;
+    right: 4px;
+    padding: 17.5px 12px;
+    background-color: ${Palette.neutralWhite[50]};
+    border-radius: 7px;
   `,
 
   Error: styled.Text`
