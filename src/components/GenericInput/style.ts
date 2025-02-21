@@ -26,7 +26,6 @@ export const Sc = {
     top: ${(props) => (props.isFocused ? 7.5 : 10.5)}px;
     background-color: ${Palette.neutralWhite[50]};
     height: ${(FontScheme.size.default + 3) / 2}px;
-    z-index: 999;
   `,
 
   Label: styled.Text`
@@ -38,6 +37,7 @@ export const Sc = {
   `,
 
   InputWrapper: styled.View<InputWrapperProps>`
+    position: relative;
     background-color: ${(props) => (props.isFocused ? "#B4D2F8" : "transparent")};
     border-radius: 10px;
     padding: 3px;
@@ -53,10 +53,16 @@ export const Sc = {
       props.errors && props.errors[props.name]
         ? `1px solid ${ColorScheme.accent.danger}`
         : props.isFocused
-        ? "1px solid #194ab4"
-        : `1px solid ${Palette.neutralGray[500]}`};
+          ? "1px solid #194ab4"
+          : `1px solid ${Palette.neutralGray[500]}`};
     z-index: 0;
     border-radius: 8px;
+  `,
+
+  ButtonPassowrdIcon: styled.TouchableOpacity`
+    position: absolute;
+    top: 24px;
+    right: 16px;
   `,
 
   Error: styled.Text`
