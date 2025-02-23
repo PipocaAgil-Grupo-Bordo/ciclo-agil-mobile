@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components/native";
 import { Pressable, Text } from "react-native";
 import { FontScheme } from "@styles/globalStyles";
+import { ActivityIndicator } from "react-native";
 
 const buttonVariants = {
   default: {
@@ -19,6 +20,7 @@ interface ButtonProps {
   fontweight?: string;
   onPress: () => void;
   disabled?: boolean;
+  isLoading?: boolean;
 }
 
 const StyledButton = styled(Pressable)<{
@@ -57,7 +59,8 @@ const Button: React.FC<ButtonProps> = ({
   children,
   fontweight,
   onPress,
-  disabled = false
+  disabled = false,
+  isLoading
 }) => {
   const [isPressed, setIsPressed] = useState(false);
 
@@ -71,7 +74,7 @@ const Button: React.FC<ButtonProps> = ({
       onPressOut={() => setIsPressed(false)}
     >
       <ButtonText variant={variant} fontweight={fontweight} disabled={disabled}>
-        {children}
+        {isLoading ? <ActivityIndicator color={"#fff"} /> : children}
       </ButtonText>
     </StyledButton>
   );

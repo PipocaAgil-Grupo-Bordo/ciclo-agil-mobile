@@ -72,20 +72,12 @@ function SigninForm() {
       </TouchableOpacity>
 
       <Sc.LoginWrapper>
-        {/* <GenericButton
-          isLoading={isSubmitting}
-          state={isValid ? "accent" : "mild"}
-          isDisabled={!isValid || isSubmitting}
-          onPress={handleSubmit(onSubmit)}
-          underlayColor={NewColorScheme.circle.primary}
-        >
-          Login
-        </GenericButton> */}
         <Button
           onPress={handleSubmit(onSubmit)}
           disabled={!isValid || isSubmitting}
           variant="default"
           fontweight="600"
+          isLoading={isSubmitting}
         >
           Login
         </Button>
