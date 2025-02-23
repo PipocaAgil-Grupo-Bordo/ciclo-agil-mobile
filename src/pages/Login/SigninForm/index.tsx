@@ -15,6 +15,7 @@ import Inputs from "../Inputs";
 import { useTokenContext } from "@context/useUserToken";
 import { tokenAuth } from "@utils/tokenAuthHelper";
 import { NewColorScheme } from "@styles/globalStyles";
+import Button from "@components/Button";
 
 function SigninForm() {
   const navigation = useNavigation<NavigationType>();
@@ -71,7 +72,7 @@ function SigninForm() {
       </TouchableOpacity>
 
       <Sc.LoginWrapper>
-        <GenericButton
+        {/* <GenericButton
           isLoading={isSubmitting}
           state={isValid ? "accent" : "mild"}
           isDisabled={!isValid || isSubmitting}
@@ -79,7 +80,15 @@ function SigninForm() {
           underlayColor={NewColorScheme.circle.primary}
         >
           Login
-        </GenericButton>
+        </GenericButton> */}
+        <Button
+          onPress={handleSubmit(onSubmit)}
+          disabled={!isValid || isSubmitting}
+          variant="default"
+          fontweight="600"
+        >
+          Login
+        </Button>
       </Sc.LoginWrapper>
 
       <Sc.RegisterWrapper>
