@@ -1,4 +1,5 @@
 import { dateHelper } from "@utils/dateHelpers";
+
 import { Sc } from "./style";
 
 function WeeklySection() {

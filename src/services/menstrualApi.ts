@@ -1,6 +1,7 @@
-import { AxiosResponse } from "axios";
-import api from "./api";
 import { ICreateMenstrualPeriodDateResponse } from "@type/menstrual";
+import { AxiosResponse } from "axios";
+
+import api from "./api";
 
 async function createPeriodDate(
   cycleData: { date: string },

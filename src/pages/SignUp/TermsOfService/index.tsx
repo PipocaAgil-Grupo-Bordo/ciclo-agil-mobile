@@ -1,6 +1,7 @@
-import { Sc } from "./style";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@routes/type";
+
+import { Sc } from "./style";
 
 function TermsOfService() {
   const navigation = useNavigation<NavigationType>();

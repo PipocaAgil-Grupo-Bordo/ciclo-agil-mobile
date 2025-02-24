@@ -1,6 +1,7 @@
-import styled from "styled-components/native";
-import { YAxisStyle } from "./type";
 import { ColorScheme } from "@styles/globalStyles";
+import styled from "styled-components/native";
+
+import { YAxisStyle } from "./type";
 
 export const Sc = {
   Container: styled.View<YAxisStyle>`

@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
-import PageContainer from "../../components/PageContainer";
+
+import { useTokenContext } from "@context/useUserToken";
 import useBackButtonExit from "@hooks/useBackButtonExit";
-import UserHeader from "./UserHeader";
+import { setUserInfo, storeWhoAmI } from "@utils/setUserProfileHelper";
+
 import CycleOverview from "./CycleOverview";
 import CyclePhase from "./CyclePhase";
-import MiniCalendar from "./MiniCalendar";
-import { useTokenContext } from "@context/useUserToken";
-import { setUserInfo, storeWhoAmI } from "@utils/setUserProfileHelper";
 import HomeTopBackground from "./HomeTopBackground";
+import MiniCalendar from "./MiniCalendar";
 import { Sc } from "./style";
+import UserHeader from "./UserHeader";
+import PageContainer from "../../components/PageContainer";
 
 function Home() {
   useBackButtonExit();

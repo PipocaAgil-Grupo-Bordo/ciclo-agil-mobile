@@ -1,7 +1,8 @@
+import { ColorScheme } from "@styles/globalStyles";
 import { OtpInput } from "react-native-otp-entry";
+
 import { OTPInputProps } from "../type";
 import { Sc } from "./style";
-import { ColorScheme } from "@styles/globalStyles";
 
 function OTPIput({ onTextChange, onFilled, resendCode }: OTPInputProps) {
   return (

@@ -1,7 +1,8 @@
-import { WhoAmI } from "@type/auth";
-import { Sc } from "./style";
-import Feather from "react-native-vector-icons/Feather";
 import { ColorScheme } from "@styles/globalStyles";
+import { WhoAmI } from "@type/auth";
+import Feather from "react-native-vector-icons/Feather";
+
+import { Sc } from "./style";
 
 interface UserHeaderProps {
   whoAmI: WhoAmI | undefined;

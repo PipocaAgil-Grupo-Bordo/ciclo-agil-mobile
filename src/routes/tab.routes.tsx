@@ -1,17 +1,17 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "@pages/Home";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import AnalyticsIcon from "@icons/AnalyticsIcon.svg";
+import CalendarIcon from "@icons/CalendarIcon.svg";
+import HomeIcon from "@icons/HomeIcon.svg";
 import Analytics from "@pages/Analytics";
+import AnnualCalendar from "@pages/AnualCalendar";
 import Articles from "@pages/Articles";
+import Home from "@pages/Home";
+import MonthlyCalendar from "@pages/MonthlyCalendar";
+import NonImplementedFeature from "@pages/NonImplementedFeature";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NewColorScheme, FontScheme } from "@styles/globalStyles";
 import Entypo from "react-native-vector-icons/Entypo";
 import Feather from "react-native-vector-icons/Feather";
-import NonImplementedFeature from "@pages/NonImplementedFeature";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { NewColorScheme, FontScheme } from "@styles/globalStyles";
-import AnnualCalendar from "@pages/AnualCalendar";
-import MonthlyCalendar from "@pages/MonthlyCalendar";
-import HomeIcon from "@icons/HomeIcon.svg";
-import CalendarIcon from "@icons/CalendarIcon.svg";
-import AnalyticsIcon from "@icons/AnalyticsIcon.svg";
 
 const Tab = createBottomTabNavigator();
 

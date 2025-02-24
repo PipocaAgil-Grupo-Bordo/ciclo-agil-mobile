@@ -1,6 +1,5 @@
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import { horizontalScale, verticalScale } from "@utils/responsivenessHelper";
-
 import styled from "styled-components/native";
 
 export const Sc = {

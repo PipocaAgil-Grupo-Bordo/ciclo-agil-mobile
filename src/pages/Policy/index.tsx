@@ -1,6 +1,7 @@
+import Header from "@components/Header";
+
 import { Sc } from "./style";
 import Terms from "./Terms";
-import Header from "@components/Header";
 
 function Policy() {
   return (

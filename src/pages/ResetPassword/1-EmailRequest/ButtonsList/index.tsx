@@ -1,8 +1,10 @@
 import React from "react";
+
 import GenericButton from "@components/GenericButton";
-import { ButtonListProps } from "../type";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@routes/type";
+
+import { ButtonListProps } from "../type";
 import { Sc } from "./style";
 
 function ButtonList({ onPress, isLoading }: ButtonListProps) {

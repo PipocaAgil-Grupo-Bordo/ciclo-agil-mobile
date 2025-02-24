@@ -1,12 +1,15 @@
-import GenericInput from "@components/GenericInput";
 import React from "react";
+
+import GenericInput from "@components/GenericInput";
+import Padlock from "@images/padlock.png";
+
 import { EmailRequestSectionProps } from "../type";
 import { Sc } from "./style";
 
 function EmailRequestSection({ control, errors }: EmailRequestSectionProps) {
   return (
     <Sc.Container>
-      <Sc.Icon source={require("@images/padlock.png")} alt="A locked black padlock" />
+      <Sc.Icon source={Padlock} alt="A locked black padlock" />
 
       <Sc.Title>Esqueci minha senha</Sc.Title>
 
@@ -21,7 +24,8 @@ function EmailRequestSection({ control, errors }: EmailRequestSectionProps) {
         control={control}
         errors={errors}
         keyboardType="email-address"
-        autoComplete="email" />
+        autoComplete="email"
+      />
     </Sc.Container>
   );
 }

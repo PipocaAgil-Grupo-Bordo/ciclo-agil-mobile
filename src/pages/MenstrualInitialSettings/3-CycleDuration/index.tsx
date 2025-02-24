@@ -1,18 +1,20 @@
-import { Sc } from "./style";
 import { useState } from "react";
-import { CycleDataType, CyclesType } from "./type";
+
 import Header from "@components/Header";
-import Buttons from "../SharedComponents/Buttons";
-import Information from "../SharedComponents/Information";
-import DropdownMenu from "../SharedComponents/DropdownMenu";
-import ScrollableMenu from "../SharedComponents/ScrollableMenu";
-import { useTokenContext } from "@context/useUserToken";
 import Modal from "@components/Modal";
+import { useTokenContext } from "@context/useUserToken";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@routes/type";
-import axios from "axios";
-import { tokenAuth } from "@utils/tokenAuthHelper";
 import { userApi } from "@services/userApi";
+import { tokenAuth } from "@utils/tokenAuthHelper";
+import axios from "axios";
+
+import { Sc } from "./style";
+import { CycleDataType, CyclesType } from "./type";
+import Buttons from "../SharedComponents/Buttons";
+import DropdownMenu from "../SharedComponents/DropdownMenu";
+import Information from "../SharedComponents/Information";
+import ScrollableMenu from "../SharedComponents/ScrollableMenu";
 
 function CycleDuration() {
   // Constants
@@ -109,11 +111,13 @@ function CycleDuration() {
           label="Seu ciclo é:"
           onChange={handleCycleChange}
           options={cycles}
-          currentOption={cycleData.cycle} />
+          currentOption={cycleData.cycle}
+        />
 
         <ScrollableMenu
           items={handleWhichItemArrayShouldShowUp()}
-          onIndexChange={handleDurationChange} />
+          onIndexChange={handleDurationChange}
+        />
 
         <Information text="Não se preocupe se você não souber quanto tempo dura o seu ciclo, você pode registrar depois" />
       </Sc.TopWrapper>
@@ -121,7 +125,8 @@ function CycleDuration() {
       <Buttons
         isLoading={isLoading}
         nextWithData={handleCycleSubmission}
-        nextWithoutData={handleNavigation} />
+        nextWithoutData={handleNavigation}
+      />
 
       {showModal && (
         <Modal
@@ -129,7 +134,8 @@ function CycleDuration() {
           textContent="Algo deu errado"
           buttonText="Avançar mesmo assim"
           setReadyToNext={setShowModal}
-          onPress={() => navigation.navigate("MainTabs")} />
+          onPress={() => navigation.navigate("MainTabs")}
+        />
       )}
     </Sc.Container>
   );

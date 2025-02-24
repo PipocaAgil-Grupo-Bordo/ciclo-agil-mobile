@@ -1,6 +1,8 @@
 import React from "react";
-import { Sc } from "./style";
+
 import TopHeader from "@components/Header";
+
+import { Sc } from "./style";
 
 function Header() {
   return (

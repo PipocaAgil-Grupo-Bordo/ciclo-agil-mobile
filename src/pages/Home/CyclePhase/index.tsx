@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Sc } from "./style";
+
 import NoDateCard from "./NoDateCard";
+import { Sc } from "./style";
 
 function CyclePhase() {
   const [nextMenstrualPeriodDate, setNextMenstrualPeriodDate] = useState("");

@@ -1,9 +1,11 @@
+import Chekmark from "@images/checkmark.png";
+
 import { Sc } from "./style";
 
 function Confirmation() {
   return (
     <>
-      <Sc.CheckMark source={require("@images/checkmark.png")} />
+      <Sc.CheckMark source={Chekmark} />
 
       <Sc.ConfirmationWrapper>
         <Sc.ConfirmationText>Enviamos um código para o email cadastrado!</Sc.ConfirmationText>

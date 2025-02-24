@@ -1,12 +1,14 @@
+import React, { useCallback, useState } from "react";
+
 import { useTokenContext } from "@context/useUserToken";
+import { useFocusEffect } from "@react-navigation/native";
 import { menstrualApi } from "@services/menstrualApi";
 import { ColorScheme } from "@styles/globalStyles";
 import { IMenstrualPeriod } from "@type/menstrual";
 import { View, Text, Alert, Modal, Pressable } from "react-native";
 import { CalendarList, DateData, LocaleConfig } from "react-native-calendars";
+
 import { styles } from "./style";
-import { useFocusEffect } from "@react-navigation/native";
-import React, { useCallback, useState } from "react";
 import CalendarHeader from "../CalendarHeader";
 
 interface Props {
@@ -176,7 +178,7 @@ function CalendarListScreen(props: Props) {
     const datesToFillInfo: { id: number; date: string }[] = [];
 
     const fillDates = (start: Date, end: Date) => {
-      const dates= [];
+      const dates = [];
 
       for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
         dates.push(d.toISOString().split("T")[0]);
@@ -241,7 +243,7 @@ function CalendarListScreen(props: Props) {
         setSelectedDatesInfo([...selectedDatesInfo, { id: data.id, date: data.date }]);
         return { id: data.id, date: data.date };
       }
-    } catch (error) {
+    } catch {
       Alert.alert("Erro ao adicionar data, tente novamente!");
       const currentSelectedDates = [...selectedDates];
       const currentSelectedDatesInfo = [...selectedDatesInfo];
@@ -266,7 +268,7 @@ function CalendarListScreen(props: Props) {
         // Chama a API para deletar
         await menstrualApi.deletePeriodDate(dateInfo.id, accessToken);
       }
-    } catch (error) {
+    } catch {
       // Reverter a operação em caso de erro
       Alert.alert("Erro ao deletar data, tente novamente!");
       setSelectedDates([...selectedDates, date]);
@@ -288,27 +290,30 @@ function CalendarListScreen(props: Props) {
     });
   };
 
-  const markedDates = selectedDates.reduce((acc, date, index) => {
-    if (index === 0) {
-      // The first day selected is given the "firstDay" styles
-      acc[date] = {
-        ...currentCycle("firstDay"),
-        customStyles: currentCycle("firstDay").customStyles // Apply customStyles
-      };
-    } else {
-      // Os outros dias recebem estilos de "fertile"
-      acc[date] = {
-        ...currentCycle("fertile"),
-        customStyles: currentCycle("fertile").customStyles
-      };
-    }
-    return acc;
-  }, {} as Record<string, any>);
+  const markedDates = selectedDates.reduce(
+    (acc, date, index) => {
+      if (index === 0) {
+        // The first day selected is given the "firstDay" styles
+        acc[date] = {
+          ...currentCycle("firstDay"),
+          customStyles: currentCycle("firstDay").customStyles // Apply customStyles
+        };
+      } else {
+        // Os outros dias recebem estilos de "fertile"
+        acc[date] = {
+          ...currentCycle("fertile"),
+          customStyles: currentCycle("fertile").customStyles
+        };
+      }
+      return acc;
+    },
+    {} as Record<string, any>
+  );
 
   const renderCustomHeader = (date: XDate | undefined) => {
     return (
       <View style={styles.containerHeader}>
-        <CalendarHeader date={date}/>
+        <CalendarHeader date={date} />
       </View>
     );
   };

@@ -1,17 +1,18 @@
-import { createStackNavigator } from "@react-navigation/stack";
-import { RootStackParamList } from "./type";
 import Login from "@pages/Login";
-import SignUp from "@pages/SignUp";
+import LastPeriod from "@pages/MenstrualInitialSettings/2-LastPeriod";
+import CycleDuration from "@pages/MenstrualInitialSettings/3-CycleDuration";
+import MonthlyCalendar from "@pages/MonthlyCalendar";
+import Policy from "@pages/Policy";
 import EmailRequest from "@pages/ResetPassword/1-EmailRequest";
 import CodeRequest from "@pages/ResetPassword/2-CodeRequest";
 import NewPassword from "@pages/ResetPassword/3-NewPassword";
-import Policy from "@pages/Policy";
+import SignUp from "@pages/SignUp";
 import Team from "@pages/Team";
-import LastPeriod from "@pages/MenstrualInitialSettings/2-LastPeriod";
-import CycleDuration from "@pages/MenstrualInitialSettings/3-CycleDuration";
-import TabRoutes from "./tab.routes";
+import { createStackNavigator } from "@react-navigation/stack";
+
 import AuthNavigator from "./auth.router";
-import MonthlyCalendar from "@pages/MonthlyCalendar";
+import TabRoutes from "./tab.routes";
+import { RootStackParamList } from "./type";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -25,7 +26,7 @@ function StackRoutes() {
       {/* If user is logged in */}
       <Stack.Group>
         <Stack.Screen name="AuthLoader" component={AuthNavigator} />
-        <Stack.Screen name="MainTabs" component={TabRoutes} options={{ headerShown: false }}/>
+        <Stack.Screen name="MainTabs" component={TabRoutes} options={{ headerShown: false }} />
       </Stack.Group>
 
       {/* If user has no account or has logged out */}

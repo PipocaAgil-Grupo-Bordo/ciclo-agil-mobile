@@ -1,12 +1,14 @@
-import { Sc } from "./style";
-import GenericButton from "@components/GenericButton";
-import Squad from "./Squad";
 import { useState } from "react";
+
+import GenericButton from "@components/GenericButton";
 import Modal from "@components/Modal";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import useBackButtonExit from "@hooks/useBackButtonExit";
 import { useNavigation } from "@react-navigation/core";
 import { NavigationType } from "@routes/type";
-import useBackButtonExit from "@hooks/useBackButtonExit";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+
+import Squad from "./Squad";
+import { Sc } from "./style";
 
 function Team() {
   const [readyToNext, setReadyToNext] = useState(false);

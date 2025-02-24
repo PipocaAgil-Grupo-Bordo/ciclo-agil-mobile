@@ -1,4 +1,5 @@
 import GenericButton from "@components/GenericButton";
+
 import { Sc } from "./style";
 import { ButtonsProps } from "./type";
 

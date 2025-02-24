@@ -1,8 +1,10 @@
 import React from "react";
-import { UserData } from "@type/auth";
-import { Sc } from "./style";
-import WaterDrop from "@images/water-drop.svg";
+
 import Clock from "@images/clock.svg";
+import WaterDrop from "@images/water-drop.svg";
+import { UserData } from "@type/auth";
+
+import { Sc } from "./style";
 
 interface CycleOverviewProps {
   userProfile: UserData | undefined;

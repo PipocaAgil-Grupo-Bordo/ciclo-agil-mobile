@@ -1,6 +1,7 @@
 import { paragraphs } from "@constants/terms";
-import { Sc } from "./style";
 import { View } from "react-native";
+
+import { Sc } from "./style";
 
 const { privacyPolicy, termsOfUse } = paragraphs;
 

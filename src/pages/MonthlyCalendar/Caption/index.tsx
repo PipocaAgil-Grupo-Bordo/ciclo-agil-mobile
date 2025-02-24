@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Sc } from "./caption.style";
 
 function Caption() {

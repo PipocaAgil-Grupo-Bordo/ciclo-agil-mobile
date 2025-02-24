@@ -1,5 +1,6 @@
-import { Sc } from "./style";
 import Dropdown from "@components/Dropdown";
+
+import { Sc } from "./style";
 import { DropdownMenuProps } from "./type";
 
 function DropdownMenu<Options>({

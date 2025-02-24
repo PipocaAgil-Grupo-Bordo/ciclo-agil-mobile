@@ -1,7 +1,8 @@
+import { Dispatch } from "react";
+
 import authApi from "@services/authApi";
 import { userApi } from "@services/userApi";
 import { UserData, WhoAmI } from "@type/auth";
-import { Dispatch } from "react";
 
 export async function setUserInfo(
   accessToken: string,

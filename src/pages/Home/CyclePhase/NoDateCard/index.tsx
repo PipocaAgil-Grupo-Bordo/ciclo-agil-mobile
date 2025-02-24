@@ -1,6 +1,8 @@
 import React from "react";
-import { Sc } from "./style";
+
 import Icon from "@images/butterfly1.svg";
+
+import { Sc } from "./style";
 
 function NoDateCard() {
   return (

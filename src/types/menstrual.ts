@@ -16,9 +16,9 @@ export interface IMenstrualPeriod {
     {
       id: number;
       date: string;
-      menstrualPeriodId: number
+      menstrualPeriodId: number;
     }
-  ]
+  ];
 }
 
 export interface ICalendarDateInfo {
@@ -29,7 +29,7 @@ export interface ICalendarDateInfo {
   year: number;
 }
 
-export interface ICreateMenstrualPeriodDateResponse{
+export interface ICreateMenstrualPeriodDateResponse {
   date: string;
   menstrualPeriodId: number;
   id: number;

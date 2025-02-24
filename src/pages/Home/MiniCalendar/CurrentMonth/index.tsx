@@ -1,5 +1,6 @@
-import { Sc } from "./style";
 import Icon from "@images/CalendarIcon.svg";
+
+import { Sc } from "./style";
 
 function CurrentMonth() {
   const currentMonth =

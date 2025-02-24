@@ -1,16 +1,18 @@
-import { Sc } from "./style";
-import { MonthsType } from "./type";
 import { useState } from "react";
+
+import Header from "@components/Header";
+import Modal from "@components/Modal";
+import { useTokenContext } from "@context/useUserToken";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@routes/type";
-import Header from "@components/Header";
-import Buttons from "../SharedComponents/Buttons";
-import Information from "../SharedComponents/Information";
-import DropdownMenu from "../SharedComponents/DropdownMenu";
-import ScrollableMenu from "../SharedComponents/ScrollableMenu";
 import { userApi } from "@services/userApi";
-import { useTokenContext } from "@context/useUserToken";
-import Modal from "@components/Modal";
+
+import { Sc } from "./style";
+import { MonthsType } from "./type";
+import Buttons from "../SharedComponents/Buttons";
+import DropdownMenu from "../SharedComponents/DropdownMenu";
+import Information from "../SharedComponents/Information";
+import ScrollableMenu from "../SharedComponents/ScrollableMenu";
 
 function LastPeriod() {
   // An array with all the capitalized months in portuguese
@@ -78,7 +80,8 @@ function LastPeriod() {
 
       setModalOptions({
         title: "Ops!",
-        textContent: "Houve um erro ao salvar a data de início da sua última menstruação. Por favor, tente novamente ou avance sem salvar.",
+        textContent:
+          "Houve um erro ao salvar a data de início da sua última menstruação. Por favor, tente novamente ou avance sem salvar.",
         buttonText: "Avançar mesmo assim"
       });
     }
@@ -98,7 +101,8 @@ function LastPeriod() {
           label="Mês:"
           onChange={handleMonthSelection}
           options={months}
-          currentOption={lastPeriodData.month} />
+          currentOption={lastPeriodData.month}
+        />
 
         <ScrollableMenu items={days} onIndexChange={handleDaySelection} />
 
@@ -108,7 +112,8 @@ function LastPeriod() {
       <Buttons
         isLoading={isLoading}
         nextWithData={handleLastPeriodDate}
-        nextWithoutData={() => navigation.navigate("CycleDuration")} />
+        nextWithoutData={() => navigation.navigate("CycleDuration")}
+      />
 
       {showModal && (
         <Modal
@@ -116,7 +121,8 @@ function LastPeriod() {
           buttonText={modalOptions.buttonText}
           textContent={modalOptions.textContent}
           setReadyToNext={setShowModal}
-          onPress={handleNextScreenNavigation} />
+          onPress={handleNextScreenNavigation}
+        />
       )}
     </Sc.Container>
   );

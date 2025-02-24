@@ -1,16 +1,30 @@
-const img1 = require("@images/integrantsPhotos/Aline_Pereira.png");
-const img2 = require("@images/integrantsPhotos/Carla_Panegocci.png");
-const img3 = require("@images/integrantsPhotos/Elinalda_de_Sá.png");
-const img4 = require("@images/integrantsPhotos/Jéssica_Debortolo.png");
-const img5 = require("@images/integrantsPhotos/Josiane_Silva.png");
-const img6 = require("@images/integrantsPhotos/Karine_Bueno.png");
-const img7 = require("@images/integrantsPhotos/Luciano_Lima.png");
-const img8 = require("@images/integrantsPhotos/Luciano_Martins.png");
-const img9 = require("@images/integrantsPhotos/Melissa_Gouvea.png");
-const img10 = require("@images/integrantsPhotos/Michele_Zacarias.png");
-const img11 = require("@images/integrantsPhotos/Pedro_Rondelli.png");
-const img12 = require("@images/integrantsPhotos/Rayandson_Silva.png");
-const img13 = require("@images/integrantsPhotos/Thalita_Lisboa.png");
+import AlinePereira from "@images/integrantsPhotos/Aline_Pereira.png";
+import CarlaPanegocci from "@images/integrantsPhotos/Carla_Panegocci.png";
+import ElinaldaSá from "@images/integrantsPhotos/Elinalda_de_Sá.png";
+import JosianeSilva from "@images/integrantsPhotos/Josiane_Silva.png";
+import JéssicaDebortolo from "@images/integrantsPhotos/Jéssica_Debortolo.png";
+import KarineBueno from "@images/integrantsPhotos/Karine_Bueno.png";
+import LucianoLima from "@images/integrantsPhotos/Luciano_Lima.png";
+import LucianoMartins from "@images/integrantsPhotos/Luciano_Martins.png";
+import MelissaGouvea from "@images/integrantsPhotos/Melissa_Gouvea.png";
+import MicheleZacarias from "@images/integrantsPhotos/Michele_Zacarias.png";
+import PedroRondelli from "@images/integrantsPhotos/Pedro_Rondelli.png";
+import RayandsonSilva from "@images/integrantsPhotos/Rayandson_Silva.png";
+import ThalitaLisboa from "@images/integrantsPhotos/Thalita_Lisboa.png";
+
+const img1 = AlinePereira;
+const img2 = CarlaPanegocci;
+const img3 = ElinaldaSá;
+const img5 = JosianeSilva;
+const img4 = JéssicaDebortolo;
+const img6 = KarineBueno;
+const img7 = LucianoLima;
+const img8 = LucianoMartins;
+const img9 = MelissaGouvea;
+const img10 = MicheleZacarias;
+const img11 = PedroRondelli;
+const img12 = RayandsonSilva;
+const img13 = ThalitaLisboa;
 
 export const squadPhotos: Record<string, string> = {
   "Aline Pereira": img1,

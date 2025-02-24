@@ -1,5 +1,7 @@
 import React from "react";
+
 import GenericInput from "@components/GenericInput";
+
 import { InputsProps } from "../type";
 import { Sc } from "./style";
 

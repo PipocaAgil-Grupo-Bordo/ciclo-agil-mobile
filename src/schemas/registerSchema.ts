@@ -1,4 +1,5 @@
 import * as yup from "yup";
+
 import { isValidEmail } from "./emailSchema";
 
 // Accept only letters and whitespace, ensuring there are at least two letters present

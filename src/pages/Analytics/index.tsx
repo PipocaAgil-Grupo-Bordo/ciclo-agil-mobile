@@ -1,6 +1,8 @@
 import React from "react";
-import PageContainer from "../../components/PageContainer";
+
 import { Text } from "react-native";
+
+import PageContainer from "../../components/PageContainer";
 
 function Analytics() {
   return (

@@ -1,7 +1,8 @@
-import { NavigationType } from "@routes/type";
 import GenericButton from "@components/GenericButton";
-import { ButtonsInfo, ButtonsProps } from "../type";
 import { useNavigation } from "@react-navigation/core";
+import { NavigationType } from "@routes/type";
+
+import { ButtonsInfo, ButtonsProps } from "../type";
 import { Sc } from "./style";
 
 function Buttons({ onPress }: ButtonsProps) {

@@ -1,6 +1,8 @@
 import React from "react";
-import { Sc } from "./style";
+
 import SquadData from "@constants/squadData/squad.json";
+
+import { Sc } from "./style";
 import Role from "../Role";
 
 function Squad() {
@@ -14,7 +16,6 @@ function Squad() {
         ))}
       </Sc.Wrapper>
     </Sc.Container>
-
   );
 }
 

@@ -1,13 +1,15 @@
-import React, {useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+
+import { useTokenContext } from "@context/useUserToken";
+import { useFocusEffect } from "@react-navigation/native";
+import { menstrualApi } from "@services/menstrualApi";
+import { ColorScheme } from "@styles/globalStyles";
+import { ICalendarDateInfo, IMenstrualPeriod } from "@type/menstrual";
 import { View, Text, Alert, Modal, Pressable } from "react-native";
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars";
+
 import { styles } from "./style";
-import { ColorScheme } from "@styles/globalStyles";
 import { ptBR } from "../../../utils/localeCalendarConfig";
-import { useTokenContext } from "@context/useUserToken";
-import { menstrualApi } from "@services/menstrualApi";
-import { ICalendarDateInfo, IMenstrualPeriod } from "@type/menstrual";
-import { useFocusEffect } from "@react-navigation/native";
 import CalendarHeader from "../CalendarHeader";
 
 LocaleConfig.locales["pt-br"] = ptBR;
@@ -48,7 +50,7 @@ function CalendarApp(props: Props) {
 
   useFocusEffect(
     useCallback(() => {
-      setComponentKey(prevKey => prevKey + 1);
+      setComponentKey((prevKey) => prevKey + 1);
 
       fetchMenstrualPeriods();
       return () => {
@@ -243,38 +245,40 @@ function CalendarApp(props: Props) {
     setIsLoading(false);
   };
 
-  const markedDates = selectedDates.reduce((acc, date) => {
-    acc[date] = {
-      ...currentCycle("selected"),
-      customStyles: currentCycle("selected").customStyles
-    };
-    return acc;
-  }, {} as Record<string, any>);
+  const markedDates = selectedDates.reduce(
+    (acc, date) => {
+      acc[date] = {
+        ...currentCycle("selected"),
+        customStyles: currentCycle("selected").customStyles
+      };
+      return acc;
+    },
+    {} as Record<string, any>
+  );
 
   const renderCustomHeader = (date: XDate | undefined) => {
     return (
       <View style={styles.containerHeader}>
-        <CalendarHeader date={date}/>
+        <CalendarHeader date={date} />
       </View>
     );
   };
-
 
   return (
     <View style={styles.container} key={componentKey}>
       <Calendar
         style={styles.calendar}
         markingType="custom"
-          theme={calendarTheme}
-          calendarHeight={!horizontalView ? 300 : undefined}
-          calendarWidth={!horizontalView ? 361 : undefined}
-          hideExtraDays={false}
-          onMonthChange={handleMonthChange}
-          onDayPress={handleDayPress}
-          markedDates={markedDates}
-          horizontal={horizontalView}
-          renderHeader={(date) => renderCustomHeader(date)}
-          displayLoadingIndicator={isLoading}
+        theme={calendarTheme}
+        calendarHeight={!horizontalView ? 300 : undefined}
+        calendarWidth={!horizontalView ? 361 : undefined}
+        hideExtraDays={false}
+        onMonthChange={handleMonthChange}
+        onDayPress={handleDayPress}
+        markedDates={markedDates}
+        horizontal={horizontalView}
+        renderHeader={(date) => renderCustomHeader(date)}
+        displayLoadingIndicator={isLoading}
       />
       <View style={styles.centeredView}>
         <Modal

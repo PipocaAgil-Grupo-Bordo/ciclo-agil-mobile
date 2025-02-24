@@ -1,19 +1,21 @@
 import React from "react";
-import { Alert } from "react-native";
-import { Sc } from "./style";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "@schemas/loginSchema";
-import { LoginFields } from "@type/auth";
-import { useNavigation } from "@react-navigation/native";
-import axios from "axios";
-import authApi from "@services/authApi";
-import { TouchableOpacity } from "react-native-gesture-handler";
+
 import GenericButton from "@components/GenericButton";
-import { NavigationType } from "@routes/type";
-import Inputs from "../Inputs";
 import { useTokenContext } from "@context/useUserToken";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationType } from "@routes/type";
+import { loginSchema } from "@schemas/loginSchema";
+import authApi from "@services/authApi";
+import { LoginFields } from "@type/auth";
 import { tokenAuth } from "@utils/tokenAuthHelper";
+import axios from "axios";
+import { useForm } from "react-hook-form";
+import { Alert } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
+import { Sc } from "./style";
+import Inputs from "../Inputs";
 
 function SigninForm() {
   const navigation = useNavigation<NavigationType>();
