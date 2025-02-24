@@ -45,8 +45,7 @@ function GenericInput({ label, control, name, errors, ...props }: GenericInputPr
         />
         {name === "password" && (
           <Sc.PasswordButtonContainer onPress={toggleShowPassword}>
-            {showPassword === true && <Feather name="eye" size={24} color="#1B1A1B" />}
-            {showPassword === false && <Feather name="eye-off" size={24} color="#1B1A1B" />}
+            <Feather name={showPassword ? "eye" : "eye-off"} size={24} color="#1B1A1B" />
           </Sc.PasswordButtonContainer>
         )}
       </Sc.InputWrapper>
