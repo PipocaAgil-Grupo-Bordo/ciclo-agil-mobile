@@ -84,6 +84,11 @@ const warning = {
   500: "#EE7312"
 } as const;
 
+const transparents = {
+  transparent: "#00000000", // RGBA(0,0,0,0) é totalmente transparente
+  semiTransparentBlack: "#00000066" // RGBA(0,0,0,0.4) convertido para hexadecimal
+};
+
 export const Palette = {
   primary,
   secondary,
@@ -94,5 +99,6 @@ export const Palette = {
   info,
   error,
   success,
-  warning
+  warning,
+  transparents
 };

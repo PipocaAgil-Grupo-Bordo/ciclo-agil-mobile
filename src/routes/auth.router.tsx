@@ -4,7 +4,6 @@ import { useTokenContext } from "@context/useUserToken";
 import { useNavigation } from "@react-navigation/native";
 import { ColorScheme } from "@styles/globalStyles";
 import { secureStore } from "@utils/secureStoreHelper";
-import { tokenAuth } from "@utils/tokenAuthHelper";
 import { decode, encode } from "base-64";
 import { jwtDecode } from "jwt-decode";
 import { ActivityIndicator, Text, View } from "react-native";

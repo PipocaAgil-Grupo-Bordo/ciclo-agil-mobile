@@ -1,4 +1,4 @@
-import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
 import { Palette } from "@styles/palette";
 import { StyleSheet } from "react-native";
 
@@ -19,14 +19,14 @@ export const styles = StyleSheet.create({
     width: "100%"
   },
   buttonNo: {
-    backgroundColor: "transparent",
+    backgroundColor: `${Palette.transparents.transparent}`,
     borderWidth: 0
   },
   buttonYes: {
-    backgroundColor: "#8E37C9"
+    backgroundColor: `${NewColorScheme.accent.highlight}`
   },
   calendar: {
-    backgroundColor: "transparent",
+    backgroundColor: `${Palette.transparents.transparent}`,
     margin: "auto",
     padding: 0
   },
@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
     marginTop: 22
   },
   container: {
-    backgroundColor: "transparent",
+    backgroundColor: `${Palette.transparents.transparent}`,
     flex: 1,
     margin: 0,
     padding: 0,
@@ -78,7 +78,7 @@ export const styles = StyleSheet.create({
     width: 345
   },
   overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    backgroundColor: `${Palette.transparents.semiTransparentBlack}`,
     bottom: 0,
     flex: 1,
     justifyContent: "center",
@@ -93,7 +93,7 @@ export const styles = StyleSheet.create({
     fontSize: 16
   },
   textStyle: {
-    color: "white",
+    color: `${Palette.neutralWhite[50]}`,
     fontWeight: "bold",
     textAlign: "center"
   }

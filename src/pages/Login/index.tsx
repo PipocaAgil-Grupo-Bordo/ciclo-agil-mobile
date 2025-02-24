@@ -2,6 +2,7 @@ import React from "react";
 
 import Logo from "@components/Logo";
 import useBackButtonExit from "@hooks/useBackButtonExit";
+import { NewColorScheme } from "@styles/globalStyles";
 
 import SigninForm from "./SigninForm";
 import { Sc } from "./style";
@@ -12,7 +13,12 @@ function Login() {
 
   return (
     <PageContainer
-      style={{ backgroundColor: "#F6FAFF", paddingLeft: 0, paddingRight: 0, paddingTop: 0 }}
+      style={{
+        backgroundColor: `${NewColorScheme.background.primary}`,
+        paddingLeft: 0,
+        paddingRight: 0,
+        paddingTop: 0
+      }}
     >
       <Sc.Wrapper>
         <Logo />

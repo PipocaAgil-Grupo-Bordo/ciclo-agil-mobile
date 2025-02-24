@@ -1,6 +1,7 @@
 import GenericButton from "@components/GenericButton";
 import { useNavigation } from "@react-navigation/core";
 import { NavigationType } from "@routes/type";
+import { Text } from "react-native";
 
 import { ButtonsInfo, ButtonsProps } from "../type";
 import { Sc } from "./style";
@@ -24,7 +25,7 @@ function Buttons({ onPress }: ButtonsProps) {
   return (
     <Sc.Container>
       <Sc.Text>
-        Caso não encontre o email na sua caixa de entrada, verifique a pasta de spam.
+        <Text>Caso não encontre o email na sua caixa de entrada, verifique a pasta de spam.</Text>
       </Sc.Text>
       {buttons.map((button, i) => (
         <GenericButton key={i} state={button.state} onPress={button.onPress}>

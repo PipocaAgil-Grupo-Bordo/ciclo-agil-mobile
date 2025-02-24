@@ -1,7 +1,6 @@
 import Login from "@pages/Login";
 import LastPeriod from "@pages/MenstrualInitialSettings/2-LastPeriod";
 import CycleDuration from "@pages/MenstrualInitialSettings/3-CycleDuration";
-import MonthlyCalendar from "@pages/MonthlyCalendar";
 import Policy from "@pages/Policy";
 import EmailRequest from "@pages/ResetPassword/1-EmailRequest";
 import CodeRequest from "@pages/ResetPassword/2-CodeRequest";

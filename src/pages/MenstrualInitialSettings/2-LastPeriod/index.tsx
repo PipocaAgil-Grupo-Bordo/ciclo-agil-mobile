@@ -74,7 +74,7 @@ function LastPeriod() {
 
       setIsLoading(false);
       navigation.navigate("CycleDuration");
-    } catch (error) {
+    } catch {
       setIsLoading(false);
       setShowModal(true);
 

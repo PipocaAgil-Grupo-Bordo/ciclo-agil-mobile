@@ -1,4 +1,5 @@
 import Icon from "@images/CalendarIcon.svg";
+import { Text } from "react-native";
 
 import { Sc } from "./style";
 
@@ -14,7 +15,9 @@ function CurrentMonth() {
         <Icon width={20} height={20} />
       </Sc.IconWrapper>
       <Sc.CurrentMonth>
-        {currentMonth} de {currentYear}
+        <Text>
+          {currentMonth} de {currentYear}
+        </Text>
       </Sc.CurrentMonth>
     </Sc.Container>
   );

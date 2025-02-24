@@ -1,4 +1,5 @@
 import { ColorScheme } from "@styles/globalStyles";
+import { Text } from "react-native";
 import { OtpInput } from "react-native-otp-entry";
 
 import { OTPInputProps } from "../type";
@@ -30,7 +31,9 @@ function OTPIput({ onTextChange, onFilled, resendCode }: OTPInputProps) {
       />
 
       <Sc.Button onPress={resendCode}>
-        <Sc.Text>Reenviar código</Sc.Text>
+        <Text>
+          <Sc.Text>Reenviar código</Sc.Text>
+        </Text>
       </Sc.Button>
     </>
   );

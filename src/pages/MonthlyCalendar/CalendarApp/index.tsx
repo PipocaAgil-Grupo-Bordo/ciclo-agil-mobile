@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import { useTokenContext } from "@context/useUserToken";
 import { useFocusEffect } from "@react-navigation/native";
@@ -108,7 +108,7 @@ function CalendarApp(props: Props) {
         setSelectedDatesInfo([...selectedDatesInfo, { id: data.id, date: data.date }]);
         return { id: data.id, date: data.date };
       }
-    } catch (error) {
+    } catch {
       Alert.alert("Erro ao adicionar data, tente novamente!");
       const currentSelectedDates = [...selectedDates];
       const currentSelectedDatesInfo = [...selectedDatesInfo];
@@ -130,7 +130,7 @@ function CalendarApp(props: Props) {
         setSelectedDatesInfo(updatedSelectedDatesInfo);
         await menstrualApi.deletePeriodDate(dateInfo.id, accessToken);
       }
-    } catch (error) {
+    } catch {
       Alert.alert("Erro ao deletar data, tente novamente!");
       setSelectedDates([...selectedDates, date]);
       setSelectedDatesInfo([...selectedDatesInfo, dateInfo]);

@@ -1,6 +1,7 @@
 import React from "react";
 
 import TopHeader from "@components/Header";
+import { Text } from "react-native";
 
 import { Sc } from "./style";
 
@@ -11,7 +12,9 @@ function Header() {
         <TopHeader title="Registre-se" />
       </Sc.Wrapper>
 
-      <Sc.SubTitle>Para continuar digite seu nome, data de nascimento, email e senha.</Sc.SubTitle>
+      <Sc.SubTitle>
+        <Text>Para continuar digite seu nome, data de nascimento, email e senha.</Text>
+      </Sc.SubTitle>
     </Sc.Container>
   );
 }

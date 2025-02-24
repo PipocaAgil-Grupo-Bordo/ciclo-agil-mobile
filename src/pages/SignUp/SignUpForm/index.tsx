@@ -9,6 +9,7 @@ import { registerSchema } from "@schemas/registerSchema";
 import { RegisterFields } from "@type/auth";
 import { submitRegister } from "@utils/submitHelper";
 import { useForm } from "react-hook-form";
+import { Text } from "react-native";
 
 import { Sc } from "./style";
 import Inputs from "../Inputs";
@@ -35,11 +36,13 @@ function SignUpForm() {
       {/* TODO: This doesn't seem to be working? */}
       <Sc.Wrapper>
         <Sc.Text error={(errors && errors.password)! || (errors && errors.confirmPassword)!}>
-          Senha deve conter no mínimo 8 caracteres.
+          <Text>Senha deve conter no mínimo 8 caracteres.</Text>
         </Sc.Text>
 
         <Sc.Text error={(errors && errors.password)! || (errors && errors.confirmPassword)!}>
-          Pelo menos 1 caractere especial, 1 número, 1 letra minúscula e 1 letra maiúscula.
+          <Text>
+            Pelo menos 1 caractere especial, 1 número, 1 letra minúscula e 1 letra maiúscula.
+          </Text>
         </Sc.Text>
       </Sc.Wrapper>
 
@@ -50,7 +53,7 @@ function SignUpForm() {
         )}
         state="accent"
       >
-        Cadastrar
+        <Text>Cadastrar</Text>
       </GenericButton>
       <TermsOfService />
     </Sc.Container>

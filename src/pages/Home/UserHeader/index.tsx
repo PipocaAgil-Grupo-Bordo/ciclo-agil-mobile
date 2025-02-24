@@ -1,6 +1,5 @@
-import { ColorScheme } from "@styles/globalStyles";
 import { WhoAmI } from "@type/auth";
-import Feather from "react-native-vector-icons/Feather";
+import { Text } from "react-native";
 
 import { Sc } from "./style";
 
@@ -23,7 +22,7 @@ function UserHeader({ whoAmI }: UserHeaderProps) {
 
         <Sc.TextContainer>
           <Sc.Text numberOfLines={1} ellipsizeMode="tail">
-            Olá, {getFirstName(whoAmI?.name)}
+            <Text>Olá, {getFirstName(whoAmI?.name)}</Text>
           </Sc.Text>
         </Sc.TextContainer>
       </Sc.UserWrapper>
