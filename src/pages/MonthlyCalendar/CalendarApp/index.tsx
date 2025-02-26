@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { View, Text, Alert, Modal, Pressable } from "react-native";
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars";
 import { styles } from "./style";
@@ -48,7 +48,7 @@ function CalendarApp(props: Props) {
 
   useFocusEffect(
     useCallback(() => {
-      setComponentKey(prevKey => prevKey + 1);
+      setComponentKey((prevKey) => prevKey + 1);
 
       fetchMenstrualPeriods();
       return () => {
@@ -254,27 +254,26 @@ function CalendarApp(props: Props) {
   const renderCustomHeader = (date: XDate | undefined) => {
     return (
       <View style={styles.containerHeader}>
-        <CalendarHeader date={date}/>
+        <CalendarHeader date={date} />
       </View>
     );
   };
-
 
   return (
     <View style={styles.container} key={componentKey}>
       <Calendar
         style={styles.calendar}
         markingType="custom"
-          theme={calendarTheme}
-          calendarHeight={!horizontalView ? 300 : undefined}
-          calendarWidth={!horizontalView ? 361 : undefined}
-          hideExtraDays={false}
-          onMonthChange={handleMonthChange}
-          onDayPress={handleDayPress}
-          markedDates={markedDates}
-          horizontal={horizontalView}
-          renderHeader={(date) => renderCustomHeader(date)}
-          displayLoadingIndicator={isLoading}
+        theme={calendarTheme}
+        calendarHeight={!horizontalView ? 300 : undefined}
+        calendarWidth={!horizontalView ? 361 : undefined}
+        hideExtraDays={false}
+        onMonthChange={handleMonthChange}
+        onDayPress={handleDayPress}
+        markedDates={markedDates}
+        horizontal={horizontalView}
+        renderHeader={(date) => renderCustomHeader(date)}
+        displayLoadingIndicator={isLoading}
       />
       <View style={styles.centeredView}>
         <Modal
