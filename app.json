@@ -12,9 +12,7 @@
       "resizeMode": "cover",
       "backgroundColor": "#B065E7"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -28,10 +26,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      "expo-secure-store",
-      "expo-font"
-    ],
+    "plugins": ["expo-secure-store", "expo-font"],
     "packagerOpts": {
       "config": "metro.config.js",
       "sourceExts": [

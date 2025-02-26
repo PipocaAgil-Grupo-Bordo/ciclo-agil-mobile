@@ -11,7 +11,6 @@ export interface ITokenContext {
   whoAmI: WhoAmI | undefined;
   setWhoAmI: Dispatch<React.SetStateAction<WhoAmI | undefined>>;
 }
-
 export interface TokenProviderProps {
   children: ReactNode;
 }
