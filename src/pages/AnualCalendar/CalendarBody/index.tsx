@@ -128,7 +128,6 @@ function CalendarListScreen(props: Props) {
   const calculateDateGap = (newDate: string) => {
     if (selectedDates.length === 0) return 0;
     const newDateObj = new Date(newDate);
-    let closestDate = null;
     let minDiff = Infinity;
 
     for (const date of selectedDates) {
@@ -136,7 +135,6 @@ function CalendarListScreen(props: Props) {
       const diff = Math.abs(newDateObj.getTime() - dateObj.getTime());
       if (diff < minDiff) {
         minDiff = diff;
-        closestDate = date;
       }
     }
 
@@ -307,7 +305,7 @@ function CalendarListScreen(props: Props) {
       }
       return acc;
     },
-    {} as Record<string, any>
+    {} as Record<string, object>
   );
 
   const renderCustomHeader = (date: XDate | undefined) => {

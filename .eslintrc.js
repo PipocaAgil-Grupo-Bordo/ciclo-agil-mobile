@@ -34,26 +34,6 @@ module.exports = {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
 
-    "import/order": [
-      "error",
-      {
-        groups: ["builtin", "external", "internal"],
-        pathGroups: [
-          {
-            pattern: "react",
-            group: "external",
-            position: "before"
-          }
-        ],
-        pathGroupsExcludedImportTypes: ["react"],
-        "newlines-between": "always",
-        alphabetize: {
-          order: "asc",
-          caseInsensitive: true
-        }
-      }
-    ],
-
     "prettier/prettier": [
       "error",
       {

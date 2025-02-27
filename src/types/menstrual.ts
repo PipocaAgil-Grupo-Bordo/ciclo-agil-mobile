@@ -1,7 +1,8 @@
 export interface ILastPeriod {
+  id: number;
   startedAt: string;
+  userId: number;
 }
-
 export interface ICurrentCycle {
   isMenstrualCycleRegular: boolean;
   menstrualCycleDuration: number;

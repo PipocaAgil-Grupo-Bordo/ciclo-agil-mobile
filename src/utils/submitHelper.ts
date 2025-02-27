@@ -34,8 +34,10 @@ export async function submitRegister(
     reset({ email: "", password: "" }, { keepErrors: false });
 
     return navigation.navigate("Team");
-  } catch (error: any) {
-    if (error.response.status === 409) {
+  } catch (error) {
+    const axiosError = error as AxiosError;
+
+    if (axiosError.response && axiosError.response.status === 409) {
       setError("confirmEmail", { message: "E-mail já cadastrado." });
       setError("email", {});
     }

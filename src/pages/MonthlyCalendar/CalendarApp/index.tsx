@@ -141,7 +141,6 @@ function CalendarApp(props: Props) {
     if (selectedDates.length === 0) return 0;
 
     const newDateObj = new Date(newDate);
-    let closestDate = null;
     let minDiff = Infinity;
 
     for (const date of selectedDates) {
@@ -150,7 +149,6 @@ function CalendarApp(props: Props) {
         const diff = Math.abs(newDateObj.getTime() - dateObj.getTime());
         if (diff < minDiff) {
           minDiff = diff;
-          closestDate = date;
         }
       }
     }
@@ -253,7 +251,7 @@ function CalendarApp(props: Props) {
       };
       return acc;
     },
-    {} as Record<string, any>
+    {} as Record<string, object>
   );
 
   const renderCustomHeader = (date: XDate | undefined) => {

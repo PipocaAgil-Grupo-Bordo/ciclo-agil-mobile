@@ -8,7 +8,8 @@ import Animated from "react-native-reanimated";
 const AnimatedLottieView = Animated.createAnimatedComponent(LottieView);
 
 function AnimationScreen({
-  onAnimationFinish = (isCancelled) => {}
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  onAnimationFinish = (_isCancelled) => {}
 }: {
   onAnimationFinish?: (isCancelled: boolean) => void;
 }) {

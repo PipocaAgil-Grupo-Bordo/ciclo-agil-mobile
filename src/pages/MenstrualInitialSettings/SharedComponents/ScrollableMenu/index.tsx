@@ -1,9 +1,9 @@
 import ScrollPicker from "@components/ScrollPicker";
 
 import { Sc } from "./style";
-import { ScrollableMenuProps } from "./type";
+import { ScrollPickerProps } from "@components/ScrollPicker/type";
 
-function ScrollableMenu({ onIndexChange, items }: ScrollableMenuProps<number>) {
+function ScrollableMenu({ onIndexChange, items }: ScrollPickerProps<number>) {
   return (
     <Sc.Container>
       <ScrollPicker items={items} onIndexChange={onIndexChange} />
