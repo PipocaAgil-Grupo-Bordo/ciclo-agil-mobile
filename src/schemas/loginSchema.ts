@@ -1,4 +1,5 @@
 import * as yup from "yup";
+
 import { isValidEmail } from "./emailSchema";
 
 export const loginSchema = yup.object().shape({

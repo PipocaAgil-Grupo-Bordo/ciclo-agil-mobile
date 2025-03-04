@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Control, FieldErrors } from "react-hook-form";
 import { TextInputProps } from "react-native";
 

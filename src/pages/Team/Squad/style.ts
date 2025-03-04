@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
 import { verticalScale } from "@utils/responsivenessHelper";
+import styled from "styled-components/native";
 
 export const Sc = {
   Container: styled.View``,

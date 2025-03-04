@@ -10,7 +10,7 @@ export const Sc = {
     flex: 1;
     padding: 60px 30px 30px;
     justify-content: space-between;
-  `, 
+  `,
 
   BackIcon: styled.TouchableOpacity`
     position: absolute;

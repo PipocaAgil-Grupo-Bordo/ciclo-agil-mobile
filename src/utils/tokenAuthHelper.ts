@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+
 import { secureStore } from "./secureStoreHelper";
 
 /**
@@ -8,9 +9,11 @@ import { secureStore } from "./secureStoreHelper";
  * @param setAccessToken - Update the access token
  * @param setRefreshToken - Update the refresh token
  */
-async function fetchTokens(response: AxiosResponse,
+async function fetchTokens(
+  response: AxiosResponse,
   setAccessToken: (accessToken: string) => void,
-  setRefreshToken: (refreshToken: string) => void) {
+  setRefreshToken: (refreshToken: string) => void
+) {
   const accessToken = response.data.token.accessToken;
   const refreshToken = response.data.token.refreshToken;
 
@@ -27,8 +30,10 @@ async function fetchTokens(response: AxiosResponse,
  * @param setAccessToken - Delete the access token
  * @param setRefreshToken - Delete the refresh token
  */
-async function deleteTokens(setAccessToken: (accessToken: string | undefined) => void,
-  setRefreshToken: (refreshToken: string | undefined) => void) {
+async function deleteTokens(
+  setAccessToken: (accessToken: string | undefined) => void,
+  setRefreshToken: (refreshToken: string | undefined) => void
+) {
   await secureStore.deleteToken("accessToken");
   await secureStore.deleteToken("refreshToken");
 

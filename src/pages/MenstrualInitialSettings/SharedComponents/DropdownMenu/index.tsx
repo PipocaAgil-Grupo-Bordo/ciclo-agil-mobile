@@ -1,13 +1,14 @@
-import { Sc } from "./style";
 import Dropdown from "@components/Dropdown";
-import { DropdownMenuProps } from "./type";
+
+import { Sc } from "./style";
+import { DropdownProps } from "@components/Dropdown/type";
 
 function DropdownMenu<Options>({
   label,
   currentOption,
   options,
   onChange
-}: DropdownMenuProps<Options>) {
+}: DropdownProps<Options>) {
   return (
     <Sc.Container>
       <Dropdown label={label} currentOption={currentOption} options={options} onChange={onChange} />

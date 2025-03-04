@@ -1,16 +1,18 @@
-import OTPInput from "./OTPInput";
-import Confirmation from "./Confirmation";
 import { useState } from "react";
-import { useNavigation } from "@react-navigation/core";
-import Buttons from "./Buttons";
-import { View } from "react-native";
-import { CodeRequestRouteParam, NavigationType } from "@routes/type";
-import { useRoute } from "@react-navigation/native";
-import { handleRedefinitionCodeValidation } from "@utils/submitHelper";
-import authApi from "@services/authApi";
-import { AxiosError } from "axios";
-import { Sc } from "./style";
+
 import Header from "@components/Header";
+import { useNavigation } from "@react-navigation/core";
+import { useRoute } from "@react-navigation/native";
+import { CodeRequestRouteParam, NavigationType } from "@routes/type";
+import authApi from "@services/authApi";
+import { handleRedefinitionCodeValidation } from "@utils/submitHelper";
+import { AxiosError } from "axios";
+import { View } from "react-native";
+
+import Buttons from "./Buttons";
+import Confirmation from "./Confirmation";
+import OTPInput from "./OTPInput";
+import { Sc } from "./style";
 
 function CodeRequest() {
   const [otpValue, setOtpValue] = useState<string>();

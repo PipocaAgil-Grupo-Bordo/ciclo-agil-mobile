@@ -1,5 +1,5 @@
-import { Control, FieldErrors } from "react-hook-form";
 import { LoginFields } from "@type/auth";
+import { Control, FieldErrors } from "react-hook-form";
 
 export interface FormInputsType {
   label: string;

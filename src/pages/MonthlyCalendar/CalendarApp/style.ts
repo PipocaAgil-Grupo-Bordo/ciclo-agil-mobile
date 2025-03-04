@@ -1,104 +1,105 @@
+import { Palette } from "@styles/palette";
 import { StyleSheet } from "react-native";
-import { ColorScheme, FontScheme } from "../../../styles/globalStyles";
+
+import { ColorScheme, FontScheme, NewColorScheme } from "../../../styles/globalStyles";
 
 export const styles = StyleSheet.create({
+  button: {
+    alignItems: "center",
+    borderRadius: 5,
+    elevation: 0,
+    marginHorizontal: 10,
+    padding: 10,
+    width: 100
+  },
+  buttonContainer: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 20,
+    width: "100%"
+  },
+  buttonNo: {
+    backgroundColor: `${Palette.transparents.transparent}`,
+    borderWidth: 0
+  },
+  buttonYes: {
+    backgroundColor: `${NewColorScheme.accent.highlight}`
+  },
+  calendar: {
+    backgroundColor: `${Palette.neutralWhite[50]}`,
+    borderRadius: 16,
+    marginBottom: 0,
+    marginTop: 20,
+    padding: 0,
+    width: "100%"
+  },
+  centeredView: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+    marginTop: 22
+  },
   container: {
     paddingTop: 45
   },
   containerHeader: {
     margin: "auto"
   },
-  calendar: {
-    backgroundColor: "#fff",
-    padding: 0,
-    marginBottom: 0,
-    marginTop: 20,
-    width: "100%",
-    borderRadius: 16
+  modalText: {
+    fontFamily: FontScheme.family.primary,
+    marginBottom: 10,
+    marginTop: 10,
+    textAlign: "center"
   },
-  selected: {
-    color: "#000",
-    fontSize: 16,
-    marginTop: 42
-  },
-  // Estilos do Modal
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22
-  },
-  overlay: {
-    position: "absolute",
-    justifyContent: "center",
-    flex: 1,
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.4)"
+  modalTextAlert: {
+    fontFamily: FontScheme.family.secondary,
+    fontSize: 24,
+    height: "auto",
+    paddingBottom: 10,
+    textAlign: "center",
+    width: "100%"
   },
   modalView: {
-    width: 345,
+    alignItems: "center",
+    backgroundColor: `${Palette.neutralWhite[50]}`,
+    borderRadius: 20,
+    elevation: 5,
     height: 270,
     margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
     padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
+    shadowColor: `${Palette.neutralBlack[700]}`,
     shadowOffset: {
       width: 0,
       height: 2
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-    elevation: 5
+    width: 345
   },
-  buttonContainer: {
-    flexDirection: "row",
+  overlay: {
+    backgroundColor: `${Palette.transparents.semiTransparentBlack}`,
+    bottom: 0,
+    flex: 1,
     justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    marginTop: 20
+    left: 0,
+    position: "absolute",
+    right: 0,
+    top: 0
   },
-  button: {
-    borderRadius: 5,
-    padding: 10,
-    elevation: 0,
-    width: 100,
-    alignItems: "center",
-    marginHorizontal: 10
-  },
-  buttonNo: {
-    backgroundColor: "transparent",
-    borderWidth: 0
-  },
-  buttonYes: {
-    backgroundColor: "#8E37C9"
+  selected: {
+    color: `${Palette.neutralBlack[700]}`,
+    fontSize: 16,
+    marginTop: 42
   },
   textNo: {
     color: ColorScheme.text.primary,
-    fontSize: 16,
-    fontFamily: FontScheme.family.primary
+    fontFamily: FontScheme.family.primary,
+    fontSize: 16
   },
   textStyle: {
-    color: "white",
+    color: `${Palette.neutralWhite[50]}`,
     fontWeight: "bold",
     textAlign: "center"
-  },
-  modalTextAlert: {
-    width: "100%",
-    height: "auto",
-    fontSize: 24,
-    fontFamily: FontScheme.family.secondary,
-    textAlign: "center",
-    paddingBottom: 10
-  },
-  modalText: {
-    marginTop: 10,
-    marginBottom: 10,
-    textAlign: "center",
-    fontFamily: FontScheme.family.primary
   }
 });

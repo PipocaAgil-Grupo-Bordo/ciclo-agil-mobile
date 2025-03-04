@@ -1,6 +1,7 @@
 import { FontScheme } from "@styles/globalStyles";
-import { Palette } from "../../styles/palette";
 import styled from "styled-components/native";
+
+import { Palette } from "../../styles/palette";
 
 export const Sc = {
   Container: styled.View`

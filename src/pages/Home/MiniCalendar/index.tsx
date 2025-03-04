@@ -1,9 +1,10 @@
 import { useNavigation } from "@react-navigation/native";
-import CurrentMonth from "./CurrentMonth";
-import WeeklySection from "./WeeklySection";
-import { Sc } from "./style";
-import { TouchableOpacity } from "react-native";
 import { NavigationType } from "@routes/type";
+import { TouchableOpacity } from "react-native";
+
+import CurrentMonth from "./CurrentMonth";
+import { Sc } from "./style";
+import WeeklySection from "./WeeklySection";
 
 function MiniCalendar() {
   const navigation = useNavigation<NavigationType>();

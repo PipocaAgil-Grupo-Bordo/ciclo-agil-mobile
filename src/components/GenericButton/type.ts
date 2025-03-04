@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+
 import { ImageSourcePropType, TouchableHighlightProps } from "react-native";
 
 export type StatesType = "accent" | "mild" | "default" | "no-style";
