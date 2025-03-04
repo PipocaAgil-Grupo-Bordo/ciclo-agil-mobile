@@ -40,12 +40,12 @@ function GenericInput({ label, control, name, errors, ...props }: GenericInputPr
           errors={errors}
           isFocused={isFocused}
           mask={name === "birthdate" ? Masks.DATE_DDMMYYYY : undefined}
-          secureTextEntry={!showPassword}
+          secureTextEntry={name === "passowrd" ? !showPassword : showPassword}
           {...props}
         />
         {name === "password" && (
           <Sc.PasswordButtonContainer onPress={toggleShowPassword}>
-            <Feather name={showPassword ? "eye" : "eye-off"} size={24} color="#1B1A1B" />
+            <Feather name={showPassword ? "eye-off" : "eye"} size={24} color="#1B1A1B" />
           </Sc.PasswordButtonContainer>
         )}
       </Sc.InputWrapper>
