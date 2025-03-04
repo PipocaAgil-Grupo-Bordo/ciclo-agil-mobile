@@ -1,7 +1,7 @@
 import GenericInput from "@components/GenericInput";
 
 import { FormInputsType, InputsProps } from "../type";
-import { Sc } from "./style";
+// import { Sc } from "./style";
 
 function Inputs({ control, errors }: InputsProps) {
   const formInputs: FormInputsType[] = [

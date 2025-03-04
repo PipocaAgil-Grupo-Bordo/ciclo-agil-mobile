@@ -2,8 +2,8 @@ import { WhoAmI } from "@type/auth";
 import { Text } from "react-native";
 
 import { Sc } from "./style";
-import Feather from "react-native-vector-icons/Feather";
-import { ColorScheme } from "@styles/globalStyles";
+// import Feather from "react-native-vector-icons/Feather";
+// import { ColorScheme } from "@styles/globalStyles";
 import { useTokenContext } from "@context/useUserToken";
 import { TouchableOpacity } from "react-native";
 import { tokenAuth } from "@utils/tokenAuthHelper";
