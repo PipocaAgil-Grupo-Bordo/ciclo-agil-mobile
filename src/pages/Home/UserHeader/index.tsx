@@ -2,23 +2,34 @@ import { WhoAmI } from "@type/auth";
 import { Sc } from "./style";
 import Feather from "react-native-vector-icons/Feather";
 import { ColorScheme } from "@styles/globalStyles";
+import { useTokenContext } from "@context/useUserToken";
+import { TouchableOpacity } from "react-native";
+import { tokenAuth } from "@utils/tokenAuthHelper";
 
 interface UserHeaderProps {
   whoAmI: WhoAmI | undefined;
 }
 
 function UserHeader({ whoAmI }: UserHeaderProps) {
+  const { setRefreshToken, setAccessToken } = useTokenContext();
+
   const getFirstName = (fullName: string | undefined) => {
     if (!fullName) return "";
     return fullName.split(" ")[0];
   };
 
+  const handlePress = () => {
+    tokenAuth.deleteTokens(setAccessToken, setRefreshToken);
+  };
+
   return (
     <Sc.Container>
       <Sc.UserWrapper>
-        <Sc.ImageContainer>
-          {/* <Sc.Image src="https://github.com/LucianoDLima.png" /> */}
-        </Sc.ImageContainer>
+        <TouchableOpacity onPress={handlePress}>
+          <Sc.ImageContainer>
+            {/* <Sc.Image src="https://github.com/LucianoDLima.png" /> */}
+          </Sc.ImageContainer>
+        </TouchableOpacity>
 
         <Sc.TextContainer>
           <Sc.Text numberOfLines={1} ellipsizeMode="tail">
