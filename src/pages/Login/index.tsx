@@ -10,7 +10,7 @@ function Login() {
 
   return (
     <PageContainer
-      style={{ backgroundColor: "#EEF7FF", paddingLeft: 0, paddingRight: 0, paddingTop: 0 }}
+      style={{ backgroundColor: "#F6FAFF", paddingLeft: 0, paddingRight: 0, paddingTop: 0 }}
     >
       <Sc.Wrapper>
         <Logo />
