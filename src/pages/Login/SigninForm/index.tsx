@@ -27,8 +27,7 @@ function SigninForm() {
     reset,
     setError
   } = useForm<LoginFields>({
-    resolver: yupResolver(loginSchema),
-    mode: "onChange"
+    resolver: yupResolver(loginSchema)
   });
 
   async function onSubmit(data: LoginFields) {
