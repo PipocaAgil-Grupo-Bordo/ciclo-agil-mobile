@@ -14,7 +14,6 @@ import { NavigationType } from "@routes/type";
 import Inputs from "../Inputs";
 import { useTokenContext } from "@context/useUserToken";
 import { tokenAuth } from "@utils/tokenAuthHelper";
-import { NewColorScheme } from "@styles/globalStyles";
 import Button from "@components/Button";
 
 function SigninForm() {
@@ -74,10 +73,10 @@ function SigninForm() {
       <Sc.LoginWrapper>
         <Button
           onPress={handleSubmit(onSubmit)}
-          disabled={!isValid || isSubmitting}
-          variant="default"
-          fontweight="600"
+          disabled={!isValid}
           isLoading={isSubmitting}
+          fontweight="600"
+          variant="default"
         >
           Login
         </Button>

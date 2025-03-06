@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import { Pressable, Text } from "react-native";
-import { FontScheme } from "@styles/globalStyles";
+import { FontScheme, NewColorScheme } from "@styles/globalStyles";
 import { ActivityIndicator } from "react-native";
 
 const buttonVariants = {
   default: {
-    backgroundColor: "#B065E7",
-    pressedBackground: "#DCBBF0", // Cor quando pressionado
-    disabledBackground: "#C690F0",
-    textColor: "#fff",
-    disabledText: "#fff"
+    backgroundColor: NewColorScheme.accent.highlight,
+    pressedBackground: NewColorScheme.hover.primary,
+    disabledBackground: NewColorScheme.circle.primary,
+    textColor: NewColorScheme.text.white,
+    disabledText: NewColorScheme.text.white
   }
 };
 

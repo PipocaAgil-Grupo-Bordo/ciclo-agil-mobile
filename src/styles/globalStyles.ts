@@ -68,7 +68,8 @@ export const NewColorScheme = {
     highlight: Palette.primary[500],
     danger: Palette.error[500],
     success: Palette.success[500],
-    idle: Palette.neutralGray[400]
+    idle: Palette.neutralGray[400],
+    link: Palette.info[500]
   },
 
   icon: {
@@ -76,6 +77,10 @@ export const NewColorScheme = {
   },
 
   circle: {
+    primary: Palette.primary[400]
+  },
+
+  hover: {
     primary: Palette.primary[400]
   }
 };
