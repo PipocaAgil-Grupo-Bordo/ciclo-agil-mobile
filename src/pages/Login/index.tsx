@@ -9,9 +9,7 @@ function Login() {
   useBackButtonExit();
 
   return (
-    <PageContainer
-      style={{ backgroundColor: "#F6FAFF", paddingLeft: 0, paddingRight: 0, paddingTop: 0 }}
-    >
+    <PageContainer style={{ paddingLeft: 0, paddingRight: 0, paddingTop: 0 }}>
       <Sc.Wrapper>
         <Logo />
         <SigninForm />

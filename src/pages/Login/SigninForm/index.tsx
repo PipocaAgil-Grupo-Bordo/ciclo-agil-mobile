@@ -9,7 +9,6 @@ import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import authApi from "@services/authApi";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import GenericButton from "@components/GenericButton";
 import { NavigationType } from "@routes/type";
 import Inputs from "../Inputs";
 import { useTokenContext } from "@context/useUserToken";
@@ -23,12 +22,21 @@ function SigninForm() {
   const {
     handleSubmit,
     control,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isSubmitting },
     reset,
-    setError
+    setError,
+    watch
   } = useForm<LoginFields>({
-    resolver: yupResolver(loginSchema)
+    resolver: yupResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: ""
+    }
   });
+
+  const email = watch("email");
+  const password = watch("password");
+  const isButtonDisabled = !email || !password;
 
   async function onSubmit(data: LoginFields) {
     try {
@@ -72,7 +80,7 @@ function SigninForm() {
       <Sc.LoginWrapper>
         <Button
           onPress={handleSubmit(onSubmit)}
-          disabled={!isValid}
+          disabled={isButtonDisabled}
           isLoading={isSubmitting}
           fontweight="600"
           variant="default"

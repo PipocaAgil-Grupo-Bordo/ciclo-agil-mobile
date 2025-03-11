@@ -43,7 +43,8 @@ export const NewColorScheme = {
     primary: Palette.info[100],
     secondary: Palette.secondary[200],
     tertiary: Palette.neutralWhite[500],
-    white: Palette.neutralWhite[100]
+    white: Palette.neutralWhite[100],
+    disabled: Palette.primary[300]
   },
 
   foreground: {

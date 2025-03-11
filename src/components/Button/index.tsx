@@ -8,7 +8,7 @@ const buttonVariants = {
   default: {
     backgroundColor: NewColorScheme.accent.highlight,
     pressedBackground: NewColorScheme.hover.primary,
-    disabledBackground: NewColorScheme.circle.primary,
+    disabledBackground: NewColorScheme.background.disabled,
     textColor: NewColorScheme.text.white,
     disabledText: NewColorScheme.text.white
   }
