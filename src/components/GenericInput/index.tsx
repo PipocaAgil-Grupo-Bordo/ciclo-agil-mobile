@@ -40,7 +40,7 @@ function GenericInput({ label, control, name, errors, ...props }: GenericInputPr
           errors={errors}
           isFocused={isFocused}
           mask={name === "birthdate" ? Masks.DATE_DDMMYYYY : undefined}
-          secureTextEntry={name === "passowrd" ? !showPassword : showPassword}
+          secureTextEntry={name === "password" ? !showPassword : showPassword}
           {...props}
         />
         {name === "password" && (
