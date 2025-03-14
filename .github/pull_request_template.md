@@ -1,16 +1,17 @@
-### Título
+### Title
 
-Um breve título que descreva bem as alterações.
+Short descriptive title of the changes.
 
-### Ticket Relacionado
+### Related Issues
 
-- Ticket do Jira/Asana/Trello (ex: `CIA-456`)
+- Issue #123
+- Ticket from Jira/Asana/Trello (e.g., `CIA-456`)
 
-### Descrição
+### Description
 
-Uma explicação detalhada do que a PR faz. Quaisquer alterações de arquitetura ou detalhes relevantes devem ser incluídos aqui.
+A detailed explanation of what the PR does, any architectural changes, or notable details.
 
-### Plano de Testes
+### Test Plan
 
-- Passos para testar a funcionalidade ou correção manualmente.
-- Indique quais testes automatizados (unitários, integração) cobrem essas alterações.
+- Steps to test the feature or fix it manually.
+- Indicate relevant automated tests (unit, integration) that cover these changes.
