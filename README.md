@@ -1,36 +1,48 @@
 # Ciclo Ágil
 
- ## Descrição
-Ciclo Ágil é um app que permite...
+ ## Description
+Ciclo Ágil is an app that enables women to have greater control over their menstrual cycle.
 
-## Configuração do Projeto
+## Project Setup
 
-1. **Clone o repositório para sua máquina local:**
+1. **Clone the repository to your local machine:**
 
     ```bash
     git clone https://github.com/PipocaAgil/ciclo-agil-mobile.git
     ```
 
-2. **Navegue até o diretório do projeto:**
+2. **Navigate to the project directory:**
 
     ```bash
     cd ciclo-agil-mobile
     ```
 
-3. **Instale as dependências do projeto:**
+3. **Install project dependencies:**
 
     ```bash
     npm install
     ```
 
-## Executando o Projeto
+## Running the Project
 
-Certifique-se de ter um emulador configurado ou o aplicativo Expo Go instalado em seu dispositivo móvel.
+Make sure you have an emulator configured or the Expo Go app installed on your mobile device.
 
-- **Inicie o projeto:**
+- **Start the project:**
 
     ```bash
     npx expo start
     ```
 
-    Isso abrirá a interface do Expo no terminal. Você pode escanear o código QR exibido com o aplicativo Expo Go para iniciar o aplicativo em seu dispositivo.
+    This will open the Expo interface in your terminal. You can scan the displayed QR code with the Expo Go app to launch the app on your device.
+
+## Branches and commits
+
+For standardization purposes, branch names and commit messages must follow these patterns:
+
+- Branch names must start with the ticket ID + a brief descriptive title (in English and lowercase).  
+  Example: cia-123-task-title;
+
+- Commit messages should follow this pattern: [ticket_id] type: Commit Info.  
+  Example: [CIA-123] feat: Brief commit description.
+
+Note that the ticket ID must always be written in uppercase.
