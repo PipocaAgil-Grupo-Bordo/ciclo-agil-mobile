@@ -42,7 +42,7 @@ For standardization purposes, branch names and commit messages must follow these
 - Branch names must start with the ticket ID + a brief descriptive title (in English and lowercase).  
   Example: cia-123-task-title;
 
-- Commit messages should follow this pattern: [ticket_id] <type>: Commit Info.  
+- Commit messages should follow this pattern: [ticket_id] type: Commit Info.  
   Example: [CIA-123] feat: Brief commit description.
 
 Note that the ticket ID must always be written in uppercase.
