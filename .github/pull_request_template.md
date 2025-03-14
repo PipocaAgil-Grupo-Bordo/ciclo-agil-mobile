@@ -13,5 +13,5 @@ A detailed explanation of what the PR does, any architectural changes, or notabl
 
 ### Test Plan
 
-- Steps to test the feature or fix it manually.
+- Steps to test the feature or fix manually.
 - Indicate relevant automated tests (unit, integration) that cover these changes.
