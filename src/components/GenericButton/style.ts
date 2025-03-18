@@ -1,4 +1,3 @@
-import { ColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 import { ButtonStyleProps } from "./type";
 import { ColorScheme, NewColorScheme } from "@styles/globalStyles";

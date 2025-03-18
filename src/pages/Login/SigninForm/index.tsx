@@ -15,7 +15,6 @@ import { NavigationType } from "@routes/type";
 import Inputs from "../Inputs";
 import Button from "@components/Button";
 import { Sc } from "./style";
-import Inputs from "../Inputs";
 
 
 function SigninForm() {
