@@ -1,5 +1,5 @@
-import { ColorScheme, FontScheme } from "src/styles/globalStyles";
 import styled from "styled-components/native";
+import { ColorScheme, FontScheme, NewColorScheme } from "src/styles/globalStyles";
 
 export const Sc = {
   Container: styled.View``,
@@ -8,13 +8,13 @@ export const Sc = {
     font-family: ${FontScheme.family.secondary};
     font-size: ${FontScheme.size.heading}px;
     color: ${ColorScheme.text.primary};
-    margin: 81px 0px 24px;
+    margin: 32px 0px 24px;
   `,
 
   ForgottenPassword: styled.Text`
     font-family: ${FontScheme.family.primaryMedium};
     font-size: ${FontScheme.size.default}px;
-    color: ${ColorScheme.accent.highlight};
+    color: ${NewColorScheme.accent.link};
     text-align: right;
     margin: 0px 12px;
   `,
@@ -27,6 +27,7 @@ export const Sc = {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    gap: 8px;
   `,
 
   Text: styled.Text`
@@ -38,6 +39,6 @@ export const Sc = {
   RegisterLink: styled.Text`
     font-family: ${FontScheme.family.primaryMedium};
     font-size: ${FontScheme.size.default}px;
-    color: ${ColorScheme.accent.highlight};
+    color: ${NewColorScheme.accent.link};
   `
 };

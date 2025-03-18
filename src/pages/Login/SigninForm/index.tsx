@@ -1,10 +1,8 @@
 import React from "react";
 
-import GenericButton from "@components/GenericButton";
 import { useTokenContext } from "@context/useUserToken";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "@routes/type";
 import { loginSchema } from "@schemas/loginSchema";
 import authApi from "@services/authApi";
 import { LoginFields } from "@type/auth";
@@ -13,9 +11,11 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Alert, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-
-import { Sc } from "./style";
+import { NavigationType } from "@routes/type";
 import Inputs from "../Inputs";
+import Button from "@components/Button";
+import { Sc } from "./style";
+
 
 function SigninForm() {
   const navigation = useNavigation<NavigationType>();
@@ -26,10 +26,19 @@ function SigninForm() {
     control,
     formState: { errors, isSubmitting },
     reset,
-    setError
+    setError,
+    watch
   } = useForm<LoginFields>({
-    resolver: yupResolver(loginSchema)
+    resolver: yupResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: ""
+    }
   });
+
+  const email = watch("email");
+  const password = watch("password");
+  const isButtonDisabled = !email || !password;
 
   async function onSubmit(data: LoginFields) {
     try {
@@ -75,9 +84,15 @@ function SigninForm() {
       </TouchableOpacity>
 
       <Sc.LoginWrapper>
-        <GenericButton isLoading={isSubmitting} state="accent" onPress={handleSubmit(onSubmit)}>
-          <Text>Login</Text>
-        </GenericButton>
+        <Button
+          onPress={handleSubmit(onSubmit)}
+          disabled={isButtonDisabled}
+          isLoading={isSubmitting}
+          fontweight="600"
+          variant="default"
+        >
+          Login
+        </Button>
       </Sc.LoginWrapper>
 
       <Sc.RegisterWrapper>
