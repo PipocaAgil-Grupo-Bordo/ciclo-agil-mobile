@@ -1,6 +1,8 @@
 import React from "react";
-import { StyleProp, ViewStyle } from "react-native";
+
 import { StatusBar } from "expo-status-bar";
+import { StyleProp, ViewStyle } from "react-native";
+
 import { Container } from "./style";
 
 interface PageContainerProps {

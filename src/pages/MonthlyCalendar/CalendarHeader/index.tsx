@@ -1,6 +1,8 @@
-import { Sc } from "./style";
 import { ColorScheme } from "@styles/globalStyles";
+import { Text } from "react-native";
 import CalendarIcon from "react-native-vector-icons/Feather";
+
+import { Sc } from "./style";
 
 interface CalendarHeaderProps {
   date?: XDate; // Ajuste conforme o tipo do `date`
@@ -15,11 +17,13 @@ function CalendarHeader({ date }: CalendarHeaderProps) {
   return (
     <Sc.Header>
       <Sc.HeaderTitle>
-        <CalendarIcon name="calendar" size={20} color={ColorScheme.icon.idle} />{" "}
-        <Sc.CurrentMonth>
-          {month.charAt(0).toUpperCase() + month.slice(1)}
-        </Sc.CurrentMonth>{" "}
-        de <Sc.CurrentYear>{year}</Sc.CurrentYear>
+        <CalendarIcon name="calendar" size={20} color={ColorScheme.icon.idle} />
+        <Text>
+          {" "}
+          <Sc.CurrentMonth>
+            {month.charAt(0).toUpperCase() + month.slice(1)}
+          </Sc.CurrentMonth> de <Sc.CurrentYear>{year}</Sc.CurrentYear>
+        </Text>
       </Sc.HeaderTitle>
     </Sc.Header>
   );

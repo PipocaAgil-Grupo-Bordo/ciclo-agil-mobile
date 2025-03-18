@@ -1,6 +1,7 @@
-import styled, { css } from "styled-components/native";
-import { DropdownMenuStyle, OptionStyle } from "./type";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import styled, { css } from "styled-components/native";
+
+import { DropdownMenuStyle, OptionStyle } from "./type";
 
 const dropdownOptions = styled.Text`
   font-family: ${FontScheme.family.primarySemiBold};

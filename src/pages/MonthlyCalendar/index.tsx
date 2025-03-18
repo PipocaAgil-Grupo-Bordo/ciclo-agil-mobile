@@ -1,7 +1,8 @@
-import CalendarApp from "./CalendarApp";
-import { Sc } from "./style";
 import Header from "@components/Header";
+
+import CalendarApp from "./CalendarApp";
 import Caption from "./Caption";
+import { Sc } from "./style";
 
 function MonthlyCalendar() {
   return (
@@ -9,7 +10,7 @@ function MonthlyCalendar() {
       <Header title="Calendário" />
       <CalendarApp />
       <Caption />
-     </Sc.Container>
+    </Sc.Container>
   );
 }
 export default MonthlyCalendar;

@@ -1,14 +1,15 @@
-import React from "react";
-import { UserData } from "@type/auth";
-import { Sc } from "./style";
-import WaterDrop from "@images/water-drop.svg";
 import Clock from "@images/clock.svg";
+import WaterDrop from "@images/water-drop.svg";
+import { Text } from "react-native";
+// import { UserData } from "@type/auth";
 
-interface CycleOverviewProps {
-  userProfile: UserData | undefined;
-}
+import { Sc } from "./style";
 
-function CycleOverview({ userProfile }: CycleOverviewProps) {
+// interface CycleOverviewProps {
+//   userProfile: UserData | undefined;
+// }
+
+function CycleOverview(/*{ userProfile }: CycleOverviewProps*/) {
   const DATA_MOCKUP = "Não informado";
 
   const cycleData = [
@@ -28,7 +29,9 @@ function CycleOverview({ userProfile }: CycleOverviewProps) {
 
   return (
     <Sc.Container>
-      <Sc.Title>Meu Ciclo</Sc.Title>
+      <Sc.Title>
+        <Text>Meu Ciclo</Text>
+      </Sc.Title>
       {cycleData.map((data) => (
         <Sc.OverviewCard key={data.id}>
           <Sc.IconWrapper>{data.icon}</Sc.IconWrapper>

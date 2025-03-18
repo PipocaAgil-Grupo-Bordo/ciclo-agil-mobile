@@ -1,7 +1,8 @@
-import styled from "styled-components/native";
-import { StyledInputProps } from "./type";
-import MaskInput from "react-native-mask-input";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import MaskInput from "react-native-mask-input";
+import styled from "styled-components/native";
+
+import { StyledInputProps } from "./type";
 
 export const Sc = {
   Container: styled.View``,

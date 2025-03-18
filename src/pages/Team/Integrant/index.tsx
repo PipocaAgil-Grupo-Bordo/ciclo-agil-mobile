@@ -1,11 +1,13 @@
 import React from "react";
-import { Sc } from "./style";
-import { IntegrantData } from "./type";
-import { handleLinking } from "@utils/linkingHelper";
+
 import { squadPhotos } from "@constants/squadData/squadPhotos";
+import { ColorScheme } from "@styles/globalStyles";
+import { handleLinking } from "@utils/linkingHelper";
 import { ImageSourcePropType } from "react-native";
 import Feather from "react-native-vector-icons/Feather";
-import { ColorScheme } from "@styles/globalStyles";
+
+import { Sc } from "./style";
+import { IntegrantData } from "./type";
 
 function Integrant({ name, link }: IntegrantData) {
   const photo = squadPhotos[name] as ImageSourcePropType;
