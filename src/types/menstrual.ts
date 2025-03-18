@@ -1,7 +1,8 @@
 export interface ILastPeriod {
+  id: number;
   startedAt: string;
+  userId: number;
 }
-
 export interface ICurrentCycle {
   isMenstrualCycleRegular: boolean;
   menstrualCycleDuration: number;
@@ -16,9 +17,9 @@ export interface IMenstrualPeriod {
     {
       id: number;
       date: string;
-      menstrualPeriodId: number
+      menstrualPeriodId: number;
     }
-  ]
+  ];
 }
 
 export interface ICalendarDateInfo {
@@ -29,7 +30,7 @@ export interface ICalendarDateInfo {
   year: number;
 }
 
-export interface ICreateMenstrualPeriodDateResponse{
+export interface ICreateMenstrualPeriodDateResponse {
   date: string;
   menstrualPeriodId: number;
   id: number;

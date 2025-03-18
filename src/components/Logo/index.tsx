@@ -1,4 +1,7 @@
 import React from "react";
+
+import LogoImage from "@images/logo.png";
+
 import { Sc } from "./style";
 import LogoImage from "@images/logo.svg";
 

@@ -1,7 +1,8 @@
+import { GeneralColors } from "@styles/colors";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 import { ButtonStyleProps } from "../type";
-import { GeneralColors } from "@styles/colors";
-import { FontScheme } from "@styles/globalStyles";
+
 
 export const Sc = {
   Icon: styled.Image`

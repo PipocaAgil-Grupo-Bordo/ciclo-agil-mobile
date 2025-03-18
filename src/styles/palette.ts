@@ -81,6 +81,11 @@ const warning /* State Colors on figma (orange) */ = {
   500: "#F4891B"
 } as const;
 
+const transparents = {
+  transparent: "#00000000", // RGBA(0,0,0,0) é totalmente transparente
+  semiTransparentBlack: "#00000066" // RGBA(0,0,0,0.4) convertido para hexadecimal
+};
+
 export const Palette = {
   primary,
   secondary,
@@ -91,5 +96,6 @@ export const Palette = {
   info,
   error,
   success,
-  warning
+  warning,
+  transparents
 };

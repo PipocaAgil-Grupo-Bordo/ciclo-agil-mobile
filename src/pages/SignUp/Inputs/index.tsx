@@ -1,8 +1,14 @@
 import React from "react";
+
 import GenericInput from "@components/GenericInput";
+import { Control, FieldValues, UseFormStateReturn } from "react-hook-form";
+interface InputsProps {
+  control: Control<FieldValues>; // Control do react-hook-form
+  errors: UseFormStateReturn<FieldValues>["errors"]; // Para erros do react-hook-form
+}
 
 // TODO: FIX THIS ANY
-function Inputs({ control, errors }: any) {
+function Inputs({ control, errors }: InputsProps) {
   const inputsData = [
     {
       label: "Como eu gostaria de ser chamada:",

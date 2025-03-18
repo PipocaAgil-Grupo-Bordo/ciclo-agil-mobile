@@ -1,7 +1,10 @@
 import { useState } from "react";
+
+import Arrow from "@images/arrow.png";
+import { Animated } from "react-native";
+
 import { Sc } from "./style";
 import { DropdownProps } from "./type";
-import { Animated } from "react-native";
 
 /**
  * Dropdown menu component
@@ -61,7 +64,7 @@ function Dropdown<Options>({ label, currentOption, options, onChange }: Dropdown
           <Sc.SelectedOption>{currentSelectedOtion}</Sc.SelectedOption>
 
           <Animated.Image
-            source={require("@images/arrow.png")}
+            source={Arrow}
             style={{
               transform: [
                 {

@@ -1,19 +1,22 @@
 import React from "react";
-import { Alert } from "react-native";
-import { Sc } from "./style";
-import { useForm } from "react-hook-form";
+
+import { useTokenContext } from "@context/useUserToken";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "@schemas/loginSchema";
-import { LoginFields } from "@type/auth";
 import { useNavigation } from "@react-navigation/native";
-import axios from "axios";
+import { loginSchema } from "@schemas/loginSchema";
 import authApi from "@services/authApi";
+import { LoginFields } from "@type/auth";
+import { tokenAuth } from "@utils/tokenAuthHelper";
+import axios from "axios";
+import { useForm } from "react-hook-form";
+import { Alert, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { NavigationType } from "@routes/type";
 import Inputs from "../Inputs";
-import { useTokenContext } from "@context/useUserToken";
-import { tokenAuth } from "@utils/tokenAuthHelper";
 import Button from "@components/Button";
+import { Sc } from "./style";
+import Inputs from "../Inputs";
+
 
 function SigninForm() {
   const navigation = useNavigation<NavigationType>();
@@ -69,12 +72,16 @@ function SigninForm() {
 
   return (
     <Sc.Container>
-      <Sc.Title>Vamos começar?</Sc.Title>
+      <Sc.Title>
+        <Text>Vamos começar?</Text>
+      </Sc.Title>
 
       <Inputs control={control} errors={errors} />
 
       <TouchableOpacity onPress={() => navigation.navigate("EmailRequest")}>
-        <Sc.ForgottenPassword>Esqueci a senha</Sc.ForgottenPassword>
+        <Sc.ForgottenPassword>
+          <Text>Esqueci a senha</Text>
+        </Sc.ForgottenPassword>
       </TouchableOpacity>
 
       <Sc.LoginWrapper>
@@ -90,10 +97,14 @@ function SigninForm() {
       </Sc.LoginWrapper>
 
       <Sc.RegisterWrapper>
-        <Sc.Text>Não tem conta?</Sc.Text>
+        <Sc.Text>
+          <Text>Não tem conta?</Text>
+        </Sc.Text>
 
         <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-          <Sc.RegisterLink> Registre-se</Sc.RegisterLink>
+          <Sc.RegisterLink>
+            <Text> Registre-se</Text>
+          </Sc.RegisterLink>
         </TouchableOpacity>
       </Sc.RegisterWrapper>
     </Sc.Container>

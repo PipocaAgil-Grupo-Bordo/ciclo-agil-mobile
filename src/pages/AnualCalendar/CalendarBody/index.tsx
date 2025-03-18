@@ -1,12 +1,14 @@
+import React, { useCallback, useState } from "react";
+
 import { useTokenContext } from "@context/useUserToken";
+import { useFocusEffect } from "@react-navigation/native";
 import { menstrualApi } from "@services/menstrualApi";
 import { ColorScheme } from "@styles/globalStyles";
 import { IMenstrualPeriod } from "@type/menstrual";
 import { View, Text, Alert, Modal, Pressable } from "react-native";
 import { CalendarList, DateData, LocaleConfig } from "react-native-calendars";
+
 import { styles } from "./style";
-import { useFocusEffect } from "@react-navigation/native";
-import React, { useCallback, useState } from "react";
 import CalendarHeader from "../CalendarHeader";
 
 interface Props {
@@ -97,9 +99,9 @@ function CalendarListScreen(props: Props) {
   const [selectedDatesInfo, setSelectedDatesInfo] = useState<{ id: number; date: string }[]>([]);
   const { accessToken } = useTokenContext();
   const [modalVisible, setModalVisible] = useState(false);
-  const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
+  const [pendingDate, setPendingDate] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [futureDateModalVisible, setFutureDateModalVisible] = useState(false); // Novo estado para o modal de datas futuras
+  const [futureDateModalVisible, setFutureDateModalVisible] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
@@ -126,7 +128,6 @@ function CalendarListScreen(props: Props) {
   const calculateDateGap = (newDate: string) => {
     if (selectedDates.length === 0) return 0;
     const newDateObj = new Date(newDate);
-    let closestDate = null;
     let minDiff = Infinity;
 
     for (const date of selectedDates) {
@@ -134,25 +135,24 @@ function CalendarListScreen(props: Props) {
       const diff = Math.abs(newDateObj.getTime() - dateObj.getTime());
       if (diff < minDiff) {
         minDiff = diff;
-        closestDate = date;
       }
     }
 
     const gap = minDiff / (1000 * 3600 * 24) - 1;
-
     return gap;
   };
 
-  const handleModalResponse = (response: "yes" | "no") => {
+  const handleModalResponse = async (response: "yes" | "no") => {
     setModalVisible(false);
 
     if (response === "yes" && pendingDate) {
-      // Preencher os dias anteriores se o usuário escolher 'sim'
-      fillPreviousDates(pendingDate);
+      await fillPreviousDates(pendingDate);
     } else if (response === "no" && pendingDate) {
-      // Somente adicionar a data se o gap for >= 3 (novo ciclo)
-      addMenstrualPeriodDate(pendingDate);
-      setSelectedDates([...selectedDates, pendingDate]);
+      const newDateInfo = await addMenstrualPeriodDate(pendingDate);
+      if (newDateInfo) {
+        setSelectedDates((prev) => [...prev, pendingDate]);
+        setSelectedDatesInfo((prev) => [...prev, newDateInfo]);
+      }
     }
 
     setPendingDate(null);
@@ -172,64 +172,65 @@ function CalendarListScreen(props: Props) {
       }
     }
 
-    const datesToFill: string[] = [];
-    const datesToFillInfo: { id: number; date: string }[] = [];
+    if (!closestDate) return;
 
     const fillDates = (start: Date, end: Date) => {
-      const dates= [];
-
+      const dates = [];
       for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
         dates.push(d.toISOString().split("T")[0]);
       }
       return dates;
     };
 
-    if (selectedDate < closestDate!) {
-      datesToFill.push(...fillDates(selectedDate, closestDate!));
-    } else if (selectedDate > closestDate!) {
-      closestDate?.setDate(closestDate.getDate() + 1);
-      datesToFill.push(...fillDates(closestDate!, selectedDate));
-    }
+    const datesToFill =
+      selectedDate < closestDate
+        ? fillDates(selectedDate, closestDate)
+        : fillDates(new Date(closestDate.setDate(closestDate.getDate() + 1)), selectedDate);
 
-    // Evita adicionar datas duplicadas e ordena as datas.
-    const uniqueDates = Array.from(new Set([...selectedDates, ...datesToFill]));
-    uniqueDates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
-
-    setSelectedDates(uniqueDates);
-
-    const responses = await Promise.all(
-      datesToFill.map((dateToAdd) => addMenstrualPeriodDate(dateToAdd))
-    );
-
-    responses.forEach((response) => {
-      if (response) datesToFillInfo.push(response);
+    setSelectedDates((prev) => {
+      const uniqueDates = Array.from(new Set([...prev, ...datesToFill]));
+      return uniqueDates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
     });
 
-    setSelectedDatesInfo([...selectedDatesInfo, ...datesToFillInfo]);
+    const newDatesInfo: { id: number; date: string }[] = [];
+    for (const dateToAdd of datesToFill) {
+      if (!selectedDates.includes(dateToAdd)) {
+        const response = await addMenstrualPeriodDate(dateToAdd);
+        if (response) {
+          newDatesInfo.push(response);
+        }
+      }
+    }
+
+    if (newDatesInfo.length > 0) {
+      setSelectedDatesInfo((prev) => [...prev, ...newDatesInfo]);
+    }
   };
 
-  const handleDayPress = (day: DateData) => {
+  const handleDayPress = async (day: DateData) => {
     const date = day.dateString;
     const today = new Date().toISOString().split("T")[0];
 
     if (date > today) {
-      setFutureDateModalVisible(true); // Mostra o modal de datas futuras
+      setFutureDateModalVisible(true);
       return;
     }
 
     if (!selectedDates.includes(date)) {
       const gap = calculateDateGap(date);
 
-      // Exibir o modal apenas para gaps maiores que 1 dia e menores ou iguais a 7 dias
       if (gap >= 1 && gap <= 7) {
         setPendingDate(date);
-        setModalVisible(true); // Mostra o modal
+        setModalVisible(true);
       } else {
-        addMenstrualPeriodDate(date);
-        setSelectedDates([...selectedDates, date]);
+        setSelectedDates((prev) => [...prev, date]);
+        const newDateInfo = await addMenstrualPeriodDate(date);
+        if (newDateInfo) {
+          setSelectedDatesInfo((prev) => [...prev, newDateInfo]);
+        }
       }
     } else {
-      deleteMenstrualPeriodDate(date);
+      await deleteMenstrualPeriodDate(date);
     }
   };
 
@@ -238,36 +239,28 @@ function CalendarListScreen(props: Props) {
       if (accessToken) {
         const response = await menstrualApi.createPeriodDate({ date }, accessToken);
         const data = response.data;
-        setSelectedDatesInfo([...selectedDatesInfo, { id: data.id, date: data.date }]);
         return { id: data.id, date: data.date };
       }
-    } catch (error) {
+    } catch {
       Alert.alert("Erro ao adicionar data, tente novamente!");
-      const currentSelectedDates = [...selectedDates];
-      const currentSelectedDatesInfo = [...selectedDatesInfo];
-      currentSelectedDatesInfo.pop();
-      setSelectedDatesInfo(currentSelectedDatesInfo);
-      currentSelectedDates.pop();
-      setSelectedDates(currentSelectedDates);
+      return null;
     }
   };
 
   const deleteMenstrualPeriodDate = async (date: string) => {
     const dateInfo = selectedDatesInfo.find((info) => info.date === date);
-    if (!dateInfo) return; // Adiciona uma verificação caso não encontre a data.
+    if (!dateInfo) return;
     try {
       if (accessToken) {
-        // Filtrar para remover a data correta
         const updatedSelectedDates = selectedDates.filter((selectedDate) => selectedDate !== date);
         const updatedSelectedDatesInfo = selectedDatesInfo.filter((info) => info.date !== date);
         setSelectedDates(updatedSelectedDates);
         setSelectedDatesInfo(updatedSelectedDatesInfo);
 
-        // Chama a API para deletar
         await menstrualApi.deletePeriodDate(dateInfo.id, accessToken);
       }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      // Reverter a operação em caso de erro
       Alert.alert("Erro ao deletar data, tente novamente!");
       setSelectedDates([...selectedDates, date]);
       setSelectedDatesInfo([...selectedDatesInfo, dateInfo]);
@@ -281,34 +274,38 @@ function CalendarListScreen(props: Props) {
   };
 
   const formatDateInfoList = (menstrualPeriods: IMenstrualPeriod[]) => {
-    return menstrualPeriods.flatMap((menstrualPeriod: IMenstrualPeriod) => {
+    const response = menstrualPeriods.flatMap((menstrualPeriod: IMenstrualPeriod) => {
       return menstrualPeriod.dates.map((menstrualPeriodDate) => {
         return { id: menstrualPeriodDate.id, date: menstrualPeriodDate.date };
       });
     });
+
+    return response;
   };
 
-  const markedDates = selectedDates.reduce((acc, date, index) => {
-    if (index === 0) {
-      // The first day selected is given the "firstDay" styles
-      acc[date] = {
-        ...currentCycle("firstDay"),
-        customStyles: currentCycle("firstDay").customStyles // Apply customStyles
-      };
-    } else {
-      // Os outros dias recebem estilos de "fertile"
-      acc[date] = {
-        ...currentCycle("fertile"),
-        customStyles: currentCycle("fertile").customStyles
-      };
-    }
-    return acc;
-  }, {} as Record<string, any>);
+  const markedDates = selectedDates.reduce(
+    (acc, date, index) => {
+      if (index === 0) {
+        // The first day selected is given the "firstDay" styles
+        acc[date] = {
+          ...currentCycle("firstDay"),
+          customStyles: currentCycle("firstDay").customStyles
+        };
+      } else {
+        acc[date] = {
+          ...currentCycle("fertile"),
+          customStyles: currentCycle("fertile").customStyles
+        };
+      }
+      return acc;
+    },
+    {} as Record<string, object>
+  );
 
   const renderCustomHeader = (date: XDate | undefined) => {
     return (
       <View style={styles.containerHeader}>
-        <CalendarHeader date={date}/>
+        <CalendarHeader date={date} />
       </View>
     );
   };

@@ -1,8 +1,11 @@
+import { GeneralColors } from "@styles/colors";
+import { ColorScheme } from "@styles/globalStyles";
 import { ActivityIndicator } from "react-native";
 import ButtonChildren from "./ButtonChildren";
-import { GenericButtonProps, StatesType } from "./type";
 import { Sc } from "./style";
 import { NewColorScheme } from "@styles/globalStyles";
+import { GenericButtonProps, StatesType } from "./type";
+
 
 /**
  * Button component

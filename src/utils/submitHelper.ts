@@ -1,11 +1,13 @@
-import { UseFormReset, UseFormSetError } from "react-hook-form";
-import { userApi } from "@services/userApi";
-import { EmailFields, RegisterFields, ValidationCodeResponse } from "@type/auth";
+import React from "react";
+
 import { NavigationType } from "@routes/type";
 import authApi from "@services/authApi";
+import { userApi } from "@services/userApi";
+import { EmailFields, RegisterFields, ValidationCodeResponse } from "@type/auth";
 import { AxiosError, AxiosResponse } from "axios";
+import { UseFormReset, UseFormSetError } from "react-hook-form";
+
 import { dateHelper } from "./dateHelpers";
-import React from "react";
 import { tokenAuth } from "./tokenAuthHelper";
 
 export async function submitRegister(
@@ -32,8 +34,10 @@ export async function submitRegister(
     reset({ email: "", password: "" }, { keepErrors: false });
 
     return navigation.navigate("Team");
-  } catch (error: any) {
-    if (error.response.status === 409) {
+  } catch (error) {
+    const axiosError = error as AxiosError;
+
+    if (axiosError.response && axiosError.response.status === 409) {
       setError("confirmEmail", { message: "E-mail já cadastrado." });
       setError("email", {});
     }

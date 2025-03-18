@@ -1,6 +1,34 @@
 import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
+const getBackgroundColor = ({
+  hasBorder,
+  isSelected
+}: {
+  hasBorder: boolean;
+  isSelected?: boolean;
+}) => {
+  if (isSelected) return "#F6ABEC";
+  if (hasBorder) return NewColorScheme.foreground.secondary;
+  return "transparent";
+};
+
+const getBorderColor = ({ isSelected }: { isSelected?: boolean }) =>
+  isSelected ? "#F067E1" : "transparent";
+
+const getBorderStyle = ({
+  isFirstMenstrualDay,
+  isSelected
+}: {
+  isFirstMenstrualDay?: boolean;
+  isSelected?: boolean;
+}) => (isSelected && !isFirstMenstrualDay ? "dashed" : "solid");
+
+const getTextColor = ({ hasBorder, isSelected }: { hasBorder: boolean; isSelected?: boolean }) => {
+  if (isSelected || hasBorder) return NewColorScheme.text.white;
+  return ColorScheme.text.primary;
+};
+
 export const Sc = {
   Container: styled.View`
     flex-direction: row;
@@ -21,23 +49,27 @@ export const Sc = {
     color: ${ColorScheme.text.secondary};
   `,
 
-  DayWrapper: styled.View<{ hasBorder: boolean }>`
-    background-color: ${({ hasBorder }) =>
-      hasBorder ? `${NewColorScheme.foreground.secondary};` : ``};
-    border-style: solid;
+  DayWrapper: styled.View<{
+    hasBorder: boolean;
+    isSelected?: boolean;
+    isFirstMenstrualDay?: boolean;
+  }>`
+    background-color: ${getBackgroundColor};
+    border-width: ${({ isSelected }) => (isSelected ? "1px" : "0")};
+    border-color: ${getBorderColor};
+    border-style: ${getBorderStyle};
     text-align: center;
-    border-color: ${ColorScheme.accent.highlight};
+    width: 30px;
+    height: 41px;
     border-radius: 99px;
-    padding: 12px 9px 12px 9px;
     align-items: center;
     justify-content: center;
   `,
 
-  Day: styled.Text<{ hasBorder: boolean }>`
+  Day: styled.Text<{ hasBorder: boolean; isSelected?: boolean; isFirstMenstrualDay?: boolean }>`
     text-align: center;
     font-family: ${FontScheme.family.primarySemiBold};
     font-size: ${FontScheme.size.small}px;
-    color: ${({ hasBorder }) =>
-      hasBorder ? `${NewColorScheme.text.white}` : `${ColorScheme.text.primary}`};
+    color: ${getTextColor};
   `
 };

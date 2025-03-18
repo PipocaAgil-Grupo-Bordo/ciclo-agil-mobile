@@ -1,4 +1,5 @@
 import * as yup from "yup";
+
 import { isValidEmail } from "./emailSchema";
 
 // Accept only letters and whitespace, ensuring there are at least two letters present
@@ -9,7 +10,7 @@ const dateRegex = /^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/(19\d{2}|20(?:[
 
 // Accept only if there is at least one Uppercase, one lowercase, one number, one symbol
 const passwordRegex =
-  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~/\\=-]).{8,}$/gm;
+  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~/\\=-]).{8,}$/gm;
 
 // Ensure all dates are valid ones. Including Feb leap years, and months that doesn't have the 31st day
 function isValidDate(dateString: string) {
