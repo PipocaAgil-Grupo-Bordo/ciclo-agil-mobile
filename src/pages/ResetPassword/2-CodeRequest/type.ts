@@ -1,5 +1,5 @@
-import { OtpInputProps } from "react-native-otp-entry";
 import { StatesType } from "@components/GenericButton/type";
+import { OtpInputProps } from "react-native-otp-entry";
 
 export interface OTPInputProps extends OtpInputProps {
   resendCode: () => void;

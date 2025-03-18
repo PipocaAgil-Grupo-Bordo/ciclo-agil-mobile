@@ -6,7 +6,7 @@ async function saveToken(key: ITokens, value: string) {
 }
 
 async function getToken(key: ITokens) {
-  let token = await SecureStore.getItemAsync(key);
+  const token = await SecureStore.getItemAsync(key);
   return token;
 }
 

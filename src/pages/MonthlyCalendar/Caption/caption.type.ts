@@ -1,3 +1,3 @@
-interface IGroupCaptions {
+export interface IGroupCaptions {
   isFirstChild: boolean;
 }

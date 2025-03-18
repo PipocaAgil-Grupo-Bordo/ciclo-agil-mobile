@@ -1,7 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
+import Entypo from "react-native-vector-icons/Entypo";
+
 import { Sc } from "./style";
 import { HeaderProps } from "./type";
-import Entypo from "react-native-vector-icons/Entypo";
 
 /**
  * Header with back button and title

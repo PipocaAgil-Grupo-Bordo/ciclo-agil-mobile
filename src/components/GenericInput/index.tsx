@@ -1,9 +1,11 @@
 import React from "react";
-import { GenericInputProps } from "./type";
+
+import { ColorScheme } from "@styles/globalStyles";
 import { useController } from "react-hook-form";
 import { Masks } from "react-native-mask-input";
+
 import { Sc } from "./style";
-import { ColorScheme } from "@styles/globalStyles";
+import { GenericInputProps } from "./type";
 
 /**
  * Text input with label and error message

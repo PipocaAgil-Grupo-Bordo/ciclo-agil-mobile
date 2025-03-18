@@ -1,7 +1,7 @@
-import { Control, FieldErrors } from "react-hook-form";
-import { PasswordResetFields } from "@type/auth";
 import { StatesType } from "@components/GenericButton/type";
 import { RootStackParamList } from "@routes/type";
+import { PasswordResetFields } from "@type/auth";
+import { Control, FieldErrors } from "react-hook-form";
 
 export interface SubmitButtonsProps {
   SubmitPassword: () => void;

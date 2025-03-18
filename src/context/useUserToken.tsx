@@ -1,6 +1,7 @@
+import { createContext, useContext, useState } from "react";
+
 import { UserData, WhoAmI } from "@type/auth";
 import { ITokenContext, TokenProviderProps } from "@type/context";
-import { createContext, useContext, useState } from "react";
 
 /**
  * Provide the user token and user profile to the app

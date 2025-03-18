@@ -1,17 +1,19 @@
+import { useState } from "react";
+
+import Header from "@components/Header";
+import Modal from "@components/Modal";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Inputs from "./Inputs";
-import { PasswordFields, PasswordResetFields } from "@type/auth";
-import { useForm } from "react-hook-form";
-import { resetPasswordSchema } from "@schemas/resetPasswordSchema";
-import SubmitButtons from "./SubmitButtons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { NavigationType, NewPasswordRouteParam } from "@routes/type";
+import { resetPasswordSchema } from "@schemas/resetPasswordSchema";
 import authApi from "@services/authApi";
+import { PasswordFields, PasswordResetFields } from "@type/auth";
 import { AxiosError } from "axios";
+import { useForm } from "react-hook-form";
+
+import Inputs from "./Inputs";
 import { Sc } from "./style";
-import Header from "@components/Header";
-import { useState } from "react";
-import Modal from "@components/Modal";
+import SubmitButtons from "./SubmitButtons";
 import { IModalOptions } from "./type";
 
 function NewPassword() {

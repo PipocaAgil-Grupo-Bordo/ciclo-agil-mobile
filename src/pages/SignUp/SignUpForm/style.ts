@@ -1,6 +1,7 @@
-import styled from "styled-components/native";
-import { InstructionTextProps } from "../type";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import styled from "styled-components/native";
+
+import { InstructionTextProps } from "../type";
 
 export const Sc = {
   Container: styled.View`

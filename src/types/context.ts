@@ -1,4 +1,5 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
+
 import { UserData, WhoAmI } from "./auth";
 
 export interface ITokenContext {
@@ -18,5 +19,5 @@ export interface TokenProviderProps {
 
 export interface IProfileContext {
   userProfile: string | undefined;
-  setUserProfile: Dispatch<SetStateAction<any | undefined>>;
+  setUserProfile: Dispatch<SetStateAction<string | undefined>>;
 }

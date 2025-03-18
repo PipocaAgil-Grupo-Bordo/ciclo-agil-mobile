@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+
 import {
   FlatList,
   ListRenderItemInfo,
   NativeScrollEvent,
   NativeSyntheticEvent
 } from "react-native";
-import { ScrollPickerProps } from "./type";
-import { Sc } from "./style";
+
 import RenderedContent from "./RenderedContent";
+import { Sc } from "./style";
+import { ScrollPickerProps } from "./type";
 
 /**
  * Render a scrollable array of selectable items

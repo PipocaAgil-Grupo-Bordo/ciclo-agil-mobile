@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 // Accept only if there is at least one Uppercase, one lowercase, one number, one symbol
 const passwordRegex =
-  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~/\\=-]).{8,}$/gm;
+  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~/\\=-]).{8,}$/gm;
 
 export const resetPasswordSchema = yup.object().shape({
   password: yup
