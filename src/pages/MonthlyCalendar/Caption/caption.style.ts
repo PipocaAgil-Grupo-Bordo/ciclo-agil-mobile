@@ -1,6 +1,6 @@
-import styled from "styled-components/native";
 import { ColorScheme } from "@styles/globalStyles";
 import { FontScheme } from "@styles/globalStyles";
+import styled from "styled-components/native";
 import "./caption.type";
 
 export const Sc = {

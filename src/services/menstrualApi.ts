@@ -1,6 +1,7 @@
+import { ICreateMenstrualPeriodDateResponse, ILastPeriod, IMenstrualPeriod } from "@type/menstrual";
 import { AxiosResponse } from "axios";
+
 import api from "./api";
-import { ICreateMenstrualPeriodDateResponse } from "@type/menstrual";
 
 async function createPeriodDate(
   cycleData: { date: string },
@@ -24,7 +25,7 @@ async function getMenstrualPeriods({
   year?: number;
   month?: number;
   token: string;
-}): Promise<AxiosResponse<any>> {
+}): Promise<AxiosResponse<IMenstrualPeriod[]>> {
   // Define the query parameters
   const params = year && month ? { year, month } : year ? { year } : null;
 
@@ -38,7 +39,7 @@ async function getMenstrualPeriods({
   return promise;
 }
 
-async function getLastMenstrualPeriod(token: string): Promise<AxiosResponse<any>> {
+async function getLastMenstrualPeriod(token: string): Promise<AxiosResponse<ILastPeriod>> {
   const promise = api.get("menstrual-periods/last", {
     headers: {
       Authorization: `Bearer ${token}`

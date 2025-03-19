@@ -1,6 +1,7 @@
-import styled from "styled-components/native";
-import { isSelectedTextStyle } from "../type";
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import styled from "styled-components/native";
+
+import { isSelectedTextStyle } from "../type";
 
 export const Sc = {
   Text: styled.Text<isSelectedTextStyle>`

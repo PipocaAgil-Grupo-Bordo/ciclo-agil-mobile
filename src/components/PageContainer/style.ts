@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+
 import { FontScheme, NewColorScheme } from "../../styles/globalStyles";
 
 export const Container = styled.ScrollView`

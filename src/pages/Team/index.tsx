@@ -1,12 +1,15 @@
-import { Sc } from "./style";
-import GenericButton from "@components/GenericButton";
-import Squad from "./Squad";
 import { useState } from "react";
+
+import GenericButton from "@components/GenericButton";
 import Modal from "@components/Modal";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import useBackButtonExit from "@hooks/useBackButtonExit";
 import { useNavigation } from "@react-navigation/core";
 import { NavigationType } from "@routes/type";
-import useBackButtonExit from "@hooks/useBackButtonExit";
+import { Text } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+
+import Squad from "./Squad";
+import { Sc } from "./style";
 
 function Team() {
   const [readyToNext, setReadyToNext] = useState(false);
@@ -17,12 +20,16 @@ function Team() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Sc.Container>
         <Sc.Wrapper>
-          <Sc.Title>Quem somos nós? Equipe Ciclo Ágil</Sc.Title>
-          <Sc.SubTitle>Esses são os colaboradores que fizeram este app:</Sc.SubTitle>
+          <Sc.Title>
+            <Text>Quem somos nós? Equipe Ciclo Ágil</Text>
+          </Sc.Title>
+          <Sc.SubTitle>
+            <Text>Esses são os colaboradores que fizeram este app:</Text>
+          </Sc.SubTitle>
           <Squad />
         </Sc.Wrapper>
         <GenericButton onPress={() => setReadyToNext(true)} state="accent">
-          Próximo
+          <Text>Próximo</Text>
         </GenericButton>
         {readyToNext && (
           <Modal

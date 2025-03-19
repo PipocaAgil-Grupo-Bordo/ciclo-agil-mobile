@@ -1,13 +1,14 @@
 import { RegisterFields, UserData } from "@type/auth";
-import api from "./api";
 import { AxiosResponse } from "axios";
+
+import api from "./api";
 
 function signUpUser(body: Omit<RegisterFields, "confirmEmail" | "confirmPassword">) {
   const promise = api.post("/users", body);
   return promise;
 }
 
-function getUserProfile(token: String): Promise<AxiosResponse<UserData>> {
+function getUserProfile(token: string): Promise<AxiosResponse<UserData>> {
   const promise = api.get("/profiles/my-profile", {
     headers: { Authorization: `Bearer ${token}` }
   });

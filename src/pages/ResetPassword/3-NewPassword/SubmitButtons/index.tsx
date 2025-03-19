@@ -1,8 +1,10 @@
+import React from "react";
+
 import { useNavigation } from "@react-navigation/native";
+import { NavigationType } from "@routes/type";
+
 import GenericButton from "../../../../components/GenericButton";
 import { SubmitButtonsArray, SubmitButtonsProps } from "../type";
-import React from "react";
-import { NavigationType } from "@routes/type";
 import { Sc } from "./style";
 
 function SubmitButtons({ SubmitPassword, isLoading }: SubmitButtonsProps) {

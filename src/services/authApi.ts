@@ -1,4 +1,5 @@
 import { LoginFields, EmailFields, PasswordFields, ValidationCodeFields } from "@type/auth";
+
 import api from "./api";
 
 function signInUser(body: LoginFields) {

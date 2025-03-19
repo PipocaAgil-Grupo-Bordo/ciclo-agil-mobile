@@ -1,6 +1,7 @@
-import styled from "styled-components/native";
-import { ButtonStyleProps } from "./type";
 import { ColorScheme } from "@styles/globalStyles";
+import styled from "styled-components/native";
+
+import { ButtonStyleProps } from "./type";
 
 export const Sc = {
   Button: styled.TouchableHighlight<ButtonStyleProps>`
