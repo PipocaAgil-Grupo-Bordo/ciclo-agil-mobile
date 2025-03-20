@@ -1,62 +1,40 @@
 export const paragraphs = {
   termsOfUse: [
     {
-      title: "1. Oferecer uma experiência e informações personalizadas para o usuário.",
-      text: "Através dos dados coletados, nós oferecemos informações personalizadas para você."
+      title: "1. Introdução.",
+      text: "O CicloÁgil é um aplicativo desenvolvido para auxiliar mulheres que menstruam ou não no monitoramento do ciclo menstrual e de seus sintomas, oferecendo uma experiência personalizada baseada nos dados coletados com o consentimento do usuário. O compromisso do aplicativo é garantir um ambiente positivo, inclusivo e seguro, respeitando a privacidade e protegendo as informações fornecidas pelos usuários."
     },
     {
-      title: "2. Promover um ambiente positivo, inclusivo e seguro.",
-      text: "Usamos ferramentas e fornecemos recursos aos usuários do app para tornar as experiências inclusivas e positivas, incluindo quando pensamos que os mesmos podem precisar de ajuda. Prezamos pela privacidade, seus dados nunca serão compartilhados com ninguém."
+      title: "2. Experiência Personalizada.",
+      text: "O CicloÁgil tem como objetivo proporcionar uma experiência personalizada e relevante para cada usuário. Utilizamos as informações coletadas para gerar previsões sobre o ciclo menstrual, oferecer insights personalizados e enviar notificações que auxiliem no monitoramento da saúde reprodutiva. Dessa forma, garantimos que cada usuário tenha acesso a dados relevantes para seu bem-estar e tomada de decisão."
     },
     {
-      title: "3. Utilizamos tecnologias que nos ajudem a servir você de forma consistente.",
-      text: "Organizamos e analisamos informações e utilizamos tecnologias que nos ajudam a personalizar, proteger e melhorar o nosso serviço, isso nos ajudam a garantir a funcionalidade e a integridade do nosso serviço."
+      title: "3. Ambiente Seguro e Inclusivo.",
+      text: "Prezamos pela criação de um ambiente positivo, seguro e inclusivo dentro do aplicativo. Disponibilizamos ferramentas e recursos para tornar a experiência do usuário mais acolhedora, incluindo suporte e orientações quando identificamos que o usuário pode precisar de assistência. Nosso compromisso é garantir acessibilidade e respeito à diversidade, promovendo um espaço onde todos se sintam representados e apoiados."
     },
     {
-      title: "4. Garantir o acesso ao nosso Serviço.",
-      text: "Para garantir o funcionamento do nosso serviço, temos de armazenar e transferir dados nos nossos sistemas em todo o Brasil. A utilização desta infraestrutura é necessária e essencial para fornecermos o nosso serviço. "
+      title: "4. Privacidade e Segurança de Dados",
+      text: "A privacidade dos usuários é uma prioridade para o CicloÁgil. Garantimos que os dados coletados nunca serão compartilhados com terceiros sem o devido consentimento. Aplicamos medidas rigorosas de segurança para proteger as informações armazenadas, garantindo a integridade e a confidencialidade dos dados pessoais. Utilizamos tecnologias avançadas para analisar, organizar e proteger os dados, assegurando um serviço estável e seguro. Nosso compromisso é garantir que a experiência do usuário seja consistente e confiável, respeitando as diretrizes da Lei Geral de Proteção de Dados (Lei 13.709/18)."
     },
     {
-      title: "5. Te mostramos marcas, produtos e serviços que te interessem",
-      text: "Utilizamos dados provenientes do CicloÁgil, para te mostrar anúncios, ofertas e outros conteúdos patrocinados que acreditamos que vão ser importantes para ti. "
+      title: "5. Armazenamento e Processamento de dados.",
+      text: "Para garantir o funcionamento adequado do serviço, é necessário armazenar e processar dados nos sistemas do CicloÁgil em todo o Brasil. Essa infraestrutura permite que possamos oferecer um serviço estável, seguro e eficiente, assegurando a disponibilidade das funcionalidades do aplicativo a todos os usuários."
     },
     {
       title: "6. Pesquisa e inovação.",
-      text: "Utilizamos as informações que temos para estudar o nosso Serviço e colaborar com outras pessoas em pesquisas para melhorar o nosso serviço e contribuir para o bem-estar da nossa comunidade."
+      text: "As informações coletadas podem ser utilizadas para estudos e pesquisas que visam aprimorar o serviço e contribuir para a inovação na área de monitoramento da saúde reprodutiva. Todos os dados utilizados para pesquisa são anonimizados e seguem protocolos rigorosos de segurança, garantindo a proteção da identidade dos usuários."
     },
     {
-      title: "Porque temos publicidade?",
-      text: "Em vez de você pagar para utilizar o CicloÁgil, ao utilizar o serviço incluso nos presentes termos, você declara que podemos te apresentar anúncios que as empresas e organizações nos pagam para promover dentro do CicloÁgil. Utilizamos os seus dados pessoais, como dados de saúde e interesses, para te mostrar anúncios que sejam mais relevantes para você.\n\nNão revelamos a sua identidade aos anunciantes. Não vendemos os seus dados pessoais. Permitimos que os anunciantes nos deem informações como o seu objetivo comercial e o tipo de público que pretendem que veja os seus anúncios. Apenas mostramos os anúncios a pessoas que possam estar interessadas."
-    }
-  ],
-  privacyPolicy: [
-    {
-      title: "1. Não compartilhamos suas informações",
-      text: "Nós do CicloÁgil prezamos pela privacidade, seus dados nunca serão compartilhados com terceiros, parceiros, anunciantes ou autoridades legais, conforme a lei de proteção de dados."
+      title: "7. Transparência e Direitos do Usúario",
+      text: "O usuário tem o direito de acessar, corrigir ou excluir seus dados pessoais sempre que desejar. Também pode revogar o consentimento para o uso das informações a qualquer momento, além de solicitar esclarecimentos sobre o tratamento dos dados dentro do aplicativo. Caso o usuário deseje exercer seus direitos, basta entrar em contato com a equipe de suporte do CicloÁgil para realizar a solicitação."
     },
     {
-      title: "2. Como utilizamos os seus dados",
-      text: "Os dados coletos servem únicamente para personalização do aplicativo, previsão de próximas datas de menstruação e ciclo menstrual, melhorias de serviço, pesquisa e desenvolvimento do aplicativo, e/ou publicidade direcionada."
+      title: "8. Atualizações desta Política",
+      text: "A presente política de privacidade pode ser atualizada periodicamente para refletir melhorias e mudanças nas diretrizes do serviço. Caso ocorram alterações significativas, os usuários serão devidamente informados."
     },
     {
-      title: " 3. Quais dados são utilizados",
-      text: "Os dados coletados pelo aplicativo incluem:dados pessoais (como nome, idade, email) e dados de saúde relacionados ao ciclo menstrual (como sintomas, atividade sexual, uso de contraceptivos, entre outros."
-    },
-    {
-      title: "4. Como funciona a publicidade direcionada",
-      text: "As suas informações serão usadas para personalização de publicidades para você, ou seja, serão usadas para direcionar as publicidades que melhor se adequam para o seu perfil. As suas informações não serão compartilhadas com terceiros e nem com anunciantes."
-    },
-    {
-      title: "5. Redefinição de preferências",
-      text: "A qualquer momento você pode conceder ou recusar consentimento para o uso desses dados, revogar o consentimento, atualizar suas informações e ter acesso ao fluxo de dados."
-    },
-    {
-      title: "6. Em caso de atualização dos Termos e Políticas de Privacidade",
-      text: "Nós do CicloÁgil iremos mandar um email para você informando das atualizações e mudanças, ao acessar o aplicativo você será direcionado para a página de Termos e Políticas e poderá concordar ou editar as suas preferências."
-    },
-    {
-      title: "7. Em caso de perda ou dano de algum dado",
-      text: "Nós agimos conforme a Lei de Proteção de Dados (LGPD). Saiba mais sobre a Lei de Proteção de Dados.\n\nSe tiver alguma dúvida ou precisar de algum tipo de suporte, nos conta-te pelo email: cicloagil@gmail.com ou pelo telefone: (01)1234-5678"
+      title: "9. Contato",
+      text: "Para dúvidas, sugestões ou solicitações relacionadas à privacidade e proteção de dados, entre em contato com a equipe do CicloÁgil pelo e-mail: Pipocatimebordo@gmail.com."
     }
   ]
 };

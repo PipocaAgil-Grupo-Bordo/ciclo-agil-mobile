@@ -1,10 +1,10 @@
-import { ColorScheme } from "@styles/globalStyles";
+import { NewColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
   Container: styled.ScrollView`
-    background-color: ${ColorScheme.background.primary};
-    padding: 46px 24px 0px;
+    background-color: ${NewColorScheme.background.primary};
+    padding: 60px 16px 0px;
     position: relative;
   `,
 
