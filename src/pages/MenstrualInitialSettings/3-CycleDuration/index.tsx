@@ -98,7 +98,7 @@ function CycleDuration() {
       // Missing error for code 400 and 401 (not sure what they're for yet, need the doc updated)
       setIsLoading(false);
 
-      console.log(error); // #temporary for debugging
+      //console.log(error); // #temporary for debugging
     }
   }
 

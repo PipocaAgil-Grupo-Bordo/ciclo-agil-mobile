@@ -23,7 +23,7 @@ async function updateUserProfile(
   },
   token: string
 ): Promise<AxiosResponse<UserData>> {
-  const promise = api.patch("/profiles", data, {
+  const promise = await api.patch("/profiles", data, {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json"

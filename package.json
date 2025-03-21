@@ -7,7 +7,15 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix"
+    "format": "prettier --write",
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{tsx,ts,js}": [
+      "npm run format",
+      "npm run lint"
+    ]
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^4.6.1",
@@ -51,6 +59,8 @@
     "@typescript-eslint/eslint-plugin": "^8.24.1",
     "@typescript-eslint/parser": "^8.24.1",
     "babel-plugin-module-resolver": "^5.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
