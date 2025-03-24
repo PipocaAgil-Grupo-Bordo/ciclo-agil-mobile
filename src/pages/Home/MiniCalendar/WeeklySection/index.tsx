@@ -22,7 +22,7 @@ function WeeklySection() {
     useCallback(() => {
       fetchMenstrualPeriods();
       return () => setSelectedDates([]);
-    }, [accessToken])
+    }, [accessToken, year, month])
   );
 
   const fetchMenstrualPeriods = async () => {
@@ -30,13 +30,12 @@ function WeeklySection() {
 
     const response = await menstrualApi.getMenstrualPeriods({ year, month, token: accessToken });
     const dates = response.data.flatMap((period: IMenstrualPeriod) =>
-      period.dates.map(({ date }) => new Date(date).getDate())
+      period.dates.map(({ date }) => new Date(date).getUTCDate())
     );
-
     setSelectedDates(Array.from(new Set(dates.filter((day: number) => daysOfWeek.includes(day)))));
   };
 
-  const firstSelectedDate = Math.min(...selectedDates);
+  const firstSelectedDate = selectedDates.length > 0 ? Math.min(...selectedDates) : null;
 
   return (
     <Sc.Container>
@@ -45,19 +44,13 @@ function WeeklySection() {
         const isFirstMenstrualDay = day === firstSelectedDate;
         const hasBorder = day === currentDay;
 
+        const props = { hasBorder, isSelected, isFirstMenstrualDay };
+
         return (
           <Sc.WeekWrapper key={index}>
             <Sc.Week>{weekBlock[index]}</Sc.Week>
-            <Sc.DayWrapper
-              hasBorder={hasBorder}
-              isSelected={isSelected}
-              isFirstMenstrualDay={isFirstMenstrualDay}
-            >
-              <Sc.Day
-                hasBorder={hasBorder}
-                isSelected={isSelected}
-                isFirstMenstrualDay={isFirstMenstrualDay}
-              >
+            <Sc.DayWrapper {...props}>
+              <Sc.Day {...props}>
                 {isFirstMenstrualDay ? <Icon width={14} height={17} /> : day}
               </Sc.Day>
             </Sc.DayWrapper>

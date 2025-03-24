@@ -24,6 +24,9 @@ const getBorderStyle = ({
   isSelected?: boolean;
 }) => (isSelected && !isFirstMenstrualDay ? "dashed" : "solid");
 
+const getTextColor = ({ hasBorder, isSelected }: { hasBorder: boolean; isSelected?: boolean }) =>
+  hasBorder && !isSelected ? NewColorScheme.text.white : ColorScheme.text.primary;
+
 export const Sc = {
   Container: styled.View`
     flex-direction: row;
@@ -50,10 +53,9 @@ export const Sc = {
     isFirstMenstrualDay?: boolean;
   }>`
     background-color: ${getBackgroundColor};
-    border-width: ${({ isSelected }) => (isSelected ? "1px" : "0")};
+    border-width: ${({ isSelected }) => (isSelected ? "1px" : "0px")};
     border-color: ${getBorderColor};
     border-style: ${getBorderStyle};
-    text-align: center;
     width: 30px;
     height: 41px;
     border-radius: 99px;
@@ -62,9 +64,8 @@ export const Sc = {
   `,
 
   Day: styled.Text<{ hasBorder: boolean; isSelected?: boolean; isFirstMenstrualDay?: boolean }>`
-    text-align: center;
     font-family: ${FontScheme.family.primarySemiBold};
     font-size: ${FontScheme.size.small}px;
-    color: ${ColorScheme.text.primary};
+    color: ${getTextColor};
   `
 };
