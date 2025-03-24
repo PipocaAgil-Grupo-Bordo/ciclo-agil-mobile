@@ -3,11 +3,11 @@ import { AxiosResponse } from "axios";
 
 import api from "./api";
 
-async function createPeriodDate(
+function createPeriodDate(
   cycleData: { date: string },
   token: string
 ): Promise<AxiosResponse<ICreateMenstrualPeriodDateResponse>> {
-  const promise = await api.post("menstrual-periods/dates", cycleData, {
+  const promise = api.post("menstrual-periods/dates", cycleData, {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json"
@@ -17,7 +17,7 @@ async function createPeriodDate(
   return promise;
 }
 
-async function getMenstrualPeriods({
+function getMenstrualPeriods({
   year,
   month,
   token
@@ -32,7 +32,7 @@ async function getMenstrualPeriods({
     ...(month && { month })
   };
 
-  const promise = await api.get("menstrual-periods", {
+  const promise = api.get("menstrual-periods", {
     headers: {
       Authorization: `Bearer ${token}`
     },
@@ -42,8 +42,8 @@ async function getMenstrualPeriods({
   return promise;
 }
 
-async function getLastMenstrualPeriod(token: string): Promise<AxiosResponse<ILastPeriod>> {
-  const promise = await api.get("menstrual-periods/last", {
+function getLastMenstrualPeriod(token: string): Promise<AxiosResponse<ILastPeriod>> {
+  const promise = api.get("menstrual-periods/last", {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -52,11 +52,8 @@ async function getLastMenstrualPeriod(token: string): Promise<AxiosResponse<ILas
   return promise;
 }
 
-async function deletePeriodDate(
-  id: number,
-  token: string
-): Promise<AxiosResponse<{ code: string }>> {
-  const promise = await api.delete(`menstrual-periods/dates/${id}`, {
+function deletePeriodDate(id: number, token: string): Promise<AxiosResponse<{ code: string }>> {
+  const promise = api.delete(`menstrual-periods/dates/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`
     }
