@@ -1,15 +1,13 @@
 import Header from "@components/Header";
-
-import { Sc } from "./style";
 import Terms from "./Terms";
+import PageContainer from "@components/PageContainer";
 
 function Policy() {
   return (
-    <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
+    <PageContainer>
       <Header title="Termos de Uso e Política de Privacidade" />
-
       <Terms />
-    </Sc.Container>
+    </PageContainer>
   );
 }
 
