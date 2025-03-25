@@ -22,7 +22,7 @@ export const Sc = {
     font-family: ${FontScheme.family.secondarySemiBold};
     font-size: ${FontScheme.size.highlight}px;
     color: ${NewColorScheme.text.primary};
-    text-align: center;
-    margin-left: 14px;
+    text-align: left;
+    margin-left: 48px;
   `
 };
