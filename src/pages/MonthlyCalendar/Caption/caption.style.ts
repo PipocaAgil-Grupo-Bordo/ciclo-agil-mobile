@@ -1,7 +1,6 @@
-import { ColorScheme } from "@styles/globalStyles";
-import { FontScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
-import "./caption.type";
+import { IGroupCaptions } from "./caption.type";
 
 export const Sc = {
   Container: styled.View`
