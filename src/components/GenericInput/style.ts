@@ -30,9 +30,9 @@ export const Sc = {
 
   Label: styled.Text`
     top: -8px;
-    font-size: ${FontScheme.size.default}px;
+    font-size: ${FontScheme.size.small}px;
     font-family: ${FontScheme.family.primaryMedium};
-    color: #49454f;
+    color: #474547;
     padding: 0 4px;
   `,
 
@@ -48,7 +48,7 @@ export const Sc = {
     font-family: ${FontScheme.family.primary};
     color: ${NewColorScheme.text.primary};
     padding: 16px;
-    font-size: ${FontScheme.size.default}px;
+    font-size: ${FontScheme.size.medium}px;
     border: ${(props) =>
       props.errors && props.errors[props.name]
         ? `1px solid ${ColorScheme.accent.danger}`

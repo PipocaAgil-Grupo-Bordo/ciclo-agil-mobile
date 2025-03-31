@@ -38,7 +38,6 @@ const StyledButton = styled(Pressable)<{
       : isPressed
       ? buttonVariants[variant].pressedBackground
       : buttonVariants[variant].backgroundColor};
-  opacity: ${({ disabled }) => (disabled ? 0.6 : 1)};
 `;
 
 const ButtonText = styled(Text)<{

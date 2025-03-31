@@ -6,14 +6,14 @@ export const Sc = {
 
   Title: styled.Text`
     font-family: ${FontScheme.family.secondary};
-    font-size: ${FontScheme.size.heading}px;
-    color: ${ColorScheme.text.primary};
+    font-size: ${FontScheme.size.highlight}px;
+    color: ${NewColorScheme.text.primary};
     margin: 32px 0px 24px;
   `,
 
   ForgottenPassword: styled.Text`
     font-family: ${FontScheme.family.primaryMedium};
-    font-size: ${FontScheme.size.default}px;
+    font-size: ${FontScheme.size.small}px;
     color: ${NewColorScheme.accent.link};
     text-align: right;
     margin: 0px 12px;
