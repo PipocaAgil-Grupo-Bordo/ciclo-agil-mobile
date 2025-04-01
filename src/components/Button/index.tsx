@@ -36,8 +36,8 @@ const StyledButton = styled(Pressable)<{
     disabled
       ? buttonVariants[variant].disabledBackground
       : isPressed
-      ? buttonVariants[variant].pressedBackground
-      : buttonVariants[variant].backgroundColor};
+        ? buttonVariants[variant].pressedBackground
+        : buttonVariants[variant].backgroundColor};
 `;
 
 const ButtonText = styled(Text)<{

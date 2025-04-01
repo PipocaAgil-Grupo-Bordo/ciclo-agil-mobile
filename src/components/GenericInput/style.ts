@@ -61,7 +61,7 @@ export const Sc = {
 
   PasswordButtonContainer: styled.Pressable`
     position: absolute;
-    top: 7.5;
+    top: 7.5px;
     right: 4px;
     padding: 12px;
     height: 48px;
