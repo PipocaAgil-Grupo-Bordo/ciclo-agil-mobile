@@ -61,11 +61,11 @@ export const Sc = {
 
   PasswordButtonContainer: styled.Pressable`
     position: absolute;
-    top: 4px;
+    top: 7.5;
     right: 4px;
     padding: 12px;
     height: 48px;
-    background-color: ${Palette.neutralWhite[50]};
+    background-color: transparent;
     border-radius: 7px;
   `,
 
