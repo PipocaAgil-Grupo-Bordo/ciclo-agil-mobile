@@ -30,9 +30,9 @@ export const Sc = {
 
   Label: styled.Text`
     top: -8px;
-    font-size: ${FontScheme.size.default}px;
+    font-size: ${FontScheme.size.small}px;
     font-family: ${FontScheme.family.primaryMedium};
-    color: #49454f;
+    color: #474547;
     padding: 0 4px;
   `,
 
@@ -48,23 +48,27 @@ export const Sc = {
     font-family: ${FontScheme.family.primary};
     color: ${NewColorScheme.text.primary};
     padding: 16px;
-    font-size: ${FontScheme.size.default}px;
-    border: ${(props) =>
-      props.errors && props.errors[props.name]
-        ? `1px solid ${ColorScheme.accent.danger}`
-        : props.isFocused
-          ? "1px solid #194ab4"
-          : `1px solid ${Palette.neutralGray[500]}`};
+    font-size: ${FontScheme.size.medium}px;
+    border: ${(props) => {
+      if (props.errors && props.errors[props.name]) {
+        return `1px solid ${ColorScheme.accent.danger}`;
+      }
+      if (props.isFocused) {
+        return "1px solid #194ab4";
+      }
+      return `1px solid ${Palette.neutralGray[500]}`;
+    }};
     z-index: 0;
     border-radius: 8px;
   `,
 
   PasswordButtonContainer: styled.Pressable`
     position: absolute;
-    top: 4px;
+    top: 7.5px;
     right: 4px;
-    padding: 17.5px 12px;
-    background-color: ${Palette.neutralWhite[50]};
+    padding: 12px;
+    height: 48px;
+    background-color: transparent;
     border-radius: 7px;
   `,
 

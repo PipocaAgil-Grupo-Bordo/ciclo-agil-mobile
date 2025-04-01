@@ -1,11 +1,8 @@
-import { GeneralColors } from "@styles/colors";
-import { ColorScheme } from "@styles/globalStyles";
 import { ActivityIndicator } from "react-native";
 import ButtonChildren from "./ButtonChildren";
 import { Sc } from "./style";
 import { NewColorScheme } from "@styles/globalStyles";
 import { GenericButtonProps, StatesType } from "./type";
-
 
 /**
  * Button component
@@ -19,14 +16,7 @@ import { GenericButtonProps, StatesType } from "./type";
  * @param children - Can be a string or another component
  * @param props - All the props that a TouchableHighlight component accepts
  */
-function GenericButton({
-  icon,
-  state,
-  isLoading,
-  isDisabled,
-  children,
-  ...props
-}: GenericButtonProps) {
+function GenericButton({ icon, state, isLoading, children, ...props }: GenericButtonProps) {
   /**
    * Change the color of the button when it's pressed
    *

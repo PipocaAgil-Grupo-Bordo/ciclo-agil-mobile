@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import { Pressable, Text } from "react-native";
+import { Pressable, Text, ActivityIndicator } from "react-native";
 import { FontScheme, NewColorScheme } from "@styles/globalStyles";
-import { ActivityIndicator } from "react-native";
 
 const buttonVariants = {
   default: {
@@ -32,13 +31,11 @@ const StyledButton = styled(Pressable)<{
   border-radius: 12px;
   align-items: center;
   justify-content: center;
-  background-color: ${({ variant, isPressed, disabled }) =>
-    disabled
-      ? buttonVariants[variant].disabledBackground
-      : isPressed
-      ? buttonVariants[variant].pressedBackground
-      : buttonVariants[variant].backgroundColor};
-  opacity: ${({ disabled }) => (disabled ? 0.6 : 1)};
+  background-color: ${({ variant, isPressed, disabled }) => {
+    if (disabled) return buttonVariants[variant].disabledBackground;
+    if (isPressed) return buttonVariants[variant].pressedBackground;
+    return buttonVariants[variant].backgroundColor;
+  }};
 `;
 
 const ButtonText = styled(Text)<{
