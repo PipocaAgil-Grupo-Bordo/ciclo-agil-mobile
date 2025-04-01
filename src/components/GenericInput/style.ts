@@ -63,7 +63,8 @@ export const Sc = {
     position: absolute;
     top: 4px;
     right: 4px;
-    padding: 17.5px 12px;
+    padding: 12px;
+    height: 48px;
     background-color: ${Palette.neutralWhite[50]};
     border-radius: 7px;
   `,
