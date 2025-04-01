@@ -44,8 +44,7 @@ function AuthNavigator() {
 
         // Set loading to false once tokens are handled
         setLoading(false);
-      } catch (error) {
-        console.log("Error on route: " + error);
+      } catch {
         navigation.navigate("Login");
       }
     };

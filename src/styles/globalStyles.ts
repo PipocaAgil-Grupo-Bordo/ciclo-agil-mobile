@@ -40,10 +40,10 @@ export const ColorScheme = {
 
 export const NewColorScheme = {
   background: {
-    primary: Palette.info[50],
+    primary: Palette.info[100],
     secondary: Palette.secondary[200],
     tertiary: Palette.neutralWhite[500],
-    white: Palette.neutralWhite[50]
+    white: Palette.neutralWhite[100]
   },
 
   foreground: {

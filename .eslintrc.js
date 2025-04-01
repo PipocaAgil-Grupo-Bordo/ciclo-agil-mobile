@@ -46,6 +46,21 @@ module.exports = {
         printWidth: 100,
         arrowParens: "always"
       }
-    ]
+    ],
+
+    "@typescript-eslint/no-magic-numbers": [
+      "off",
+      {
+        ignoreArrayIndexes: true,
+        ignoreDefaultValues: true,
+        ignoreEnums: true,
+        ignore: [-1, 0, 1]
+      }
+    ],
+    "no-console": ["error"],
+    "no-duplicate-imports": ["error"],
+    "no-nested-ternary": ["error"],
+    "no-return-await": ["error"],
+    "require-await": ["error"]
   }
 };

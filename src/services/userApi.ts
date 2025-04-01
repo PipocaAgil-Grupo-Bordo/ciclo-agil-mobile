@@ -15,7 +15,7 @@ function getUserProfile(token: string): Promise<AxiosResponse<UserData>> {
   return promise;
 }
 
-async function updateUserProfile(
+function updateUserProfile(
   data: {
     isMenstrualCycleRegular?: boolean;
     menstrualCycleDuration?: number;
