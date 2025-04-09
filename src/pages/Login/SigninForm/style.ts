@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { ColorScheme, FontScheme, NewColorScheme } from "src/styles/globalStyles";
+import { FontScheme, NewColorScheme } from "src/styles/globalStyles";
 
 export const Sc = {
   Container: styled.View``,
@@ -33,12 +33,12 @@ export const Sc = {
   Text: styled.Text`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
-    color: ${ColorScheme.text.primary};
+    color: ${NewColorScheme.text.gray};
   `,
 
   RegisterLink: styled.Text`
     font-family: ${FontScheme.family.primaryMedium};
-    font-size: ${FontScheme.size.default}px;
+    font-size: ${FontScheme.size.small}px;
     color: ${NewColorScheme.accent.link};
   `
 };

@@ -16,7 +16,6 @@ import Inputs from "../Inputs";
 import Button from "@components/Button";
 import { Sc } from "./style";
 
-
 function SigninForm() {
   const navigation = useNavigation<NavigationType>();
   const { setRefreshToken, setAccessToken } = useTokenContext();

@@ -31,7 +31,7 @@ export const Sc = {
   Label: styled.Text`
     top: -8px;
     font-size: ${FontScheme.size.small}px;
-    font-family: ${FontScheme.family.primaryMedium};
+    font-family: "Roboto";
     color: #474547;
     padding: 0 4px;
   `,
