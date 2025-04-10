@@ -37,7 +37,7 @@ export const Sc = {
   `,
 
   RegisterLink: styled.Text`
-    font-family: ${FontScheme.family.primaryMedium};
+    font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.small}px;
     color: ${NewColorScheme.accent.link};
   `
