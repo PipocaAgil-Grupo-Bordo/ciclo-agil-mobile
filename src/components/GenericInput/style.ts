@@ -31,8 +31,8 @@ export const Sc = {
   Label: styled.Text`
     top: -8px;
     font-size: ${FontScheme.size.small}px;
-    font-family: ${FontScheme.family.primaryMedium};
-    color: #474547;
+    font-family: "Roboto";
+    color: ${NewColorScheme.text.gray};
     padding: 0 4px;
   `,
 
@@ -64,11 +64,11 @@ export const Sc = {
 
   PasswordButtonContainer: styled.Pressable`
     position: absolute;
-    top: 7.5px;
+    top: 4px;
     right: 4px;
     padding: 12px;
     height: 48px;
-    background-color: transparent;
+    background-color: ${Palette.neutralWhite[50]};
     border-radius: 7px;
   `,
 
