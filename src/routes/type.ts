@@ -14,6 +14,7 @@ export type RootStackParamList = {
   AuthLoader: undefined;
   MonthlyCalendar: undefined;
   AnnualCalendar: undefined;
+  OnboardingCarousel: undefined;
 };
 
 export interface CodeRequestRouteParam {

@@ -1,9 +1,8 @@
+import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
 import Router from "@routes/index";
-import React from "react";
 import AnimationScreen from "@pages/AnimationScreen";
-import { useState } from "react";
 
 export default function App() {
   const [loaded] = useFonts({

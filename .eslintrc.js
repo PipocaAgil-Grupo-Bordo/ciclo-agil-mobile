@@ -61,6 +61,7 @@ module.exports = {
     "no-duplicate-imports": ["error"],
     "no-nested-ternary": ["error"],
     "no-return-await": ["error"],
-    "require-await": ["error"]
+    "require-await": ["error"],
+    "@typescript-eslint/no-require-imports": "off"
   }
 };

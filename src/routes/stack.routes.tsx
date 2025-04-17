@@ -7,6 +7,7 @@ import CodeRequest from "@pages/ResetPassword/2-CodeRequest";
 import NewPassword from "@pages/ResetPassword/3-NewPassword";
 import SignUp from "@pages/SignUp";
 import Team from "@pages/Team";
+// import OnboardingCarousel from "@pages/OnboardingCarousel";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import AuthNavigator from "./auth.router";
@@ -37,6 +38,7 @@ function StackRoutes() {
           <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen name="Policy" component={Policy} />
           <Stack.Screen name="Team" component={Team} />
+          {/* <Stack.Screen name="OnboardingCarousel" component={OnboardingCarousel} /> */}
           <Stack.Screen name="LastPeriod" component={LastPeriod} />
           <Stack.Screen name="CycleDuration" component={CycleDuration} />
         </Stack.Group>
