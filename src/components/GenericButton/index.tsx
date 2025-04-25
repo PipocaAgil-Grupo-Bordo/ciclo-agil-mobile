@@ -45,7 +45,7 @@ function GenericButton({ icon, state, isLoading, children, ...props }: GenericBu
       underlayColor={HandleUnderlayColor(state)}
       {...props}
     >
-      <ButtonChildren icon={icon} state={state}>
+      <ButtonChildren icon={icon} state={state} disabled={props.disabled}>
         {isLoading ? <ActivityIndicator color={"#fff"} /> : children}
       </ButtonChildren>
     </Sc.Button>

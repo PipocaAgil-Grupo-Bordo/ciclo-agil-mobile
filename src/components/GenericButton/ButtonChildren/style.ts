@@ -10,11 +10,12 @@ export const Sc = {
     height: 30px;
   `,
 
-  ButtonText: styled.Text<ButtonStyleProps>`
+  ButtonText: styled.Text<ButtonStyleProps & { disabled?: boolean }>`
     color: ${({ state }) =>
       state === "accent" ? Palette.neutralWhite[50] : NewColorScheme.accent.highlight};
     font-family: ${FontScheme.family.primary};
     font-weight: 700;
     font-size: ${FontScheme.size.medium}px;
+    opacity: ${({ disabled }) => (disabled ? 0.4 : 1)};
   `
 };

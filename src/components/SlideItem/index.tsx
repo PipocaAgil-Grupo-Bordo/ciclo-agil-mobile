@@ -10,6 +10,7 @@ interface SlideItemProps {
   showSkipButton: boolean;
   showNextButton: boolean;
   showFinishButton: boolean;
+  skipDisabled?: boolean;
   onSkip?: () => void;
   onNext?: () => void;
   onFinish?: () => void;
@@ -21,6 +22,7 @@ const SlideItem: React.FC<SlideItemProps> = ({
   showSkipButton,
   showNextButton,
   showFinishButton,
+  skipDisabled,
   onSkip,
   onNext,
   onFinish
@@ -34,7 +36,7 @@ const SlideItem: React.FC<SlideItemProps> = ({
       <Sc.buttonsContainer>
         {showSkipButton && (
           <Sc.buttonContainer>
-            <GenericButton onPress={onSkip} state="no-style">
+            <GenericButton onPress={onSkip} state="no-style" disabled={skipDisabled}>
               <Text>Pular</Text>
             </GenericButton>
           </Sc.buttonContainer>

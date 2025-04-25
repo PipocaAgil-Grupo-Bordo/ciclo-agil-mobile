@@ -11,6 +11,7 @@ export interface ButtonStyleProps {
 export interface ButtonChildrenProps extends ButtonStyleProps {
   children: ReactNode;
   icon?: ImageSourcePropType;
+  disabled?: boolean;
 }
 
 export interface GenericButtonProps extends ButtonChildrenProps, TouchableHighlightProps {

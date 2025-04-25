@@ -78,7 +78,8 @@ function OnboardingCarousel() {
                 <SlideItem
                   imageSource={slide.imageSource}
                   text={slide.text}
-                  showSkipButton={index < 2}
+                  showSkipButton={true}
+                  skipDisabled={index === 2}
                   showNextButton={index < 2}
                   showFinishButton={index === 2}
                   onSkip={goToPage}
