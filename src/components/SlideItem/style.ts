@@ -8,9 +8,12 @@ export const Sc = {
     justify-content: space-between;
     align-items: center;
     margin-right: 10%;
+    margin-top: 50%;
+    margin-bottom: 10%;
   `,
   contentContainer: styled.View`
     align-items: center;
+    margin-bottom: 60%;
   `,
   image: styled.Image`
     width: 130px;
@@ -19,17 +22,16 @@ export const Sc = {
   `,
   text: styled.Text`
     font-family: ${FontScheme.family.primary};
-    font-size: ${FontScheme.size.medium};
+    font-size: ${FontScheme.size.medium}px;
     text-align: center;
-    margin-bottom: 30px;
     color: ${Palette.neutralBlack[400]};
   `,
   buttonsContainer: styled.View`
     flex-direction: row;
-    gap: 15px;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    width: 100%;
   `,
   buttonContainer: styled.View`
-    flex: 1;
+    width: 100px;
   `
 };

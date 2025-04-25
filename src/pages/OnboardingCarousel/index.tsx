@@ -69,8 +69,8 @@ function OnboardingCarousel() {
           <ScrollView
             ref={scrollViewRef}
             horizontal
-            showsHorizontalScrollIndicator={true}
-            scrollEnabled={true}
+            showsHorizontalScrollIndicator={false}
+            scrollEnabled={false}
             pagingEnabled={true}
           >
             {slides.map((slide, index) => (

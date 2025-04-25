@@ -1,7 +1,6 @@
 import React from "react";
 import GenericButton from "@components/GenericButton";
 import { Sc } from "./style";
-// import { NewColorScheme } from "@styles/globalStyles";
 import { Text, ImageSourcePropType } from "react-native";
 
 interface SlideItemProps {
