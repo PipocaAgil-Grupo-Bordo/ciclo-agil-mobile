@@ -1,35 +1,35 @@
 import styled from "styled-components/native";
+import { FontScheme } from "@styles/globalStyles";
+import { Palette } from "@styles/palette";
 
-export const SlideContainer = styled.View`
-  flex: 1;
-  justify-content: space-around;
-  align-items: center;
-  padding-left: 30px;
-  padding-right: 30px;
-`;
-
-export const SlideImage = styled.Image`
-  width: 150px;
-  height: 150px;
-  margin-bottom: 20px;
-`;
-
-export const SlideTitle = styled.Text`
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 10px;
-`;
-
-export const SlideText = styled.Text`
-  font-size: 16px;
-  text-align: center;
-  margin-bottom: 30px;
-  color: #666;
-`;
-
-export const ButtonsContainer = styled.View`
-  flex-direction: row;
-  gap: 15px;
-  margin-bottom: 20px;
-`;
+export const Sc = {
+  container: styled.View`
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10%;
+  `,
+  contentContainer: styled.View`
+    align-items: center;
+  `,
+  image: styled.Image`
+    width: 130px;
+    height: 139px;
+    margin-bottom: 20px;
+  `,
+  text: styled.Text`
+    font-family: ${FontScheme.family.primary};
+    font-size: ${FontScheme.size.medium};
+    text-align: center;
+    margin-bottom: 30px;
+    color: ${Palette.neutralBlack[400]};
+  `,
+  buttonsContainer: styled.View`
+    flex-direction: row;
+    gap: 15px;
+    margin-bottom: 20px;
+  `,
+  buttonContainer: styled.View`
+    flex: 1;
+  `
+};

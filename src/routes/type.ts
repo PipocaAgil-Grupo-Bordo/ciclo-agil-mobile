@@ -8,7 +8,7 @@ export type RootStackParamList = {
   CodeRequest: CodeRequestRouteParam;
   NewPassword: NewPasswordRouteParam;
   Policy: undefined;
-  Team: undefined;
+  // Team: undefined;
   LastPeriod: undefined;
   CycleDuration: undefined;
   AuthLoader: undefined;

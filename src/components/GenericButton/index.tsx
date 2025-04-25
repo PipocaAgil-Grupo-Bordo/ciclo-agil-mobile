@@ -1,5 +1,5 @@
 import { GeneralColors } from "@styles/colors";
-import { ColorScheme } from "@styles/globalStyles";
+import { NewColorScheme } from "@styles/globalStyles";
 import { ActivityIndicator } from "react-native";
 
 import ButtonChildren from "./ButtonChildren";
@@ -27,11 +27,11 @@ function GenericButton({ icon, state, isLoading, children, ...props }: GenericBu
   function HandleUnderlayColor(state: StatesType | undefined) {
     switch (state) {
       case "accent":
-        return GeneralColors.primary[600];
+        return NewColorScheme.accent.highlight;
       case "mild":
         return GeneralColors.primary[300];
       case "no-style":
-        return ColorScheme.background.primary;
+        return NewColorScheme.background.white;
       case "default":
       default:
         return GeneralColors.primary[100];

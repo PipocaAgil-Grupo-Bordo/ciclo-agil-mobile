@@ -1,10 +1,11 @@
 import React from "react";
-import GenericButton from "@components/GenericButton"; // Ajuste o caminho
-import { SlideContainer, SlideImage, SlideText, ButtonsContainer } from "./style";
-import { Text } from "react-native";
+import GenericButton from "@components/GenericButton";
+import { Sc } from "./style";
+// import { NewColorScheme } from "@styles/globalStyles";
+import { Text, ImageSourcePropType } from "react-native";
 
 interface SlideItemProps {
-  imageSource: string;
+  imageSource: ImageSourcePropType;
   text: string;
   showSkipButton: boolean;
   showNextButton: boolean;
@@ -25,27 +26,35 @@ const SlideItem: React.FC<SlideItemProps> = ({
   onFinish
 }) => {
   return (
-    <SlideContainer>
-      <SlideImage source={imageSource} resizeMode="contain" />
-      <SlideText>{text}</SlideText>
-      <ButtonsContainer>
+    <Sc.container>
+      <Sc.contentContainer>
+        <Sc.image source={imageSource} resizeMode="contain" />
+        <Sc.text>{text}</Sc.text>
+      </Sc.contentContainer>
+      <Sc.buttonsContainer>
         {showSkipButton && (
-          <GenericButton onPress={onSkip} state="accent">
-            <Text>Pular</Text>
-          </GenericButton>
+          <Sc.buttonContainer>
+            <GenericButton onPress={onSkip} state="no-style">
+              <Text>Pular</Text>
+            </GenericButton>
+          </Sc.buttonContainer>
         )}
         {showNextButton && (
-          <GenericButton onPress={onNext} state="accent">
-            <Text>Próximo</Text>
-          </GenericButton>
+          <Sc.buttonContainer>
+            <GenericButton onPress={onNext} state="accent">
+              <Text>Próximo</Text>
+            </GenericButton>
+          </Sc.buttonContainer>
         )}
         {showFinishButton && (
-          <GenericButton onPress={onFinish} state="accent">
-            <Text>Finalizar</Text>
-          </GenericButton>
+          <Sc.buttonContainer>
+            <GenericButton onPress={onFinish} state="accent">
+              <Text>Finalizar</Text>
+            </GenericButton>
+          </Sc.buttonContainer>
         )}
-      </ButtonsContainer>
-    </SlideContainer>
+      </Sc.buttonsContainer>
+    </Sc.container>
   );
 };
 

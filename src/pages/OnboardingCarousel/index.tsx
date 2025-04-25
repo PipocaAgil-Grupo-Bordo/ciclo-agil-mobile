@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { View, ScrollView, Dimensions } from "react-native";
+import { View, ScrollView, Dimensions, ImageSourcePropType } from "react-native";
 
 import PageContainer from "@components/PageContainer";
 import SlideItem from "@components/SlideItem";
@@ -13,7 +13,7 @@ import { NavigationType } from "@routes/type";
 
 interface Slide {
   id: number;
-  imageSource: string;
+  imageSource: ImageSourcePropType;
   text: string;
   title?: string; // Adicionando title para corresponder ao SlideItem
 }
@@ -22,18 +22,18 @@ const slides: Slide[] = [
   {
     id: 1,
     imageSource: FirstImage,
-    text: "O primeiro passo para transformar e impactar positivamente o cuidado com a sua saúde menstrual.",
+    text: "O primeiro passo para transformar e\n impactar positivamente o cuidado com\n a sua saúde menstrual.",
     title: "Ciclo Ágil"
   },
   {
     id: 2,
     imageSource: SecondImage,
-    text: "Facilita o registro e a visualização clara do ciclo, incluindo menstruação, ovulação e período fértil."
+    text: "Facilita o registro e a visualização clara\n do ciclo, incluindo menstruação,\n ovulação e período fértil."
   },
   {
     id: 3,
     imageSource: ThirdImage,
-    text: "Alertas personalizáveis e relatórios claros ajudam a acompanhar o ciclo e identificar padrões.",
+    text: "Alertas personalizáveis e relatórios claros\n ajudam a acompanhar o ciclo e\n identificar padrões.",
     title: "26 dias"
   }
 ];
@@ -64,37 +64,38 @@ function OnboardingCarousel() {
 
   return (
     <PageContainer>
-      <ScrollView
-        ref={scrollViewRef}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        scrollEnabled={false}
-        pagingEnabled={false} // Removendo pagingEnabled para controle manual
-      >
-        {slides.map((slide, index) => (
-          <View key={slide.id} style={{ width }}>
-            <SlideItem
-              imageSource={slide.imageSource}
-              text={slide.text}
-              showSkipButton={index < 2}
-              showNextButton={index < 2}
-              showFinishButton={index === 2}
-              onSkip={goToPage}
-              onNext={handleNext}
-              onFinish={goToPage}
-            />
-          </View>
-        ))}
-      </ScrollView>
+      <Sc.container>
+        <Sc.contentContainer>
+          <ScrollView
+            ref={scrollViewRef}
+            horizontal
+            showsHorizontalScrollIndicator={true}
+            scrollEnabled={true}
+            pagingEnabled={true}
+          >
+            {slides.map((slide, index) => (
+              <View key={slide.id} style={{ width }}>
+                <SlideItem
+                  imageSource={slide.imageSource}
+                  text={slide.text}
+                  showSkipButton={index < 2}
+                  showNextButton={index < 2}
+                  showFinishButton={index === 2}
+                  onSkip={goToPage}
+                  onNext={handleNext}
+                  onFinish={goToPage}
+                />
+              </View>
+            ))}
+          </ScrollView>
+        </Sc.contentContainer>
 
-      <Sc.paginationContainer>
-        {slides.map((_, index) => (
-          <Sc.paginationDot
-            key={index}
-            style={index === currentSlide ? Sc.activeDot : Sc.inactiveDot}
-          />
-        ))}
-      </Sc.paginationContainer>
+        <Sc.paginationContainer>
+          {slides.map((_, index) => (
+            <Sc.paginationDot key={index} active={index === currentSlide} />
+          ))}
+        </Sc.paginationContainer>
+      </Sc.container>
     </PageContainer>
   );
 }

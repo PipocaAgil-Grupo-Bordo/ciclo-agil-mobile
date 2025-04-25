@@ -1,4 +1,4 @@
-import { ColorScheme } from "@styles/globalStyles";
+import { ColorScheme, NewColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 import { ButtonStyleProps } from "./type";
@@ -17,7 +17,7 @@ export const Sc = {
     background-color: ${({ state }) => {
       switch (state) {
         case "accent":
-          return ColorScheme.accent.highlight;
+          return NewColorScheme.accent.highlight;
         case "mild":
           return ColorScheme.background.secondary;
         case "no-style":

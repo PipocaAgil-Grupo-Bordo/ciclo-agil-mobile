@@ -1,6 +1,6 @@
-import { GeneralColors } from "@styles/colors";
-import { ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
+import { FontScheme, NewColorScheme } from "@styles/globalStyles";
+import { Palette } from "@styles/palette";
 
 import { ButtonStyleProps } from "../type";
 
@@ -12,9 +12,9 @@ export const Sc = {
 
   ButtonText: styled.Text<ButtonStyleProps>`
     color: ${({ state }) =>
-      state === "accent" ? GeneralColors.neutralGray.white : ColorScheme.text.primary};
-    font-family: ${({ state }) =>
-      state === "accent" ? FontScheme.family.primarySemiBold : FontScheme.family.primary};
+      state === "accent" ? Palette.neutralWhite[50] : NewColorScheme.accent.highlight};
+    font-family: ${FontScheme.family.primary};
+    font-weight: 700;
     font-size: ${FontScheme.size.medium}px;
   `
 };
