@@ -56,13 +56,13 @@ function GenericInput<T extends FieldValues>({
           secureTextEntry={inputName === "password" ? !showPassword : showPassword}
           {...props}
         />
-        {inputName === "password" && (
+        {(inputName === "password" || inputName === "confirmPassword") && (
           <Sc.PasswordButtonContainer onPress={toggleShowPassword}>
             <Feather name={showPassword ? "eye-off" : "eye"} size={24} color="#1B1A1B" />
           </Sc.PasswordButtonContainer>
         )}
       </Sc.InputWrapper>
-      <Sc.Error>{inputErrors as string}</Sc.Error>
+      {inputErrors && <Sc.Error>{inputErrors as string}</Sc.Error>}
     </Sc.Container>
   );
 }

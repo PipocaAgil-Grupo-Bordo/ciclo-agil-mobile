@@ -29,6 +29,8 @@ function GenericButton({ icon, state, isLoading, children, ...props }: GenericBu
     switch (state) {
       case "accent":
         return NewColorScheme.accent.highlight;
+      case "idle":
+        return NewColorScheme.accent.highlight;
       case "mild":
       case "default":
       case "no-style":

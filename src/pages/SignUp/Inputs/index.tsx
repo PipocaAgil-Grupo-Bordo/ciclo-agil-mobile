@@ -13,34 +13,34 @@ interface InputsProps {
 function Inputs({ control, errors }: InputsProps) {
   const inputsData = [
     {
-      label: "Como eu gostaria de ser chamada:",
+      label: "Nome:",
       name: "name" as Path<RegisterFields>,
-      placeholder: ""
+      placeholder: "Digite seu nome"
     },
     {
       label: "Data de Nascimento:",
       name: "birthdate" as Path<RegisterFields>,
-      placeholder: "DD/MM/AAAA"
+      placeholder: "dd/mm/aaaa"
     },
     {
-      label: "Email:",
+      label: "E-mail:",
       name: "email" as Path<RegisterFields>,
-      placeholder: ""
+      placeholder: "Digite seu E-mail"
     },
     {
       label: "Repita o email:",
       name: "confirmEmail" as Path<RegisterFields>,
-      placeholder: ""
+      placeholder: "Repita o E-mail"
     },
     {
       label: "Senha:",
       name: "password" as Path<RegisterFields>,
-      placeholder: ""
+      placeholder: "Digite sua senha"
     },
     {
       label: "Repita a senha:",
       name: "confirmPassword" as Path<RegisterFields>,
-      placeholder: ""
+      placeholder: "Repita a senha"
     }
   ];
 
