@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { GenericInputProps } from "./type";
 import { useController } from "react-hook-form";
 import { Masks } from "react-native-mask-input";
-
 import { Sc } from "./style";
 import { NewColorScheme } from "@styles/globalStyles";
 import Feather from "@expo/vector-icons/Feather";

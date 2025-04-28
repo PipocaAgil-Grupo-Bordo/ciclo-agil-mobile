@@ -286,7 +286,6 @@ function CalendarListScreen(props: Props) {
   const markedDates = selectedDates.reduce(
     (acc, date, index) => {
       if (index === 0) {
-        // The first day selected is given the "firstDay" styles
         acc[date] = {
           ...currentCycle("firstDay"),
           customStyles: currentCycle("firstDay").customStyles
