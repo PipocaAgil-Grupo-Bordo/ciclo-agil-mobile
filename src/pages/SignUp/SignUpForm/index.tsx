@@ -10,6 +10,7 @@ import { RegisterFields } from "@type/auth";
 import { submitRegister } from "@utils/submitHelper";
 import { useForm } from "react-hook-form";
 import { Text } from "react-native";
+import ErrorModal from "@components/ErrorModal";
 
 import { Sc } from "./style";
 import Inputs from "../Inputs";
@@ -19,6 +20,8 @@ function SignUpForm() {
   const navigation = useNavigation<NavigationType>();
   const { setAccessToken, setRefreshToken } = useTokenContext();
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [errorModalVisible, setErrorModalVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState({ title: "", message: "" });
 
   const {
     handleSubmit,
@@ -47,8 +50,36 @@ function SignUpForm() {
   // Button is enabled only when form is valid, all fields are filled, and terms are accepted
   const isButtonEnabled = isValid && areAllFieldsFilled && termsAccepted && !isSubmitting;
 
-  const onSubmit = (data: RegisterFields) => {
-    return submitRegister(data, reset, navigation, setError, setAccessToken, setRefreshToken);
+  const handleCloseModal = () => {
+    setErrorModalVisible(false);
+  };
+
+  const onSubmit = async (data: RegisterFields) => {
+    if (!termsAccepted) {
+      setErrorMessage({
+        title: "Termos não aceitos",
+        message: "Você precisa aceitar os termos de uso e política de privacidade para continuar."
+      });
+      setErrorModalVisible(true);
+      return;
+    }
+
+    try {
+      await submitRegister(
+        data,
+        reset,
+        navigation,
+        setError,
+        setAccessToken,
+        setRefreshToken,
+        (title: string, message: string) => {
+          setErrorMessage({ title, message });
+          setErrorModalVisible(true);
+        }
+      );
+    } catch {
+      // Handle unexpected errors
+    }
   };
 
   return (
@@ -65,6 +96,13 @@ function SignUpForm() {
       >
         <Text>Cadastrar</Text>
       </GenericButton>
+
+      <ErrorModal
+        visible={errorModalVisible}
+        title={errorMessage.title}
+        message={errorMessage.message}
+        onClose={handleCloseModal}
+      />
     </Sc.Container>
   );
 }
