@@ -18,7 +18,14 @@ import { GenericButtonProps, StatesType } from "./type";
  * @param children - Can be a string or another component
  * @param props - All the props that a TouchableHighlight component accepts
  */
-function GenericButton({ icon, state, isLoading, children, ...props }: GenericButtonProps) {
+function GenericButton({
+  icon,
+  state,
+  isLoading,
+  children,
+  padding,
+  ...props
+}: GenericButtonProps) {
   /**
    * Change the color of the button when it's pressed
    *
@@ -41,6 +48,7 @@ function GenericButton({ icon, state, isLoading, children, ...props }: GenericBu
   return (
     <Sc.Button
       state={state}
+      padding={padding}
       activeOpacity={1}
       underlayColor={HandleUnderlayColor(state)}
       {...props}

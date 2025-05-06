@@ -1,10 +1,12 @@
 import React from "react";
-import GenericButton from "@components/GenericButton";
 import { Sc } from "./style";
-import { Text, ImageSourcePropType } from "react-native";
+import { Text } from "react-native";
+import { SvgProps } from "react-native-svg";
+
+import GenericButton from "@components/GenericButton";
 
 interface SlideItemProps {
-  imageSource: ImageSourcePropType;
+  imageComponent: React.FC<SvgProps>;
   text: string;
   showSkipButton: boolean;
   showNextButton: boolean;
@@ -16,7 +18,7 @@ interface SlideItemProps {
 }
 
 const SlideItem: React.FC<SlideItemProps> = ({
-  imageSource,
+  imageComponent,
   text,
   showSkipButton,
   showNextButton,
@@ -26,30 +28,32 @@ const SlideItem: React.FC<SlideItemProps> = ({
   onNext,
   onFinish
 }) => {
+  const ImageComponent = imageComponent;
+
   return (
     <Sc.container>
       <Sc.contentContainer>
-        <Sc.image source={imageSource} resizeMode="contain" />
+        <ImageComponent />
         <Sc.text>{text}</Sc.text>
       </Sc.contentContainer>
       <Sc.buttonsContainer>
         {showSkipButton && (
           <Sc.buttonContainer>
-            <GenericButton onPress={onSkip} state="no-style" disabled={skipDisabled}>
+            <GenericButton onPress={onSkip} state="no-style" disabled={skipDisabled} padding="9px">
               <Text>Pular</Text>
             </GenericButton>
           </Sc.buttonContainer>
         )}
         {showNextButton && (
           <Sc.buttonContainer>
-            <GenericButton onPress={onNext} state="accent">
+            <GenericButton onPress={onNext} state="accent" padding="9px">
               <Text>Próximo</Text>
             </GenericButton>
           </Sc.buttonContainer>
         )}
         {showFinishButton && (
           <Sc.buttonContainer>
-            <GenericButton onPress={onFinish} state="accent">
+            <GenericButton onPress={onFinish} state="accent" padding="9px">
               <Text>Finalizar</Text>
             </GenericButton>
           </Sc.buttonContainer>

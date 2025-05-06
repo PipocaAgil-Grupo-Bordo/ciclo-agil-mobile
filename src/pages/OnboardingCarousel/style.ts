@@ -8,12 +8,12 @@ export const Sc = {
   `,
   contentContainer: styled.View`
     flex: 1;
-    justify-content: center;
   `,
   paginationContainer: styled.View`
+    flex: 1;
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     width: 100%;
   `,
   paginationDot: styled.View<{ active?: boolean }>`

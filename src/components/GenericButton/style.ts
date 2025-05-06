@@ -11,7 +11,7 @@ export const Sc = {
     align-items: center;
     gap: 25px;
     border-radius: 10px;
-    padding: 14px;
+    padding: ${({ padding }) => padding ?? "14px"};
     border: ${({ state }) =>
       !state || state === "default" ? `2px solid ${ColorScheme.border.primary}` : "none"};
     background-color: ${({ state }) => {

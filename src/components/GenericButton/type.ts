@@ -6,6 +6,7 @@ export type StatesType = "accent" | "mild" | "default" | "no-style";
 
 export interface ButtonStyleProps {
   state?: StatesType;
+  padding?: string;
 }
 
 export interface ButtonChildrenProps extends ButtonStyleProps {
@@ -17,4 +18,5 @@ export interface ButtonChildrenProps extends ButtonStyleProps {
 export interface GenericButtonProps extends ButtonChildrenProps, TouchableHighlightProps {
   isLoading?: boolean;
   children: ReactNode;
+  padding?: string;
 }

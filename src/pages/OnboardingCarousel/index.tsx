@@ -1,19 +1,20 @@
 import React, { useState, useRef } from "react";
-import { View, ScrollView, Dimensions, ImageSourcePropType } from "react-native";
+import { View, ScrollView, Dimensions } from "react-native";
+import { SvgProps } from "react-native-svg";
 
 import PageContainer from "@components/PageContainer";
 import SlideItem from "@components/SlideItem";
 import { Sc } from "./style";
 
-import FirstImage from "@images/carousel/first-slide.png";
-import SecondImage from "@images/carousel/second-slide.png";
-import ThirdImage from "@images/carousel/third-slide.png";
+import FirstImage from "@images/carousel/first-slide.svg";
+import SecondImage from "@images/carousel/second-slide.svg";
+import ThirdImage from "@images/carousel/third-slide.svg";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@routes/type";
 
 interface Slide {
   id: number;
-  imageSource: ImageSourcePropType;
+  imageSource: React.FC<SvgProps>;
   text: string;
   title?: string; // Adicionando title para corresponder ao SlideItem
 }
@@ -76,7 +77,7 @@ function OnboardingCarousel() {
             {slides.map((slide, index) => (
               <View key={slide.id} style={{ width }}>
                 <SlideItem
-                  imageSource={slide.imageSource}
+                  imageComponent={slide.imageSource}
                   text={slide.text}
                   showSkipButton={true}
                   skipDisabled={index === 2}

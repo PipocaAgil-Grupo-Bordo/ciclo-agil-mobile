@@ -8,22 +8,18 @@ export const Sc = {
     justify-content: space-between;
     align-items: center;
     margin-right: 10%;
-    margin-top: 50%;
-    margin-bottom: 10%;
+    margin-top: 45%;
+    margin-bottom: 12%;
   `,
   contentContainer: styled.View`
     align-items: center;
-    margin-bottom: 60%;
-  `,
-  image: styled.Image`
-    width: 130px;
-    height: 139px;
-    margin-bottom: 20px;
+    margin-bottom: 55%;
   `,
   text: styled.Text`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.medium}px;
     text-align: center;
+    margin-top: 24px;
     color: ${Palette.neutralBlack[400]};
   `,
   buttonsContainer: styled.View`
