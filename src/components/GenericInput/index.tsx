@@ -27,6 +27,7 @@ function GenericInput<T extends FieldValues>({
 
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
+  const isPasswordInput = inputName === "password" || inputName === "confirmPassword";
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -53,10 +54,10 @@ function GenericInput<T extends FieldValues>({
           errors={errors}
           isFocused={isFocused}
           mask={inputName === "birthdate" ? Masks.DATE_DDMMYYYY : undefined}
-          secureTextEntry={inputName === "password" ? !showPassword : showPassword}
+          secureTextEntry={isPasswordInput ? !showPassword : showPassword}
           {...props}
         />
-        {(inputName === "password" || inputName === "confirmPassword") && (
+        {isPasswordInput && (
           <Sc.PasswordButtonContainer onPress={toggleShowPassword}>
             <Feather name={showPassword ? "eye-off" : "eye"} size={24} color="#1B1A1B" />
           </Sc.PasswordButtonContainer>

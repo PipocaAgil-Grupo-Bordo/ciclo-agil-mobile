@@ -26,13 +26,13 @@ function SignUpForm() {
   const {
     handleSubmit,
     control,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isSubmitting },
     reset,
     setError,
     watch
   } = useForm<RegisterFields>({
     resolver: yupResolver(registerSchema),
-    mode: "onChange"
+    mode: "onSubmit"
   });
 
   // Watch all form fields to check if they are filled
@@ -47,8 +47,8 @@ function SignUpForm() {
     Boolean(formValues.password) &&
     Boolean(formValues.confirmPassword);
 
-  // Button is enabled only when form is valid, all fields are filled, and terms are accepted
-  const isButtonEnabled = isValid && areAllFieldsFilled && termsAccepted && !isSubmitting;
+  // Button is enabled only when fields are filled and terms are accepted
+  const isButtonEnabled = areAllFieldsFilled && termsAccepted && !isSubmitting;
 
   const handleCloseModal = () => {
     setErrorModalVisible(false);

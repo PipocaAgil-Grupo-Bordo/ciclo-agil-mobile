@@ -22,7 +22,7 @@ export const Sc = {
     border-radius: 4px;
     border-width: 2px;
     border-color: ${(props) => (props.isChecked ? "transparent" : "#93999e")};
-    background-color: ${(props) => (props.isChecked ? "#a3dcac" : NewColorScheme.text.white)};
+    background-color: ${(props) => (props.isChecked ? "#29B126" : NewColorScheme.text.white)};
     justify-content: center;
     align-items: center;
     margin-right: 10px;
