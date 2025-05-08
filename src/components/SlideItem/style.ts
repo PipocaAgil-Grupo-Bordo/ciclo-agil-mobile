@@ -9,7 +9,7 @@ export const Sc = {
     align-items: center;
     margin-right: 10%;
     margin-top: 45%;
-    margin-bottom: 12%;
+    margin-bottom: 32px;
   `,
   contentContainer: styled.View`
     align-items: center;
@@ -18,6 +18,7 @@ export const Sc = {
   text: styled.Text`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.medium}px;
+    line-height: 24px;
     text-align: center;
     margin-top: 24px;
     color: ${Palette.neutralBlack[400]};

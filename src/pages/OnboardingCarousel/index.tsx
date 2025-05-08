@@ -23,18 +23,18 @@ const slides: Slide[] = [
   {
     id: 1,
     imageSource: FirstImage,
-    text: "O primeiro passo para transformar e\n impactar positivamente o cuidado com\n a sua saúde menstrual.",
+    text: "O primeiro passo para transformar e impactar positivamente o cuidado com a sua saúde menstrual.",
     title: "Ciclo Ágil"
   },
   {
     id: 2,
     imageSource: SecondImage,
-    text: "Facilita o registro e a visualização clara\n do ciclo, incluindo menstruação,\n ovulação e período fértil."
+    text: "Facilita o registro e a visualização clara do ciclo, incluindo menstruação, ovulação e período fértil."
   },
   {
     id: 3,
     imageSource: ThirdImage,
-    text: "Alertas personalizáveis e relatórios claros\n ajudam a acompanhar o ciclo e\n identificar padrões.",
+    text: "Alertas personalizáveis e relatórios claros ajudam a acompanhar o ciclo e identificar padrões.",
     title: "26 dias"
   }
 ];
