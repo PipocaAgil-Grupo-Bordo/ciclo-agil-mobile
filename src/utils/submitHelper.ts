@@ -33,7 +33,7 @@ export async function submitRegister(
 
     reset({ email: "", password: "" }, { keepErrors: false });
 
-    return navigation.navigate("Team");
+    return navigation.navigate("OnboardingCarousel");
   } catch (error) {
     const axiosError = error as AxiosError;
 
