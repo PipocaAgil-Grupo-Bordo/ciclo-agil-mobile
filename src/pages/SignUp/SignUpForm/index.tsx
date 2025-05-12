@@ -11,6 +11,7 @@ import { submitRegister } from "@utils/submitHelper";
 import { useForm } from "react-hook-form";
 import { Text } from "react-native";
 import ErrorModal from "@components/ErrorModal";
+// import SuccessModal from "@components/SuccessModal";
 
 import { Sc } from "./style";
 import Inputs from "../Inputs";
@@ -96,6 +97,12 @@ function SignUpForm() {
       >
         <Text>Cadastrar</Text>
       </GenericButton>
+
+      {/* <SuccessModal
+        visible={!errorMessage}
+        message=""
+        onPress={colocar a função que leva pra outra página}
+      /> */}
 
       <ErrorModal
         visible={errorModalVisible}

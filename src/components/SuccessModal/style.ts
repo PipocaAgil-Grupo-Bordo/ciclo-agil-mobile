@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 import { Palette } from "@styles/palette";
-import { FontScheme } from "@styles/globalStyles";
+import { FontScheme, NewColorScheme } from "@styles/globalStyles";
 
 export const Sc = {
   ModalOverlay: styled.View`
@@ -18,15 +18,6 @@ export const Sc = {
     padding: 32px 24px;
     align-items: flex-start;
     position: relative;
-  `,
-
-  ModalTitle: styled.Text`
-    font-family: ${FontScheme.family.primaryBold};
-    font-size: 16px; //Esperar resposta das uxs
-    line-height: 24px;
-    margin-top: 24px;
-    margin-bottom: 16px;
-    color: ${Palette.neutralBlack[500]};
   `,
 
   ModalMessage: styled.Text`
@@ -47,8 +38,8 @@ export const Sc = {
     align-items: center;
   `,
 
-  CloseIcon: styled.Text`
+  CheckIcon: styled.Text`
     font-size: 18px;
-    color: ${Palette.neutralBlack[500]};
+    color: ${NewColorScheme.accent.success};
   `
 };
