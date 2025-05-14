@@ -11,7 +11,7 @@ import { submitRegister } from "@utils/submitHelper";
 import { useForm } from "react-hook-form";
 import { Text } from "react-native";
 import ErrorModal from "@components/ErrorModal";
-// import SuccessModal from "@components/SuccessModal";
+import SuccessModal from "@components/SuccessModal";
 
 import { Sc } from "./style";
 import Inputs from "../Inputs";
@@ -23,6 +23,7 @@ function SignUpForm() {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [errorModalVisible, setErrorModalVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState({ title: "", message: "" });
+  const [successModalVisible, setSuccessModalVisible] = useState(false);
 
   const {
     handleSubmit,
@@ -55,6 +56,11 @@ function SignUpForm() {
     setErrorModalVisible(false);
   };
 
+  const handleSuccessModalPress = () => {
+    setSuccessModalVisible(false);
+    navigation.navigate("Team");
+  };
+
   const onSubmit = async (data: RegisterFields) => {
     if (!termsAccepted) {
       setErrorMessage({
@@ -66,10 +72,9 @@ function SignUpForm() {
     }
 
     try {
-      await submitRegister(
+      const success = await submitRegister(
         data,
         reset,
-        navigation,
         setError,
         setAccessToken,
         setRefreshToken,
@@ -78,8 +83,16 @@ function SignUpForm() {
           setErrorModalVisible(true);
         }
       );
+
+      if (success) {
+        setSuccessModalVisible(true); // ✅ Só mostra se o retorno for positivo
+      }
     } catch {
-      // Handle unexpected errors
+      setErrorMessage({
+        title: "Erro inesperado",
+        message: "Ocorreu um erro ao tentar se cadastrar. Tente novamente mais tarde."
+      });
+      setErrorModalVisible(true);
     }
   };
 
@@ -98,11 +111,11 @@ function SignUpForm() {
         <Text>Cadastrar</Text>
       </GenericButton>
 
-      {/* <SuccessModal
-        visible={!errorMessage}
-        message=""
-        onPress={colocar a função que leva pra outra página}
-      /> */}
+      <SuccessModal
+        visible={successModalVisible && !errorModalVisible}
+        message="Cadastro realizado com sucesso"
+        onPress={handleSuccessModalPress}
+      />
 
       <ErrorModal
         visible={errorModalVisible}

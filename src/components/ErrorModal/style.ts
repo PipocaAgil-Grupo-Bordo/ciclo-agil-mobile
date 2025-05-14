@@ -22,7 +22,7 @@ export const Sc = {
 
   ModalTitle: styled.Text`
     font-family: ${FontScheme.family.primaryBold};
-    font-size: 16px; //Esperar resposta das uxs
+    font-size: 16px;
     line-height: 24px;
     margin-top: 24px;
     margin-bottom: 16px;

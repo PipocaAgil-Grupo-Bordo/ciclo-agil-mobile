@@ -13,7 +13,6 @@ import { tokenAuth } from "./tokenAuthHelper";
 export async function submitRegister(
   data: RegisterFields,
   reset: UseFormReset<RegisterFields>,
-  navigation: NavigationType,
   setError: UseFormSetError<RegisterFields>,
   setAccessToken: (accessToken: string) => void,
   setRefreshToken: (refreshToken: string) => void,
@@ -34,7 +33,7 @@ export async function submitRegister(
 
     reset({ email: "", password: "" }, { keepErrors: false });
 
-    return navigation.navigate("Team");
+    return true;
   } catch (error) {
     const axiosError = error as AxiosError;
 
@@ -48,6 +47,8 @@ export async function submitRegister(
         setError("confirmEmail", { message: "E-mail já cadastrado." });
         setError("email", {});
       }
+
+      return false;
     }
   }
 }

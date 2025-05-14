@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, Text } from "react-native";
 import { Sc } from "./style";
 import GenericButton from "@components/GenericButton";
+import CheckIcon from "@icons/check.svg";
 
 interface SuccessModalProps {
   visible: boolean;
@@ -14,12 +15,14 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ visible, message, onPress }
     <Modal transparent visible={visible} animationType="fade">
       <Sc.ModalOverlay>
         <Sc.ModalContainer>
-          {/* <Sc.CheckIcon>// colocar a imagem svg aqui do icone</Sc.CheckIcon> */}
+          <CheckIcon />
 
           <Sc.ModalMessage>{message}</Sc.ModalMessage>
-          <GenericButton onPress={onPress} state="accent" /*padding="9px"*/>
-            <Text>Iniciar</Text>
-          </GenericButton>
+          <Sc.ButonContainer>
+            <GenericButton onPress={onPress} state="accent" padding="9px">
+              <Text>Iniciar</Text>
+            </GenericButton>
+          </Sc.ButonContainer>
         </Sc.ModalContainer>
       </Sc.ModalOverlay>
     </Modal>

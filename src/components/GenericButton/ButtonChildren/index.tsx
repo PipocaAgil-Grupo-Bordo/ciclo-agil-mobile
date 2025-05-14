@@ -8,14 +8,14 @@ import { Sc } from "./style";
  * @param state - Defines the theme of the button
  * @param children - Can be a string or another component
  */
-function ButtonChildren({ icon, state, children }: ButtonChildrenProps) {
+function ButtonChildren({ icon, children }: ButtonChildrenProps) {
   return (
     <>
       {icon && (
         <Sc.Icon importantForAccessibility="no" accessibilityElementsHidden={true} source={icon} />
       )}
 
-      <Sc.ButtonText state={state}>{children}</Sc.ButtonText>
+      <Sc.ButtonText>{children}</Sc.ButtonText>
     </>
   );
 }

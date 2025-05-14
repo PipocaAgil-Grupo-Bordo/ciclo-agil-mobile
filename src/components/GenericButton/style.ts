@@ -1,7 +1,7 @@
-import styled from "styled-components/native";
-import { ButtonStyleProps } from "./type";
 import { ColorScheme, NewColorScheme } from "@styles/globalStyles";
-import { Palette } from "@styles/palette";
+import styled from "styled-components/native";
+
+import { ButtonStyleProps } from "./type";
 
 export const Sc = {
   Button: styled.TouchableHighlight<ButtonStyleProps>`
@@ -11,7 +11,7 @@ export const Sc = {
     align-items: center;
     gap: 25px;
     border-radius: 10px;
-    padding: 16px;
+    padding: ${({ padding }) => padding ?? "14px"};
     border: ${({ state }) =>
       !state || state === "default" ? `2px solid ${ColorScheme.border.primary}` : "none"};
     background-color: ${({ state }) => {
@@ -19,12 +19,13 @@ export const Sc = {
         case "accent":
           return NewColorScheme.accent.highlight;
         case "idle":
-          return Palette.primary[300];
-        case "mild":
-        case "default":
-        case "no-style":
-        default:
           return "#DCBBF0";
+        case "mild":
+          return ColorScheme.background.secondary;
+        case "no-style":
+        case "default":
+        default:
+          return ColorScheme.background.primary;
       }
     }};
   `
