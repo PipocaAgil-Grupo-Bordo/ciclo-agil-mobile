@@ -335,7 +335,7 @@ function CalendarListScreen(props: Props) {
         >
           <View style={styles.overlay}>
             <View style={styles.modalView}>
-              <Text style={styles.modalTextAlert}>Atenção! Alguns dias ficaram faltando</Text>
+              <Text style={styles.modalTextAlert}>! Alguns dias ficaram faltando</Text>
               <Text style={styles.modalText}>Você gostaria de anotar os dias anteriores?</Text>
 
               <View style={styles.buttonContainer}>
