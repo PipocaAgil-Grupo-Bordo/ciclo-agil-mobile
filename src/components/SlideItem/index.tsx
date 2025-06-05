@@ -39,21 +39,26 @@ const SlideItem: React.FC<SlideItemProps> = ({
       <Sc.buttonsContainer>
         {showSkipButton && (
           <Sc.buttonContainer>
-            <GenericButton onPress={onSkip} state="no-style" disabled={skipDisabled} padding="9px">
+            <GenericButton
+              onPress={onSkip}
+              state="no-style"
+              disabled={skipDisabled}
+              padding="10px 24px"
+            >
               <Text>Pular</Text>
             </GenericButton>
           </Sc.buttonContainer>
         )}
         {showNextButton && (
           <Sc.buttonContainer>
-            <GenericButton onPress={onNext} state="accent" padding="9px">
+            <GenericButton onPress={onNext} state="accent" padding="10px 19px">
               <Text>Próximo</Text>
             </GenericButton>
           </Sc.buttonContainer>
         )}
         {showFinishButton && (
           <Sc.buttonContainer>
-            <GenericButton onPress={onFinish} state="accent" padding="9px">
+            <GenericButton onPress={onFinish} state="accent" padding="10px 19px">
               <Text>Finalizar</Text>
             </GenericButton>
           </Sc.buttonContainer>

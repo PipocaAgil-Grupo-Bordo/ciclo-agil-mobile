@@ -22,6 +22,7 @@ export const Sc = {
     border-radius: 5px;
     margin-left: 6px;
     margin-right: 6px;
+    margin-bottom: 32px;
     background-color: ${({ active }) =>
       active ? NewColorScheme.accent.highlight : Palette.neutralGray[200]};
   `
