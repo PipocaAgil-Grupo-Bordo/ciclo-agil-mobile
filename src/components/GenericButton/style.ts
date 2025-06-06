@@ -12,6 +12,7 @@ export const Sc = {
     gap: 25px;
     border-radius: 10px;
     padding: ${({ padding }) => padding ?? "14px"};
+    height: ${({ padding }) => (padding ? "36px" : "56px")};
     border: ${({ state }) =>
       !state || state === "default" ? `2px solid ${NewColorScheme.accent.highlight}` : "none"};
     background-color: ${({ state }) => {

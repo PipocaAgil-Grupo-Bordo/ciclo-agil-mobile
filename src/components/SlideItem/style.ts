@@ -13,6 +13,7 @@ export const Sc = {
   `,
   contentContainer: styled.View`
     align-items: center;
+    background-color: "yellow";
     margin-bottom: 55%;
   `,
   text: styled.Text`
