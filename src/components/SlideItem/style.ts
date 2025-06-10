@@ -6,8 +6,7 @@ export const Sc = {
   container: styled.View`
     flex: 1;
     justify-content: space-between;
-    align-items: center;
-    margin-right: 10%;
+    margin-right: 9%;
     margin-top: 45%;
     margin-bottom: 32px;
   `,

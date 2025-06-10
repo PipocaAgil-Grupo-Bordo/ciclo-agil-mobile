@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import { View, ScrollView, Dimensions } from "react-native";
 import { SvgProps } from "react-native-svg";
 
-import PageContainer from "@components/PageContainer";
 import SlideItem from "@components/SlideItem";
 import { Sc } from "./style";
 
@@ -64,7 +63,7 @@ function OnboardingCarousel() {
   };
 
   return (
-    <PageContainer>
+    <Sc.mainContainer>
       <Sc.container>
         <Sc.contentContainer>
           <ScrollView
@@ -98,7 +97,7 @@ function OnboardingCarousel() {
           ))}
         </Sc.paginationContainer>
       </Sc.container>
-    </PageContainer>
+    </Sc.mainContainer>
   );
 }
 

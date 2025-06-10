@@ -1,19 +1,25 @@
 import styled from "styled-components/native";
-import { NewColorScheme } from "@styles/globalStyles";
+import { FontScheme, NewColorScheme } from "@styles/globalStyles";
 import { Palette } from "@styles/palette";
 
 export const Sc = {
+  mainContainer: styled.View`
+    display: flex;
+    align-items: center;
+    flex: 1;
+    background-color: ${NewColorScheme.background.primary};
+    padding-bottom: 42px;
+    padding-left: ${FontScheme.size.medium}px;
+    min-height: 100vh;
+  `,
   container: styled.View`
     flex: 1;
   `,
-  contentContainer: styled.View`
-    flex: 1;
-  `,
+  contentContainer: styled.View``,
   paginationContainer: styled.View`
     flex: 1;
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 20px;
     width: 100%;
   `,
   paginationDot: styled.View<{ active?: boolean }>`
@@ -22,7 +28,6 @@ export const Sc = {
     border-radius: 5px;
     margin-left: 6px;
     margin-right: 6px;
-    margin-bottom: 32px;
     background-color: ${({ active }) =>
       active ? NewColorScheme.accent.highlight : Palette.neutralGray[200]};
   `
