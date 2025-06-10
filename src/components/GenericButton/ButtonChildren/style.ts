@@ -14,6 +14,7 @@ export const Sc = {
     color: ${({ state }) =>
       state === "accent" ? Palette.neutralWhite[50] : NewColorScheme.accent.highlight};
     font-family: ${FontScheme.family.primary};
+    line-height: 24px;
     font-weight: 700;
     font-size: ${FontScheme.size.medium}px;
     opacity: ${({ disabled }) => (disabled ? 0.4 : 1)};

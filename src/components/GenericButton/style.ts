@@ -12,14 +12,16 @@ export const Sc = {
     border-radius: 10px;
     padding: ${({ padding }) => padding ?? "14px"};
     border: ${({ state }) =>
-      !state || state === "default" ? `2px solid ${ColorScheme.border.primary}` : "none"};
+      !state || state === "default" ? `2px solid ${NewColorScheme.accent.highlight}` : "none"};
     background-color: ${({ state }) => {
       switch (state) {
         case "accent":
           return NewColorScheme.accent.highlight;
         case "mild":
-        case "default":
+          return ColorScheme.background.secondary;
         case "no-style":
+          return NewColorScheme.background.white;
+        case "default":
         default:
           return "#DCBBF0";
       }
