@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { FontScheme, NewColorScheme } from "@styles/globalStyles";
+import { NewColorScheme } from "@styles/globalStyles";
 import { Palette } from "@styles/palette";
 
 export const Sc = {
@@ -8,12 +8,12 @@ export const Sc = {
     align-items: center;
     flex: 1;
     background-color: ${NewColorScheme.background.primary};
-    padding-bottom: 42px;
-    padding-left: ${FontScheme.size.medium}px;
+    padding: 8px;
     min-height: 100vh;
   `,
   container: styled.View`
     flex: 1;
+    padding-bottom: 32px;
   `,
   contentContainer: styled.View``,
   paginationContainer: styled.View`
