@@ -3,17 +3,23 @@ import { NewColorScheme } from "@styles/globalStyles";
 import { Palette } from "@styles/palette";
 
 export const Sc = {
+  mainContainer: styled.View`
+    display: flex;
+    align-items: center;
+    flex: 1;
+    background-color: ${NewColorScheme.background.primary};
+    padding: 8px;
+    min-height: 100vh;
+  `,
   container: styled.View`
     flex: 1;
+    padding-bottom: 32px;
   `,
-  contentContainer: styled.View`
-    flex: 1;
-  `,
+  contentContainer: styled.View``,
   paginationContainer: styled.View`
     flex: 1;
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 20px;
     width: 100%;
   `,
   paginationDot: styled.View<{ active?: boolean }>`
