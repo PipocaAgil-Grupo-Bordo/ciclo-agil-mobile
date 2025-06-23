@@ -19,7 +19,7 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ visible, message, onPress }
 
           <Sc.ModalMessage>{message}</Sc.ModalMessage>
           <Sc.ButonContainer>
-            <GenericButton onPress={onPress} state="accent" padding="9px">
+            <GenericButton onPress={onPress} state="accent" padding="0px">
               <Text>Iniciar</Text>
             </GenericButton>
           </Sc.ButonContainer>
