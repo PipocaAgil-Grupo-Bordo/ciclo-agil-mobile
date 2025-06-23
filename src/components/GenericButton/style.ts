@@ -1,5 +1,6 @@
 import { ColorScheme, NewColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
+
 import { ButtonStyleProps } from "./type";
 
 export const Sc = {
@@ -24,7 +25,7 @@ export const Sc = {
           return NewColorScheme.background.white;
         case "default":
         default:
-          return "#DCBBF0";
+          return ColorScheme.background.primary;
       }
     }};
   `
