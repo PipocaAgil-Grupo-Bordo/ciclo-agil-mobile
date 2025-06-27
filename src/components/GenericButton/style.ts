@@ -19,6 +19,8 @@ export const Sc = {
       switch (state) {
         case "accent":
           return NewColorScheme.accent.highlight;
+        case "idle":
+          return "#DCBBF0";
         case "mild":
           return ColorScheme.background.secondary;
         case "no-style":

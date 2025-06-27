@@ -6,7 +6,12 @@ import { InstructionTextProps } from "../type";
 export const Sc = {
   Container: styled.View`
     flex: 1;
-    margin-bottom: 42px;
+    margin-bottom: 82px;
+  `,
+
+  InputsContainer: styled.View`
+    gap: 8px;
+    margin-bottom: 15px;
   `,
 
   Wrapper: styled.View`

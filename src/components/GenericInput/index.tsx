@@ -1,19 +1,32 @@
 import React, { useState } from "react";
 import { GenericInputProps } from "./type";
-import { useController } from "react-hook-form";
+import { useController, FieldValues } from "react-hook-form";
 import { Masks } from "react-native-mask-input";
 import { Sc } from "./style";
 import { NewColorScheme } from "@styles/globalStyles";
 import Feather from "@expo/vector-icons/Feather";
 
-function GenericInput({ label, control, name, errors, ...props }: GenericInputProps) {
-  const { field } = useController({ control, defaultValue: "", name });
-  const inputErrors = errors && errors[name] && errors[name]?.message;
+function GenericInput<T extends FieldValues>({
+  label,
+  control,
+  name,
+  errors,
+  ...props
+}: GenericInputProps<T>) {
+  const { field } = useController({
+    control,
+    name,
+    defaultValue: undefined
+  });
+
+  const inputName = name as string;
+  const inputErrors = errors && errors[inputName] && errors[inputName]?.message;
   const [isFocused, setIsFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
+  const isPasswordInput = inputName === "password" || inputName === "confirmPassword";
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -35,21 +48,21 @@ function GenericInput({ label, control, name, errors, ...props }: GenericInputPr
           value={field.value}
           onChangeText={field.onChange}
           placeholderTextColor={NewColorScheme.text.tertiary}
-          name={name}
+          name={inputName}
           id="passwordInput"
           errors={errors}
           isFocused={isFocused}
-          mask={name === "birthdate" ? Masks.DATE_DDMMYYYY : undefined}
-          secureTextEntry={name === "password" ? !showPassword : showPassword}
+          mask={inputName === "birthdate" ? Masks.DATE_DDMMYYYY : undefined}
+          secureTextEntry={isPasswordInput ? !showPassword : showPassword}
           {...props}
         />
-        {name === "password" && (
+        {isPasswordInput && (
           <Sc.PasswordButtonContainer onPress={toggleShowPassword}>
             <Feather name={showPassword ? "eye-off" : "eye"} size={24} color="#1B1A1B" />
           </Sc.PasswordButtonContainer>
         )}
       </Sc.InputWrapper>
-      <Sc.Error>{inputErrors as string}</Sc.Error>
+      {inputErrors && <Sc.Error>{inputErrors as string}</Sc.Error>}
     </Sc.Container>
   );
 }

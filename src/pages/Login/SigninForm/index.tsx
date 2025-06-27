@@ -10,7 +10,7 @@ import { tokenAuth } from "@utils/tokenAuthHelper";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Alert, Text } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { Pressable } from "react-native-gesture-handler";
 import { NavigationType } from "@routes/type";
 import Inputs from "../Inputs";
 import Button from "@components/Button";
@@ -76,11 +76,11 @@ function SigninForm() {
 
       <Inputs control={control} errors={errors} />
 
-      <TouchableOpacity onPress={() => navigation.navigate("EmailRequest")}>
+      <Pressable onPress={() => navigation.navigate("EmailRequest")}>
         <Sc.ForgottenPassword>
           <Text>Esqueci a senha</Text>
         </Sc.ForgottenPassword>
-      </TouchableOpacity>
+      </Pressable>
 
       <Sc.LoginWrapper>
         <Button
@@ -99,11 +99,11 @@ function SigninForm() {
           <Text>Não tem conta?</Text>
         </Sc.Text>
 
-        <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+        <Pressable onPress={() => navigation.navigate("SignUp")}>
           <Sc.RegisterLink>
             <Text> Registre-se</Text>
           </Sc.RegisterLink>
-        </TouchableOpacity>
+        </Pressable>
       </Sc.RegisterWrapper>
     </Sc.Container>
   );

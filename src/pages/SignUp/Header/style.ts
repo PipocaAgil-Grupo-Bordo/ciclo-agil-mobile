@@ -16,9 +16,9 @@ export const Sc = {
 
   SubTitle: styled.Text`
     font-family: ${FontScheme.family.primary};
-    font-size: ${FontScheme.size.default}px;
+    font-size: ${FontScheme.size.medium}px;
     color: ${ColorScheme.text.primary};
-    width: 90%;
+    width: 100%;
     align-content: center;
   `
 };

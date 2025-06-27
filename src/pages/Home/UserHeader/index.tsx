@@ -3,6 +3,8 @@ import { Text, TouchableOpacity } from "react-native";
 import { Sc } from "./style";
 import { useTokenContext } from "@context/useUserToken";
 import { tokenAuth } from "@utils/tokenAuthHelper";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationType } from "@routes/type";
 
 interface UserHeaderProps {
   whoAmI: WhoAmI | undefined;
@@ -10,6 +12,7 @@ interface UserHeaderProps {
 
 function UserHeader({ whoAmI }: UserHeaderProps) {
   const { setRefreshToken, setAccessToken } = useTokenContext();
+  const navigation = useNavigation<NavigationType>();
 
   const getFirstName = (fullName: string | undefined) => {
     if (!fullName) return "";
@@ -18,6 +21,7 @@ function UserHeader({ whoAmI }: UserHeaderProps) {
 
   const handlePress = () => {
     tokenAuth.deleteTokens(setAccessToken, setRefreshToken);
+    navigation.navigate("Login");
   };
 
   return (
