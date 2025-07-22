@@ -32,7 +32,7 @@ export const Sc = {
     top: -8px;
     font-size: ${FontScheme.size.small}px;
     font-family: "Roboto";
-    color: ${NewColorScheme.text.gray};
+    color: "#49454F";
     padding: 0 4px;
   `,
 
@@ -44,9 +44,9 @@ export const Sc = {
   `,
 
   Input: styled(MaskInput)<StyledInputProps>`
-    background-color: ${Palette.neutralWhite[50]};
-    font-family: ${FontScheme.family.primary};
-    color: ${NewColorScheme.text.primary};
+    background-color: ${Palette.neutralWhite[100]};
+    font-family: "Roboto";
+    color: ${NewColorScheme.text.tertiary};
     padding: 16px;
     font-size: ${FontScheme.size.medium}px;
     border: ${(props) => {

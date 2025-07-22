@@ -21,19 +21,19 @@ export const Sc = {
   `,
 
   ModalTitle: styled.Text`
-    font-family: ${FontScheme.family.primaryBold};
-    font-size: 16px;
+    font-family: ${FontScheme.family.primary};
+    font-size: 20px;
     line-height: 24px;
     margin-top: 24px;
     margin-bottom: 16px;
-    color: ${Palette.neutralBlack[500]};
+    color: ${Palette.neutralBlack[400]};
   `,
 
   ModalMessage: styled.Text`
     font-family: ${FontScheme.family.primary};
-    font-size: 16px;
+    font-size: 14px;
     line-height: 20px;
-    color: ${Palette.neutralBlack[300]};
+    color: "#49454F";
     margin-bottom: 8px;
   `,
 

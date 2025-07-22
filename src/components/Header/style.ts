@@ -19,8 +19,8 @@ export const Sc = {
   `,
 
   Title: styled.Text`
-    font-family: ${FontScheme.family.secondarySemiBold};
-    font-size: ${FontScheme.size.highlight}px;
+    font-family: ${FontScheme.family.secondary};
+    font-size: ${FontScheme.size.heading}px;
     color: ${NewColorScheme.text.primary};
     text-align: left;
     margin-left: 48px;

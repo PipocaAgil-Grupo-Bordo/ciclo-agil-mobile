@@ -1,4 +1,4 @@
-import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
+import { FontScheme, NewColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 interface CheckboxProps {
@@ -35,10 +35,10 @@ export const Sc = {
   Text: styled.Text`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
-    color: ${ColorScheme.text.primary};
+    color: "#3E3C3E";
   `,
 
   Hyperlink: styled.Text`
-    color: ${ColorScheme.accent.highlight};
+    color: ${NewColorScheme.accent.highlight};
   `
 };
