@@ -99,7 +99,7 @@ function CalendarListScreen(props: Props) {
   const [selectedDatesInfo, setSelectedDatesInfo] = useState<{ id: number; date: string }[]>([]);
   const { accessToken } = useTokenContext();
   const [modalVisible, setModalVisible] = useState(false);
-  const [pendingDate, setPendingDate] = useState<string | null>(null); // Armazena a data para decidir se deve ser adicionada ou não.
+  const [pendingDate, setPendingDate] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [futureDateModalVisible, setFutureDateModalVisible] = useState(false);
 

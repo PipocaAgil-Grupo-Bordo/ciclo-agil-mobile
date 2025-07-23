@@ -30,9 +30,9 @@ export const Sc = {
 
   Label: styled.Text`
     top: -8px;
-    font-size: ${FontScheme.size.default}px;
-    font-family: ${FontScheme.family.primaryMedium};
-    color: #49454f;
+    font-size: ${FontScheme.size.small}px;
+    font-family: "Roboto";
+    color: ${NewColorScheme.text.gray};
     padding: 0 4px;
   `,
 
@@ -66,7 +66,8 @@ export const Sc = {
     position: absolute;
     top: 4px;
     right: 4px;
-    padding: 17.5px 12px;
+    padding: 12px;
+    height: 48px;
     background-color: ${Palette.neutralWhite[50]};
     border-radius: 7px;
   `,

@@ -6,9 +6,5 @@ export const Sc = {
     align-items: center;
   `,
 
-  Icon: styled.ImageBackground`
-    display: flex;
-    width: 147px;
-    height: 139px;
-  `
+  IconWrapper: styled.ImageBackground``
 };

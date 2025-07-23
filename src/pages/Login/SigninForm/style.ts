@@ -1,20 +1,20 @@
-import { ColorScheme, FontScheme } from "src/styles/globalStyles";
 import styled from "styled-components/native";
+import { FontScheme, NewColorScheme } from "src/styles/globalStyles";
 
 export const Sc = {
   Container: styled.View``,
 
   Title: styled.Text`
     font-family: ${FontScheme.family.secondary};
-    font-size: ${FontScheme.size.heading}px;
-    color: ${ColorScheme.text.primary};
-    margin: 81px 0px 24px;
+    font-size: ${FontScheme.size.highlight}px;
+    color: ${NewColorScheme.text.primary};
+    margin: 32px 0px 24px;
   `,
 
   ForgottenPassword: styled.Text`
-    font-family: ${FontScheme.family.primaryMedium};
-    font-size: ${FontScheme.size.default}px;
-    color: ${ColorScheme.accent.highlight};
+    font-family: ${FontScheme.family.primary};
+    font-size: ${FontScheme.size.small}px;
+    color: ${NewColorScheme.accent.link};
     text-align: right;
     margin: 0px 12px;
   `,
@@ -27,17 +27,18 @@ export const Sc = {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    gap: 8px;
   `,
 
   Text: styled.Text`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
-    color: ${ColorScheme.text.primary};
+    color: ${NewColorScheme.text.gray};
   `,
 
   RegisterLink: styled.Text`
-    font-family: ${FontScheme.family.primaryMedium};
-    font-size: ${FontScheme.size.default}px;
-    color: ${ColorScheme.accent.highlight};
+    font-family: ${FontScheme.family.primary};
+    font-size: ${FontScheme.size.small}px;
+    color: ${NewColorScheme.accent.link};
   `
 };
