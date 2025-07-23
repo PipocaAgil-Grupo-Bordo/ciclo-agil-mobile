@@ -4,7 +4,7 @@ import { menstrualApi } from "@services/menstrualApi";
 import { ColorScheme } from "@styles/globalStyles";
 import { ICalendarDateInfo, IMenstrualPeriod } from "@type/menstrual";
 import React, { useCallback, useState } from "react";
-import { View, Text, Alert, Modal, Pressable } from "react-native";
+import { View, Text, Alert, Modal, Pressable, ActivityIndicator } from "react-native";
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars";
 
 import { styles } from "./style";
@@ -46,6 +46,7 @@ function CalendarApp(props: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [componentKey, setComponentKey] = useState(0);
   const [futureDateModalVisible, setFutureDateModalVisible] = useState(false); // Novo estado para o modal de datas futuras
+  const [modalLoading, setModalLoading] = useState(false); // Loading state for modal operations
 
   useFocusEffect(
     useCallback(() => {
@@ -74,7 +75,7 @@ function CalendarApp(props: Props) {
     setIsLoading(false);
   };
 
-  const handleDayPress = (day: DateData) => {
+  const handleDayPress = async (day: DateData) => {
     const date = day.dateString;
     const today = new Date().toISOString().split("T")[0];
 
@@ -91,8 +92,11 @@ function CalendarApp(props: Props) {
         setPendingDate(date);
         setModalVisible(true);
       } else {
-        addMenstrualPeriodDate(date);
-        setSelectedDates([...selectedDates, date]);
+        const newDateInfo = await addMenstrualPeriodDate(date);
+        if (newDateInfo) {
+          setSelectedDates([...selectedDates, date]);
+          setSelectedDatesInfo((prev) => [...prev, newDateInfo]);
+        }
       }
     } else {
       deleteMenstrualPeriodDate(date);
@@ -104,17 +108,11 @@ function CalendarApp(props: Props) {
       if (accessToken) {
         const response = await menstrualApi.createPeriodDate({ date }, accessToken);
         const data = response.data;
-        setSelectedDatesInfo([...selectedDatesInfo, { id: data.id, date: data.date }]);
         return { id: data.id, date: data.date };
       }
     } catch {
       Alert.alert("Erro ao adicionar data, tente novamente!");
-      const currentSelectedDates = [...selectedDates];
-      const currentSelectedDatesInfo = [...selectedDatesInfo];
-      currentSelectedDatesInfo.pop();
-      setSelectedDatesInfo(currentSelectedDatesInfo);
-      currentSelectedDates.pop();
-      setSelectedDates(currentSelectedDates);
+      return null;
     }
   };
 
@@ -156,59 +154,73 @@ function CalendarApp(props: Props) {
     return gap;
   };
 
-  const handleModalResponse = (response: "yes" | "no") => {
-    setModalVisible(false);
+  const handleModalResponse = async (response: "yes" | "no") => {
+    setModalLoading(true);
 
     if (response === "yes" && pendingDate) {
-      fillPreviousDates(pendingDate);
+      await fillPreviousDates(pendingDate);
     } else if (response === "no" && pendingDate) {
-      addMenstrualPeriodDate(pendingDate);
-      setSelectedDates([...selectedDates, pendingDate]);
+      const newDateInfo = await addMenstrualPeriodDate(pendingDate);
+      if (newDateInfo) {
+        setSelectedDates([...selectedDates, pendingDate]);
+        setSelectedDatesInfo((prev) => [...prev, newDateInfo]);
+      }
     }
 
+    setModalLoading(false);
+    setModalVisible(false);
     setPendingDate(null);
   };
 
   const fillPreviousDates = async (date: string) => {
     const selectedDate = new Date(date);
-    const firstSelectedDate = selectedDates[0];
-    const firstDate = new Date(firstSelectedDate);
-    const lastSelectedDate = selectedDates[selectedDates.length - 1];
-    const lastDate = new Date(lastSelectedDate);
-    let start;
-    let end;
-    const datesToFill: string[] = [];
-    const datesToFillInfo: { id: number; date: string }[] = [];
+    let closestDate = null;
+    let minDiff = Infinity;
 
-    if (selectedDate < firstDate) {
-      start = selectedDate;
-      end = firstDate;
-      for (let d = new Date(start); d < end; d.setDate(d.getDate() + 1)) {
-        datesToFill.push(d.toISOString().split("T")[0]);
+    for (const date of selectedDates) {
+      const dateObj = new Date(date);
+      const diff = Math.abs(selectedDate.getTime() - dateObj.getTime());
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestDate = new Date(date);
       }
     }
-    if (selectedDate > lastDate) {
-      start = lastDate;
-      end = selectedDate;
-      start.setDate(start.getDate() + 1);
+
+    if (!closestDate) return;
+
+    const fillDates = (start: Date, end: Date) => {
+      const dates = [];
       for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
-        datesToFill.push(d.toISOString().split("T")[0]);
+        dates.push(d.toISOString().split("T")[0]);
       }
-    }
+      return dates;
+    };
 
-    setSelectedDates([...selectedDates, ...datesToFill]);
+    const datesToFill =
+      selectedDate < closestDate
+        ? fillDates(selectedDate, closestDate)
+        : fillDates(new Date(closestDate.setDate(closestDate.getDate() + 1)), selectedDate);
+
+    const newDatesInfo: { id: number; date: string }[] = [];
 
     await Promise.all(
       datesToFill.map(async (dateToAdd) => {
-        const response = await addMenstrualPeriodDate(dateToAdd);
-        if (response) {
-          datesToFillInfo.push(response);
+        if (!selectedDates.includes(dateToAdd)) {
+          const response = await addMenstrualPeriodDate(dateToAdd);
+          if (response) {
+            newDatesInfo.push(response);
+          }
         }
-        return response;
       })
     );
 
-    setSelectedDatesInfo([...selectedDatesInfo, ...datesToFillInfo]);
+    if (newDatesInfo.length > 0) {
+      setSelectedDates((prev) => {
+        const uniqueDates = Array.from(new Set([...prev, ...datesToFill]));
+        return uniqueDates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
+      });
+      setSelectedDatesInfo((prev) => [...prev, ...newDatesInfo]);
+    }
   };
 
   const formatDateList = (menstrualPeriods: IMenstrualPeriod[]) => {
@@ -236,8 +248,19 @@ function CalendarApp(props: Props) {
       });
       const dates = formatDateList(response.data);
       const datesInfo = formatDateInfoList(response.data);
-      setSelectedDates([...selectedDates, ...dates]);
-      setSelectedDatesInfo([...selectedDatesInfo, ...datesInfo]);
+
+      // Merge dates avoiding duplicates
+      setSelectedDates((prev) => {
+        const uniqueDates = Array.from(new Set([...prev, ...dates]));
+        return uniqueDates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
+      });
+
+      // Merge date info avoiding duplicates
+      setSelectedDatesInfo((prev) => {
+        const existingIds = new Set(prev.map((info) => info.id));
+        const newDatesInfo = datesInfo.filter((info) => !existingIds.has(info.id));
+        return [...prev, ...newDatesInfo];
+      });
     }
     setIsLoading(false);
   };
@@ -282,7 +305,7 @@ function CalendarApp(props: Props) {
           animationType="fade"
           transparent={true}
           visible={modalVisible}
-          onRequestClose={() => setModalVisible(!modalVisible)}
+          onRequestClose={() => !modalLoading && setModalVisible(!modalVisible)}
         >
           <View style={styles.overlay}>
             <View style={styles.modalView}>
@@ -293,6 +316,7 @@ function CalendarApp(props: Props) {
                 <Pressable
                   style={[styles.button, styles.buttonNo]}
                   onPress={() => handleModalResponse("no")}
+                  disabled={modalLoading}
                 >
                   <Text style={styles.textNo}>Não</Text>
                 </Pressable>
@@ -300,8 +324,13 @@ function CalendarApp(props: Props) {
                 <Pressable
                   style={[styles.button, styles.buttonYes]}
                   onPress={() => handleModalResponse("yes")}
+                  disabled={modalLoading}
                 >
-                  <Text style={styles.textStyle}>Sim</Text>
+                  {modalLoading ? (
+                    <ActivityIndicator size="small" color="#fff" />
+                  ) : (
+                    <Text style={styles.textStyle}>Sim</Text>
+                  )}
                 </Pressable>
               </View>
             </View>
