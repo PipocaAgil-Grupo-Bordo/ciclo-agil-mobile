@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Header from "@components/Header";
+import Header from "../SharedComponents/Header";
 import Modal from "@components/Modal";
 import { useTokenContext } from "@context/useUserToken";
 import { useNavigation } from "@react-navigation/native";
@@ -95,7 +95,7 @@ function LastPeriod() {
   return (
     <Sc.Container>
       <Sc.TopWrapper>
-        <Header title="Qual foi a data de início da sua última menstruação?" />
+        <Header title="Qual a data de inicio da sua ultima menstruação?" />
 
         <DropdownMenu
           label="Mês:"
@@ -103,12 +103,10 @@ function LastPeriod() {
           options={months}
           currentOption={lastPeriodData.month}
         />
-
-        <ScrollableMenu items={days} onIndexChange={handleDaySelection} />
-
-        <Information text="Não se preocupe, você pode registrar a data de início da sua última menstruação mais tarde ou marcar o início de uma nova" />
       </Sc.TopWrapper>
+      <ScrollableMenu items={days} onIndexChange={handleDaySelection} />
 
+      <Information text="Não se preocupe, você pode registrar a data de início da sua última menstruação mais tarde ou marcar o início de uma nova" />
       <Buttons
         isLoading={isLoading}
         nextWithData={handleLastPeriodDate}

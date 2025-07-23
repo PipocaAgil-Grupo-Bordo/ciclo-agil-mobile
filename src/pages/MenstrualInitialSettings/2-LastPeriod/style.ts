@@ -1,13 +1,17 @@
-import { ColorScheme } from "@styles/globalStyles";
+import { NewColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
   Container: styled.View`
-    background-color: ${ColorScheme.background.primary};
+    background-color: ${NewColorScheme.background.primary};
     justify-content: space-between;
-    flex: 1;
     padding: 32px 24px 24px 24px;
   `,
 
-  TopWrapper: styled.View``
+  TopWrapper: styled.View`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+  `
 };

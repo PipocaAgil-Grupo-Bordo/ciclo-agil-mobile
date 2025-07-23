@@ -1,4 +1,4 @@
-import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { NewColorScheme, ColorScheme, FontScheme } from "@styles/globalStyles";
 import styled, { css } from "styled-components/native";
 
 import { DropdownMenuStyle, OptionStyle } from "./type";
@@ -19,6 +19,7 @@ export const Sc = {
   Label: styled.Text`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.medium}px;
+    font-color: ${NewColorScheme.text.primary};
   `,
 
   DropdownWrapper: styled.View`
