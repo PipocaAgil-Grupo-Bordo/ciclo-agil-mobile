@@ -102,7 +102,7 @@ export const FontScheme = {
     primaryMedium: "MontserratMedium",
     primarySemiBold: "MontserratSemiBold",
     primaryBold: "MontserratBold",
-    secondary: "Lora",
+    secondary: "Roboto",
     secondaryMedium: "LoraMedium",
     secondarySemiBold: "LoraSemiBold"
   }
