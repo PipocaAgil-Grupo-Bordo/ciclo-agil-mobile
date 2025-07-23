@@ -73,7 +73,7 @@ function AuthNavigator() {
 
       navigation.navigate("Login");
     }
-  }, [accessToken, loading]);
+  }, [loading]);
 
   return (
     // Temporary untill UI team makes a loading screen for this

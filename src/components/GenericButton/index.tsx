@@ -1,7 +1,8 @@
+import { GeneralColors } from "@styles/colors";
+import { NewColorScheme } from "@styles/globalStyles";
 import { ActivityIndicator } from "react-native";
 import ButtonChildren from "./ButtonChildren";
 import { Sc } from "./style";
-import { NewColorScheme } from "@styles/globalStyles";
 import { GenericButtonProps, StatesType } from "./type";
 
 /**
@@ -16,7 +17,14 @@ import { GenericButtonProps, StatesType } from "./type";
  * @param children - Can be a string or another component
  * @param props - All the props that a TouchableHighlight component accepts
  */
-function GenericButton({ icon, state, isLoading, children, ...props }: GenericButtonProps) {
+function GenericButton({
+  icon,
+  state,
+  isLoading,
+  children,
+  padding,
+  ...props
+}: GenericButtonProps) {
   /**
    * Change the color of the button when it's pressed
    *
@@ -30,8 +38,10 @@ function GenericButton({ icon, state, isLoading, children, ...props }: GenericBu
       case "accent":
         return NewColorScheme.accent.highlight;
       case "mild":
-      case "default":
+        return GeneralColors.primary[300];
       case "no-style":
+        return NewColorScheme.background.white;
+      case "default":
       default:
         return "#DCBBF0";
     }
@@ -40,11 +50,12 @@ function GenericButton({ icon, state, isLoading, children, ...props }: GenericBu
   return (
     <Sc.Button
       state={state}
+      padding={padding}
       activeOpacity={1}
       underlayColor={HandleUnderlayColor(state)}
       {...props}
     >
-      <ButtonChildren icon={icon} state={state}>
+      <ButtonChildren icon={icon} state={state} disabled={props.disabled}>
         {isLoading ? <ActivityIndicator color={"#fff"} /> : children}
       </ButtonChildren>
     </Sc.Button>
