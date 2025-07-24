@@ -106,13 +106,16 @@ function LastPeriod() {
       </Sc.TopWrapper>
       <ScrollableMenu items={days} onIndexChange={handleDaySelection} />
 
-      <Information text="Você pode registrar a data de início da sua última menstruação mais tarde ou marcar o início de uma nova." />
-      <Buttons
-        isLoading={isLoading}
-        nextWithData={handleLastPeriodDate}
-        nextWithoutData={() => navigation.navigate("CycleDuration")}
-      />
+      <Sc.BottomWrapper>
+        <Information text="Você pode registrar a data de início da sua última menstruação mais tarde ou marcar o início de uma nova." />
+        <Buttons
+          isLoading={isLoading}
+          nextWithData={handleLastPeriodDate}
+          nextWithoutData={() => navigation.navigate("CycleDuration")}
+        />
+      </Sc.BottomWrapper>
 
+      {/* Modal for error handling */}
       {showModal && (
         <Modal
           title={modalOptions.title}

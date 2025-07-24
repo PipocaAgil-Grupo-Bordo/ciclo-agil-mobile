@@ -6,12 +6,17 @@ export const Sc = {
     background-color: ${NewColorScheme.background.primary};
     justify-content: space-between;
     padding: 32px 24px 24px 24px;
-    gap: 32px;
+    flex: 1;
   `,
 
   TopWrapper: styled.View`
     flex-direction: column;
     justify-content: center;
     gap: 32px;
+  `,
+  BottomWrapper: styled.View`
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
   `
 };
