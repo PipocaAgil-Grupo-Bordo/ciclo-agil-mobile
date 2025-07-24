@@ -106,7 +106,7 @@ function LastPeriod() {
       </Sc.TopWrapper>
       <ScrollableMenu items={days} onIndexChange={handleDaySelection} />
 
-      <Information text="Não se preocupe, você pode registrar a data de início da sua última menstruação mais tarde ou marcar o início de uma nova" />
+      <Information text="Você pode registrar a data de início da sua última menstruação mais tarde ou marcar o início de uma nova." />
       <Buttons
         isLoading={isLoading}
         nextWithData={handleLastPeriodDate}
