@@ -1,15 +1,18 @@
-import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 import { isSelectedTextStyle } from "../type";
+import { Palette } from "@styles/palette";
 
 export const Sc = {
   Text: styled.Text<isSelectedTextStyle>`
     font-family: ${FontScheme.family.primary};
-    font-size: ${FontScheme.size.heading}px;
+    font-size: 32px;  {/* No compatible font size variable available, hardcoded to 32px */}
     text-align: center;
-    color: ${({ isSelected }) =>
-      isSelected ? ColorScheme.accent.highlight : ColorScheme.text.secondary};
+    color: ${ColorScheme.text.secondary};
+    background-color: ${({ isSelected }) =>
+      isSelected ? Palette.primary[100] : NewColorScheme.background.primary};
+    border-radius: 10px;
     height: ${({ yAxis }) => yAxis}px;
   `
 };
