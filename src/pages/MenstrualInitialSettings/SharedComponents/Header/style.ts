@@ -3,7 +3,6 @@ import styled from "styled-components/native";
 
 export const Sc = {
   Container: styled.View`
-    display: flex;
     gap: 16px;
     flex-direction: row;
     align-items: center;
