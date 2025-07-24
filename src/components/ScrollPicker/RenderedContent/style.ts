@@ -7,7 +7,7 @@ import { Palette } from "@styles/palette";
 export const Sc = {
   Text: styled.Text<isSelectedTextStyle>`
     font-family: ${FontScheme.family.primary};
-    font-size: 32px;  {/* No compatible font size variable available, hardcoded to 32px */}
+    font-size: 32px;
     text-align: center;
     color: ${ColorScheme.text.secondary};
     background-color: ${({ isSelected }) =>
