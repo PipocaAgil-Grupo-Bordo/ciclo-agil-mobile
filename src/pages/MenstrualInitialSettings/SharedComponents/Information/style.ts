@@ -8,7 +8,7 @@ export const Sc = {
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.medium}px;
     color: ${NewColorScheme.text.primary};
-    line-height: ${FontScheme.size.medium * 1.5}px;
+    line-height: ${FontScheme.size.heading}px;
     text-align: center;
   `
 };
