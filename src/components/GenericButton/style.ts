@@ -14,7 +14,9 @@ export const Sc = {
     padding: ${({ padding }) => padding ?? "14px"};
     height: ${({ padding }) => (padding ? "36px" : "56px")};
     border: ${({ state }) =>
-      !state || state === "default" ? `2px solid ${NewColorScheme.accent.highlight}` : "none"};
+      !state || state === "default" || state === "transparent"
+        ? `2px solid ${NewColorScheme.accent.highlight}`
+        : "none"};
     background-color: ${({ state }) => {
       switch (state) {
         case "accent":
@@ -25,6 +27,8 @@ export const Sc = {
           return ColorScheme.background.secondary;
         case "no-style":
           return NewColorScheme.background.white;
+        case "transparent":
+          return "transparent";
         case "default":
         default:
           return ColorScheme.background.primary;

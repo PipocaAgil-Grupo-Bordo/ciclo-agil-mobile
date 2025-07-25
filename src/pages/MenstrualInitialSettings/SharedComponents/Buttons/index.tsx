@@ -11,7 +11,7 @@ function Buttons({ isLoading, nextWithData, nextWithoutData }: ButtonsProps) {
         <Text>Próximo</Text>
       </GenericButton>
 
-      <GenericButton onPress={nextWithoutData}>
+      <GenericButton onPress={nextWithoutData} state="transparent">
         <Text>Não lembro</Text>
       </GenericButton>
     </Sc.Container>
