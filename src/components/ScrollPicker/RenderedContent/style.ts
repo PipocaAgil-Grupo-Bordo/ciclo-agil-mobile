@@ -9,6 +9,7 @@ export const Sc = {
     font-family: ${FontScheme.family.primary};
     font-size: 32px;
     text-align: center;
+    text-align-vertical: center;
     color: ${ColorScheme.text.secondary};
     background-color: ${({ isSelected }) =>
       isSelected ? Palette.primary[100] : NewColorScheme.background.primary};
