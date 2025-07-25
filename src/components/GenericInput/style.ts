@@ -45,7 +45,7 @@ export const Sc = {
 
   Input: styled(MaskInput)<StyledInputProps>`
     background-color: ${Palette.neutralWhite[100]};
-    font-family: ${FontScheme.family.secondary};
+    font-family: ${FontScheme.family.tertiary};
     color: ${NewColorScheme.text.tertiary};
     padding: 16px;
     font-size: ${FontScheme.size.medium}px;

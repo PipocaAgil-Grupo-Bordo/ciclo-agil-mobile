@@ -102,8 +102,9 @@ export const FontScheme = {
     primaryMedium: "MontserratMedium",
     primarySemiBold: "MontserratSemiBold",
     primaryBold: "MontserratBold",
-    secondary: "Roboto",
+    secondary: "Lora",
     secondaryMedium: "LoraMedium",
-    secondarySemiBold: "LoraSemiBold"
+    secondarySemiBold: "LoraSemiBold",
+    tertiary: "Robot"
   }
 } as const;
