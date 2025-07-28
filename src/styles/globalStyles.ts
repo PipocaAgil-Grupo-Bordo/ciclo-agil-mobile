@@ -105,6 +105,6 @@ export const FontScheme = {
     secondary: "Lora",
     secondaryMedium: "LoraMedium",
     secondarySemiBold: "LoraSemiBold",
-    tertiary: "Robot"
+    tertiary: "Roboto"
   }
 } as const;
