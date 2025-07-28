@@ -19,7 +19,7 @@ export const Sc = {
   `,
 
   Title: styled.Text`
-    font-family: ${FontScheme.family.secondary};
+    font-family: ${FontScheme.family.secondarySemiBold};
     font-size: ${FontScheme.size.heading}px;
     color: ${NewColorScheme.text.primary};
     text-align: left;
