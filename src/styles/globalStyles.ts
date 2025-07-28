@@ -59,7 +59,8 @@ export const NewColorScheme = {
     tertiary: Palette.neutralGray[400],
     black: Palette.neutralBlack[700],
     white: Palette.neutralWhite[50],
-    gray: Palette.neutralBlack[300]
+    gray: Palette.neutralBlack[300],
+    darkGray: Palette.neutralBlack[400]
   },
 
   border: {

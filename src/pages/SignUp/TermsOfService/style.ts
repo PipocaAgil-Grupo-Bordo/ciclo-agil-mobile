@@ -35,7 +35,7 @@ export const Sc = {
   Text: styled.Text`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
-    color: "#3E3C3E";
+    color: ${NewColorScheme.text.darkGray};
   `,
 
   Hyperlink: styled.Text`
