@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { Palette } from "@styles/palette";
 import { FontScheme } from "@styles/globalStyles";
 
 export const Sc = {
@@ -24,7 +23,7 @@ export const Sc = {
     font-family: ${FontScheme.family.primary};
     font-size: 24px;
     line-height: 28px;
-    color: ${Palette.neutralBlack[300]};
+    color: "#1D1B20";
     margin-bottom: 8px;
     text-align: center;
   `,
