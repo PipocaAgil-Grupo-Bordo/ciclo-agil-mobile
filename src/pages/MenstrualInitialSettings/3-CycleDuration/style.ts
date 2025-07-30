@@ -11,7 +11,7 @@ export const Sc = {
 
   TopWrapper: styled.View`
     flex-direction: column;
-    gap: 16px;
+    gap: 32px;
   `,
 
   BottomWrapper: styled.View`
