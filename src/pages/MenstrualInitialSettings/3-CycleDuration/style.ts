@@ -11,6 +11,7 @@ export const Sc = {
 
   TopWrapper: styled.View`
     flex-direction: column;
+    justify-content: center;
     gap: 32px;
   `,
 
