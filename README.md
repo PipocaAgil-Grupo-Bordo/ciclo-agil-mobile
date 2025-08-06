@@ -1,27 +1,28 @@
 # Ciclo Ágil
 
- ## Description
+## Description
+
 Ciclo Ágil is an app that enables women to have greater control over their menstrual cycle.
 
 ## Project Setup
 
 1. **Clone the repository to your local machine:**
 
-    ```bash
-    git clone https://github.com/PipocaAgil/ciclo-agil-mobile.git
-    ```
+   ```bash
+   git clone https://github.com/PipocaAgil/ciclo-agil-mobile.git
+   ```
 
 2. **Navigate to the project directory:**
 
-    ```bash
-    cd ciclo-agil-mobile
-    ```
+   ```bash
+   cd ciclo-agil-mobile
+   ```
 
 3. **Install project dependencies:**
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 ## Running the Project
 
@@ -29,11 +30,11 @@ Make sure you have an emulator configured or the Expo Go app installed on your m
 
 - **Start the project:**
 
-    ```bash
-    npx expo start
-    ```
+  ```bash
+  npx expo start
+  ```
 
-    This will open the Expo interface in your terminal. You can scan the displayed QR code with the Expo Go app to launch the app on your device.
+  This will open the Expo interface in your terminal. You can scan the displayed QR code with the Expo Go app to launch the app on your device.
 
 ## Branches and commits
 

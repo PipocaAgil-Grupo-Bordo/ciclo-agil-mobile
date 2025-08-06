@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Header from "@components/Header";
+import Header from "../SharedComponents/Header";
 import Modal from "@components/Modal";
 import { useTokenContext } from "@context/useUserToken";
 import { useNavigation } from "@react-navigation/native";
@@ -113,21 +113,24 @@ function CycleDuration() {
           options={cycles}
           currentOption={cycleData.cycle}
         />
-
-        <ScrollableMenu
-          items={handleWhichItemArrayShouldShowUp()}
-          onIndexChange={handleDurationChange}
-        />
-
-        <Information text="Não se preocupe se você não souber quanto tempo dura o seu ciclo, você pode registrar depois" />
       </Sc.TopWrapper>
 
-      <Buttons
-        isLoading={isLoading}
-        nextWithData={handleCycleSubmission}
-        nextWithoutData={handleNavigation}
+      <ScrollableMenu
+        items={handleWhichItemArrayShouldShowUp()}
+        onIndexChange={handleDurationChange}
       />
 
+      <Sc.BottomWrapper>
+        <Information text="Não se preocupe se você não souber quanto tempo dura o seu ciclo, você pode registrar depois" />
+
+        <Buttons
+          isLoading={isLoading}
+          nextWithData={handleCycleSubmission}
+          nextWithoutData={handleNavigation}
+        />
+      </Sc.BottomWrapper>
+
+      {/* Modal for error handling */}
       {showModal && (
         <Modal
           title="Ops"

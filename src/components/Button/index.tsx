@@ -22,16 +22,6 @@ interface ButtonProps {
   isLoading?: boolean;
 }
 
-const getBackgroundColor = (
-  variant: keyof typeof buttonVariants,
-  isPressed: boolean,
-  disabled?: boolean
-) => {
-  if (disabled) return buttonVariants[variant].disabledBackground;
-  if (isPressed) return buttonVariants[variant].pressedBackground;
-  return buttonVariants[variant].backgroundColor;
-};
-
 const StyledButton = styled(Pressable)<{
   variant: keyof typeof buttonVariants;
   isPressed: boolean;
@@ -41,8 +31,11 @@ const StyledButton = styled(Pressable)<{
   border-radius: 12px;
   align-items: center;
   justify-content: center;
-  background-color: ${({ variant, isPressed, disabled }) =>
-    getBackgroundColor(variant, isPressed, disabled)};
+  background-color: ${({ variant, isPressed, disabled }) => {
+    if (disabled) return buttonVariants[variant].disabledBackground;
+    if (isPressed) return buttonVariants[variant].pressedBackground;
+    return buttonVariants[variant].backgroundColor;
+  }};
 `;
 
 const ButtonText = styled(Text)<{

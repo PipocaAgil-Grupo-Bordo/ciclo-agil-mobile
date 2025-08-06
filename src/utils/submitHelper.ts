@@ -13,10 +13,10 @@ import { tokenAuth } from "./tokenAuthHelper";
 export async function submitRegister(
   data: RegisterFields,
   reset: UseFormReset<RegisterFields>,
-  navigation: NavigationType,
   setError: UseFormSetError<RegisterFields>,
   setAccessToken: (accessToken: string) => void,
-  setRefreshToken: (refreshToken: string) => void
+  setRefreshToken: (refreshToken: string) => void,
+  onError?: (title: string, message: string) => void
 ) {
   const birthdateISOFormat = dateHelper.formatBirthdateToISODate(data.birthdate);
   const registerFinalFormat = {
@@ -33,13 +33,22 @@ export async function submitRegister(
 
     reset({ email: "", password: "" }, { keepErrors: false });
 
-    return navigation.navigate("OnboardingCarousel");
+    return true;
   } catch (error) {
     const axiosError = error as AxiosError;
 
     if (axiosError.response && axiosError.response.status === 409) {
-      setError("confirmEmail", { message: "E-mail já cadastrado." });
-      setError("email", {});
+      if (onError) {
+        onError(
+          "Este endereço de e-mail já está cadastrado.",
+          "Por favor, utilize outro e-mail ou recupere sua senha."
+        );
+      } else {
+        setError("confirmEmail", { message: "E-mail já cadastrado." });
+        setError("email", {});
+      }
+
+      return false;
     }
   }
 }

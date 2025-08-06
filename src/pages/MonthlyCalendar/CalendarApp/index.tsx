@@ -4,6 +4,7 @@ import { ColorScheme } from "@styles/globalStyles";
 import React, { useCallback } from "react";
 import { View, Text, Modal, Pressable, ActivityIndicator } from "react-native";
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars";
+import XDate from "xdate";
 
 import CalendarHeader from "../CalendarHeader";
 import { styles } from "./style";
@@ -77,7 +78,7 @@ function CalendarApp(props: Props) {
     {} as Record<string, object>
   );
 
-  const renderCustomHeader = (date: any) => {
+  const renderCustomHeader = (date?: XDate) => {
     return (
       <View style={styles.containerHeader}>
         <CalendarHeader date={date} />

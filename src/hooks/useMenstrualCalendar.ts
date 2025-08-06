@@ -3,7 +3,7 @@ import { IMenstrualPeriod } from "@type/menstrual";
 import { useState, useCallback } from "react";
 import { Alert } from "react-native";
 
-export function useMenstrualCalendar(accessToken: string | null) {
+export function useMenstrualCalendar(accessToken: string | undefined) {
   const [selectedDates, setSelectedDates] = useState<string[]>([]);
   const [selectedDatesInfo, setSelectedDatesInfo] = useState<{ id: number; date: string }[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -196,6 +196,7 @@ export function useMenstrualCalendar(accessToken: string | null) {
           });
         }
       } catch (error) {
+        console.error("Erro ao buscar os dados do calendário:", error);
         Alert.alert("Erro", "Não foi possível buscar os dados do calendário.");
       } finally {
         setIsLoading(false);

@@ -32,7 +32,7 @@ export const Sc = {
     top: -8px;
     font-size: ${FontScheme.size.small}px;
     font-family: "Roboto";
-    color: ${NewColorScheme.text.gray};
+    color: "#49454F";
     padding: 0 4px;
   `,
 
@@ -44,11 +44,11 @@ export const Sc = {
   `,
 
   Input: styled(MaskInput)<StyledInputProps>`
-    background-color: ${Palette.neutralWhite[50]};
-    font-family: ${FontScheme.family.primary};
-    color: ${NewColorScheme.text.primary};
+    background-color: ${Palette.neutralWhite[100]};
+    font-family: ${FontScheme.family.tertiary};
+    color: ${NewColorScheme.text.tertiary};
     padding: 16px;
-    font-size: ${FontScheme.size.default}px;
+    font-size: ${FontScheme.size.medium}px;
     border: ${(props) => {
       if (props.errors && props.errors[props.name]) {
         return `1px solid ${ColorScheme.accent.danger}`;
@@ -64,7 +64,7 @@ export const Sc = {
 
   PasswordButtonContainer: styled.Pressable`
     position: absolute;
-    top: 4px;
+    top: 8px;
     right: 4px;
     padding: 12px;
     height: 48px;

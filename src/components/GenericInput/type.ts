@@ -1,15 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Control, FieldErrors } from "react-hook-form";
+import { Control, FieldErrors, FieldValues, Path } from "react-hook-form";
 import { TextInputProps } from "react-native";
 
-export interface GenericInputProps extends TextInputProps, StyledInputProps {
+export interface GenericInputProps<T extends FieldValues = FieldValues>
+  extends TextInputProps,
+    Omit<StyledInputProps<T>, "name"> {
   label: string;
-  control: Control<any>;
-  name: string;
+  control: Control<T>;
+  name: Path<T>;
 }
 
-export interface StyledInputProps {
-  errors: FieldErrors<any>;
+export interface StyledInputProps<T extends FieldValues = FieldValues> {
+  errors: FieldErrors<T>;
   name: string;
   isFocused?: boolean;
 }

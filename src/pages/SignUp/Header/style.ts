@@ -1,4 +1,4 @@
-import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { FontScheme, NewColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 export const Sc = {
@@ -16,9 +16,9 @@ export const Sc = {
 
   SubTitle: styled.Text`
     font-family: ${FontScheme.family.primary};
-    font-size: ${FontScheme.size.default}px;
-    color: ${ColorScheme.text.primary};
-    width: 90%;
+    font-size: ${FontScheme.size.medium}px;
+    color: ${NewColorScheme.text.primary};
+    width: 100%;
     align-content: center;
   `
 };
