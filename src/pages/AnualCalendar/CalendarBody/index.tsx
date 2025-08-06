@@ -267,7 +267,8 @@ function CalendarListScreen(props: Props) {
 
         await menstrualApi.deletePeriodDate(dateInfo.id, accessToken);
       }
-    } catch {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
       Alert.alert("Erro ao deletar data, tente novamente!");
       setSelectedDates([...selectedDates, date]);
       setSelectedDatesInfo([...selectedDatesInfo, dateInfo]);

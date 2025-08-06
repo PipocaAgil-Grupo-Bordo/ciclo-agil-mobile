@@ -14,7 +14,7 @@ import PageContainer from "../../components/PageContainer";
 
 function Home() {
   useBackButtonExit();
-  const { accessToken, setUserProfile, userProfile, whoAmI, setWhoAmI } = useTokenContext();
+  const { accessToken, setUserProfile, whoAmI, setWhoAmI } = useTokenContext();
 
   useEffect(() => {
     if (accessToken) {
@@ -30,7 +30,7 @@ function Home() {
         <UserHeader whoAmI={whoAmI} />
         <MiniCalendar />
         <CyclePhase />
-        <CycleOverview userProfile={userProfile} />
+        <CycleOverview />
       </Sc.Container>
     </PageContainer>
   );

@@ -21,8 +21,8 @@ function ScrollPicker<Item>({ items, onIndexChange }: ScrollPickerProps<Item>) {
   const [currentItemSelected, setCurrentItemSelected] = useState<number>(1);
 
   // Ensure the height of the items is consistent when scrolling
-  const itemHeight = 44.8;
-  const columnAmount = 4;
+  const itemHeight = 56;
+  const columnAmount = 3;
   const itemBlockSize = itemHeight * columnAmount;
 
   // Workaround to ensure there's a non-selectable first and two last items for now
