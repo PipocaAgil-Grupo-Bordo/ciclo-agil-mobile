@@ -6,13 +6,13 @@ export const Sc = {
     background-color: ${NewColorScheme.background.primary};
     justify-content: space-between;
     flex: 1;
-    padding: 32px 24px 24px 24px;
+    padding: 32px 16px 16px 16px;
   `,
 
   TopWrapper: styled.View`
     flex-direction: column;
     justify-content: center;
-    gap: 32px;
+    gap: 16px;
   `,
 
   BottomWrapper: styled.View`
