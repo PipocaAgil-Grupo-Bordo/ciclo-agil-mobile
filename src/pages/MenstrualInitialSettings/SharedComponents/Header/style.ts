@@ -8,7 +8,10 @@ export const Sc = {
     align-items: center;
     margin-top: 16px;
   `,
-  TitleContainer: styled.View``,
+
+  TitleContainer: styled.View`
+    flex: 1;
+  `,
 
   BackButton: styled.TouchableOpacity``,
 
