@@ -38,7 +38,6 @@ function currentCycle(cycle: string) {
 
 function CalendarApp(props: Props) {
   const { horizontalView } = props;
-  const { accessToken } = useTokenContext();
 
   const {
     selectedDates,
@@ -51,7 +50,7 @@ function CalendarApp(props: Props) {
     handleDayPress,
     handleModalResponse,
     fetchPeriods
-  } = useMenstrualCalendar(accessToken);
+  } = useMenstrualCalendar();
 
   useFocusEffect(
     useCallback(() => {
