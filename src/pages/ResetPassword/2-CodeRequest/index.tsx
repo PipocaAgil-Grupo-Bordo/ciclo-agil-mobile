@@ -6,10 +6,10 @@ import { CodeRequestRouteParam, NavigationType } from "@routes/type";
 import authApi from "@services/authApi";
 import { handleRedefinitionCodeValidation } from "@utils/submitHelper";
 import { AxiosError } from "axios";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import Header from "../SharedComponents/Header";
 
-import Buttons from "./Buttons";
+import GenericButton from "@components/GenericButton";
 import Confirmation from "./Confirmation";
 import OTPInput from "./OTPInput";
 import { Sc } from "./style";
@@ -53,17 +53,29 @@ function CodeRequest() {
         <View>
           <Header title="Redefinir senha" />
           <Confirmation />
-          <OTPInput onTextChange={handleTextInput} resendCode={handleResendCode} />
-          <Sc.CodeValidationMessage type={codeValidationInfo.type as "successful" | "unsuccessful"}>
-            {codeValidationInfo.message}
-          </Sc.CodeValidationMessage>
+          <Sc.CodeContainer>
+            <OTPInput onTextChange={handleTextInput} resendCode={handleResendCode} />
+            <Sc.CodeValidationMessage
+              type={codeValidationInfo.type as "successful" | "unsuccessful"}
+            >
+              {codeValidationInfo.message}
+            </Sc.CodeValidationMessage>
+          </Sc.CodeContainer>
+          <Sc.Text>
+            <Text>
+              Caso não encontre o email na sua caixa de entrada, verifique a pasta de spam.
+            </Text>
+          </Sc.Text>
         </View>
 
-        <Buttons
+        <GenericButton
           onPress={() =>
             handleRedefinitionCodeValidation(otpValue, navigation, email, setCodeValidationInfo)
           }
-        />
+          state="accent"
+        >
+          <Text>Enviar</Text>
+        </GenericButton>
       </Sc.Wrapper>
     </Sc.Container>
   );

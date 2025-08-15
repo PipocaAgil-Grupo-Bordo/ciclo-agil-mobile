@@ -13,6 +13,10 @@ export const Sc = {
     background-color: #fafcff;
   `,
 
+  CodeContainer: styled.View`
+    gap: 8px;
+  `,
+
   CodeValidationMessage: styled.Text<CodeValidationMessageProps>`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
@@ -22,8 +26,9 @@ export const Sc = {
 
   Text: styled.Text`
     font-family: ${FontScheme.family.primary};
-    font-size: ${FontScheme.size.default}px;
+    font-size: ${FontScheme.size.small}px;
     color: #000;
+    line-height: 16px;
     z-index: 10;
   `
 };

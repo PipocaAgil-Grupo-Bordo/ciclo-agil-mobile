@@ -4,6 +4,7 @@ import { OtpInput } from "react-native-otp-entry";
 
 import { OTPInputProps } from "../type";
 import { Sc } from "./style";
+import { Palette } from "@styles/palette";
 
 function OTPIput({ onTextChange, onFilled, resendCode }: OTPInputProps) {
   return (
@@ -17,14 +18,14 @@ function OTPIput({ onTextChange, onFilled, resendCode }: OTPInputProps) {
         onFilled={onFilled}
         theme={{
           containerStyle: {
-            marginTop: 46
+            marginTop: 16
           },
           pinCodeContainerStyle: {
-            width: 45,
-            height: 48,
+            width: 48,
+            height: 56,
             borderRadius: 8,
-            borderColor: ColorScheme.border.primary,
-            backgroundColor: ColorScheme.background.secondary
+            borderColor: Palette.neutralGray[500],
+            backgroundColor: ColorScheme.background.white
           },
           pinCodeTextStyle: { fontFamily: "Montserrat", fontSize: 26 }
         }}
