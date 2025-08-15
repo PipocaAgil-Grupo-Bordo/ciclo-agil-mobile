@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import Header from "@components/Header";
 import { useNavigation } from "@react-navigation/core";
 import { useRoute } from "@react-navigation/native";
 import { CodeRequestRouteParam, NavigationType } from "@routes/type";
@@ -8,6 +7,7 @@ import authApi from "@services/authApi";
 import { handleRedefinitionCodeValidation } from "@utils/submitHelper";
 import { AxiosError } from "axios";
 import { View } from "react-native";
+import Header from "../SharedComponents/Header";
 
 import Buttons from "./Buttons";
 import Confirmation from "./Confirmation";
