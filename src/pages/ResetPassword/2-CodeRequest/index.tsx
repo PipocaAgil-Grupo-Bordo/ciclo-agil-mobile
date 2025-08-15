@@ -63,7 +63,8 @@ function CodeRequest() {
           </Sc.CodeContainer>
           <Sc.Text>
             <Text>
-              Caso não encontre o email na sua caixa de entrada, verifique a pasta de spam.
+              Caso não encontre o e-mail na sua caixa de entrada, verifique a pasta de spam ou se o
+              e-mail informado está correto.
             </Text>
           </Sc.Text>
         </View>
