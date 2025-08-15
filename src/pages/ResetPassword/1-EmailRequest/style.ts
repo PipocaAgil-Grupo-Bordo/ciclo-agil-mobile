@@ -4,11 +4,12 @@ import styled from "styled-components/native";
 export const Sc = {
   Container: styled.ScrollView`
     background-color: ${ColorScheme.background.primary};
+    gap: 32px;
   `,
 
   Wrapper: styled.View`
     flex: 1;
-    padding: 60px 30px 30px;
+    padding: 60px 17px 17px;
     justify-content: space-between;
   `,
 
