@@ -8,8 +8,8 @@ export const Sc = {
 
   Icon: styled.Image`
     margin: 0 auto;
-    width: 98px;
-    height: 98px;
+    width: 80px;
+    height: 80px;
   `,
 
   TextContainer: styled.View`
@@ -27,5 +27,6 @@ export const Sc = {
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
     color: ${ColorScheme.text.primary};
+    line-height: ${FontScheme.size.highlight}px;
   `
 };
