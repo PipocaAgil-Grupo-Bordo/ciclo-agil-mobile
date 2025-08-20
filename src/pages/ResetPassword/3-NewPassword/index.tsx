@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Header from "@components/Header";
+import Header from "../SharedComponents/Header";
 import Modal from "@components/Modal";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -11,9 +11,10 @@ import { PasswordFields, PasswordResetFields } from "@type/auth";
 import { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 
+import GenericButton from "@components/GenericButton";
+import { Text } from "react-native";
 import Inputs from "./Inputs";
 import { Sc } from "./style";
-import SubmitButtons from "./SubmitButtons";
 import { IModalOptions } from "./type";
 
 function NewPassword() {
@@ -40,14 +41,7 @@ function NewPassword() {
   async function onSubmit(body: PasswordFields) {
     try {
       await authApi.resetPassword(body, token);
-
-      setModalOptions(() => ({
-        title: "Pronto!",
-        textContent: "Senha alterada com sucesso!",
-        buttonText: "Voltar ao Login",
-        route: "Login"
-      }));
-      setShowModal(true);
+      navigation.navigate("SuccessResetPassword");
     } catch (error) {
       const axiosError = error as AxiosError;
 
@@ -96,7 +90,9 @@ function NewPassword() {
           />
         </Sc.HeaderWrapper>
 
-        <SubmitButtons isLoading={isSubmitting} SubmitPassword={handleSubmit(onSubmit)} />
+        <GenericButton isLoading={isSubmitting} onPress={handleSubmit(onSubmit)} state="accent">
+          <Text>Salvar</Text>
+        </GenericButton>
       </Sc.Wrapper>
 
       {showModal && (
