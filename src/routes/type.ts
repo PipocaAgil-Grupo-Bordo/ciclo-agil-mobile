@@ -7,6 +7,7 @@ export type RootStackParamList = {
   EmailRequest: undefined;
   CodeRequest: CodeRequestRouteParam;
   NewPassword: NewPasswordRouteParam;
+  SuccessResetPassword: undefined;
   Policy: undefined;
   // Team: undefined;
   LastPeriod: undefined;
