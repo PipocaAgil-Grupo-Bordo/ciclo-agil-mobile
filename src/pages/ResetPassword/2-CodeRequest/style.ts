@@ -13,6 +13,10 @@ export const Sc = {
     background-color: #fafcff;
   `,
 
+  HeaderWrapper: styled.View`
+    padding-top: 24px;
+  `,
+
   CodeContainer: styled.View`
     gap: 8px;
   `,

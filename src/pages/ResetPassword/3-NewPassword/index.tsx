@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Header from "../SharedComponents/Header";
+import Header from "@components/Header";
 import Modal from "@components/Modal";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -81,7 +81,7 @@ function NewPassword() {
     >
       <Sc.Wrapper>
         <Sc.HeaderWrapper>
-          <Header title="Redefinir senha" />
+          <Header title="Redefinir senha" color="#333" size={24} />
 
           <Inputs
             control={control}

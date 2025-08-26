@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 
 import GenericButton from "@components/GenericButton";
 import { Text } from "react-native";
-import Header from "../SharedComponents/Header";
+import Header from "@components/Header";
 import EmailRequestSection from "./EmailRequestSection";
 import { Sc } from "./style";
 
@@ -27,7 +27,9 @@ function PasswordReset() {
   return (
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Sc.Wrapper>
-        <Header title="Recuperar Senha" />
+        <Sc.HeaderWrapper>
+          <Header title="Recuperar Senha" color="#333" size={24} />
+        </Sc.HeaderWrapper>
         <EmailRequestSection control={control} errors={errors} />
 
         <GenericButton

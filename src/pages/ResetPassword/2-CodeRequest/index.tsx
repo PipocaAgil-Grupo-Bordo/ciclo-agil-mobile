@@ -7,8 +7,7 @@ import authApi from "@services/authApi";
 import { handleRedefinitionCodeValidation } from "@utils/submitHelper";
 import { AxiosError } from "axios";
 import { Text, View } from "react-native";
-import Header from "../SharedComponents/Header";
-
+import Header from "@components/Header";
 import GenericButton from "@components/GenericButton";
 import Confirmation from "./Confirmation";
 import OTPInput from "./OTPInput";
@@ -51,7 +50,9 @@ function CodeRequest() {
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Sc.Wrapper>
         <View>
-          <Header title="Redefinir senha" />
+          <Sc.HeaderWrapper>
+            <Header title="Redefinir Senha" color="#333" size={24} />
+          </Sc.HeaderWrapper>
           <Confirmation />
           <Sc.CodeContainer>
             <OTPInput onTextChange={handleTextInput} resendCode={handleResendCode} />
