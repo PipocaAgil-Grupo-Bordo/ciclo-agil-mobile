@@ -13,6 +13,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import AuthNavigator from "./auth.router";
 import TabRoutes from "./tab.routes";
 import { RootStackParamList } from "./type";
+import SuccessResetPassword from "@pages/ResetPassword/4-SuccessResetPassword";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -48,6 +49,7 @@ function StackRoutes() {
           <Stack.Screen name="EmailRequest" component={EmailRequest} />
           <Stack.Screen name="CodeRequest" component={CodeRequest} />
           <Stack.Screen name="NewPassword" component={NewPassword} />
+          <Stack.Screen name="SuccessResetPassword" component={SuccessResetPassword} />
         </Stack.Group>
       </Stack.Group>
     </Stack.Navigator>

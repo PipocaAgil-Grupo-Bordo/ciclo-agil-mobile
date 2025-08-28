@@ -20,15 +20,17 @@ function Inputs({ control, errors, errorInstruction }: InputsProps) {
 
   return (
     <Sc.Container>
-      {passwordInputs.map((input, i) => (
-        <GenericInput
-          key={i}
-          label={input.label}
-          name={input.name}
-          control={control}
-          errors={errors}
-        />
-      ))}
+      <Sc.InputsWrapper>
+        {passwordInputs.map((input, i) => (
+          <GenericInput
+            key={i}
+            label={input.label}
+            name={input.name}
+            control={control}
+            errors={errors}
+          />
+        ))}
+      </Sc.InputsWrapper>
 
       {/* TODO: Move to a different file after sprint 2 is over */}
       {errorInstruction && (
