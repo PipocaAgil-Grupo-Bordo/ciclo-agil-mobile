@@ -57,7 +57,7 @@ module.exports = {
         ignore: [-1, 0, 1]
       }
     ],
-    "no-console": ["error"],
+    "no-console": ["warn"],
     "no-duplicate-imports": ["error"],
     "no-nested-ternary": ["error"],
     "no-return-await": ["error"],

@@ -6,6 +6,7 @@ export type StatesType = "accent" | "mild" | "idle" | "default" | "no-style" | "
 
 export interface ButtonStyleProps {
   state?: StatesType;
+  isDisabled?: boolean;
   padding?: string;
 }
 

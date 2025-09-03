@@ -1,11 +1,12 @@
 import { ColorScheme } from "@styles/globalStyles";
 import { Text } from "react-native";
 import CalendarIcon from "react-native-vector-icons/Feather";
+import XDate from "xdate";
 
 import { Sc } from "./style";
 
 interface CalendarHeaderProps {
-  date?: XDate; // Ajuste conforme o tipo do `date`
+  date?: XDate;
 }
 
 function CalendarHeader({ date }: CalendarHeaderProps) {

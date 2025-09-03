@@ -4,6 +4,7 @@ import { useFonts } from "expo-font";
 import Router from "@routes/index";
 import AnimationScreen from "@pages/AnimationScreen";
 
+/* eslint-disable @typescript-eslint/no-require-imports */
 export default function App() {
   const [loaded] = useFonts({
     Montserrat: require("./assets/fonts/Montserrat-Regular.ttf"),
