@@ -1,4 +1,4 @@
-import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 import { CodeValidationMessageProps } from "./type";
@@ -31,7 +31,7 @@ export const Sc = {
   Text: styled.Text`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.small}px;
-    color: #000;
+    color: ${NewColorScheme.text.darkGray};
     line-height: 16px;
     z-index: 10;
   `

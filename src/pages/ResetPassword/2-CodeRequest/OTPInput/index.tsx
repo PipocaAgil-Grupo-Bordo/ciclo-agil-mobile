@@ -1,10 +1,10 @@
-import { ColorScheme } from "@styles/globalStyles";
+import { NewColorScheme } from "@styles/globalStyles";
 import { Text } from "react-native";
 import { OtpInput } from "react-native-otp-entry";
 
+import { Palette } from "@styles/palette";
 import { OTPInputProps } from "../type";
 import { Sc } from "./style";
-import { Palette } from "@styles/palette";
 
 function OTPIput({ onTextChange, onFilled, resendCode }: OTPInputProps) {
   return (
@@ -25,7 +25,7 @@ function OTPIput({ onTextChange, onFilled, resendCode }: OTPInputProps) {
             height: 56,
             borderRadius: 8,
             borderColor: Palette.neutralGray[500],
-            backgroundColor: ColorScheme.background.white
+            backgroundColor: NewColorScheme.background.white
           },
           pinCodeTextStyle: { fontFamily: "Montserrat", fontSize: 26 }
         }}

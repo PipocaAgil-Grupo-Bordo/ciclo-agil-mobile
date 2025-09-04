@@ -1,14 +1,15 @@
 import { useState } from "react";
 
+import GenericButton from "@components/GenericButton";
+import Header from "@components/Header";
 import { useNavigation } from "@react-navigation/core";
 import { useRoute } from "@react-navigation/native";
 import { CodeRequestRouteParam, NavigationType } from "@routes/type";
 import authApi from "@services/authApi";
+import { NewColorScheme } from "@styles/globalStyles";
 import { handleRedefinitionCodeValidation } from "@utils/submitHelper";
 import { AxiosError } from "axios";
 import { Text, View } from "react-native";
-import Header from "@components/Header";
-import GenericButton from "@components/GenericButton";
 import Confirmation from "./Confirmation";
 import OTPInput from "./OTPInput";
 import { Sc } from "./style";
@@ -51,7 +52,7 @@ function CodeRequest() {
       <Sc.Wrapper>
         <View>
           <Sc.HeaderWrapper>
-            <Header title="Redefinir Senha" color="#333" size={24} />
+            <Header title="Redefinir Senha" color={NewColorScheme.text.primary} size={30} />
           </Sc.HeaderWrapper>
           <Confirmation />
           <Sc.CodeContainer>
