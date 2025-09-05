@@ -10,11 +10,13 @@ function Inputs({ control, errors, errorInstruction }: InputsProps) {
   const passwordInputs = [
     {
       label: "Nova senha:",
-      name: "password"
+      name: "password",
+      placeholder: "Digite a nova senha"
     },
     {
       label: "Repita a nova senha:",
-      name: "confirmPassword"
+      name: "confirmPassword",
+      placeholder: "Repita a nova senha"
     }
   ];
 
@@ -28,6 +30,7 @@ function Inputs({ control, errors, errorInstruction }: InputsProps) {
             name={input.name}
             control={control}
             errors={errors}
+            placeholder={input.placeholder}
           />
         ))}
       </Sc.InputsWrapper>
