@@ -12,6 +12,7 @@ import { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 
 import GenericButton from "@components/GenericButton";
+import { NewColorScheme } from "@styles/globalStyles";
 import { Text } from "react-native";
 import Inputs from "./Inputs";
 import { Sc } from "./style";
@@ -81,7 +82,7 @@ function NewPassword() {
     >
       <Sc.Wrapper>
         <Sc.HeaderWrapper>
-          <Header title="Redefinir senha" color="#333" size={24} />
+          <Header title="Redefinir senha" color={NewColorScheme.text.primary} size={30} />
 
           <Inputs
             control={control}

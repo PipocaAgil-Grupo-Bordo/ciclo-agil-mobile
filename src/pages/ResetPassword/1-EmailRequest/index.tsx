@@ -7,8 +7,9 @@ import { handlePasswordRequest } from "@utils/submitHelper";
 import { useForm } from "react-hook-form";
 
 import GenericButton from "@components/GenericButton";
-import { Text } from "react-native";
 import Header from "@components/Header";
+import { NewColorScheme } from "@styles/globalStyles";
+import { Text } from "react-native";
 import EmailRequestSection from "./EmailRequestSection";
 import { Sc } from "./style";
 
@@ -18,7 +19,6 @@ function PasswordReset() {
   const {
     handleSubmit,
     control,
-    setError,
     formState: { errors, isSubmitting }
   } = useForm<EmailFields>({
     resolver: yupResolver(emailSchema)
@@ -28,13 +28,13 @@ function PasswordReset() {
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Sc.Wrapper>
         <Sc.HeaderWrapper>
-          <Header title="Recuperar Senha" color="#333" size={24} />
+          <Header title="Recuperar Senha" color={NewColorScheme.text.primary} size={30} />
         </Sc.HeaderWrapper>
         <EmailRequestSection control={control} errors={errors} />
 
         <GenericButton
           isLoading={isSubmitting}
-          onPress={handleSubmit((data) => handlePasswordRequest(data, navigation, setError))}
+          onPress={handleSubmit((data) => handlePasswordRequest(data, navigation))}
           state="accent"
         >
           <Text>Enviar</Text>
