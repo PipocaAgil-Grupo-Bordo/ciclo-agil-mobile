@@ -14,6 +14,8 @@ import AuthNavigator from "./auth.router";
 import TabRoutes from "./tab.routes";
 import { RootStackParamList } from "./type";
 import SuccessResetPassword from "@pages/ResetPassword/4-SuccessResetPassword";
+import MonthlyCalendar from "@pages/MonthlyCalendar";
+import AnnualCalendar from "@pages/AnualCalendar";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -42,6 +44,12 @@ function StackRoutes() {
           <Stack.Screen name="OnboardingCarousel" component={OnboardingCarousel} />
           <Stack.Screen name="LastPeriod" component={LastPeriod} />
           <Stack.Screen name="CycleDuration" component={CycleDuration} />
+        </Stack.Group>
+
+        {/* Calendars */}
+        <Stack.Group>
+          <Stack.Screen name="MonthlyCalendar" component={MonthlyCalendar} />
+          <Stack.Screen name="AnnualCalendar" component={AnnualCalendar} />
         </Stack.Group>
 
         {/* Forgotten password */}
