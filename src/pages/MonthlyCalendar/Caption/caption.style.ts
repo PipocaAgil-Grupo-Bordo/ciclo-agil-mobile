@@ -4,13 +4,14 @@ import styled from "styled-components/native";
 
 export const Sc = {
   Container: styled.View`
-    background-color: ${ColorScheme.background.white};
+    background-color: ${Palette.neutralWhite[100]};
     height: 147px;
     justify-content: center;
     align-items: center;
     padding: ${FontScheme.size.small}px ${FontScheme.size.medium}px;
     gap: ${FontScheme.size.small - 4}px;
     border-radius: ${FontScheme.size.small}px;
+    margin-bottom: 19px;
   `,
 
   Title: styled.Text`

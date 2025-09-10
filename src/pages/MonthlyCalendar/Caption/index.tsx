@@ -8,7 +8,7 @@ function Caption() {
   return (
     <Sc.Container>
       <Sc.Title>
-        <Text>Entenda o seu ciclo</Text>
+        <Text>Entenda seu ciclo</Text>
       </Sc.Title>
       <Sc.Captions>
         <Sc.Division>
