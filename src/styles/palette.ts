@@ -10,7 +10,7 @@ const secondary /* Secondary on Figma */ = {
   100: "#E6E5F9",
   200: "#BCBAF1",
   300: "#938FE7",
-  400: "6C64DC",
+  400: "#6C64DC",
   500: "#2E3081"
 } as const;
 
@@ -18,7 +18,7 @@ const tertiary /* Complementary on Figma (pink) */ = {
   100: "#FCE5F8",
   200: "#F6ABEC",
   300: "#F067E1",
-  400: "C937BB",
+  400: "#C937BB",
   500: "#912586"
 } as const;
 
