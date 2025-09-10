@@ -1,34 +1,39 @@
 import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { Palette } from "@styles/palette";
 import styled from "styled-components/native";
-import { IGroupCaptions } from "./caption.type";
 
 export const Sc = {
   Container: styled.View`
     background-color: ${ColorScheme.background.white};
+    height: 147px;
     justify-content: center;
     align-items: center;
-    padding: ${FontScheme.size.medium}px;
-    gap: ${FontScheme.size.small - 1}px;
-    border-radius: ${FontScheme.size.medium}px;
+    padding: ${FontScheme.size.small}px ${FontScheme.size.medium}px;
+    gap: ${FontScheme.size.small - 4}px;
+    border-radius: ${FontScheme.size.small}px;
   `,
 
   Title: styled.Text`
-    font-size: ${FontScheme.size.medium}px;
-    font-family: ${FontScheme.family.primaryMedium};
+    font-size: ${FontScheme.size.default}px;
+    font-family: ${FontScheme.family.primarySemiBold};
     align-self: flex-start;
+    line-height: 20px;
   `,
 
   Captions: styled.View`
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     width: 100%;
+    gap: ${FontScheme.size.small}px;
   `,
 
-  Division: styled.View``,
-
-  GroupCaptions: styled.View<IGroupCaptions>`
+  Division: styled.View`
     flex-direction: row;
-    margin-bottom: ${({ isFirstChild }) => (isFirstChild ? "13px" : "0px")};
+    gap: ${FontScheme.size.small - 4}px;
+  `,
+
+  GroupCaptions: styled.View`
+    flex-direction: row;
     gap: ${FontScheme.size.small}px;
   `,
 
@@ -47,11 +52,11 @@ export const Sc = {
   `,
 
   DottedPurpleCircle: styled.View`
-    background-color: none;
+    background-color: ${Palette.tertiary[100]};
     width: 18px;
     height: 18px;
     border-radius: 500px;
-    border: 1px dotted ${ColorScheme.accent.highlight};
+    border: 0.69px dashed ${ColorScheme.accent.highlight};
   `,
 
   DottedGoldCircle: styled.View`
@@ -59,14 +64,14 @@ export const Sc = {
     width: 18px;
     height: 18px;
     border-radius: 500px;
-    border: 1px dotted #976f29;
+    border: 0.67px #938e27;
   `,
 
   DottedFilledCircle: styled.View`
-    background-color: #faf4eb;
+    background-color: #ece9b4;
     width: 18px;
     height: 18px;
     border-radius: 500px;
-    border: 1px dotted #976f29;
+    border: 0.67px #938e27;
   `
 };
