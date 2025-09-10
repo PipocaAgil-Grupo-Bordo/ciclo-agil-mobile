@@ -3,10 +3,9 @@ import CalendarIcon from "@icons/CalendarIcon.svg";
 import HomeIcon from "@icons/HomeIcon.svg";
 import AnnualCalendar from "@pages/AnualCalendar";
 import Home from "@pages/Home";
-import MonthlyCalendar from "@pages/MonthlyCalendar";
 import NonImplementedFeature from "@pages/NonImplementedFeature";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NewColorScheme, FontScheme } from "@styles/globalStyles";
+import { FontScheme, NewColorScheme } from "@styles/globalStyles";
 
 const Tab = createBottomTabNavigator();
 
@@ -62,13 +61,6 @@ function TabRoutes() {
               <AnalyticsIcon width={size} height={size} color={color} fill={"transparent"} />
             ),
             tabBarLabel: "Relatórios"
-          }}
-        />
-        <Tab.Screen
-          name="MonthlyCalendar"
-          component={MonthlyCalendar}
-          options={{
-            tabBarButton: () => null
           }}
         />
       </Tab.Group>
