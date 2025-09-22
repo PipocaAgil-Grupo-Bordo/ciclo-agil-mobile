@@ -12,5 +12,7 @@ export const Sc = {
     justify-content: space-between;
   `,
 
-  HeaderWrapper: styled.View``
+  HeaderWrapper: styled.View`
+    padding-top: 24px;
+  `
 };

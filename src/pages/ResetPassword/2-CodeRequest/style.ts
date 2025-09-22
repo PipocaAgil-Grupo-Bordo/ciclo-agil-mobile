@@ -1,4 +1,4 @@
-import { ColorScheme, FontScheme } from "@styles/globalStyles";
+import { ColorScheme, FontScheme, NewColorScheme } from "@styles/globalStyles";
 import styled from "styled-components/native";
 
 import { CodeValidationMessageProps } from "./type";
@@ -13,6 +13,14 @@ export const Sc = {
     background-color: #fafcff;
   `,
 
+  HeaderWrapper: styled.View`
+    padding-top: 24px;
+  `,
+
+  CodeContainer: styled.View`
+    gap: 8px;
+  `,
+
   CodeValidationMessage: styled.Text<CodeValidationMessageProps>`
     font-family: ${FontScheme.family.primary};
     font-size: ${FontScheme.size.default}px;
@@ -22,8 +30,9 @@ export const Sc = {
 
   Text: styled.Text`
     font-family: ${FontScheme.family.primary};
-    font-size: ${FontScheme.size.default}px;
-    color: #000;
+    font-size: ${FontScheme.size.small}px;
+    color: ${NewColorScheme.text.darkGray};
+    line-height: 16px;
     z-index: 10;
   `
 };

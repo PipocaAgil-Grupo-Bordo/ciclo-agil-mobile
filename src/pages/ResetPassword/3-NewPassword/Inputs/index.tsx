@@ -10,25 +10,30 @@ function Inputs({ control, errors, errorInstruction }: InputsProps) {
   const passwordInputs = [
     {
       label: "Nova senha:",
-      name: "password"
+      name: "password",
+      placeholder: "Digite a nova senha"
     },
     {
       label: "Repita a nova senha:",
-      name: "confirmPassword"
+      name: "confirmPassword",
+      placeholder: "Repita a nova senha"
     }
   ];
 
   return (
     <Sc.Container>
-      {passwordInputs.map((input, i) => (
-        <GenericInput
-          key={i}
-          label={input.label}
-          name={input.name}
-          control={control}
-          errors={errors}
-        />
-      ))}
+      <Sc.InputsWrapper>
+        {passwordInputs.map((input, i) => (
+          <GenericInput
+            key={i}
+            label={input.label}
+            name={input.name}
+            control={control}
+            errors={errors}
+            placeholder={input.placeholder}
+          />
+        ))}
+      </Sc.InputsWrapper>
 
       {/* TODO: Move to a different file after sprint 2 is over */}
       {errorInstruction && (

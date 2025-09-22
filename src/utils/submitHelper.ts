@@ -53,23 +53,16 @@ export async function submitRegister(
   }
 }
 
-export async function handlePasswordRequest(
-  data: EmailFields,
-  navigation: NavigationType,
-  setError: UseFormSetError<EmailFields>
-) {
+export async function handlePasswordRequest(data: EmailFields, navigation: NavigationType) {
   try {
     await authApi.requestPasswordResetCode(data);
     navigation.navigate("CodeRequest", { email: data.email });
   } catch (error) {
     const axiosError = error as AxiosError;
 
-    if (axiosError.response && axiosError.response.status === 404) {
-      return setError("email", { message: "Email não encontrado" });
-    }
-
-    // Should server go down
-    alert("Algo deu errado, tente novamente!");
+    if (axiosError.response)
+      // Should server go down
+      alert("Algo deu errado, tente novamente!");
   }
 }
 

@@ -2,13 +2,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationType } from "@routes/type";
 import { emailSchema } from "@schemas/emailSchema";
-import { ColorScheme } from "@styles/globalStyles";
 import { EmailFields } from "@type/auth";
 import { handlePasswordRequest } from "@utils/submitHelper";
 import { useForm } from "react-hook-form";
-import Entypo from "react-native-vector-icons/Entypo";
 
-import ButtonList from "./ButtonsList";
+import GenericButton from "@components/GenericButton";
+import Header from "@components/Header";
+import { NewColorScheme } from "@styles/globalStyles";
+import { Text } from "react-native";
 import EmailRequestSection from "./EmailRequestSection";
 import { Sc } from "./style";
 
@@ -18,7 +19,6 @@ function PasswordReset() {
   const {
     handleSubmit,
     control,
-    setError,
     formState: { errors, isSubmitting }
   } = useForm<EmailFields>({
     resolver: yupResolver(emailSchema)
@@ -27,15 +27,18 @@ function PasswordReset() {
   return (
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Sc.Wrapper>
-        <Sc.BackIcon onPress={() => navigation.goBack()}>
-          <Entypo name="chevron-left" size={30} color={ColorScheme.icon.idle} />
-        </Sc.BackIcon>
+        <Sc.HeaderWrapper>
+          <Header title="Recuperar Senha" color={NewColorScheme.text.primary} size={30} />
+        </Sc.HeaderWrapper>
         <EmailRequestSection control={control} errors={errors} />
 
-        <ButtonList
+        <GenericButton
           isLoading={isSubmitting}
-          onPress={handleSubmit((data) => handlePasswordRequest(data, navigation, setError))}
-        />
+          onPress={handleSubmit((data) => handlePasswordRequest(data, navigation))}
+          state="accent"
+        >
+          <Text>Enviar</Text>
+        </GenericButton>
       </Sc.Wrapper>
     </Sc.Container>
   );

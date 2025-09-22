@@ -1,15 +1,15 @@
 import { useState } from "react";
 
+import GenericButton from "@components/GenericButton";
 import Header from "@components/Header";
 import { useNavigation } from "@react-navigation/core";
 import { useRoute } from "@react-navigation/native";
 import { CodeRequestRouteParam, NavigationType } from "@routes/type";
 import authApi from "@services/authApi";
+import { NewColorScheme } from "@styles/globalStyles";
 import { handleRedefinitionCodeValidation } from "@utils/submitHelper";
 import { AxiosError } from "axios";
-import { View } from "react-native";
-
-import Buttons from "./Buttons";
+import { Text, View } from "react-native";
 import Confirmation from "./Confirmation";
 import OTPInput from "./OTPInput";
 import { Sc } from "./style";
@@ -51,19 +51,34 @@ function CodeRequest() {
     <Sc.Container nestedScrollEnabled contentContainerStyle={{ flexGrow: 1 }}>
       <Sc.Wrapper>
         <View>
-          <Header title="Redefinir senha" />
+          <Sc.HeaderWrapper>
+            <Header title="Redefinir Senha" color={NewColorScheme.text.primary} size={30} />
+          </Sc.HeaderWrapper>
           <Confirmation />
-          <OTPInput onTextChange={handleTextInput} resendCode={handleResendCode} />
-          <Sc.CodeValidationMessage type={codeValidationInfo.type as "successful" | "unsuccessful"}>
-            {codeValidationInfo.message}
-          </Sc.CodeValidationMessage>
+          <Sc.CodeContainer>
+            <OTPInput onTextChange={handleTextInput} resendCode={handleResendCode} />
+            <Sc.CodeValidationMessage
+              type={codeValidationInfo.type as "successful" | "unsuccessful"}
+            >
+              {codeValidationInfo.message}
+            </Sc.CodeValidationMessage>
+          </Sc.CodeContainer>
+          <Sc.Text>
+            <Text>
+              Caso não encontre o e-mail na sua caixa de entrada, verifique a pasta de spam ou se o
+              e-mail informado está correto.
+            </Text>
+          </Sc.Text>
         </View>
 
-        <Buttons
+        <GenericButton
           onPress={() =>
             handleRedefinitionCodeValidation(otpValue, navigation, email, setCodeValidationInfo)
           }
-        />
+          state="accent"
+        >
+          <Text>Enviar</Text>
+        </GenericButton>
       </Sc.Wrapper>
     </Sc.Container>
   );

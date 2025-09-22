@@ -8,14 +8,16 @@ import { HeaderProps } from "./type";
  * Header with back button and title
  *
  * @param title - Title of the screen
+ * @param color - Color of the back button icon (default: "#444444")
+ * @param size - Size of the back button icon (default: 30)
  */
-function Header({ title }: HeaderProps) {
+function Header({ title, color, size }: HeaderProps) {
   const navigation = useNavigation();
 
   return (
     <Sc.Container>
       <Sc.BackButton onPress={() => navigation.goBack()}>
-        <Entypo name="chevron-left" size={30} color={"#444444"} />
+        <Entypo name="chevron-left" size={size || 30} color={color || "#444444"} />
       </Sc.BackButton>
 
       {title && (

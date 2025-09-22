@@ -3,7 +3,11 @@ import styled from "styled-components/native";
 
 export const Sc = {
   Container: styled.View`
-    margin-top: 64px;
+    margin-top: 70px;
+  `,
+
+  InputsWrapper: styled.View`
+    gap: 27px;
   `,
 
   Wrapper: styled.View`
